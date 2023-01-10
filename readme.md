@@ -13,7 +13,7 @@
 * Edits, additions, and revisions made by the editorial team at Lyryx Learning
     to accompany their text book "Linear Algebra with Applications" based on W.
     K. Nicholson's original text.
-* Professor [Ilijas Farah](https://ifarah.mathstats.yorku.ca/lijas Farah) from York University for contributing suggestions for
+* Professor [Ilijas Farah](https://ifarah.mathstats.yorku.ca/) from York University for contributing suggestions for
     improvements, new content, or errata.
 * Professor and department chair [Jim Nagy](http://www.math.emory.edu/~nagy/) for his support.
 
