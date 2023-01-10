@@ -8,5 +8,10 @@
    * [Math 221, 2021 Spring at Emory](http://math.emory.edu/~lchen41/teaching/2021_Spring_Math221/) 
    * [Math 221, 2021 Spring mirror at Auburn](http://webhome.auburn.edu/~lzc0090/teaching/2021_Spring_Math221/) 
 
+# Acknowledgment
+* The original author Professor Karen Seyffarth.
+* Professor and department chair [Jim Nagy](http://www.math.emory.edu/~nagy/) for his support.
+
 # License
-* Creative Commons License (CC BY-NC-SA)
+* Creative Commons License (CC BY-NC-SA) 
+* License details can be found at the [official website](https://creativecommons.org/licenses/by-nc-sa/4.0/) or [here](LICENSE.txt).
