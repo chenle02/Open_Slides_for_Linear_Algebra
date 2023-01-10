@@ -1,4 +1,4 @@
-# Open slides for Linear Algebra
+# Open slides (with Latex source codes) for Linear Algebra
 1. In this repo, we share the slides for the course "Math 221 -- Linear Algebra"
    in the Department of Mathematics, Emory University, taught by me in 2021
    Spring.
