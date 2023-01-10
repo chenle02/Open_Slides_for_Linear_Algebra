@@ -6,14 +6,14 @@
 2. The [lua](https://www.lua.org/) script has been used to automate the compilation of the slides.
 
 ## Usage
-1. Use [makefile lua](./makefile.lua) to compile a list of slides. 
+1. Use [makefile.lua](./makefile.lua) to compile a list of slides. 
   * There are two special lists:
-    *  [allfile txt](./allfile.txt): list of all slides. In order to compile all
+    *  [allfile.txt](./allfile.txt): list of all slides. In order to compile all
         slides, run
         `./makefile.lua allfile.txt`
     *  [Working_List txt](./Working_List.txt): the slides that are under development:
         `./makefile.lua Working_List.txt` 
-2. Use [TeachingMath221_Spring2021 lua](./TeachingMath221_Spring2021.lua) script to open all slides specified in the list [Working_List txt](./Working_List.txt)
-3. For vim user, one may source [commands vim](./commands.vim) when editing the
+2. Use [TeachingMath221_Spring2021.lua](./TeachingMath221_Spring2021.lua) script to open all slides specified in the list [Working_List.txt](./Working_List.txt)
+3. For vim user, one may source [commands.vim](./commands.vim) when editing the
    slides, where one finds some handful commands for editing the slides.
-4. [saveTable lua](./saveTable.lua): this is an utility lua script.
+4. [saveTable.lua](./saveTable.lua): this is an utility lua script.
