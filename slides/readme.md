@@ -15,5 +15,5 @@
         `./makefile.lua Working_List.txt` 
 2. Use [TeachingMath221_Spring2021.lua](./TeachingMath221_Spring2021.lua) script to open all slides specified in the list [Working_List.txt](./Working_List.txt)
 3. For vim user, one may source [commands.vim](./commands.vim) when editing the
-   slides, where one finds some handful commands for editing the slides.
+   slides, where one may find some handful commands.
 4. [saveTable.lua](./saveTable.lua): this is an utility lua script.
