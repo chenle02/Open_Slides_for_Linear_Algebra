@@ -9,13 +9,13 @@
    * [Math 221, 2021 Spring mirror at Auburn](http://webhome.auburn.edu/~lzc0090/teaching/2021_Spring_Math221/) 
 
 # Acknowledgment
-* The original author Professor Karen Seyffarth for sharing the slides.
-* Edits, additions, and revisions made by the editorial team at Lyryx Learning
-    to accompany their text book "Linear Algebra with Applications" based on W.
-    K. Nicholson's original text.
+* The original author Professor [Karen Seyffarth](https://contacts.ucalgary.ca/info/math/profiles/101-152971) for sharing the slides.
+* The editorial team at [Lyryx Learning](https://lyryx.com/) for their edits, additions, and revisions
+    made to accompany their text book "Linear Algebra with Applications" based on
+    W. K. Nicholson's original text.
 * Professor [Ilijas Farah](https://ifarah.mathstats.yorku.ca/) from York University for contributing suggestions for
     improvements, new content, or errata.
-* Professor and department chair [Jim Nagy](http://www.math.emory.edu/~nagy/) for his support.
+* Professor and department chair [Jim Nagy](http://www.math.emory.edu/~nagy/) for his encouragement and support.
 
 # License
 * Creative Commons License (CC BY-NC-SA) 
