@@ -1,0 +1,72 @@
+
+%%%%%%%%%%%%%%%TITLE FRAME COMMON TO ALL SLIDES
+
+%-------------------------start title page---------------%
+%%%Background colour for first slide only
+{
+% \setbeamercolor{background canvas}{bg=titlebgDarkYellow}
+\setbeamercolor{background canvas}{bg=background}
+\usebackgroundtemplate{\includegraphics[height=\paperheight]{Powerarrow-Dark-mirror.png}}
+\frame{
+%Logo and blue box along top
+% \begin{tikzpicture}[overlay,remember picture,scale=0.2]
+% \fill[titleDarkBlue] (current page.north west) rectangle ([yshift=-8cm]current page.north east);
+% % Grid is 4 units high, assuming the blue box is 6cm high, we want to leave 0.5cm on top and bottom of logo
+% % yshift is measuring from the bottom of the letter l
+% \draw [line width=2.5,color=white,shift={([xshift=15cm,yshift=-6cm]current page.north west)}]
+% (0,0.05) -- (0,3.77) %L
+% (1.48,2.92) -- (1.48,1.8) to [out=275,in=180] (2.3,1.08) to [out=0,in=265] (3.1,1.8) -- (3.1,2.92) %main curve of first Y
+% (3.1,1.8) -- (3.1,0.9) to [out=265,in=359] (2.09,0.26) %lower curve of first Y
+% (4.54,0.85) -- (4.54,1.9) to [out=89,in=178] (5.57,2.7) %R
+% (6.8,2.92) -- (6.8,1.8) to [out=275,in=180] (7.62,1.08) to [out=0,in=265] (8.42,1.8) -- (8.42,2.92) %main curve of second Y
+% (8.42,1.8) -- (8.42,0.9) to [out=265,in=359] (7.41,0.26) %lower curve of second Y
+% (9.7,2.8) -- (12.02,0.17) %NW-SE arm of X
+% (9.7,1.4) -- (11.65,3.65); %SW-NE arm of X
+% \node [color=white,anchor=east] at ([xshift=-15cm,yshift=-4cm]current page.north east) {\fontencoding{T1}\fontfamily{lmr}\Large\fontseries{b}\selectfont with Open Texts};
+% \end{tikzpicture}
+
+%Book Information
+\begin{center}
+\vspace{2em}
+\textbf{
+    \fontencoding{T1}\fontfamily{lmr}\huge\fontseries{b}\selectfont{\textcolor{lgtblue!50!gray}{Math 221: LINEAR ALGEBRA}}\\[1em]
+	% \fontencoding{T1}\fontfamily{lmr}\small\fontseries{b}\selectfont{\textcolor{lgtblue}{2020 Fall, Emory University}} \\[1em]
+\textbf{
+\fontencoding{T1}\fontfamily{lmr}\LARGE\fontseries{b}\selectfont{\textcolor{pink!50!gray}{\MyDate}}}\\[2.5em]
+% \fontencoding{T1}\fontfamily{lmr}\huge\fontseries{b}\selectfont{\textcolor{white}{Lecture Notes}} \\[0.6em]
+% \fontencoding{T1}\fontfamily{lmr}\large\fontseries{b}\selectfont{\textcolor{subtitletextcolour}{created by Karen Seyffarth {\small (University of Calgary)}}}\\[0.3em]
+\fontencoding{T1}\fontfamily{lmr}\large\fontseries{b}\selectfont{\textcolor{gray}{Le Chen\footnote{\fontencoding{T1}\fontfamily{lmr}\tiny\fontseries{b}\selectfont{\textcolor{blue}{Slides are adapted from those by Karen Seyffarth from University of Calgary.}}}}}\\[0.5em]
+\fontencoding{T1}\fontfamily{lmr}\small\fontseries{b}\selectfont{\textcolor{yellow!50!gray}{Emory University, 2021 Spring}} \\[0.5em]
+\textbf{\fontencoding{T1}\fontfamily{lmr}\tiny\fontseries{b}\selectfont{\textcolor{red!50!gray}{(last updated on \today)}}}\\
+% \fontencoding{T1}\fontfamily{lmr}\large\fontseries{b}\selectfont{\textcolor{subtitletextcolour}{for Math 221, 2020 Fall. }}
+}
+\vspace{6em}
+% \vfill
+% \fontencoding{T1}\fontfamily{lmr}\tiny\fontseries{b}\selectfont{\textcolor{cctextcolour}{Slides are adapted from the original version  by Karen Seyffarth from University of Calgary for the original slides }}
+%Title of Slide
+% \vspace{5em}
+
+%Copyright
+\includegraphics[scale=0.4]{figures/CCBYNCSA.png}\\[-0.3em]
+\textbf{\fontencoding{T1}\fontfamily{lmr}\tiny\fontseries{b}\selectfont{\textcolor{blue!50!gray}{Creative Commons License}}}\\[-0.6em]
+\textbf{\fontencoding{T1}\fontfamily{lmr}\tiny\fontseries{b}\selectfont{\textcolor{blue!50!gray}{(CC BY-NC-SA)}}}
+\end{center}
+}
+}
+%---------------end title page--------------------------%
+
+
+\def\Chapter4Note{
+%-------------- start slide -------------------------------%{{{
+\begin{frame}
+ \begin{center}
+   {\bf NOTE:} 
+   Much of this chapter is what you would learn in Multivariable Calculus.
+   \\[0.5em] 
+   You might find it interesting/useful to read. \\[0.5em]
+   But I will only cover the material important to this course.
+     \end{center}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+}
+

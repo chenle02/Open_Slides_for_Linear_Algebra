@@ -1,0 +1,411 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+% \documentclass[pdf,9pt]{beamer}
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 1. Systems of Linear Equations \\ \S  1-3. Homogeneous Equations}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Homogeneous Equations}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{Homogeneous Equations}
+\pause 
+\begin{definition}
+    A \alert{homogeneous linear equation} is one whose constant term
+    is equal to zero.
+    A system of linear equations is called \alert{homogeneous}
+    \index{system of equations! homogeneous} \index{homogeneous system}
+    if each equation in the system is homogeneous.
+    A \alert{homogeneous system} has the form
+    \begin{equation*}
+	\left\{
+	\begin{array}{ccccccccc}
+	    a_{11}x_{1} & + & a_{12}x_{2} & + & \cdots & + & a_{1n}x_{n} & = & 0 \\
+	    a_{21}x_{1} & + & a_{22}x_{2} & + & \cdots & + & a_{2n}x_{n} & = & 0 \\
+			&   &             &   & \vdots &   &             &   &   \\
+	    a_{m1}x_{1} & + & a_{m2}x_{2} & + & \cdots & + & a_{mn}x_{n} & = & 0
+	\end{array}
+	\right.
+    \end{equation*}
+    where $a_{ij}$ are scalars and $x_{i}$ are variables,
+    $1\leq i\leq m$, $1\leq j\leq n$.
+\end{definition}
+\vfill
+\pause
+
+\begin{remark}
+    \begin{enumerate}
+        \item Notice that $x_1=0, x_2=0, \cdots, x_n=0$ is always a solution to a homogeneous system of equations. We call this the \alert{trivial solution}.
+	    \vspace{1em}
+	\item We are interested in finding, if possible, \alert{nontrivial solutions} (ones with at least one variable not equal to zero) to homogeneous systems.
+    \end{enumerate}
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\frame{
+\begin{example}
+Solve the system
+$\left\{\begin{array}{ccccccccc}
+    x_1  & + & x_2  & - & x_3  & + & 3x_4 & = & 0 \\
+    -x_1 & + & 4x_2 & + & 5x_3 & - & 2x_4 & = & 0 \\
+    x_1  & + & 6x_2 & + & 3x_3 & + & 4x_4 & = & 0
+\end{array}\right.$
+\end{example}
+
+\pause
+\begin{solution}
+\[
+    \left[\begin{array}{rrrr|r}
+	1  & 1 & -1 & 3  & 0 \\
+	-1 & 4 & 5  & -2 & 0 \\
+	1  & 6 & 3  & 4  & 0
+    \end{array}\right]
+    \pause
+    \rightarrow \cdots \rightarrow
+    \left[\begin{array}{rrrr|r}
+	1 & 0 & -9/5 & 14/5 & 0 \\
+	0 & 1 & 4/5  & 1/5  & 0 \\
+	0 & 0 & 0    & 0    & 0
+    \end{array}\right]
+\]
+\pause
+The system has infinitely many solutions, and the general
+solution is
+\[
+    \left\{\begin{array}{ccl}
+	x_1 & = & \vspace{0.05in}\frac{9}{5}s -\vspace{0.05in}\frac{14}{5}t \\
+	x_2 & = & -\vspace{0.05in}\frac{4}{5}s -\vspace{0.05in}\frac{1}{5}t \\
+	x_3 & = & s \\
+	x_4 & = & t
+    \end{array}\right. \pause ~\mbox{ or }~
+    \left[\begin{array}{c}
+	x_1 \\ x_2 \\ x_3 \\ x_4
+    \end{array} \right]
+    =
+    \left[\begin{array}{c}
+	\vspace{0.05in}\frac{9}{5}s -\vspace{0.05in}\frac{14}{5}t \\
+	-\vspace{0.05in}\frac{4}{5}s -\vspace{0.05in}\frac{1}{5}t \\
+	s \\
+	t
+    \end{array}\right],
+    \forall s, t\in\RR.
+\]
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5
+\frame{
+ \begin{theorem}
+     If a homogeneous system of linear equations has more variables than equations, then it has a nontrivial solution (in fact, infinitely many).
+\end{theorem}
+
+% \bigskip\pause
+
+% \begin{problem}
+%     We call the graph of an equation $ax^2+bxy+cy^2+dx+ey+ f = 0$ a conic
+%     if the numbers $a$, $b$, and $c$ are not all zero.
+%
+%     \medskip
+%
+%     Show that there is at least one conic through any
+%     five points in the plane that are not all on a line.
+% \end{problem}
+
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Linear Combination}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\frametitle{Linear Combination}
+\pause
+\begin{definition}
+    If $X_1, X_2, \ldots, X_p$ are columns with the same number
+    of entries, and if $a_1, a_2,\ldots a_p \in\RR$ (are scalars)
+    then $a_1X_1 + a_2X_2 + \cdots + a_pX_p$
+    is a \alert{linear combination} of columns
+    $X_1, X_2, \ldots, X_p$.
+\end{definition}
+\vfill
+\pause
+\begin{example}[continued]
+    In the previous example,
+    \begin{eqnarray*}
+    {\left[\begin{array}{c}
+    x_1 \\ x_2 \\ x_3 \\ x_4
+    \end{array} \right]
+    =
+    \left[\begin{array}{c}
+	\vspace{0.05in}\frac{9}{5}s -\vspace{0.05in}\frac{14}{5}t \\
+	-\vspace{0.05in}\frac{4}{5}s -\vspace{0.05in}\frac{1}{5}t \\
+	s \\
+	t
+    \end{array}\right]}
+    \pause & = &
+    {\left[\begin{array}{r}
+	\vspace{0.05in}\frac{9}{5}s \\
+	-\vspace{0.05in}\frac{4}{5}s \\
+	s \\
+	0
+    \end{array}\right]
+    +
+    \left[\begin{array}{r}
+    -\vspace{0.05in}\frac{14}{5}t \\
+    -\vspace{0.05in}\frac{1}{5}t \\
+    0 \\
+    t
+    \end{array}\right]} \\
+    \pause & = &
+    {s\left[\begin{array}{r}
+     9/5 \\
+    -4/5 \\
+    1 \\
+    0
+    \end{array}\right]
+    +
+    t \left[\begin{array}{r}
+    -14/5 \\
+    -1/5 \\
+    0 \\
+    1
+    \end{array}\right]}
+    \end{eqnarray*}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+\begin{example}[continued]
+This gives us
+
+\[
+    \left[\begin{array}{c}
+x_1 \\ x_2 \\ x_3 \\ x_4 \end{array} \right]
+=
+s\left[\begin{array}{r}
+ 9/5 \\
+-4/5 \\
+1 \\
+0
+\end{array}\right]
++
+t \left[\begin{array}{r}
+-14/5 \\
+-1/5 \\
+0 \\
+1
+\end{array}\right]
+= sX_1 + tX_2,\quad
+\]
+\[\text{with}\quad
+    X_1 = \left[\begin{array}{r}
+ 9/5 \\
+-4/5 \\
+1 \\
+0
+\end{array}\right]\quad\text{and}\quad
+X_2=\left[\begin{array}{r}
+-14/5 \\
+-1/5 \\
+0 \\
+1
+\end{array}\right].\]
+
+\pause
+\bigskip
+
+The columns $X_1$ and $X_2$ are called
+\alert{basic solutions} to the original homogeneous system.
+
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+\begin{example}[continued]
+Notice that
+\begin{eqnarray*}
+{\left[\begin{array}{c}
+x_1 \\ x_2 \\ x_3 \\ x_4 \end{array} \right]
+=
+s\left[\begin{array}{r}
+ 9/5 \\
+-4/5 \\
+1 \\ 0
+\end{array}\right]
++
+t \left[\begin{array}{r}
+-14/5 \\
+-1/5 \\
+0 \\ 1
+\end{array}\right]}
+& = &
+{\frac{s}{5}
+\left[\begin{array}{r}
+9 \\ -4 \\ 5 \\ 0
+\end{array}\right]
++ \frac{t}{5}
+\left[\begin{array}{r}
+-14 \\ -1 \\ 0 \\ 5
+\end{array}\right]} \\
+& = &
+{r \left[\begin{array}{r}
+9 \\ -4 \\ 5 \\ 0
+\end{array}\right]
++ q \left[\begin{array}{r}
+-14 \\ -1 \\ 0 \\ 5
+\end{array}\right]} \\
+& = & r(5X_1) + q(5X_2)
+\end{eqnarray*}
+where $r, q\in\RR$.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\frame{
+\begin{example}[continued]
+    The columns
+    $5X_1 =\left[\begin{array}{r}
+    9 \\ -4 \\ 5 \\ 0
+    \end{array}\right]$ and
+    $5X_2= \left[\begin{array}{r}
+    -14 \\ -1 \\ 0 \\ 5
+    \end{array}\right]$
+    are also basic solutions to the original homogeneous
+    system.
+\end{example}
+\vfill
+\pause
+
+\begin{remark}
+    In general, any nonzero multiple of a basic solution (to a homogeneous system of linear equations) is also a basic solution.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\frame{
+\begin{emptytitle}
+    \alert{What does the rank tell us in the \textcolor{yellow}{homogeneous} case?}\\[1em]
+    Suppose $A$ is the augmented matrix of an {\bf homogeneous} system
+    of $m$ linear equations in $n$ variables, and $\rank A=r$.
+    \[
+    _{m}\left\{ \quad
+    \left[\begin{array}{cccc|c}
+	    * & * & * & * & \textcolor{yellow}{0} \\
+	    * & * & * & * & \textcolor{yellow}{0} \\
+	    * & * & * & * & \textcolor{yellow}{0} \\
+	    * & * & * & * & \textcolor{yellow}{0} \\
+	    * & * & * & * & \textcolor{yellow}{0}
+    \end{array}\right]\right.
+    \rightarrow
+    \left[\begin{array}{cccc|c}
+	\alert{1} & * & *         & *         & \textcolor{yellow}{0}  \\
+	0         & 0 & \alert{1} & *         & \textcolor{yellow}{0}  \\
+	0         & 0 & 0         & \alert{1} & \textcolor{yellow}{0}  \\
+	0         & 0 & 0         & 0         & \textcolor{yellow}{0}  \\
+	0         & 0 & 0         & 0         & \textcolor{yellow}{0}
+    \end{array}\right]
+    \]
+    \vspace*{-.1in}
+    % $\hspace*{1.10in} \underbrace{\hspace*{0.9in}}_n \;\;
+    % \hspace*{.45in} \underbrace{\hspace*{0.9in}}_{r \; leading\; 1's}$
+    $\hspace*{1.08in} \underbrace{\hspace*{0.75in}}_n \;\;
+    \hspace*{.5in} \underbrace{\hspace*{0.8in}}_{r \; leading\; 1's}$
+    \bigskip
+
+    \pause
+    There is always a solution, and the set of solutions to the system has $n-r$ parameters, so
+    \vfill
+
+    \pause
+    \begin{itemize}
+	\item if \textcolor{red}{$r<n$}, there is at least one parameter, and
+    the system has infinitely many solutions;
+    \pause
+    \vfill
+    \item if \textcolor{red}{$r=n$}, there are no parameters, and the system
+    has a unique solution, the trivial solution.
+    \end{itemize}
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 11
+\frame{
+\begin{theorem}
+    Let A be an $m \times n$ matrix of rank $r$, and consider the
+    homogeneous system in $n$ variables with A as coefficient matrix. Then:
+    \begin{enumerate}
+	\item The system has exactly $n-r$ basic solutions, one for each parameter.
+	\item Every solution is a \alert{linear combination} of these \alert{basic solutions}.
+    \end{enumerate}
+\end{theorem}
+
+  % \pause
+% \begin{proofnoend}
+% Consider the RREF matrix equivalent to the augmented matrix of the system.
+%
+% Each non-leading variable corresponds to one of the $n-r$ parameters; let $N$ be the set of non-leading variables
+% and enumerate the parameters as $s_j$, for $j\in N$.
+% \pause
+%
+% Then, for scalars $c_{ij}$, the general solution has the form
+% \begin{equation}\label{Eq.Row}
+% x_i=\sum_{j\in N} c_{ij} s_j
+% \end{equation}
+% i.e. each variable---leading or not---is expressed as a linear combination of the parameters and there is no constant term.
+% \end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\frame{
+\begin{problem}
+    Find all values of $a$ for which the system
+    \[
+	\left\{
+	\begin{array}{ccccccc}
+	    x & + & y  &   &    & = & 0 \\
+	      &   & ay & + & z  & = & 0 \\
+	    x & + & y  & + & az & = & 0
+	\end{array}\right.
+    \]
+    has nontrivial solutions, and determine the solutions.
+\end{problem}
+\vfill
+\pause
+\begin{solution}
+    Non-trivial solutions occur only when $a = 0$, and
+    the solutions when $a=0$ are given by (rank $r=2$, $n-r=3-2=1$ parameter)
+    \[ \left[ \begin{array}{r} x\\y\\z \end{array}\right] =
+    s\left[\begin{array}{r} 1\\-1\\0 \end{array}\right],\quad\forall s\in\RR.\]
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\end{document}

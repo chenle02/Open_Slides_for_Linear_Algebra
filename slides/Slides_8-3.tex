@@ -1,0 +1,373 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 8. Orthogonality \\ \S  8-3. Positive Definite Matrices}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Positive Definite Matrices}}
+%-------------- start slide -----------------------------% {{{ 3
+\frame{
+\frametitle{Positive Definite Matrices}
+\pause
+\begin{definition}
+    An $n\times n$ matrix $A$ is \alert{positive definite} if it
+    is \alert{symmetric} and has \alert{positive} eigenvalues, i.e.,
+    if $\lambda$ is a eigenvalue of $A$, then $\lambda>0$.
+\end{definition}
+\pause
+\vfill
+\begin{theorem}
+    If $A$ is a positive definite matrix, then $\det(A)>0$ and $A$ is invertible.
+\end{theorem}
+\pause
+\vfill
+\begin{proofnoend}
+    Let $\lambda_1, \lambda_2, \ldots, \lambda_n$ denote the
+    (not necessarily distinct) eigenvalues of $A$.
+    Since $A$ is symmetric, $A$ is orthogonally diagonalizable.
+    In particular,
+    $A\sim D$, where $D=\diag(\lambda_1,\lambda_2,\ldots,\lambda_n)$.
+    Similar matrices have the same determinant, so
+    \[ \det(A)=\det(D)= \lambda_1\lambda_2\cdots\lambda_n.\]
+    Since $A$ is positive definite, $\lambda_i>0$ for all $i$, $1\leq i\leq n$;
+    it follows that $\det(A)>0$, and therefore $A$ is invertible.
+    %Since $A$ is symmetric, there exists an orthogonal matrix $P$
+    %so that
+    %$P^{-1}AP=\diag(\lambda_1,\lambda_2,\ldots,\lambda_n)$.
+    %Thus, $A$ and $\diag(\lambda_1,\lambda_2,\ldots,\lambda_n)$
+    %are similar matrices, implying that
+    %$\det(A) = \det( \diag(\lambda_1,\lambda_2,\ldots,\lambda_n))$.
+    %However,
+    %\[ \det( \diag(\lambda_1,\lambda_2,\ldots,\lambda_n))
+    %=\lambda_1\lambda_2\cdots\lambda_n,\]
+    %and $\lambda_1\lambda_2\cdots\lambda_n>0$ since $\lambda_i>0$
+    %for each $i$.
+    %Therefore $\det(A)>0$, and $A$ is invertible.
+    \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -----------------------------% {{{ 4
+\frame{
+    \begin{theorem}
+	A symmetric matrix $A$ is positive definite if and only if
+	$\vec{x}^TA\vec{x}>0$ for all $\vec{x}\in\RR^n$, $\vec{x}\neq \vec{0}$.
+    \end{theorem}
+    \pause
+    \begin{proofnoend}
+	Since $A$ is symmetric, there exists an orthogonal matrix $P$ so that
+	% \vspace*{-.1in}
+
+	\[ P^{T}AP=\diag(\lambda_1,\lambda_2,\ldots,\lambda_n)=D,\]
+	% \vspace*{-.2in}
+
+	where $\lambda_1,\lambda_2,\ldots,\lambda_n$ are the (not necessarily
+	distinct) eigenvalues of $A$.
+	Let $\vec{x}\in\RR^n$, $\vec{x}\neq \vec{0}$, and define
+	$\vec{y}=P^T\vec{x}$.
+	Then
+	% \vspace*{-.1in}
+
+	\[ 
+	    \vec{x}^TA\vec{x} = \vec{x}^T(PDP^T)\vec{x}
+                              = (\vec{x}^TP)D(P^T\vec{x})
+                              = (P^T\vec{x})^TD(P^T\vec{x})
+                              = \vec{y}^TD\vec{y}.
+	\]
+	% \vspace*{-.1in}
+
+	Writing $\vec{y}^T=\left[\begin{array}{cccc}
+	y_1 & y_2 & \cdots & y_n\end{array}\right]$,
+	% \vspace*{-.2in}
+
+	\begin{eqnarray*}
+	    \vec{x}^TA\vec{x} & = &
+	    \left[\begin{array}{cccc} y_1 & y_2 & \cdots & y_n\end{array}\right]
+	    \diag(\lambda_1,\lambda_2,\ldots,\lambda_n)
+	    \left[\begin{array}{c} y_1 \\ y_2 \\ \vdots \\ y_n\end{array}\right]\\
+					  & = & \lambda_1 y_1^2 + \lambda_2 y_2^2 + \cdots \lambda_n y_n^2.
+	\end{eqnarray*}
+	%\vspace*{-.22in}
+    \end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -----------------------------% {{{{ 5
+\frame{
+\begin{proofnoend}[continued]
+    $(\Rightarrow)$
+    Suppose $A$ is positive definite, and $\vec{x}\in\RR^n$,
+    $\vec{x}\neq\vec{0}$.
+    Since $P^T$ is invertible, $\vec{y}=P^T\vec{x}\neq \vec{0}$,
+    and thus $y_j\neq 0$ for some $j$, implying $y_j^2>0$
+    for some $j$.
+    Furthermore, since all eigenvalues of $A$ are positive,
+    $\lambda_i y_i^2\geq 0$ for all $i$; in particular $\lambda_jy_j^2>0$.
+    Therefore, $\vec{x}^TA\vec{x}>0$.
+    \pause
+    \medskip
+
+    $(\Leftarrow)$
+    Conversely, if $\vec{x}^TA\vec{x}>0$ whenever $\vec{x}\neq \vec{0}$,
+    choose $\vec{x}=P\vec{e}_j$, where $\vec{e}_j$ is the $j^{\mbox{th}}$
+    column of $I_n$.
+    Since $P$ is invertible, $\vec{x}\neq\vec{0}$,
+    and thus
+    \[ \vec{y}=P^T\vec{x}=P^T(P\vec{e}_j) =\vec{e}_j.\]
+    Thus $y_j=1$ and $y_i=0$ when $i\neq j$, so
+    \[ \lambda_1 y_1^2 + \lambda_2 y_2^2 + \cdots \lambda_n y_n^2
+    =\lambda_j,\]
+    i.e., $\lambda_j=\vec{x}^TA\vec{x}>0$.
+    Therefore, $A$ is positive definite.
+    \myQED    
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -----------------------------% {{{{ 6
+\frame{
+\begin{theorem}[Constructing Positive Definite Matrices]
+    Let $U$ be an $n\times n$ invertible matrix, and let
+    $A=U^TU$.
+    Then $A$ is positive definite.
+\end{theorem}
+\vfill
+\pause
+\begin{proofnoend}
+    Let $\vec{x}\in\RR^n$, $\vec{x}\neq \vec{0}$.
+    Then
+    \begin{eqnarray*}
+	\vec{x}^TA\vec{x}
+	& = & \vec{x}^T(U^TU)\vec{x} \\
+	& = & (\vec{x}^TU^T)(U\vec{x}) \\
+	& = & (U\vec{x})^T(U\vec{x}) \\
+	& = & ||U\vec{x}||^2.
+    \end{eqnarray*}
+    Since $U$ is invertible and $\vec{x}\neq \vec{0}$, $U\vec{x}\neq \vec{0}$,
+    and hence $||U\vec{x}||^2>0$,
+    i.e., $\vec{x}^TA\vec{x} = ||U\vec{x}||^2>0$.
+    Therefore, $A$ is positive definite.
+    \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -----------------------------% {{{{ 7
+\frame{
+    \begin{definition}
+	Let $A=\left[\begin{array}{c} a_{ij}\end{array}\right]$ be
+	an $n\times n$ matrix.
+	For $1\leq r\leq n$, $^{(r)}A$ denotes the $r\times r$ submatrix
+	in the upper left corner of $A$,
+	i.e.,
+	\[ ^{(r)}A=\left[\begin{array}{c} a_{ij}\end{array}\right],~
+    1\leq i,j\leq r.\]
+    $^{(1)}A,\: ^{(2)}A, \ldots,\: ^{(n)}A$
+    are called the \alert{principal submatrices} of $A$.
+\end{definition}
+\pause
+\vfill
+\begin{lemma}
+    If $A$ is an $n\times n$ positive definite matrix, then
+    each principal submatrix of $A$ is positive definite.
+\end{lemma}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -----------------------------% {{{{ 8
+\frame{
+    \begin{proofnoend}
+	Suppose $A$ is an $n\times n$ positive definite matrix.
+	For any integer $r$, $1\leq r\leq n$, write $A$ in block
+	form as
+	\[ A=\left[ \begin{array}{cc} ^{(r)}A & B \\ C & D \end{array}\right],\]
+	where $B$ is an $r\times(n-r)$ matrix,
+	$C$ is an $(n-r)\times r$ matrix,
+	and $D$ is an $(n-r)\times(n-r)$ matrix.
+	Let $\vec{y}=
+	\left[ \begin{array}{c} y_1 \\ y_2 \\ \vdots \\ y_r\end{array}\right]\neq
+	\vec{0}$
+	and let $\vec{x}=
+	\left[ \begin{array}{c}  y_1 \\ y_2 \\ \vdots \\ y_r \\ 0 \\ \vdots\\ 0
+	\end{array}\right]$.
+	Then $\vec{x}\neq\vec{0}$, and by the previous theorem, $\vec{x}^TA\vec{x}>0$.
+    \end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -----------------------------% {{{{ 9
+\frame{
+\begin{proofnoend}[continued]
+    But
+    \[ \vec{x}^TA\vec{x} =
+	\left[ \begin{array}{cccccc}  y_1 & \cdots & y_r & 0 & \cdots & 0
+	\end{array}
+	\right]
+	    \left[ \begin{array}{cc} ^{(r)}A & B \\ C & D \end{array}\right]
+	    \left[ \begin{array}{c} y_1 \\ \vdots \\ y_r \\ 0 \\ \vdots\\ 0
+	    \end{array}\right]
+	= \vec{y}^T \left(^{(r)}A\right)\vec{y}, \]
+    and therefore $\vec{y}^T \left(^{(r)}A\right)\vec{y}>0$.
+    Then  $^{(r)}A$ is positive definite again by the previous theorem. \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Cholesky factorization -- Square Root of a Matrix}}
+%-------------- start slide -----------------------------% {{{{ 10
+\frame{
+\frametitle{Cholesky factorization -- Square Root of a Matrix}
+\pause
+\[
+    4 = 2\times 2^T
+\]
+\bigskip
+\[
+\begin{bmatrix}
+    4   & 12  & -16 \\
+    12  & 37  & -43 \\
+    -16 & -43 & 98  \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+    2  & 0 & 0 \\
+    6  & 1 & 0 \\
+    -8 & 5 & 3 \\
+\end{bmatrix}
+\begin{bmatrix}
+    2 & 6 & -8 \\
+    0 & 1 & 5  \\
+    0 & 0 & 3  \\
+\end{bmatrix}
+\]
+\vfill
+\pause
+\begin{theorem}
+    Let $A$ be an $n\times n$ symmetric matrix.
+    Then the following conditions are equivalent.
+    \begin{enumerate}
+	\item $A$ is positive definite.
+	\item $\det(^{(r)}A)>0$ for $r=1,2,\ldots,n$.
+	\item $A=U^TU$ where $U$ is upper triangular and has positive
+	    entries on its main diagonal.
+	    Furthermore, $U$ is unique.
+	    The expression $A=U^TU$ is called the \alert{Cholesky factorization}
+	    of $A$.
+    \end{enumerate}
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -----------------------------% {{{ 11
+\frame{
+\begin{emptytitle}
+    \textcolor{lgtblue}{Algorithm for Cholesky Factorization}\\[1em]
+    Let $A$ be a positive definite matrix.
+    The Cholesky factorization $A=U^TU$ can be obtained as
+    follows.
+    \pause
+    \begin{enumerate}
+	\item Using only type 3 elementary row operations, with
+	    multiples of rows added to lower rows, put $A$ in upper
+	    triangular form.
+	    Call this matrix $\widehat{U}$;
+	    then $\widehat{U}$ has positive entries on its main diagonal
+	    (this can be proved by induction on $n$).
+	    \pause
+	\item Obtain $U$ from $\widehat{U}$ by dividing each row  of
+	    $\widehat{U}$ by
+	    the square root of the diagonal entry in that row.
+    \end{enumerate}
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -----------------------------% {{{ 12
+\frame{
+\begin{problem}
+    Show that
+    $A=\left[\begin{array}{rrr}
+	    9 & -6 & 3 \\ -6 & 5 & -3 \\ 3 & -3 & 6
+    \end{array}\right]$
+    is positive definite, and find the Cholesky factorization of $A$.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    \[ ^{(1)}A=\left[\begin{array}{c} 9 \end{array}\right]
+    \quad\text{and}\quad
+    ^{(2)}A=\left[\begin{array}{rr} 9 & -6 \\ -6 & 5 \end{array}\right],\]
+    so $\det(^{(1)}A)=9$ and $\det(^{(2)}A)=9$.
+    Since $\det(A)=36$, it follows that $A$ is positive definite.
+    % \vspace*{-.10in}
+    \pause
+
+    \[ \left[\begin{array}{rrr}
+    9 & -6 & 3 \\ -6 & 5 & -3 \\ 3 & -3 & 6
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr}
+    9 & -6 & 3 \\ 0 & 1 & -1 \\ 0 & -1 & 5
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr}
+    9 & -6 & 3 \\ 0 & 1 & -1 \\ 0 & 0 & 4
+    \end{array}\right]
+    \]
+    \pause
+    Now divide the entries in each row by the square root of the diagonal
+    entry in that row, to give
+    \[ U=\left[\begin{array}{rrr}
+	    3 & -2 & 1 \\ 0 & 1 & -1 \\ 0 & 0 & 2
+    \end{array}\right]\quad\text{and}\quad U^TU=A.
+    \]
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -----------------------------% {{{ 13
+\frame{
+\begin{problem}
+    Verify that
+    \[ A=\left[\begin{array}{rrr}
+	    12 & 4 & 3 \\ 4 & 2 & -1 \\ 3 & -1 & 7
+    \end{array}\right]\]
+    is positive definite, and find the Cholesky factorization of $A$.
+\end{problem}
+\pause
+\vfill
+\begin{solution}[ Final Answer ]
+    $\det\left(  ^{(1)}A\right)=12$,
+    $\det\left(  ^{(2)}A\right)=8$,
+    $\det\left(A\right)=2$;
+    by the previous theorem, $A$ is positive definite.
+    \[ U=\left[\begin{array}{rrr}
+	    2\sqrt{3} & 2\sqrt{3}/3 & \sqrt{3}/2 \\
+	    0 & \sqrt{6}/3 & -\sqrt{6} \\
+	    0 & 0 & 1/2
+    \end{array}\right]\]
+    and $U^TU=A$.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\end{document}

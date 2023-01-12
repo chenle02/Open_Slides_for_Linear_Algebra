@@ -1,0 +1,449 @@
+
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt,t]{beamer}
+% \documentclass[pdf,handout,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{\S Review session for test III}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+% %-------------- start slide -------------------------------%{{{ 2
+% \begin{frame}[fragile]
+%    \tableofcontents
+% \end{frame}
+% %-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.1.7 (L)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.1.7 (L)}
+    \begin{problem}
+	If $U=\Span\{\vec{x},\vec{y},\vec{z}\}$ in $\R^n$, show that
+	$U=\Span\{\vec{x}+t \vec{z}, \vec{y}, \vec{z}\}$ for every $t\in \R$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.1.8 (H)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.1.8 (H)}
+    \begin{problem}
+	If $U=\Span\{\vec{x},\vec{y},\vec{z}\}$ in $\R^n$, show that
+	$U=\Span\{\vec{x}+\vec{y}, \vec{y}+\vec{z},\vec{z}+\vec{x}\}$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.1.13 (L)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.1.13 (L)}
+    \begin{problem}
+	If $A$ is an $m\times n$ matrix, show that, for each invertible $m\times m$ matrix $U$,
+	$\nul(A)=\nul(U A)$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.1.14 (H)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.1.14 (H)}
+    \begin{problem}
+	If $A$ is an $m\times n$ matrix, show that, for each invertible $n\times n$ matrix $V$,
+	$\im(A)=\im(AV)$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.1.18 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.1.18 (P)}
+    \begin{problem}
+	Suppose that $\vec{x}_1$, $\vec{x}_2,\cdots,\vec{x}_k$ are vectors in $\R^n$.
+	If $\vec{y}=a_1 \vec{x}_1 + a_2 \vec{x}_2 + \cdots + a_k \vec{x}_k$ where $a_1\ne 0$,
+	show that
+	\begin{align*}
+	    \Span\{\vec{x}_1,\vec{x}_2,\cdots,\vec{x}_k\}= \Span\{\vec{y}_1,\vec{x}_2,\cdots,\vec{x}_k\}.
+	\end{align*}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.1.23 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.1.23 (P)}
+    \begin{problem}
+	Let $P$ denote an invertible $n\times n$ matrix. If $\lambda$ is a number, show that
+	\begin{align*}
+	    E_\lambda(PAP^{-1}) = \left\{P \vec{x}\:|\:\vec{x} \:\: \text{is in $E_\lambda(A)$}\right\}
+	\end{align*}
+	for each $n\times n$ matrix $A$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.2.5 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.2.5 (P)}
+    \begin{problem}
+	Suppose that $\{\vec{x},\vec{y},\vec{z},\vec{w}\}$ is a basis of $\R^4$. Show that
+	\begin{enumerate}
+	    \item $\{\vec{x}+a \vec{w},\vec{y}, \vec{z}, \vec{w}\}$ is also a basis of $\R^4$ for any choice of scalar $a$.
+	    \item $\{\vec{x}+\vec{w},\vec{y}+\vec{w}, \vec{z}+\vec{w}, \vec{w}\}$ is also a basis of $\R^4$.
+	    \item $\{\vec{x}, \vec{x}+\vec{y}, \vec{x}+\vec{y}+\vec{z},\vec{x}+\vec{y}+\vec{z}+\vec{w}\}$ is also a basis of $\R^4$.
+	\end{enumerate}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.2.8 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.2.8 (P)}
+    \begin{problem}
+	If $A$ is an $n\times n$ matrix, show that $\det(A)=0$ if and only if some column of $A$ is a linear combinations of the other columns.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.2.12 (L)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.2.12 (L)}
+    \begin{problem}
+	If $\{\vec{x}_1,\vec{x}_2,\cdots,\vec{x}_k\}$ is independent, show that
+	$\{\vec{x}_1,\vec{x}_1+\vec{x}_2,\cdots,\vec{x}_1+\vec{x}_2+\cdots+\vec{x}_k\}$ is independent too.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.2.13 (H)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.2.13 (H)}
+    \begin{problem}
+	If $\{\vec{y}, \vec{x}_1,\vec{x}_2,\cdots,\vec{x}_k\}$ is independent, show that
+	$\{\vec{y}+\vec{x}_1,\vec{y}+\vec{x}_2,\cdots,\vec{y}+\vec{x}_k\}$ is independent too.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.2.14 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.2.14 (P)}
+    \begin{problem}
+	If $\{\vec{x}_1,\vec{x}_2,\cdots,\vec{x}_k\}$ is independent,
+	and if $\vec{y}$ is not in $\Span\{\vec{x}_1,\vec{x}_2,\cdots,\vec{x}_k\}$,
+	show that $\{\vec{x}_1,\vec{x}_2,\cdots,\vec{x}_k,\vec{y}\}$ is independent.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.2.15 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.2.15 (P)}
+    \begin{problem}
+	If $A$ and $B$ are matrices and the columns of $AB$ are independent, show that
+	the columns of $B$ are independent.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.2.16 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.2.16 (P)}
+    \begin{problem}
+	Suppose that $\{\vec{x},\vec{y}\}$ is a basis of $\R^2$, and let $A=\begin{bmatrix} a&b\\ c&d \end{bmatrix} $.
+	Show that $A$ is invertible if and only if $\{a \vec{x}+b \vec{y}, c \vec{x} + d \vec{y}\}$ is a basis of $\R^2$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.2.17 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.2.17 (P)}
+    \begin{problem}
+	Let $A$ denote an $m\times n$ matrix.
+	\begin{enumerate}
+	    \item Show that $\nul(A)=\nul(U A)$ for every invertible $m\times m$ matrix $U$.
+	    \item Show that $\dim(\nul(A)) = \dim(\nul(AV))$ for every invertible $n\times n$ matrix $V$.
+	\end{enumerate}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.2.18 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.2.18 (P)}
+    \begin{problem}
+	Let $A$ denote an $m\times n$ matrix.
+	\begin{enumerate}
+	    \item Show that $\im(A)=\im(AV)$ for every invertible $n\times n$ matrix $V$.
+	    \item Show that $\dim(\im(A)) = \dim(\im(U A))$ for every invertible $m\times m$ matrix $U$.
+	\end{enumerate}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.3.2 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.3.2 (P)}
+    \begin{problem}
+	In each case, show that the set of vectors is orthogonal in $\R^4$.
+	\begin{enumerate}
+	    \item $\left\{(1,-1,3,5),(4,1,1,-1),(-7,28,5,5)\right\}$
+	    \item $\left\{(2,-1,4,5),(0,-1,1,-1),(0,3,2,-1)\right\}$
+	\end{enumerate}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.3.9  (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.3.9  (P)}
+    \begin{problem}
+	If $A$ is an $m \times n$ matrix with orthonormal columns, show that $A^TA=I_n$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.3.12 (H)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.3.12 (H)}
+    \begin{problem}
+	\begin{enumerate}
+	    \item Show that $\vec{x}$ and $\vec{y}$ are orthogonal in $\R^n$ if and only if $\Norm{\vec{x}+\vec{y}}=\Norm{\vec{x}-\vec{y}}$.
+	    \item Show that $\vec{x}+\vec{y}$ and $\vec{x}-\vec{y}$ are orthogonal in $\R^n$ if and only if $\Norm{\vec{x}}=\Norm{\vec{y}}$.
+	\end{enumerate}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.3.16 (H)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.3.16 (H)}
+    \begin{problem}
+	If $R^n=\Span\{\vec{x}_1,\cdots,\vec{x}_m\}$ and $\vec{x}\cdot \vec{x}_i=0$ for each $i$, show that $\vec{x}=\vec{0}$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.3.17 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.3.17 (P)}
+    \begin{problem}
+	If $R^n=\Span\{\vec{x}_1,\cdots,\vec{x}_m\}$ and $\vec{x}\cdot \vec{x}_i=\vec{y}\cdot \vec{x}_i$ for each $i$, show that $\vec{x}=\vec{y}$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.3.18 (L)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.3.18 (L)}
+    \begin{problem}
+	Let $\{\vec{e}_1,\cdots,\vec{e}_n\}$ be an orthogonal basis of $\R^n$. Given $\vec{x}$ and $\vec{y}$ in $\R^n$, show that
+	\begin{align*}
+	    \vec{x} \cdot \vec{y} = \frac{(\vec{x}\cdot \vec{e}_1)(\vec{y}\cdot \vec{e}_1)}{\Norm{\vec{e}_1}^2} + \cdots + \frac{(\vec{x}\cdot \vec{e}_n)(\vec{y}\cdot \vec{e}_n)}{\Norm{\vec{e}_n}^2}.
+	\end{align*}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.4.3
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.4.3}
+    \begin{problem}
+	\begin{enumerate}
+	    \item Can $3\times 4$ matrix have independent columns? Independent rows? Explain.
+	    \item If $A$ is $4\times 3$ and $\rank(A)=2$, can $A$ have independent columns? Independent rows? Explain.
+	    \item If $A$ is an $m \times n$ matrix and $\rank(A)=m$, show that $m\le n$.
+	    \item Can a non-square matrix have its rows independent and its columns independent too? Explain.
+	    \item Can the null space of a $3\times 6$ matrix have dimension 2? Explain.
+	    \item Suppose that $A$ is $5\times 4$ and $\nul(A)=\{c \vec{x}| c\in\R \}$ for some $\vec{x}\ne \vec{0}$. Can $\dim(\im(A))=2?$
+	\end{enumerate}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.4.5  (H)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.4.5  (H)}
+    \begin{problem}
+	If $A$ is $m \times n$ and $B$ is $n \times m$, show that $AB=0$ if and only if $\col(B)\subseteq \nul(A)$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.4.8  (L)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.4.8  (L)}
+    \begin{problem}
+	Let $A= \vec{c} \vec{r}$ where $\vec{c}\ne \vec{0}$ is a column vector in $\R^m$ and $\vec{r}\ne \vec{0}$ is a row vector in $\R^n$.
+	\begin{enumerate}
+	    \item Show that $\col\left(A\right) = \Span\{\vec{c} \}$ and $\row(A) = \Span\{\vec{r} \}$.
+	    \item Find $\dim(\nul(A))$
+	    \item Show that $\nul(A)=\nul(\vec{r} )$
+	\end{enumerate}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.4.10 (L)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.4.10 (L)}
+    \begin{problem}
+	Let $A$ be an $n \times n$ matrix.
+	\begin{enumerate}
+	    \item Show that $A^2=0$ if and only if $\col(A)\subseteq \nul(A)$
+	    \item Conclude that if $A^2=0$, then $\rank(A)\le \frac{n}{2}$
+	    \item Find a matrix $A$ for which $\col(A)=\nul(A)$
+	\end{enumerate}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.4.1i1
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.4.11}
+    \begin{problem}
+	Let $B$ be an $m \times n$ matrix and let $AB$ be $k \times n$ matrix. If $\rank(B) = \rank(AB)$,
+	show that $\nul(B) = \nul(AB)$.
+    \end{problem}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.4.13 (H)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.4.13 (H)}
+    \begin{problem}
+	Let $A$ be an $m \times n$ matrix with columns $\vec{c}_1,\vec{c}_2,\cdots,\vec{c}_n$. If $\rank(A)=n$, show that
+	$\{A^T \vec{c}_1,  A^T \vec{c}_2, \cdots, A^{T} \vec{c}_n   \}$ is a basis of $\R^n$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.4.18 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.4.18 (P)}
+    \begin{problem}
+	\begin{enumerate}
+	    \item Show that if $A$ and $B$ have independent columns, so does $AB$.
+	    \item Show that if $A$ and $B$ have independent rows, so does $AB$.
+	\end{enumerate}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.5.3  (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.5.3  (P)}
+    \begin{problem}
+	If $A\sim B$, show that
+	\begin{enumerate}
+	    \item $A^T\sim B^T$
+	    \item $A^{-1}\sim B^{-1}$
+	    \item $r A\sim rB$ for $r\in \R$
+	    \item $A^{n}\sim B^{n}$ for $n\ge 1$
+	\end{enumerate}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.5.7  (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.5.7  (P)}
+    \begin{problem}
+	Let $\lambda$ be an eigenvalue of $A$ with corresponding eigenvector $\vec{x}$. If $B=P^{-1}AP$ is similar  to $A$,
+	show that $P^{-1}\vec{x}$ is an eigenvector of $B$ corresponding to $\lambda$.
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.5.10 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.5.10 (P)}
+    \begin{problem}
+	Let $A$ be a diagonalizable $n\times n$ matrix with eigenvalues $\lambda_1,\cdots,\lambda_n$ (including multiplicity).
+	Show that:
+	\begin{align*}
+	    \det(A) = \lambda_1\lambda_2\cdots\lambda_n\quad\text{and}\quad
+	    \text{tr}(A) = \lambda_1+\lambda_2+\cdots+\lambda_n.
+	\end{align*}
+    \end{problem}
+
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.5.12 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.5.12 (P)}
+    \begin{problem}
+	Let $P$ be an invertible $n\times n$ matrix. If $A$ is any $n \times n$ matrix, write $T_P(A) = P^{-1}AP$. Verify that
+	\begin{enumerate}
+	    \item $T_P(I)=I$
+	    \item $T_P(AB)=T_P(A)T_P(B)$
+	    \item $T_P(A+B)=T_P(A)+T_P(B)$
+	    \item $T_P(rA)=rT_P(A)$
+	    \item $T_P(A^k)=\left[T_P(A)\right]^k$
+	    \item If $A$ is invertible, $T_P(A^{-1})=\left[T_P(A)\right]^{-1}$
+	    \item If $Q$ is invertible, $T_Q(T_P(A))=T_{PQ}(A)$
+	\end{enumerate}
+    \end{problem}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.5.17 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.5.17 (P)}
+    \begin{problem}
+	Let $A=\begin{bmatrix}
+	    0 & a & b\\
+	    a & 0 & c\\
+	    b & c & 0\\
+	    \end{bmatrix}$ 
+	and $B=\begin{bmatrix}
+	    c & a & b\\
+	    a & b & c\\
+	    b & c & a\\
+	    \end{bmatrix}$.
+	\begin{enumerate}
+	    \item Show that $x^3-(a^2+b^2+c^2)x-2abc$ has real roots by considering $A$
+	    \item Show that $a^2+b^2+c^2\ge ab+ac+bc$ by considering $B$
+	\end{enumerate}
+    \end{problem}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Exercise 5.5.18 (P)
+\begin{frame}[fragile]
+    \frametitle{Exercise 5.5.18 (P)}
+    \begin{problem}
+	Assume the $2\times 2$ matrix $A$ is similar to an upper triangular matrix. If $\text{tr}(A)=0=\text{tr}(A^2)$,
+	show that $A^2=O_{2\times 2}$, where $O_{2\times 2}$ is a $2\times 2$ zero matrix.
+    \end{problem}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ Bank 5.44
+\begin{frame}[fragile]
+    \frametitle{Bank 5.44}
+    \begin{problem}
+	Find a basis for the solution space of $A \vec{x}=0 $ if 
+	\begin{align*}
+	    A = \begin{bmatrix} 1 & -2 & 3 & 4\\ 3 & -5 & 7 & 8\\ \end{bmatrix}
+	\end{align*}
+    \end{problem}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\end{document}

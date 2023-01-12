@@ -1,0 +1,148 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+% \documentclass[pdf,handout,9pt]{beamer}
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+% \input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+% \input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{
+
+
+%-------------- start slide -------------------------------%{{{
+\frame{\frametitle{Motivation}
+\begin{example}
+    Find all solutions of the (linear) equation in one variable:
+    \[
+	ax=b
+    \]
+\end{example}
+\pause
+\vfill
+\begin{solution}
+    \begin{itemize}
+	\item If $a \neq 0$, there is  a unique solution $x=b/a$.
+	\pause
+	\item Else if $a = 0$ and
+	\item[] $b\neq 0$, there is  no solution.
+	 \pause
+     \item[] $b =  0$, there are infinitely many solutions, in fact any $x \in \RR$ is a solution.
+    \end{itemize}
+    This a complete description of all possible solutions of $ax=b$.
+\end{solution}
+\pause
+\begin{alertblock}{Objective:}
+Can we do the same for linear equations in more variables?
+\end{alertblock}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+\frame{
+    \[
+A = LU =
+    \]
+ \begin{tikzpicture}[
+        %Global config
+        >=latex,
+        line width=1pt,
+        %Styles
+        Brace/.style={
+            decorate,
+            decoration={
+                brace,
+                raise=-7pt
+            }
+        }
+    ]
+
+    \matrix[% General option for all nodes
+        matrix of nodes,
+        text height=2.5ex,
+        text depth=0.75ex,
+        text width=3.25ex,
+        align=center,
+        left delimiter=(,
+        right delimiter= ),
+        column sep=5pt,
+        row sep=5pt,
+        %nodes={draw=black!10}, % Uncoment to see the square nodes.
+        nodes in empty cells,
+    ] at (0,0) (M){ % Matrix contents
+    &   \huge 0&   &   &   &   &  \\
+    &   &   &   &   &   &  \\
+    &   &   &   &   &   &  \\
+    &   &   &   &   &   &  \\
+    &   &   &   &   &   &  \\
+    &   &   &   &   &   & \huge 0 \\
+    };
+% Drawing the sectors using matrix coordinate names.
+    \draw[thick] (M-1-2) -- (M-6-7);
+    \draw[thick,fill=red!30,draw] (M-1-3.center)
+    -- (M-4-6.center)
+    -- (M-1-6.center)
+    -- cycle;
+    \draw[thick,fill=red!30,draw] (M-2-2.center)
+    -- (M-5-2.center)
+    -- (M-5-5.center)
+    -- cycle;
+    \draw[thick,fill=yellow!30,draw](M-1-6.east)
+    -- (M-1-7.center)
+    -- (M-5-7.center)
+    -- (M-4-6.south east)
+    -- cycle;
+    \draw[thick,fill=yellow!30,draw](M-5-2.south)
+    -- (M-5-5.south east)
+    -- (M-6-6.center)
+    -- (M-6-2.center)
+    -- cycle;
+% Drawing the braces.
+    \draw[Brace] (M-1-3.north)
+    -- (M-1-6.north)
+    node[midway,above]{$x-y$};
+    \draw[Brace] (M-1-6.north east)
+    -- (M-1-7.north)
+    node[midway,above]{$y$};
+
+    \draw[Brace] (M-5-2.west)
+    -- (M-2-2.west)
+    node[midway,left]{$x-y$};
+
+    \draw[Brace] (M-6-2.west)
+    -- (M-5-2.south west)
+    node[midway,left]{$y$};
+% Labeling the sectors
+    \node at (M-4-3){\sf A};
+    \node at (M-2-5){\sf A};
+    \draw (M-3-7)++(-8pt,0) node {\sf B};
+    \draw (M-6-4)++(0,8pt) node {\sf B};
+
+    \end{tikzpicture}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+%-------------- end slide -------------------------------%}}}
+\end{document}

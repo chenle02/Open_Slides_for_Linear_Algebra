@@ -1,0 +1,653 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 6. Vector Spaces \\ \S  6-3. Linear Independence and Dimension}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Linear Independence}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{Linear Independence}
+\pause
+\begin{definition}
+    Let $V$ be a vector space and
+    $S=\{\bm{u}_1, \bm{u}_2, \ldots, \bm{u}_k\}$ a subset of $V$.
+    The set $S$ is \alert{linearly independent} or simply
+    \alert{independent} if the following condition holds:
+    \bigskip
+    \[
+	\boxed{s_1\bm{u}_1 + s_2\bm{u}_2 +\cdots +s_k\bm{u}_k = \bm{0}
+	\quad\Rightarrow\quad
+	s_1=s_2=\cdots=s_k=0}
+    \]
+
+    \bigskip
+    \pause
+    i.e., the only linear combination that vanishes is the trivial one.
+    \pause
+    If $S$ is not linearly independent, then $S$ is said to be \alert{dependent}.
+\end{definition}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\begin{frame}[fragile]
+    \begin{example}
+	The set
+	$S=\left\{
+	    \left[\begin{array}{c} -1 \\ 0 \\ 1 \end{array}\right],
+	    \left[\begin{array}{c} 1  \\ 1 \\ 1 \end{array}\right],
+	    \left[\begin{array}{c} 1  \\ 3 \\ 5 \end{array}\right] \right\}$
+	is a \textcolor{blue}{dependent} subset of $\RR^3$ because
+	%\vspace*{.05in}
+
+	\[
+	    a\left[\begin{array}{c}  -1 \\ 0 \\ 1 \end{array}\right]
+	    +b\left[\begin{array}{c} 1  \\ 1 \\ 1 \end{array}\right]
+	    +c\left[\begin{array}{c} 1  \\ 3 \\ 5 \end{array}\right]
+	    =\left[\begin{array}{c}  0  \\ 0 \\ 0 \end{array}\right]
+	\]
+	has nontrivial solutions,
+	for example $a=2$, $b=3$ and $c=-1$.
+    \end{example}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5
+\frame{
+\begin{problem}
+    Is the set $T=\{ 3x^2-x+2, x^2+x-1, x^2-3x+4\}$ an independent
+    subset of ${\cal P}_2$?
+\end{problem}
+\pause
+\begin{solution}
+    Suppose
+    $a(3x^2-x+2) + b(x^2+x-1) + c(x^2-3x+4)=0$,
+    for some $a,b,c\in\RR$.
+    Then
+    \[ x^2(3a + b + c) + x(-a+b-3c) + (2a-b+4c)= 0,\]
+    implying that
+    \vspace*{-1em}
+    \begin{eqnarray*}
+	3a + b + c & = & 0 \\
+	-a+b-3c    & = & 0 \\
+	2a-b+4c    & = & 0
+    \end{eqnarray*}
+    %\vspace*{-.25in}
+
+    \pause
+    Solving this linear system of three equations in three
+    variables
+    \[
+	\left[\begin{array}{rrr|r}
+		3 & 1 & 1 & 0 \\ -1 & 1 & -3 & 0 \\ 2 & -1 & 4 & 0
+	\end{array}\right]
+	\rightarrow
+	\left[\begin{array}{rrr|r}
+		1 & 0 & 1 & 0 \\ 0 & 1 & -2 & 0 \\ 0 & 0 & 0 & 0
+	\end{array}\right].
+    \]
+    Since there is nontrivial solution, $T$ is a dependent subset of ${\cal P}_2$.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\begin{problem}
+    Is
+    $U=\left\{
+	\left[\begin{array}{rr}
+	1 & 1 \\ 0 & 1 \end{array}\right],
+	\left[\begin{array}{rr}
+	0 & 1 \\ 1 & 0 \end{array}\right],
+	\left[\begin{array}{rr}
+    1 & 0 \\ 1 & 1 \end{array}\right] \right\}$
+    an independent subset of $\bm{M}_{22}$?
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    Suppose
+    $a\left[\begin{array}{rr}
+    1 & 1 \\ 0 & 1 \end{array}\right]
+    +b \left[\begin{array}{rr}
+    0 & 1 \\ 1 & 0 \end{array}\right]
+    +c\left[\begin{array}{rr}
+    1 & 0 \\ 1 & 1 \end{array}\right]
+    =\left[\begin{array}{rr}
+    0 & 0 \\ 0 & 0 \end{array}\right]$
+    for some $a,b,c\in\RR$.
+    \pause
+    \[\Downarrow\]
+    \[ \begin{array}{cc}
+	\begin{array}{rcl} a+c & = & 0 \end{array},
+			       & \begin{array}{rcl} a+b & = & 0 \end{array},  \\
+	\begin{array}{rcl} b+c & = & 0 \end{array},
+			       & \begin{array}{rcl} a+c & = & 0 \end{array}.
+    \end{array}\]
+    \pause
+    This system of four equations in three variables has
+    \textcolor{blue}{unique solution $a=b=c=0$},
+    \pause
+    \[\Downarrow\]
+    \begin{center}
+	$U$ is an independent subset of $\bm{M}_{22}$.
+    \end{center}
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+\begin{example}[An independent subset of ${\cal P}_n$]
+    Consider $\{ 1, x, x^2, \ldots, x^n \}$,
+    and suppose that
+    \[ a_0\cdot 1 + a_1x+a_2x^2+\cdots+a_nx^n=0\]
+    for some $a_0, a_1, \ldots, a_n\in\RR$.
+    Then $a_0=a_1=\cdots =a_n=0$, and thus
+    $\{ 1, x, x^2, \ldots, x^n \}$ is an independent subset of ${\cal P}_n$.
+\end{example}
+\pause
+\vfill
+\begin{example}[ Polynomials with distinct degrees ]
+    Any set of polynomials with DISTINCT degrees is independent.
+
+    \medskip
+    For example,
+    \[ \left\{
+	    2x^{\textcolor{pink}{4}} -x^3 + 5, \quad
+	    -3x^{\textcolor{pink}{3}}+2x^2+2, \quad
+	    4x^{\textcolor{pink}{2}}+x-3,\quad
+	    2\textcolor{pink}{x}-1,\quad
+	    \textcolor{pink}{3}
+    \right\} \]
+    is an independent subset of ${\cal P}_4$.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+\begin{example}
+    As we saw earlier, $\{ \vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n\}$
+    (the standard basis of $\RR^n$)
+    is an independent subset of $\RR^n$.
+\end{example}
+\pause
+\vfill
+\begin{example}
+    \[ U=\left\{
+	    \left[\begin{array}{cc} 1 & 0 \\ 0 & 0 \\ 0 & 0 \end{array}\right],
+	    \left[\begin{array}{cc} 0 & 1 \\ 0 & 0 \\ 0 & 0 \end{array}\right],
+	    \left[\begin{array}{cc} 0 & 0 \\ 1 & 0 \\ 0 & 0 \end{array}\right],
+	    \left[\begin{array}{cc} 0 & 0 \\ 0 & 1 \\ 0 & 0 \end{array}\right],
+	    \left[\begin{array}{cc} 0 & 0 \\ 0 & 0 \\ 1 & 0 \end{array}\right],
+	    \left[\begin{array}{cc} 0 & 0 \\ 0 & 0 \\ 0 & 1 \end{array}\right]
+    \right\}\]
+is an independent subset of $\bm{M}_{32}$.
+\end{example}
+\vfill
+\pause
+\begin{example}[ An independent subset of $\bm{M}_{mn}$ ]
+    In general, the set of $mn$ $m\times n$ matrices that have a
+    `1' in position $(i,j)$ and zeros elsewhere, $1\leq i\leq m$,
+    $1\leq j\leq n$, constitutes an independent subset of $\bm{M}_{mn}$.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\frame{
+\begin{example}
+Let $V$ be a vector space.
+\begin{enumerate}
+    \item If $\bm{v}$ is a \alert{nonzero} vector of $V$, then
+	$\{ \bm{v}\}$ is an independent subset of $V$.\\[1em] \pause
+
+    \textcolor{lgtblue}{\bf Proof.}
+    Suppose that $k\bm{v}=\bm{0}$ for some $k\in\RR$.
+    Since $\bm{v}\neq \bm{0}$, it must be that $k=0$, and therefore
+    $\{ \bm{v}\}$ is an independent set.\myQED
+    \vspace*{1em}
+
+    \item The zero vector of $V$, $\bm{0}$ is never an element
+	of an independent subset of $V$.\\[1em] \pause
+
+    \textcolor{lgtblue}{\bf Proof.}
+    Suppose $S=\{ \bm{0}, \bm{v}_2, \bm{v}_3, \ldots, \bm{v}_k\}$ is
+    a subset of $V$.
+    Then
+    \[ 1(\bm{0}) + 0(\bm{v}_2) + 0(\bm{v}_3) +\cdots +
+    0(\bm{v}_k) = \bm{0}.\]
+    Since the coefficient of $\bm{0}$ (on the left-hand side)
+    is `$1$', we have a nontrivial
+    vanishing linear combination of the vectors of $S$.
+    Therefore, $S$ is dependent.\myQED
+\end{enumerate}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\frame{
+\begin{problem}
+    Let $V$ be a vector space and let
+    $\left\{ \bm{u,v,w}\right\}$ be an independent subset of $V$.
+    Is
+    \[ S=\left\{ \bm{u}+\bm{v}, 2\bm{u}+\bm{w}, \bm{v}-5\bm{w}\right\}\]
+    an independent subset of $V$?
+    Justify your answer.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    Suppose that a linear combination of the vectors of $S$ is
+    equal to zero, i.e.,
+    \[ a( \bm{u+v}) + b(2\bm{u+w}) + c(\bm{v}-5\bm{w}) = \bm{0} \]
+    for some $a,b,c\in\RR$.
+    Then
+    $(a+2b)\bm{u} + (a+c)\bm{v}+(b-5c)\bm{w}=\bm{0}$.
+    Since $\left\{ \bm{u,v,w}\right\}$ is independent,
+    %\vspace*{-.3in}
+
+    \begin{eqnarray*}
+	a + 2b & = & 0 \\
+	a + c  & = & 0 \\
+	b - 5c & = & 0.
+    \end{eqnarray*}
+    Solving for $a, b$ and $c$, we find that the system has unique
+    solution $a=b=c=0$.
+    Therefore, $S$ is linearly independent.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 11
+\frame{
+\begin{problem}
+    Suppose that $A$ is an $n\times n$ matrix with the property
+    that $A^k=\bm{0}$ but $A^{k-1}\neq \bm{0}$.
+    Prove that
+    \[ B=\{ I, A, A^2, \ldots, A^{k-1}\}\]
+    is an independent subset of $\bm{M}_{nn}$.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    We need to show that
+    \begin{align*}
+        r_{0}I + r_{1}A + r_{2}A^{2} + \dots + r_{k-1}A^{k-1} =\bm{0}
+        \quad\stackrel{?}{\Longrightarrow}\quad
+        r_0=r_1=\cdots = r_{k-1}=0.
+    \end{align*}
+    \pause
+    Multiply $A^{k-1}$ on both sides:
+    \begin{align*}
+        r_{0}A^{k-1} + r_{1}\textcolor{magenta}{A^k} + r_{2}\textcolor{magenta}{A^{k+1}} + \dots + r_{k-1}\textcolor{magenta}{A^{2k-2}} =\bm{0} 
+    \end{align*}
+    \[\Downarrow\]
+    \begin{align*}
+        r_0 A^{k-1} =\bm{0}.
+    \end{align*}
+    Since $A^{k-1}\ne \bm{0}$, we see that  $ r_0 =0$.
+    \pause
+    Repeat the above processes to show that all $r_i=0$ for  $i=0,1,\cdots,k-1$.\myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\frame{
+\begin{theorem}[Unique Representation Theorem]
+    Let $V$ be a vector space and let
+    $U=\{\bm{v}_1, \bm{v}_2, \ldots, \bm{v}_k\}\subseteq V$
+    be an independent set.
+    If $\bm{v}$ is in $\Span(U)$, then $\bm{v}$ has a
+    unique representation as a linear combination
+    of elements of $U$.
+\end{theorem}
+\pause
+\vfill
+\begin{proof}
+If a vector $\bm{v}$ has two (ostensibly different) representations
+\begin{equation*}\def\arraycolsep{1.5pt}
+\begin{array}{lllllllll}
+\bm{v} & = & s_1\bm{v}_1 &+& s_2\bm{v}_2 &+& \cdots &+& s_n\bm{v}_n \\
+\bm{v} & = & t_1\bm{v}_1 &+& t_2\bm{v}_2 &+& \cdots &+& t_n\bm{v}_n
+\end{array}
+\end{equation*}
+\pause
+\vspace{-1em}
+\[\Downarrow\]
+\begin{equation*}
+(s_1 - t_1)\bm{v}_1 + (s_2 - t_2)\bm{v}_2 + \dots + (s_n - t_n)\bm{v}_n = \bm{0}
+\end{equation*}
+\pause
+\vspace{-1em}
+\[\Downarrow\]
+\begin{align*}
+    s_1-t_1=0, \quad s_2-t_2=0,\quad\cdots,\quad s_n-t_n=0.
+\end{align*}
+\pause
+\vspace{-1em}
+\[\Downarrow\]
+\begin{align*}
+   \text{The two representations are the same one.}
+\end{align*}
+\end{proof}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{The Fundamental Theorem}}
+%-------------- start slide -------------------------------%{{{ 13
+\frame{
+\frametitle{The Fundamental Theorem}
+\pause
+\begin{emptytitle}
+    The Fundamental Theorem for $\RR^n$ generalizes to an arbitrary vector space.
+\end{emptytitle}
+\pause
+\vfill
+\begin{theorem}[Fundamental Theorem]
+    Let $V$ be a vector space that can be spanned by a set of
+    $n$ vectors, and suppose that $V$ contains an independent
+    subset of $m$ vectors.  Then $m\leq n$.
+\end{theorem}
+\pause
+\vfill
+\begin{proofnoend}
+    Let $X=\{ \bm{x}_1, \bm{x}_2, \ldots, \bm{x}_n\}$ and
+    let $Y=\{ \bm{y}_1, \bm{y}_2, \ldots, \bm{y}_m\}$.
+    Suppose $V=\Span(X)$ and that $Y$ is an independent subset of $V$.
+    Each vector in $Y$ can be written as a linear
+    combination of vectors of $X$:
+    for some $a_{ij}\in \RR$, $1\leq i\leq m$ and $1\leq j\leq n$,
+    \begin{eqnarray*}
+	\bm{y}_1 & = & a_{11}\bm{x}_1 +a_{12}\bm{x}_2+\cdots+a_{1n}\bm{x}_n \\
+	\bm{y}_2 & = & a_{21}\bm{x}_1 +a_{22}\bm{x}_2+\cdots+a_{2n}\bm{x}_n \\
+	\vdots   & = & \hspace*{.5in}\vdots                                 \\
+	\bm{y}_m & = & a_{m1}\bm{x}_1 +a_{m2}\bm{x}_2+\cdots+a_{mn}\bm{x}_n.
+    \end{eqnarray*}
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 14
+\frame{
+\begin{proofnoend}[continued]
+    %Let $\bm{y}=\left[\begin{array}{cccc} \bm{y}_1 & \bm{y}_2 & \cdots & \bm{y}_m
+    %\end{array}\right]^T$,
+    %$\bm{x}=\left[\begin{array}{cccc} \bm{x}_1 & \bm{x}_2 & \cdots & \bm{x}_n
+    %\end{array}\right]^T$, and
+    %Then $\bm{y}=A\bm{x}$.
+    %Since $Y$ is independent, each $\bm{y}_i$ is a nonzero vector, and thus no row
+    %of the $m\times n$ matrix $A$ has all entries equal to zero.
+    %\smallskip
+    %\pause
+    Let $A=\left[\begin{array}{c} a_{ij} \end{array}\right]$,
+    and suppose that $m>n$.
+    %Consider $R$, a row-echelon form of $A$.
+    %Since $\rank(A)\leq n$, it follows that $R$ has at least one row of zeros,
+    Since $\rank(A)=\dim(\row(A))\leq n$, it follows that the rows of $A$
+    form a dependent subset of $\RR^n$,
+    and hence there is a nontrivial linear combination of the rows of $A$
+    that is equal to the $1\times n$ vector of all zeros, i.e.,
+    there exist $s_1, s_2, \ldots, s_m\in \RR$, not all equal to zero,
+    such that
+    \[ \left[\begin{array}{cccc} s_1 & s_2 & \cdots & s_m
+    \end{array}\right] A =
+    \left[\begin{array}{cccc} 0  & 0 & \cdots & 0 \end{array}\right]
+    ={\bm 0}_{1n}.\]
+    It follows that for each $j$, $1\leq j \leq n$,
+    \begin{equation}\label{fundamental}
+    s_1a_{1j} + s_2a_{2j} + \ldots + s_ma_{mj} = 0.
+    \end{equation}
+    Consider the (nontrivial) linear combination of vectors of $Y$:
+    \[ s_1\bm{y}_1 + s_2\bm{y}_2 + \cdots + s_m\bm{y}_m.\]
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 15
+\frame{
+\begin{proofnoend}[continued]
+    \begin{eqnarray*}
+	s_1\bm{y}_1 + s_2\bm{y}_2 + \cdots + s_m\bm{y}_m & = & s_1(a_{11}\bm{x}_1 + a_{12}\bm{x}_2+\cdots+a_{1n}\bm{x}_n) + \\
+							 &   & s_2(a_{21}\bm{x}_1 +a_{22}\bm{x}_2+\cdots+a_{2n}\bm{x}_n) +  \\
+							 &   & \hspace*{.5in}\vdots                                         \\
+							 &   & s_m(a_{m1}\bm{x}_1 +a_{m2}\bm{x}_2+\cdots+a_{mn}\bm{x}_n)    \\
+							 & = & (s_1a_{11} + s_2a_{21} + \ldots + s_ma_{m1})\bm{x}_1 +       \\
+							 &   & (s_1a_{12} + s_2a_{22} + \ldots + s_ma_{m2})\bm{x}_2 +       \\
+							 &   & \hspace*{.5in}\vdots                                         \\
+							 &   & (s_1a_{1n} + s_2a_{2n} + \ldots + s_ma_{mn})\bm{x}_n.
+    \end{eqnarray*}
+    By Equation~(\ref{fundamental}), it follows that
+    \[ s_1\bm{y}_1 + s_2\bm{y}_2 + \cdots + s_m\bm{y}_m
+    = 0\bm{x}_1 + 0\bm{x}_2 + \cdots + 0\bm{x}_n =\bm{0}.\]
+    Therefore,
+    $s_1\bm{y}_1 + s_2\bm{y}_2 + \cdots + s_m\bm{y}_m = \bm{0}$
+    is a nontrivial vanishing linear combination of the vectors of $Y$.
+    \pause
+    This contradicts the fact that $Y$ is independent, and therefore $m\leq n$.
+    \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Bases and Dimension}}
+%-------------- start slide -------------------------------%{{{ 16
+\frame{
+\frametitle{Bases and Dimension}
+\pause
+\begin{definition}
+    Let $V$ be a vector space and let
+    $B=\{ \bm{b}_1, \bm{b}_2, \ldots, \bm{b}_n\} \subseteq V$.
+    We say $B$ is \alert{a basis} of $V$ if\\
+    (i) $B$ is an independent subset of $V$ and\\
+    (ii) $\Span(B)=V$.
+\end{definition}
+\pause
+\vfill
+\begin{remark}[Unique Representation Theorem]
+    Recall that if $V$ is a vector space and $B$ is a basis of $V$, then as seen earlier,
+    any vector $\bm{u}\in V$ can be expressed uniquely as a linear combination of vectors of $B$.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 17
+\frame{
+\begin{example}
+    As we saw earlier, $\{ \vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n\}$
+    is a basis of $\RR^n$, called the standard basis of $\RR^n$.
+\end{example}
+\pause
+\vfill
+\begin{example}[A basis of ${\cal P}_n$]
+    We've already seen that
+    \[ \{ 1, x, x^2, \ldots, x^n \}\]
+    spans ${\cal P}_n$ and is an independent subset of ${\cal P}_n$,
+    and is thus a basis of ${\cal P}_n$.
+    \pause
+    \[\{ 1, x, x^2, \ldots, x^n \}\]
+    is called the standard basis of ${\cal P}_n$.
+\end{example}
+\pause
+\vfill
+\begin{example}[A basis of $\bm{M}_{mn}$]
+    The set of $mn$ $m\times n$ matrices that have a
+    `1' in position $(i,j)$ and zeros elsewhere, $1\leq i\leq m$,
+    $1\leq j\leq n$,
+    spans $\bm{M}_{mn}$ and is
+    an independent subset of $\bm{M}_{mn}$.
+    \pause
+    Therefore, this set constitutes a basis of $\bm{M}_{mn}$ and
+    is called the standard basis of $\bm{M}_{mn}$.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 18
+\frame{
+\begin{emptytitle}
+    The Invariance Theorem generalizes from $\RR^n$ to an arbitrary vector space $V$.
+    The proof is identical, and involves two applications of
+    the {\bf Fundamental Theorem}.
+\end{emptytitle}
+\pause
+\vfill
+\begin{theorem}[Invariance Theorem]
+    If $V$ is a vector space with bases
+    $\{ \bm{b}_1, \bm{b}_2, \ldots, \bm{b}_m\}$ and
+    $\{ \bm{f}_1, \bm{f}_2, \ldots, \bm{f}_n\}$,
+    then $m=n$.
+\end{theorem}
+\pause
+\vfill
+\begin{definition}[Dimension of a vector space]
+    Let $V$ be a vector space and suppose
+    $B=\{ \bm{b}_1, \bm{b}_2, \ldots, \bm{b}_n\}$
+    is a basis of $V$.
+    The \alert{dimension} of $V$ is the number of
+    vectors in $B$, and we write $\dim(V)=n$.
+    By convention, $\dim\left(\left\{\bm{0}\right\}\right):=0$.
+\end{definition}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 19
+\frame{
+\begin{example}
+    Let $V$ be a vector space and $\bm{u}$ a NONZERO vector
+    of $V$.
+    Then $U=\Span\{\bm{u}\}$ is spanned by $\{\bm{u}\}$.
+    Since $\{\bm{u}\}$ is independent, $\{\bm{u}\}$ is
+    a basis of $U$, and thus $\dim(U)=1$.
+\end{example}
+\pause
+\vfill
+\begin{example}
+    Since $\{1,x,x^2,\ldots,x^n\}$ is a basis of ${\cal P}_n$,
+    $\dim({\cal P}_n)=n+1$.
+\end{example}
+\pause
+\vfill
+\begin{example}
+    $\dim({\bm M}_{mn})=mn$ since the standard basis of
+    ${\bm M}_{mn}$ consists of $mn$ matrices.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 20
+\frame{
+\begin{problem}
+    Let $U=\left\{A\in\bm{M}_{22} ~\left|~
+    A\left[\begin{array}{rr}
+    1 & 0 \\ 1 & -1 \end{array}\right]\right.
+    = \left[\begin{array}{rr}
+    1 & 1 \\ 0 & -1 \end{array}\right]A \right\}$.
+    Then $U$ is a subspace of $\bm{M}_{22}$.
+    Find a basis of $U$, and hence $\dim(U)$.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    Let $A=\left[\begin{array}{rr} a & b \\ c & d \end{array}\right]
+    \in\bm{M}_{22}$.
+    Then
+    \[
+	A\left[\begin{array}{rr} 1   & 0  \\ 1   & -1 \end{array}\right]
+	=\left[\begin{array}{rr} a   & b  \\ c   & d \end{array}\right]
+	\left[\begin{array}{rr} 1    & 0  \\ 1   & -1 \end{array}\right]
+	=\left[\begin{array}{rr} a+b & -b \\ c+d & -d \end{array}\right]\]
+    and
+    \[
+	\left[\begin{array}{rr} 1    & 1   \\ 0  & -1 \end{array}\right]A
+	=\left[\begin{array}{rr} 1   & 1   \\ 0  & -1 \end{array}\right]
+	\left[\begin{array}{rr} a    & b   \\ c  & d \end{array}\right]
+	=\left[\begin{array}{cc} a+c & b+d \\ -c & -d \end{array}\right].\]
+    If $A\in U$, then
+    $\left[\begin{array}{cc} a+b & -b  \\ c+d & -d \end{array}\right]=
+    \left[\begin{array}{cc} a+c  & b+d \\ -c  & -d \end{array}\right]$.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 21
+\frame{
+\begin{solution}[continued]
+    Equating entries leads to a system of four equations in the four
+    variables $a,b,c$ and $d$.
+    \[ \begin{array}{ccc}
+	a+b   & = & a + c \\
+	-b    & = & b + d \\
+	c + d & = & -c    \\
+	-d    & = & -d
+    \end{array} \hspace*{.2in}\mbox{ or }\hspace*{.2in}
+    \begin{array}{rcc}
+	b - c   & = & 0 \\
+	-2b - d & = & 0 \\
+	2c + d  & = & 0
+    \end{array}.  \]
+    \pause
+    The solution to this system is
+    $a=s$, $b=-\frac{1}{2}t$, $c=-\frac{1}{2}t$,  $d=t$ for any $s,t\in\RR$,
+    and thus
+    $A=\left[\begin{array}{cc} s & \frac{t}{2} \\
+    -\frac{t}{2} & t \end{array}\right]$, $s,t\in\RR$.
+    \pause
+    Since $A\in U$ is arbitrary,
+    \begin{eqnarray*}
+	U & = & \left\{ \left[ \left.\begin{array}{cc} s & \frac{t}{2} \\ -\frac{t}{2} & t \end{array}\right]~\right|~ s,t\in\RR\right\}\\
+	  & = & \left\{ s\left[\left.\begin{array}{cc} 1 & 0 \\ 0 & 0 \end{array}\right] + t\left[\begin{array}{rr} 0  & -\frac{1}{2} \\ -\frac{1}{2} & 1 \end{array}\right]~\right|~ s,t\in\RR\right\} \\
+	  & = & \Span \left\{ \left[\begin{array}{cc} 1 & 0 \\ 0 & 0 \end{array}\right], \left[\begin{array}{rr} 0  & -\frac{1}{2} \\ -\frac{1}{2} & 1 \end{array}\right]\right\}.
+    \end{eqnarray*}
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 22
+\frame{
+\begin{solution}[continued]
+    Let
+    \[ B=\left\{
+	\left[\begin{array}{cc} 1 & 0            \\ 0            & 0 \end{array}\right],
+	\left[\begin{array}{rr} 0 & -\frac{1}{2} \\ -\frac{1}{2} & 1 \end{array}\right]\right\}.\]
+    Then $\Span(B)=U$, and it is routine to verify that $B$ is
+    an independent subset of $\bm{M}_{22}$.
+    Therefore, $B$ is a basis of $U$, and $\dim(U)=2$.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 23
+\frame{
+\begin{problem}
+    Let $U=\left\{ p(x)\in{\cal P}_2 ~|~ p(1)=0\right\}$.
+    Then $U$ is a subspace of ${\cal P}_2$.
+    Find a basis of $U$, and hence $\dim(U)$.
+\end{problem}
+\vfill
+\pause
+\begin{solution}{Final Answer}
+    $B=\{ x-x^2, 1-x^2\}$ is a basis of $U$ and thus $\dim(U)=2$.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\end{document}

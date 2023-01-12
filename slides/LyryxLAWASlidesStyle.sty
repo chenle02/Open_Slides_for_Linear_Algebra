@@ -1,0 +1,272 @@
+%%Lyryx Linear Algebra Slides Style
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definitions
+\setlength{\unitlength}{1in}
+\newcommand{\shiftup}[1]{\vspace*{-#1\baselineskip}}
+\newcommand{\bs}{\backslash}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\rank}{\mbox{rank }}
+\newcommand{\nul}{\mbox{null}}
+\newcommand{\im}{\mbox{im}}
+\newcommand{\col}{\mbox{col}}
+\newcommand{\row}{\mbox{row}}
+\newcommand{\Span}{\mbox{span}}
+\newcommand{\trace}{\mbox{tr}}
+\newcommand{\diag}{\mbox{diag}}
+\newcommand{\proj}{\mbox{proj}}
+\newcommand{\eigenVar}{\lambda}
+\newcommand{\adj}{\mbox{adj}}
+\providecommand{\func}[1]{\mbox{#1}}
+\newcommand{\bm}{\mathbf}
+\newcommand{\light}{\setbeamercolor{background canvas}{bg=background!80!white}}
+\newcommand{\myQED}{\hfill\textcolor{lgtblue}{$\blacksquare$}}
+\newcommand{\Norm}[1]{\left|\left|  #1   \right|\right|}
+%%Bracket Options
+%for  square brackets
+\newcommand{\leftB}{\left[}
+\newcommand{\rightB}{\right]}
+%for  round brackets
+%\newcommand{\leftB}{\left(}
+%\newcommand{\rightB}{\right)}
+
+%%Reduced Row-Echelon Form Options
+%\newcommand{\RREF}{ Row Reduced Echelon Form }
+\newcommand{\RREF}{ Reduced Row-Echelon Form }
+%\newcommand{\rref}{row reduced echelon form }
+\newcommand{\rref}{reduced row-echelon form }
+\newcommand{\RRef}{\mathop{rref}}
+
+%%Row-Echelon Form Options
+%\newcommand{\EF}{Echelon Form }
+\newcommand{\EF}{Row-Echelon Form }
+%\newcommand{\ef}{echelon form }
+\newcommand{\ef}{row-echelon form }
+
+\newcommand{\tn}[2]{
+	\tikz[remember picture,baseline] \node[inner sep=0pt,outer sep=0,anchor=base] (#1){$#2$};
+}
+
+%Image colors
+\definecolor{ltgreenvect}{HTML}{B5C1A9}%ABB89D}
+\definecolor{dkgreenvect}{HTML}{85A465}%56713B}
+\definecolor{ltbluevect}{HTML}{B3C0D7}
+\definecolor{dkbluevect}{HTML}{4B6BA2}%59606C}
+
+%% Vector Notation Options
+% \newcommand{\vect}{\mathbf}
+% \newcommand{\vect}{\bm}
+% \newcommand{\vect}{\vec}
+%\newcommand{\longvect}{\mathbf}
+\newcommand{\longvect}{\overrightarrow}
+
+\let\oldbm\bm
+\renewcommand{\bm}[1]{\textcolor{yellow!80!red}{\oldbm{#1}}}
+%% Dot Product Notation Options
+
+\newcommand{\dotprod}{\cdot}
+%\newcommand{\dotprod}{\bullet}
+
+%% Vector Length Notation Options
+%\newcommand{\vectlength}{\mid}
+\newcommand{\vectlength}{\|}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% Layout
+% \usetheme{Boadilla}
+% \usetheme{Boadilla}
+\usepackage{dbt}
+
+%% Colours, fonts, style
+% \usepackage{pagecolor,color}
+
+\usepackage{multicol}
+
+% Change date format
+\usepackage[mmddyyyy]{datetime}
+
+%  \renewcommand\labelitemi{--}
+% \usepackage{enumitem}
+% \setlist[itemize]{label=--}
+
+% \definecolor{titleDarkBlue}{HTML}{172D3D}		  #172D3D
+\definecolor{titleDarkBlue}{HTML}{4984F2}		% #4984F2
+\definecolor{titlebgDarkYellow}{HTML}{D09F2A}		% #D09F2A
+\definecolor{titletextcolour}{HTML}{044155}		% #044155
+\definecolor{subtitletextcolour}{HTML}{F8EAC2}		% #F8EAC2
+\definecolor{cctextcolour}{HTML}{F8EAC2}		% #F8EAC2
+
+% Redefine some colors
+% Following Khan Academic
+\definecolor{white}{HTML}{FFFFFF}              % #FFFFFF
+\definecolor{pink}{HTML}{FB73BE}               % #FB73BE
+\definecolor{coral}{HTML}{FF8D71}              % #FF8D71
+\definecolor{yellow}{HTML}{FFE066}             % #FFE066
+\definecolor{teal}{HTML}{59F3CE}               % #59F3CE
+\definecolor{lgtblue}{HTML}{65D0FA} 	       % #65D0FA
+\definecolor{blue}{HTML}{4984F2}               % #4984F2
+\definecolor{purple}{HTML}{A87DFF}             % #A87DFF
+\definecolor{red}{HTML}{FF3d30}                % #FF3d30
+\definecolor{magenta}{HTML}{FF80FF}                % #FF3d30
+\definecolor{green}{HTML}{BBFFB9}              % #BBFFB9
+% \definecolor{green}{HTML}{59F3CE}              % #BBFFB9
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{block title}{bg=background,fg=lgtblue}
+
+% \usecolortheme[RGB={201,20,35}]{structure}	% rgb(201,20,35)
+% \setbeamercolor{normal text}{fg=white}
+\setbeamercolor{normal text}{fg=gray!70!white}
+\setbeamerfont{block body example}{size=\normalsize}
+\setbeamercolor{block title example}{fg=green}
+% \setbeamercolor{block body example}{parent=normal text,use=block title example,fg=gray}
+
+% \setbeamercolor{block title alerted}{use=structure,fg=white,bg=structure.fg!75!black}
+% \setbeamercolor{block body alerted}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+
+\setbeamercolor{block title alerted}{use=structure,fg=red,bg=background}
+% \setbeamercolor{block body alerted}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+
+\AtBeginEnvironment{theorem}{%
+  \setbeamercolor{block title}{use=example text,fg=coral,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=white}
+}
+\AtBeginEnvironment{lemma}{%
+  \setbeamercolor{block title}{use=example text,fg=coral,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=white}
+}
+\AtBeginEnvironment{corollary}{%
+  \setbeamercolor{block title}{use=example text,fg=coral,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=yellow}
+}
+
+\newtheorem{remark}{Remark}
+\AtBeginEnvironment{remark}{%
+  \setbeamercolor{block title}{fg=blue,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=yellow}
+}
+
+\newtheorem{emptytitle}{}
+\AtBeginEnvironment{emptytitle}{%
+  \setbeamercolor{block title}{fg=blue,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=yellow}
+}
+
+\AtBeginEnvironment{definition}{%
+  \setbeamercolor{block title}{fg=yellow,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=yellow}
+}
+\AtBeginEnvironment{definitions}{%
+  \setbeamercolor{block title}{fg=yellow,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=yellow}
+}
+
+% \AtBeginEnvironment{examples}{%
+%   \setbeamercolor{block title}{use=structure,fg=yellow,bg=background}
+%   % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=yellow}
+% }
+\AtBeginEnvironment{problem}{%
+  \setbeamercolor{block title}{use=example text,fg=purple,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=white}
+}
+\AtBeginEnvironment{solution}{%
+  \setbeamercolor{block title}{use=example text,fg=lgtblue,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=yellow}
+}
+\setbeamertemplate{qed symbol}{\textcolor{lgtblue}{$\blacksquare$}}
+\AtBeginEnvironment{proof}{%
+  \setbeamercolor{block title}{use=example text,fg=lgtblue,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example}
+}
+\newtheorem{proofnoend}{Proof.}
+\AtBeginEnvironment{proofnoend}{%
+  \setbeamercolor{block title}{use=example text,fg=lgtblue,bg=background}
+  % \setbeamercolor{block body}{parent=normal text,use=block title example,fg=yellow}
+}
+% \AtBeginEnvironment{picture}{%
+%   \setbeamercolor{block title}{use=example text,fg=white,bg=background}
+%   \setbeamercolor{block body}{parent=normal text,use=block title example,fg=yellow,bg=green}
+% }
+
+
+
+\usepackage[T1]{fontenc}
+
+% \setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\usepackage{epsfig,amssymb}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+% Colored tables and other nice enhancements
+\usepackage{tabu}
+
+% Creates coloured boxes for Examples, Definitions & Theorems
+% \usepackage{tcolorbox}
+
+% For the Lyryx marketing page paragraph header boxes
+%\definecolor{lscshdrboxcolour}{HTML}{E2970A}
+% \definecolor{lscshdrboxcolour}{HTML}{D09F2A}		% #D09F2A
+
+% \newtcolorbox{lscshdrbox}{colback=lscshdrboxcolour,colframe=lscshdrboxcolour,top=0mm,bottom=0mm,width=19em}
+
+%%To number theorem boxes
+%\setbeamertemplate{theorems}[numbered]
+
+\usepackage{amssymb}
+%% Draw images, figures, circuits
+\usepackage{tikz}
+\usetikzlibrary{calc,intersections,shapes.callouts}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shadows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+\usepackage{ifthen}
+\usetikzlibrary{matrix}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{circuitikz}
+\usepackage[ruled,vlined]{algorithm2e}
+%% Headline
+% \setbeamertemplate{headline}{}
+%\setbeamertemplate{headline}
+%{\leavevmode
+%\begin{beamercolorbox}[wd=.6\paperwidth,ht=2mm,right]{section in head/foot}
+%\insertsection
+%\end{beamercolorbox}
+%\begin{beamercolorbox}[wd=\paperwidth,ht=2mm,right]{lightblue}%{section in head/foot}
+%\raisebox{-1mm}{\scalebox{3}[1.5]{\insertslidenavigationsymbol}}
+%\end{beamercolorbox}
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Choose and resize navigation symbols you need
+% \setbeamertemplate{navigation symbols}{}
+% \setbeamercolor{footlinecolor}{fg=white,bg=titleDarkBlue}
+% \setbeamercolor{navigation symbols}{fg=white,bg=white}
+% \setbeamertemplate{footline}{
+%      \begin{beamercolorbox}[ht=2mm,leftskip=.1cm]{footlinecolor}
+%        %\raisebox{-1mm}{
+% 	\tiny{
+%         \insertdate \hfill   \insertsection    \hfill
+% 	Page \insertframenumber/\inserttotalframenumber
+% 	}
+% 	%}
+%         \usebeamercolor[fg]{navigation symbols}
+% 	\hfill  \raisebox{-1mm}{\scalebox{3}[1.5]{\insertslidenavigationsymbol}}
+% 	%\vspace{0.06cm}
+%    \end{beamercolorbox}
+% }
+
+% The following codes insert TOC at each section
+\AtBeginSection[]
+{
+    \begin{frame}
+        % \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}

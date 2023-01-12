@@ -1,0 +1,564 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 6. Vector Spaces \\ \S  6-1. Examples and Basic Properties}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{What is a vector space?}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{What is a vector space?}
+\pause
+\begin{emptytitle}
+   \begin{enumerate}
+     \item $\R^n$\\[1em]
+     \item Polynomials of order at most $n$:
+         \begin{align*}
+             \{a_0+a_1x + \cdots + a_n x^n | a_i\in\R,\: i=1,\cdots, n\}
+         \end{align*}
+     \item The set of $m\times n$ matrices.\\[1em]
+     \item The set of continuous functions on $[0,1]$, i.e., $C([0,1])$.\\[1em]
+     \item The set of functions on $[0,1]$ having nth continuous derivatives, i.e., $C^n([0,1])$.\\[1em]
+     \item[$\vdots$] \hspace*{3em} $\vdots$
+    \end{enumerate}
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 1
+\begin{frame}[fragile]
+ \begin{definition}[Vector Space]
+    Let $V$ be a nonempty set of objects with two operations:
+    \begin{center}
+        vector addition and scalar multiplication.
+    \end{center}
+    Then $V$ is called a \alert{vector space} if it satisfies the following \\[1em]
+    \begin{itemize}
+      \item \textcolor{yellow}{Axioms of Addition}
+      \item[] \qquad and
+      \item \textcolor{yellow}{Axioms of Scalar Multiplication}.
+    \end{itemize}
+    \vspace{1em}
+
+    The elements of $V$ are called \alert{vectors}.
+\end{definition}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start sl\ide -------------------------------%{{{ 4
+\frame{
+\begin{definition}[ continued -- Axioms of ADDITION ]
+  \begin{enumerate}
+      \item[A1.] $V$ is closed under addition.\\
+	$\bm{v},\bm{w}\in V\quad\Longrightarrow\quad \bm{u}+\bm{v}\in V$
+	\bigskip
+
+      \item[A2.] Addition is commutative.
+
+        $\bm{u+v}=\bm{v+u}$ for all $\bm{u,v\in V}$.
+        \bigskip
+
+      \item[A3.] Addition is associative.
+
+        $\bm{(u+v)+w}=\bm{u+(v+w)}$ for all $\bm{u,v,w\in V}$.
+        \bigskip
+
+      \item[A4.] Existence of an additive identity.
+
+        There exists an element $\bm{0}$ in $V$ so that $\bm{u+0=u} \mbox{ for all } \bm{u}\in V$.
+        \bigskip
+
+      \item[A5.] Existence of an additive inverse.
+
+        For each $\bm{u}\in V$ there exists an element $-\bm{u}\in V$ so that $\bm{u+ (-u)=0}$.
+  \end{enumerate}
+\end{definition}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5
+\frame{
+    \begin{definition}[continued -- Axioms of SCALAR MULTIPLICATION]
+  \begin{enumerate}
+      \item[S1.] $V$ is closed under scalar multiplication.\\
+	$\bm{v}\in V$ and $k\in\RR$, $\Longrightarrow$ $k\bm{v}\in V$.
+	\bigskip
+
+      \item[S2.] Scalar multiplication distributes over vector addition.
+
+          $a\bm{(u+v)}=a\bm{u}+a\bm{v}$ for all $a\in\RR$ and $\bm{u,v}\in V$.
+          \bigskip
+
+      \item[S3.] Scalar multiplication distributes over scalar addition.
+
+          $(a+b)\bm{u}=a\bm{u}+b\bm{u}$ for all $a,b\in\RR$ and $\bm{u}\in V$.
+          \bigskip
+
+      \item[S4.] Scalar multiplication is associative.
+
+          $a(b\bm{u})=(ab)\bm{u}$ for all $a,b\in\RR$ and $\bm{u}\in V$.
+          \bigskip
+
+      \item[S5.] Existence of a multiplicative identity for scalar multiplication.
+
+          $1\bm{u}=\bm{u}$ for all $\bm{u}\in V$.
+  \end{enumerate}
+\end{definition}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\begin{definition}[Vector Difference]
+  Let $V$ be a vector space and $\bm{u,v}\in V$.
+  The \alert{difference} of $\bm{u}$ and $\bm{v}$ is defined as
+  \[ \bm{u}-\bm{v} = \bm{u} +(\bm{-v})\]
+  (where $-\bm{v}$ is the additive inverse of $\bm{v}$).
+\end{definition}
+\pause
+\vfill
+\begin{theorem}
+  Let $V$ be a vector space, $\bm{u,v,w}\in V$, and $a\in\RR$.
+  \begin{enumerate}
+  \item If $\bm{u+v}=\bm{u+w}$, then $\bm{v}=\bm{w}$.
+  \pause
+  \item The equation $\bm{x+v}=\bm{u}$, has a unique
+  solution $\bm{x}\in V$ given by $\bm{x}=\bm{u-v}$.
+  \pause
+  \item $a\bm{v}=\bm{0}$ if and only if $a=0$ or $\bm{v}=\bm{0}$.
+  \pause
+  \item $(-1)\bm{v}=-\bm{v}$.
+  \pause
+  \item $(-a)\bm{v}=-(a\bm{v})=a(-\bm{v})$.
+  \end{enumerate}
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Example One -- Matrices}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+\frametitle{Example One -- Matrices}
+\begin{example}
+  $\RR^n$ with matrix addition and scalar multiplication is a vector space.
+\end{example}
+\vfill
+\pause
+\begin{example}
+  $\bm{M}_{mn}$, the set of all $m\times n$ matrices (of real numbers) with matrix addition and scalar multiplication is a vector space.
+  It is left as an exercise to verify the ten vector space axioms.
+\end{example}
+\pause
+\vfill
+\begin{remark}
+  \begin{enumerate}
+    \item Notation: the $m\times n$ matrix of all zeros is written ${\bm 0}$
+      or, when the size of the matrix needs to be emphasized, ${\bm 0}_{mn}$.
+    \item The vector space $\bm{M}_{mn}$ \alert{``is the same as''} the vector
+      space $\RR^{mn}$.
+  \end{enumerate}
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 1
+\begin{frame}[fragile]
+\begin{center}
+    \begin{tikzpicture}[scale=0.7, transform shape]
+  \tikzset{>=latex}
+  % \coordinate (P) at (0.2,1.5);
+  % \coordinate (Q) at (3,0.3);
+  % \coordinate (0) at (0,0);
+  % \draw (P) -- coordinate[pos={1/3}] (A) coordinate[pos={2/3}] (B) (Q) node [right] {$Q$};
+  % \draw [->,dashed] (0) node [below] {$} -- (P) node [above] {$P$};
+  % \draw [->,dashed] (0) -- (A) node [above] {$A$};
+  % \draw [->,dashed] (0) -- (B) node [above] {$B$};
+  % \filldraw (P) circle (0.05);
+  % \filldraw (Q) circle (0.05);
+  % \filldraw (0) circle (0.05);
+  % \filldraw (A) circle (0.05);
+  % \filldraw (B) circle (0.05);
+  \def\r{2}
+  \def\inc{0.5}
+	\foreach \x in {0,...,2}{
+			% \draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+      \draw (\x,0) -- (\x,-\r) -- (\x+\inc,-\r) -- (\x+\inc,0) -- (\x+2*\inc,0);
+	}
+	\foreach \x in {-3,...,3}{
+			% \draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+      \draw (2*\x,-4) -- (2*\x+\r,-4);
+      \draw (2*\x,-3.9) -- (2*\x,-4.1);
+      \draw (2*\x+\r,-3.9) -- (2*\x+\r,-4.1);
+	}
+  \draw [->] (3,0) -- (3,-\r);
+  \draw [->] (6,-4) -- (8,-4);
+  \end{tikzpicture}
+\end{center}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+\begin{problem}
+  Let $V$ be the set of all $2\times 2$ matrices of real numbers
+  whose entries sum to zero.
+  We use the usual addition and scalar multiplication of $\bm{M}_{22}$.
+  Show that $V$ is a vector space.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+  The matrices in $V$ may be described as follows:
+  %\vspace*{-.05in}
+
+  \[ V = \left\{ \left.
+        \left[\begin{array}{cc}
+        a & b \\
+        c & d
+    \end{array}\right] \in\bm{M}_{22} ~\right|~ a+b+c+d=0\right\} .\]
+  %\vspace*{-.15in}
+
+  \pause
+  Since we are using the matrix addition and scalar multiplication of
+  $\bm{M}_{22}$, it is automatic that
+  addition is commutative and associative,
+  and that scalar multiplication satisfies the two distributive properties,
+  the associative property, and has $1$ as an identity element.
+  \pause
+  \bigskip
+
+  What needs to be shown is \textcolor{yellow}{closure under addition}
+  (for all $\bm{v,w}\in V$, $\bm{v+w}\in V$),
+  and \textcolor{yellow}{closure under scalar multiplication}
+  (for all $\bm{v}\in V$ and $k\in\RR$, $k\bm{v}\in V$),
+  as well as showing the existence of an additive identity
+  and additive inverses in the set $V$.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\frame{
+\begin{solution}[continued]
+  \begin{itemize}
+    \item \textcolor{yellow}{Closure under addition:} Suppose
+    \[ A=\left[\begin{array}{cc}
+    w_1 & x_1 \\ y_1 & z_1 \end{array}\right]
+    \quad\text{and}\quad
+    B=\left[\begin{array}{cc}
+    w_2 & x_2 \\ y_2 & x_2 \end{array}\right]\]
+    are in $V$.
+    Then
+    $w_1+x_1 + y_1 + z_1 = 0,
+    w_2+x_2 + y_2 + z_2 = 0$, and
+    \[ A+B=
+    \left[\begin{array}{cc} w_1 & x_1 \\ y_1 & z_1 \end{array}\right] +
+    \left[\begin{array}{cc} w_2 & x_2 \\ y_2 & z_2 \end{array}\right]
+    =
+    \left[\begin{array}{cc} w_1+w_2 & x_1+x_2 \\ y_1+y_2 & z_1+z_2 \end{array}\right].\]
+    Since
+    \begin{eqnarray*}
+      & & (w_1+w_2) + (x_1+x_2)+(y_1+y_2) + (z_1+z_2) \\
+      & &  =  (w_1+x_1 + y_1 + z_1)+(w_2+x_2 + y_2 + z_2)\\
+      & &  =  0+0=0,
+    \end{eqnarray*}
+    $A+B$ is in $V$, so $V$ is closed under addition.
+  \end{itemize}
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\frame{
+\begin{solution}[continued]
+  \begin{itemize}
+    \item \textcolor{yellow}{Closure under scalar multiplication:} Suppose
+    $A=\left[\begin{array}{cc}
+    w & x \\ y & z \end{array}\right]$ is in $V$ and $k\in\RR$.
+    Then $w+x+y+z=0$, and
+    \[ kA = k\left[\begin{array}{cc} w & x \\ y & z \end{array}\right]
+          = \left[\begin{array}{cc} kw & kx \\ ky & kz \end{array}\right].\]
+    Since
+    \[ kw+kx+ky+kz = k(w+x+y+z)=k(0)=0,\]
+    $kA$ is in $V$, so $V$ is closed under scalar multiplication.
+  \end{itemize}
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 11
+\frame{
+\begin{solution}[continued]
+  \begin{itemize}
+    \item \textcolor{yellow}{Existence of an additive identity:}
+    The additive identity of $\bm{M}_{22}$ is the $2\times 2$
+    matrix of zeros,
+    \[
+    \bm{0}=\left[\begin{array}{cc} 0 & 0 \\ 0 & 0 \end{array}\right];\]
+    Since $0+0+0+0=0$,
+    $\bm{0}$ is in $V$, and has the required
+    property (as it does in $\bm{M}_{22}$).
+  \end{itemize}
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\frame{
+\begin{solution}[continued]
+  \begin{itemize}
+    \item \textcolor{yellow}{Existence of an additive inverse:} Let
+    $A=\left[\begin{array}{cc}
+      w & x \\
+      y & z
+    \end{array}\right]$ be in $V$.
+
+    Then $w+x+y+z=0$, and
+    its additive inverse in  $\bm{M}_{22}$ is
+    \[ -A=\left[\begin{array}{cc}
+      -w & -x \\
+      -y & -z
+    \end{array}\right].\]
+    Since
+    \[ (-w) + (-x) + (-y) + (-z) = -(w+x+y+x)=-0=0, \]
+    $-A$ is in $V$ and has the required property
+    (as it does in $\bm{M}_{22}$). \myQED
+  \end{itemize}
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 13
+\frame{
+\begin{problem}
+  Let \[V =\left\{\left.\left[
+  \begin{array}{cc}
+    a & b \\
+    c & d
+  \end{array}\right] ~\right|~a,b,c,d\in\RR \quad\text{and}\quad
+  \det\left[
+  \begin{array}{cc}
+    a & b \\
+    c & d
+  \end{array}\right]=0.\right\}.\]
+  We use the usual addition and scalar multiplication of $\bm{M}_{22}$.
+  Show that $V$ is NOT a vector space.
+\end{problem}
+  \vfill
+  \pause
+\begin{solution}
+  We need to find a counter example that violates some axioms.
+  Indeed, if
+  \[ A=\left[\begin{array}{cc} 1 & 1 \\ 0 & 0 \end{array}\right]
+  \quad\text{and}\quad
+  B=\left[\begin{array}{cc} 1 & 0 \\ 1 & 0 \end{array}\right],\]
+  then $\det(A)=0$ and $\det(B)=0$, so $A,B\in V$.
+  \pause
+  However,
+  \[ A+B=
+  \left[\begin{array}{cc} 2 & 1 \\ 1 & 0 \end{array}\right],\]
+  and $\det(A+B)=-1$, so $A+B\not\in V$,
+  i.e., $V$ is not closed under addition.
+  \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Example Two -- Polynomials}}
+%-------------- start slide -------------------------------%{{{ 14
+\frame{
+\frametitle{Example Two -- Polynomials}
+\pause
+\begin{definition}
+  Let $\cal P$ be the set of all polynomials in $x$, with real coefficients, and let $p\in{\cal P}$.  Then
+  \[ p(x)=\sum_{i=0}^n a_ix^i\]
+  for some integer $n$. \\[1em]
+  The {\bf \textcolor{yellow}{degree}} of $p$ is the highest power of $x$ with a
+  nonzero coefficient.
+      % Note that $p(x)=0$ has \alert{undefined} degree.
+\end{definition}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 15
+\begin{frame}[fragile]
+\begin{definition}[continued]
+ \begin{itemize}
+  \item {\bf Addition.}
+  Suppose $p,q\in{\cal P}$.  Then
+
+  \[ p(x)=\sum_{i=0}^n a_ix^i\quad\text{and}\quad
+  q(x)=\sum_{i=0}^m b_ix^i.\]
+
+  We may assume, without loss of generality, that $n\geq m$;
+  for $j=m+1, m+2, \ldots, n-1, n$, we define $b_j=0$.
+  Then
+  %\vspace*{-.2in}
+
+  \[ (p+q)(x)=p(x)+q(x)=\sum_{i=0}^n(a_ix^i+b_ix^i)= \sum_{i=0}^n(a_i+b_i)x^i.\]
+  %\vspace*{-.1in}
+
+  \end{itemize}
+
+\end{definition}
+\vfill
+\pause
+\begin{remark}
+  Note that this definition ensures that $\cal P$ is closed under
+  addition.
+\end{remark}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 16
+\frame{
+\begin{definition}[ continued ]
+\begin{itemize}
+  \item {\bf Scalar Multiplication.}
+  Suppose $p\in{\cal P}$ and $k\in\RR$. Then
+  \[ p(x)=\sum_{i=0}^n a_ix^i,\]
+  and
+  \[ (kp)(x)=k(p(x))=\sum_{i=0}^n k(a_ix^i) =\sum_{i=0}^n (ka_i)x^i.\]
+  %\vspace*{-.1in}
+  \pause
+  \bigskip
+
+  \item The {\bf zero} polynomial is denoted ${\bm 0}$.
+  Note that ${\bm 0}=0$, but we use ${\bm 0}$ to emphasize that
+  it is the zero vector of ${\cal P}$.
+\end{itemize}
+\end{definition}
+\vfill
+\pause
+\begin{remark}
+  Note that this definition ensures that $\cal P$ is closed under
+  scalar multiplication.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 17
+\begin{frame}[fragile]
+\begin{example}
+  The set of polynomials $\cal P$, with addition and scalar
+  multiplication as defined, is a vector space.
+  It is left as an exercise to verify the ten vector space axioms.
+\end{example}
+\vfill
+\pause
+\begin{example}
+  For $n\geq 1$, let ${\cal P}_n$ denote the set of all polynomials
+  of degree at most $n$, along with the zero polynomial,
+  with addition and scalar multiplication as in $\cal P$,
+  i.e.,
+  \[\hspace{-0.5em} {\cal P}_n
+    =\left\{ a_0 + a_1x + a_2x^2 + \cdots + a_{n-1}x^{n-1} +a_nx^n ~|~ a_0, a_1, a_2, \ldots, a_{n-1}, a_n\in\RR\right\}.\]
+  Then ${\cal P}_n$ is a vector space, and it is left as an
+  exercise to verify the ${\cal P}_n$ is closed under addition
+  and scalar multiplication, and satisfies the ten vector space
+  axioms.
+\end{example}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{More Examples}}
+%-------------- start slide -------------------------------%{{{ 18
+\frame{
+\frametitle{More Examples}
+\pause
+\begin{problem}
+    Let $V=\{ (x,y) ~|~ x,y\in\RR\}$, with addition $\oplus$
+    and scalar multiplication $\odot$ defined as follows:\\[1em]
+    \pause
+    For $(x_1,y_1),(x_2,y_2)\in V$, and $a,b\in\RR$:\\[1em]
+    \begin{enumerate}
+	\item {\bf Addition.} $(x_1,y_1)\oplus (x_2,y_2) = (x_1+x_2, y_1+y_2+1)$.  \\[1em]
+	    \pause
+	\item {\bf Scalar Multiplication.} $a\odot (x_1,y_1) = (ax_1, ay_1+a-1)$. \\[1em]
+    \end{enumerate}
+    \pause
+    Show that $V$, with addition and scalar multiplication as defined, is a vector space.
+\end{problem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 19
+\begin{frame}[fragile]
+ \begin{proofnoend}
+    \begin{enumerate}
+	\item It is clear that $V$ is closed under $\oplus$ and $\odot$, since
+	  both operations produce ordered pairs of real numbers.
+	  \pause
+	\item It is routine to verify that $\oplus$ is commutative and associative.
+	  \pause
+	\item What is the additive identity?
+	  \pause
+	\item What is the additive inverse of $(x,y)\in V$?
+	  \pause
+	\item Verify that
+	  $(a+b)\odot(x_1,y_1) =(a\odot(x_1,y_1)) \oplus (b\odot(x_1,y_1))$.
+	  \pause
+	\item Verify that
+	  $a\odot((x_1,y_1)\oplus(x_2,y_2)) =(a\odot(x_1,y_1)) \oplus (a\odot(x_2,y_2))$.
+	  \pause
+	\item Verify that $a\odot(b\odot(x_1,y_1))=(ab)\odot(x_1,y_1)$.
+	  \pause
+	\item Verify that $1\odot(x,y)=(x,y)$. \myQED
+    \end{enumerate}
+\end{proofnoend}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 20
+\frame{
+\begin{problem}
+    Let $\R_+$ be the set of positive reals.
+    Let the addition $\oplus$ and the scalar multiplication $\odot$ defined as follows:\\[1em]
+    \pause
+    For $x,y\in \R_+$, and $a\in\R$:\\[1em]
+    \begin{enumerate}
+	\item {\bf Addition.} $x\oplus y = xy$.  \\[1em]
+	    \pause
+	\item {\bf Scalar Multiplication.} $a\odot x = x^a$. \\[1em]
+    \end{enumerate}
+    \pause
+    Prove that $\R_+$ equipped with $\oplus$ and $\odot$ is a vector space.
+\end{problem}
+\vfill
+\pause
+\begin{proofnoend}
+   Verify ten properties in the Axioms!
+   \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 21
+\frame{
+\begin{problem}
+    \begin{enumerate}
+	\item Let $C([0,1])$ be the set of continuous functions defined on $[0,1]$ equipped with usual addition and
+	    scalar multiplication. Prove that $C([0,1])$ is a vector space.
+	\item Let $C^n([0,1])$ be the set of functions that have continuous $n$th derivatives ($n\ge 0$) defined on
+	    $[0,1]$, equipped with usual addition and scalar multiplication. Prove that $C^n([0,1])$ is a vector space.
+    \end{enumerate}
+\end{problem}
+\vfill
+\pause
+\begin{proofnoend}
+   Verify ten properties in the Axioms!
+   \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+\end{document}
+

@@ -1,0 +1,582 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 2. Matrix Algebra \\ \S 2-9. Markov Chains}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Markov Chains}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{Markov Chains}
+\pause
+\begin{emptytitle}
+{\bf Markov Chains} are used to model systems (or processes)
+that evolve through a series of \alert{stages}.
+At each stage, the system is in one of a finite number of
+\alert{states}.
+\end{emptytitle}
+\vfill
+\pause
+\begin{example}[Weather Model]
+    Three states: sunny (S), cloudy (C), rainy (R). \\
+    Stages: days.\\
+    The state that the system occupies at any stage is determined
+    by a set of probabilities.
+    \bigskip
+
+    \alert{Important fact: probabilities are always real numbers
+    between zero and one, inclusive.}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\frame{
+\begin{example}[Weather Model -- continued]
+    \begin{itemize}
+	\item If it is sunny one day, then there is a 40\% chance it will
+	be sunny the next day, and a 40\% chance that it will be cloudy the
+	next day \pause \alert{(and a 20\% chance it will be rainy
+	the next day).}
+    \end{itemize}
+    \pause
+    The values 40\%, 40\% and 20\% are
+    \alert{transition probabilities}, and are assumed to be known.
+    \begin{itemize}
+	\item If it is cloudy one day, then there is a 40\% chance it will be rainy the next day, and a 25\% chance that it will be sunny the next day. \pause
+	\item If it is rainy one day, then there is a 30\% chance it will be rainy the next day, and a 50\% chance that it will be cloudy the next day.
+    \end{itemize}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5
+\frame{
+\begin{example}[Weather Model -- continued]
+    We put the transition probabilities into a
+    \alert{transition matrix},
+    \[ P=
+	\left[\begin{array}{lll}
+	    0.4 & 0.25 & 0.2 \\
+	    0.4 & 0.35 & 0.5 \\
+	    0.2 & 0.4  & 0.3
+	\end{array}\right]
+    \]
+
+    {\bf Note.} Transition matrices are \alert{stochastic}, meaning that
+    the sum of the entries in each column is equal to one.
+    \bigskip
+
+    \pause
+    Suppose that it is rainy on Thursday.
+    What is the probability that it will be sunny on Sunday?
+    \bigskip
+
+    \pause
+    The \alert{initial state} vector, $S_0$, corresponds to the
+    state of the weather on Thursday, so
+    \[ S_0 =
+    \left[\begin{array}{l}
+	0 \\ 0 \\ 1
+    \end{array}\right] \]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\begin{example}[Weather Model -- continued]
+    What is the state vector for Friday?
+    \pause
+    \[
+	S_1 =
+	\left[\begin{array}{l}
+	0.2 \\ 0.5 \\ 0.3
+	\end{array}\right]
+	=
+	\left[\begin{array}{lll}
+	    0.4 & 0.25 & 0.2 \\
+	    0.4 & 0.35 & 0.5 \\
+	    0.2 & 0.4  & 0.3
+	\end{array}\right]
+	\left[\begin{array}{l}
+	0 \\ 0 \\ 1
+	\end{array}\right]
+	=
+	PS_0.
+    \]
+
+    \pause
+    To find the state vector for Saturday:
+    \[
+	S_2=PS_1=
+	\left[\begin{array}{lll}
+	    0.4 & 0.25 & 0.2 \\
+	    0.4 & 0.35 & 0.5 \\
+	    0.2 & 0.4  & 0.3
+	\end{array}\right]
+	\left[\begin{array}{l}
+	0.2 \\ 0.5 \\ 0.3
+	\end{array}\right]
+	=
+	\left[\begin{array}{l}
+	0.265 \\ 0.405 \\ 0.33
+	\end{array}\right]
+    \]
+    \pause
+    Finally, the state vector for Sunday is
+    \[
+	S_3=PS_2=
+	\left[\begin{array}{lll}
+	    0.4 & 0.25 & 0.2 \\
+	    0.4 & 0.35 & 0.5 \\
+	    0.2 & 0.4  & 0.3
+	\end{array}\right]
+	\left[\begin{array}{l}
+	0.265 \\ 0.405 \\ 0.33
+	\end{array}\right]
+	=
+	\left[\begin{array}{l}
+	0.27325 \\ 0.41275 \\ 0.314
+	\end{array}\right]
+    \]
+    \pause
+    The probability that it will be sunny on Sunday is 27.325\%.
+    \bigskip
+
+    \alert{Important fact: the sum of the entries of a state vector is always one.}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+\begin{theorem}[\S2.9 Theorem 1]
+    If $P$ is the transition matrix for an $n$-state Markov chain,
+    then
+    \[ S_{m+1}=PS_m \quad \mbox{ for } m=0, 1, 2, \ldots\]
+\end{theorem}
+\vfill
+\pause
+\begin{example}[\S2.9 Example 1]
+    \begin{itemize}
+	\item A customer always eats lunch either at restaurant $A$ or restaurant $B$.
+	\item The customer never eats at $A$ two days in a row.
+	\item If the customer eats at $B$ one day, then the next day she is three times as likely to eat at $B$ as at $A$.
+    \end{itemize}
+    What is the probability transition matrix?
+
+    \pause
+    \[ P =
+	\left[\begin{array}{ll}
+	    0 & 1/4 \\ 1 & 3/4
+	\end{array}\right] \]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+\begin{example}[continued]
+    Initially, the customer is equally likely to eat at either restaurant,
+    so
+    \[ S_0 =
+    \left[\begin{array}{l}
+	1/2 \\ 1/2
+    \end{array}\right] \]
+    \[
+	S_1 = \left[\begin{array}{l} 0.125     \\ 0.875     \end{array}\right],
+	S_2 = \left[\begin{array}{l} 0.21875   \\ 0.78125   \end{array}\right],
+	S_3 = \left[\begin{array}{l} 0.1953125 \\ 0.8046875 \end{array}\right],
+    \]
+    \[
+	S_4 = \left[\begin{array}{l} 0.20117 \\ 0.79883 \end{array}\right],
+	S_5 = \left[\begin{array}{l} 0.19971 \\ 0.80029 \end{array}\right],
+    \]
+    \[
+	S_6 = \left[\begin{array}{l} 0.20007 \\ 0.79993 \end{array}\right],
+	S_7 = \left[\begin{array}{l} 0.19998 \\ 0.80002 \end{array}\right],
+    \]
+    are calculated, and these
+    appear to converge to
+    \[ \left[\begin{array}{l}
+	0.2 \\ 0.8
+    \end{array}\right] \]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\frame{
+\begin{example}[\S2.9 Example 3]
+    A wolf pack always hunts in one of three regions, $R_1$, $R_2$, and $R_3$.
+    \begin{itemize}
+	\item If it hunts in some region one day, it is as likely as not to hunt there again the next day.
+	\item If it hunts in $R_1$, it never hunts in $R_2$ the next day.
+	\item If it hunts in $R_2$ or $R_3$, it is equally likely to hunt in each of the other two regions the next day.
+    \end{itemize}
+    If the pack hunts in $R_1$ on Monday, find the probability that
+    it will hunt in \alert{$R_3$ on Friday}.
+
+    \pause
+    \[ P =
+    \left[\begin{array}{lll}
+	1/2 & 1/4 & 1/4 \\
+	0 & 1/2 & 1/4 \\
+	1/2 & 1/4 & 1/2
+    \end{array}\right]
+    \quad\text{and}\quad
+    S_0 =
+    \left[\begin{array}{l}
+    1 \\ 0 \\ 0
+    \end{array}\right]
+    \]
+    \pause
+    We want to find $S_4$, and, in particular, the last entry in $S_4$.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\frame{
+\begin{example}[continued]
+    \[
+	    S_1 =
+	\left[\begin{array}{l}
+	    1/2 \\
+	    0 \\
+	    1/2
+	\end{array}\right],
+    \]
+    \[
+	S_2 = PS_1=
+	\left[\begin{array}{lll}
+	    1/2 & 1/4 & 1/4 \\
+	    0   & 1/2 & 1/4 \\
+	    1/2 & 1/4 & 1/2
+	\end{array}\right]
+	\left[\begin{array}{l}
+	    1/2 \\
+	    0 \\
+	    1/2
+	\end{array}\right]
+	=
+	\left[\begin{array}{l}
+	    3/8 \\
+	    1/8 \\
+	    1/2
+	\end{array}\right],
+    \]
+    \pause
+    \[
+	S_3 = PS_2=
+	\left[\begin{array}{lll}
+	    1/2 & 1/4 & 1/4 \\
+	    0   & 1/2 & 1/4 \\
+	    1/2 & 1/4 & 1/2
+	\end{array}\right]
+	\left[\begin{array}{l}
+	    3/8 \\
+	    1/8 \\
+	    1/2
+	\end{array}\right]
+	=
+	\left[\begin{array}{l}
+	    11/32 \\
+	    3/16 \\
+	    15/32
+	\end{array}\right],
+    \]
+    \pause
+    \[
+	S_4 = PS_3=
+	\left[\begin{array}{lll}
+	    1/2 & 1/4 & 1/4 \\
+	    0   & 1/2 & 1/4 \\
+	    1/2 & 1/4 & 1/2
+	\end{array}\right]
+	\left[\begin{array}{l}
+	    11/32 \\
+	    3/16 \\
+	    15/32
+	\end{array}\right]
+	=
+	\left[\begin{array}{l}
+	     \star \\
+	     \star \\
+	    29/64
+	\end{array}\right].
+    \]
+   \pause
+   \bigskip
+
+   Therefore, the probability of the pack hunting in $R_3$ on Friday is $29/64$.
+   \myQED
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 11
+\frame{
+\begin{emptytitle}
+    Sometimes, state vectors converge to a particular vector,
+    called the \alert{steady state} vector.
+\end{emptytitle}
+\pause
+\begin{problem}
+    How do we know if a Markov chain has a steady state vector?
+    If the Markov chain has a steady state vector, how do we
+    find it?
+\end{problem}
+\vfill
+\pause
+\begin{emptytitle}
+    One condition ensuring that a steady state vector
+    exists is that the transition
+    matrix $P$ be \alert{regular}, meaning that
+    for some integer $k>0$, all entries of $P^k$ are
+    \alert{positive} (i.e., greater than zero).
+\end{emptytitle}
+\pause
+\vfill
+\begin{example}
+    In \S2.9 Example 1,
+    $ P =
+    \left[\begin{array}{ll}
+    0 & 1/4 \\ 1 & 3/4
+    \end{array}\right]$ \alert{is regular} because
+    \[P^2 =
+    \left[\begin{array}{ll}
+    0 & 1/4 \\ 1 & 3/4
+    \end{array}\right]
+    \left[\begin{array}{ll}
+    0 & 1/4 \\ 1 & 3/4
+    \end{array}\right]
+    =
+    \left[\begin{array}{ll}
+    1/4 & 3/16 \\ 3/4 & 3/16
+    \end{array}\right]
+    \]
+    has all entries greater than zero.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\frame{
+\begin{theorem}[\S2.9 Theorem 2 -- paraphrased]
+    If $P$ is the transition matrix of a Markov chain and $P$
+    is regular, then the steady state vector can be found by
+    solving the system
+    \[ S=PS \]
+    for $S$, and then ensuring that the entries of $S$ sum to one.
+\end{theorem}
+\vfill
+\pause
+\begin{emptytitle}
+    Notice that if $S=PS$, then
+    \begin{eqnarray*}
+	S-PS   & = & 0 \\
+	IS-PS  & = & 0 \\
+	(I-P)S & = & 0
+    \end{eqnarray*}
+    \begin{itemize}
+	\item This last line represents a system of linear equations that is homogeneous. \pause
+	\item The structure of $P$ ensures that $I-P$ is not invertible, and so the system has infinitely many solutions.\pause
+	\item Choose the value of the parameter so that the entries of $S$ sum to one.
+    \end{itemize}
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 13
+\frame{
+\begin{example}
+    From \S2.9 Example 1,
+    \[
+	P=
+	\left[\begin{array}{ll}
+	0 & 1/4 \\
+	1 & 3/4
+	\end{array}\right],\]
+    and we've already verified that $P$ is regular.
+
+    \medskip
+    \pause
+    Now solve the system $(I-P)S=0$.
+    \pause
+    \[ I-P =
+    \left[\begin{array}{rr}
+	1 & 0 \\
+	0 & 1
+    \end{array}\right]
+    -
+    \left[\begin{array}{rr}
+	0 & 1/4  \\
+	1 & 3/4
+    \end{array}\right]
+    =
+    \left[\begin{array}{rr}
+	1  & -1/4 \\
+	-1 & 1/4
+    \end{array}\right]
+    \]
+    \pause
+    Solving $(I-P)S=0$:
+    \[
+    \left[\begin{array}{rr|r}
+	1  & -1/4 & 0 \\
+	-1 & 1/4  & 0
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rr|r}
+	1 & -1/4 & 0 \\
+	0 & 0    & 0
+    \end{array}\right]
+    \]
+    \pause
+    The general solution in parametric form is
+    \[ s_1 = \frac{1}{4}t,\quad s_2=t \mbox{ for } t\in\RR.\]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 14
+\frame{
+\begin{example}[continued]
+    Since $s_1+s_2=1$,
+    \begin{eqnarray*}
+	\frac{1}{4} t + t & = & 1 \\
+	\frac{5}{4} t     & = & 1 \\
+	t                 & = & \frac{4}{5}
+    \end{eqnarray*}
+    \pause
+    Therefore, the steady state vector is
+    \[
+	S=\left[\begin{array}{l} 1/5 \\ 4/5 \end{array}\right]
+	=\left[\begin{array}{l}  0.2         \\ 0.8         \end{array}\right]
+    \]
+    \myQED
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 15
+\frame{
+\begin{example}[\S2.9 Example 3]
+    Is there a steady state vector?
+    If so, find it.
+    \pause
+    \[ P =
+    \left[\begin{array}{lll}
+	1/2 & 1/4 & 1/4 \\
+	0   & 1/2 & 1/4 \\
+	1/2 & 1/4 & 1/2
+    \end{array}\right] \]
+
+    \pause
+    so
+    \[ P^2=
+    \left[\begin{array}{lll}
+	1/2 & 1/4 & 1/4 \\
+	0   & 1/2 & 1/4 \\
+	1/2 & 1/4 & 1/2
+    \end{array}\right]
+    \left[\begin{array}{lll}
+	1/2 & 1/4 & 1/4 \\
+	0   & 1/2 & 1/4 \\
+	1/2 & 1/4 & 1/2
+    \end{array}\right]
+    =
+    \left[\begin{array}{lll}
+	5/8 & 5/16 & 5/16 \\
+	1/8 & 5/16 & 1/4  \\
+	1/2 & 3/8  & 7/16
+    \end{array}\right]
+    \]
+    \bigskip
+
+    \pause
+    Therefore $P$ is regular.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 16
+\frame{
+\begin{example}[continued]
+    Now solve the system $(I-P)S=0$.
+    \[
+    \left[\begin{array}{rrr|r}
+	1/2  & -1/4 & -1/4 & 0 \\
+	0    & 1/2  & -1/4 & 0 \\
+	-1/2 & -1/4 & 1/2  & 0
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr|r}
+	1/2 & -1/4 & -1/4 & 0 \\
+	0   & 1/2  & -1/4 & 0 \\
+	0   & -1/2 & 1/4  & 0
+	\end{array}\right]
+    \]
+    \[
+    \rightarrow
+    \left[\begin{array}{rrr|r}
+	1 & -1/2 & -1/2 & 0 \\
+	0 & 1/2  & -1/4 & 0 \\
+	0 & 0    & 0    & 0
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr|r}
+	1 & 0   & -3/4 & 0 \\
+	0 & 1/2 & -1/4 & 0 \\
+	0 & 0   & 0    & 0
+    \end{array}\right]
+    \]
+    \[
+    \rightarrow
+    \left[\begin{array}{rrr|r}
+	1 & 0 & -3/4 & 0 \\
+	0 & 1 & -1/2 & 0 \\
+	0 & 0 & 0    & 0
+    \end{array}\right]
+    \]
+    \pause
+    The general solution in parametric form is
+    \[ s_3=t, \quad s_2=\frac{1}{2}t, \quad s_1=\frac{3}{4}t, \mbox{ where } t\in\RR.\]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 17
+\frame{
+\begin{example}[continued]
+    Since $s_1 + s_2 + s_3 = 1$,
+    \[ t +\frac{1}{2}t + \frac{3}{4}t = 1,\]
+    implying that $t=\frac{4}{9}$.
+    Therefore, the steady state vector is
+    \[ S=\left[\begin{array}{r}
+	3/9 \\
+	2/9 \\
+	5/9
+    \end{array}\right].\]
+    \myQED
+\end{example}
+}
+
+%-------------- end slide -------------------------------%}}}
+\end{document}

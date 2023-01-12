@@ -1,0 +1,906 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+% \documentclass[pdf,9pt]{beamer}
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 1. Systems of Linear Equations \\ \S  1-2. Gaussian Elimination}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Row-Echelon Form}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{Row-Echelon Matrix}
+\pause
+\begin{definition}
+    A matrix is called a \textcolor{yellow}{row-echelon matrix} if
+    \begin{itemize}
+	\item All rows consisting entirely of zeros are at the bottom.
+	\item The first nonzero entry in each nonzero row is a $1$ \\(called the {\bf leading 1} for that row).
+	\item Each leading 1 is to the right of all leading $1$'s in rows above it.
+    \end{itemize}
+    A matrix is said to be in the \textcolor{yellow}{row-echelon form (REF)}  if it a row-echelon matrix.
+\end{definition}
+\vfill
+\begin{example}
+    \[
+	\left[\begin{array}{rrrrrrrr}
+		0          & \textcolor{pink}{1}   & *                     & *                     & *                     & *                     & *                     & * \\
+		0          & 0                     & 0                     & \textcolor{pink}{1}   & *                     & *                     & *                     & * \\
+		0          & 0                     & 0                     & 0                     & \textcolor{pink}{1}   & *                     & *                     & * \\
+		0          & 0                     & 0                     & 0                     & 0                     & 0                     & 0                     & \textcolor{pink}{1} \\
+     \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} \\
+     \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0} & \textcolor{yellow}{0}
+	\end{array}\right]
+    \]
+    where $*$ can be any number.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\frame{
+\begin{definition}
+    A matrix is called a \textcolor{yellow}{reduced row-echelon matrix} if
+    \begin{itemize}
+	\item Row-echelon matrix.
+	\item Each leading 1 is the only nonzero entry in its column.
+    \end{itemize}
+    A matrix is said to be in the \textcolor{yellow}{reduced row-echelon form (RREF)} if it a reduced row-echelon matrix.
+\end{definition}
+\vfill
+\pause
+\begin{example}
+    \[
+    \left[\begin{array}{rrrrrrrr}
+	0 & 1 & * & \textcolor{red}{0} & \textcolor{red}{0} & * & * & \textcolor{red}{0} \\
+	0 & 0 & 0 & 1                  & \textcolor{red}{0} & * & * & \textcolor{red}{0} \\
+	0 & 0 & 0 & 0                  & 1                  & * & * & \textcolor{red}{0} \\
+	0 & 0 & 0 & 0                  & 0                  & 0 & 0 & 1 \\
+	0 & 0 & 0 & 0                  & 0                  & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0                  & 0                  & 0 & 0 & 0
+    \end{array}\right]
+    \]
+    where $*$ can be any number.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5
+\frame{
+
+\begin{examples}
+Which of the following matrices are in the REF?
+
+\bigskip
+
+Which ones are in the RREF?
+\bigskip
+\pause
+
+(a) $\left[ \begin{array}{rrrr}  0 & 1 & 2 & 0\\ 0 & 0 & 1 & 2 \end{array}\right]$\hfill
+(b) $\left[ \begin{array}{rrrr}   1 & 0 & 2 & 0\\ 0 & 0 & 1 & 2 \end{array}\right]$\hfill
+(c) $\left[ \begin{array}{rrrr}  1 & 0 & 2 & 0\\ 0 & 0 & 1 & 2\\0 & 0 & 1 & 2 \end{array}\right]$
+\bigskip
+\bigskip
+
+(d) $\left[ \begin{array}{rrrr}   1 & 0 & 2 & 0\\ 0 & 1 & 1 & 2 \end{array}\right]$\hfill
+(e) $\left[ \begin{array}{rrrr}   1 & 2 & 0 & 0\\ 0 & 0 & 1 & 2 \end{array}\right]$\hfill
+(f) $\left[ \begin{array}{rrrr}   1 & 2 & 0 & 0\\ 0 & 0 & 1 & 0\\0 & 0 & 0 & 1 \end{array}\right]$
+\end{examples}
+
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\begin{example}
+Suppose that the following matrix is the augmented matrix
+of a system of linear equations.
+We see from this matrix that the system of linear equations has
+four equations and seven variables.
+\[
+    \alert<2->{x_1}\hspace{1.4em}
+    \textcolor<3->{teal}{x_2}\hspace{0.6em}
+    \alert<2->{x_3}\hspace{1.1em}
+    \alert<2->{x_4}\hspace{0.7em}
+    \textcolor<3->{teal}{x_5}\hspace{1.1em}
+    \textcolor<3->{teal}{x_6}\hspace{1.5em}
+    \alert<2->{x_7}\hspace{2.5em}
+\]
+\[ \left[\begin{array}{rrrrrrr|r}
+	\alert<2->{1} & \textcolor<3->{teal}{-3} & \alert<2->{4} & \alert<2->{-2} & \textcolor<3->{teal}{5 } & \textcolor<3->{teal}{-7} & \alert<2->{0}  & 4 \\
+	0             & 0                         & \alert<2->{1} & \alert<2->{8}  & \textcolor<3->{teal}{0}  & \textcolor<3->{teal}{3 } & \alert<2->{-7} & 0 \\
+	0             & 0                         & 0             & \alert<2->{1}  & \textcolor<3->{teal}{1}  & \textcolor<3->{teal}{-1} & \alert<2->{0}  & -1 \\
+	0             & 0                         & 0             & 0             & 0                         & 0  & \alert<2>{1}  & 2
+\end{array}\right] \]
+Note that the matrix is a \textcolor{blue}{row-echelon matrix}.
+\pause
+\begin{itemize}
+\item Each column of the matrix corresponds to a variable,
+and the \alert{leading variables} are the variables that correspond
+to columns containing leading ones.
+\pause
+\item The remaining variables are called \textcolor{teal}{non-leading variables}.  \end{itemize}
+\end{example}
+\pause
+\begin{emptytitle}
+We will use elementary row operations to transform a matrix to
+row-echelon (REF) or reduced row-echelon form (RREF).
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Solving Systems of Linear Equations -- Gaussian Elimination}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+\frametitle{Solving Systems of Linear Equations -- Gaussian Elimination}
+\pause
+\begin{theorem}
+    Every matrix can be brought to (reduced) row-echelon form by a sequence of elementary row operations.
+\end{theorem}
+\pause
+\bigskip
+\begin{block}{\textbf{Gaussian  Elimination}}
+To solve a system of linear equations proceed as follows:
+\begin{enumerate}
+    \item Carry the augmented matrix to a reduced row-echelon matrix using elementary row operations.  \pause
+    \item If a row of the form \textcolor{teal}{$[0\;0\; \cdots 0\; | \; 1]$} occurs, the system is inconsistent.  \pause
+    \item Otherwise assign the nonleading variables (if any) \alert{parameters} and use the equations corresponding to the reduced row-echelon matrix to solve for the leading variables in terms of the parameters.
+\end{enumerate}
+\end{block}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+\shiftup{0.5}
+\begin{problem}
+    Solve the system
+    \vspace*{-.28in}
+    \[ \left\{\begin{array}{ccccccc}
+	2x & + & y & + & 3z & = & 1 \\
+	2y & - & z & + & x  & = & 0 \\
+	9z & + & x & - & 4y & = & 2
+    \end{array}\right.\]
+\end{problem}
+\vfill
+\onslide<2->
+\begin{solution}
+    \[
+	\hspace{-3em}\begin{array}{ crcr }
+	&
+    \left[\begin{array}{rrr|r}
+	2 & 1  & 3  & 1 \\
+	1 & 2  & -1 & 0 \\
+	1 & -4 & 9  & 2
+    \end{array}\right]&
+    \onslide<3->
+	\rightarrow^{r_1\leftrightarrow r_2}&
+    \left[\begin{array}{rrr|r}
+	1 & 2  & -1 & 0 \\
+	2 & 1  & 3  & 1 \\
+	1 & -4 & 9  & 2
+    \end{array}\right]\\
+    \\
+    \onslide<4->
+	    \rightarrow^{-2r_1+r_2, -r_1+r_3} &
+    \left[\begin{array}{rrr|r}
+	1 & 2  & -1 & 0 \\
+	0 & -3 & 5  & 1 \\
+	0 & -6 & 10 & 2
+    \end{array}\right] &
+    \onslide<5->
+	    \rightarrow^{-2r_2+r_3}&
+    \left[\begin{array}{rrr|r}
+	1 & 2  & -1 & 0 \\
+	0 & -3 & 5  & 1 \\
+	0 & 0  & 0  & 0
+    \end{array}\right]\\
+    \\
+    \onslide<6->
+	    \rightarrow^{-\frac 13 r_2}&
+    \left[\begin{array}{rrr|r}
+	1 & 2 & -1   & 0    \\
+	0 & 1 & -5/3 & -1/3 \\
+	0 & 0 & 0    & 0
+    \end{array}\right]&
+    \onslide<7->
+	    \rightarrow^{-2r_2+r_1}&
+     \left[\begin{array}{rrr|r}
+	1 & 0 & 7/3  & 2/3  \\
+	0 & 1 & -5/3 & -1/3 \\
+	0 & 0 & 0    & 0
+    \end{array}\right]
+	\end{array}
+    \]
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\frame{
+\begin{solution}[continued]
+Given the reduced row-echelon matrix
+\[
+ \left[\begin{array}{rrr|r}
+1 & 0 & 7/3 & 2/3 \\
+0 & 1 & -5/3 & -1/3 \\
+0 & 0 & 0 & 0
+\end{array}\right]
+\]
+$x$ and $y$ are \alert{leading variables}; $z$ is a
+\alert{non-leading variable} and so assign a
+\alert{parameter} to $z$.
+\pause
+Thus the solution to the original system is given by
+\[
+\left. \begin{array}{rrrrr}
+x & = & \vspace{0.05in}\frac{2}{3} & - & \vspace{0.05in}\frac{7}{3}s\\
+y & = & -\vspace{0.05in}\frac{1}{3}&  + & \vspace{0.05in}\frac{5}{3}s\\
+z & = & s & & \\
+\end{array} \right\} \mbox{ for all }s\in\RR.
+\]
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\frame{
+\shiftup{0.5}
+\begin{problem}
+Solve the system
+\vspace{-3em}
+\[ \left\{\begin{array}{rrrrrrr}
+x & + & y & + & 2z & = & -1 \\
+y & + & 2x & + & 3z & = & 0 \\
+z & - & 2y &  &  & = & 2
+\end{array}\right.\]
+\end{problem}
+\vfill
+\pause
+
+{\begin{solution}
+\[
+    \begin{array}{crcr}
+&
+\left[\begin{array}{rrr|r}
+1 & 1 & 2 & -1 \\
+2 & 1 & 3 & 0 \\
+0 & -2 & 1 & 2
+\end{array}\right]
+    &\rightarrow^{-2r_1+r_2}&
+\pause
+\left[\begin{array}{rrr|r}
+1 & 1 & 2 & -1 \\
+0 & -1 & -1 & 2 \\
+0 & -2 & 1 & 2
+\end{array}\right]\\
+\\
+% \vspace{1em}
+	\rightarrow^{-1\cdot r_2}&
+\pause
+\left[\begin{array}{rrr|r}
+1 & 1 & 2 & -1 \\
+0 & 1 & 1 & -2 \\
+0 & -2 & 1 & 2
+\end{array}\right]&
+\pause
+	\rightarrow^{2r_2+r_3}&
+\left[\begin{array}{rrr|r}
+1 & 0 & 1 & 1 \\
+0 & 1 & 1 & -2 \\
+0 & 0 & 3 & -2
+\end{array}\right]\\
+% \vspace{0.5em}
+\\
+	\rightarrow^{\frac 13 r_3}&
+\pause
+\left[\begin{array}{rrr|r}
+1 & 0 & 1 & 1 \\
+0 & 1 & 1 & -2 \\
+0 & 0 & 1 & -2/3
+\end{array}\right]&
+	\rightarrow^{-r_3+r_2, -r_3+r_1}&
+\pause
+\left[\begin{array}{rrr|r}
+1 & 0 & 0 & 5/3 \\
+0 & 1 & 0 & -4/3 \\
+0 & 0 & 1 & -2/3
+\end{array}\right]
+    \end{array}
+\]
+%\shiftup{0.5}
+\pause
+
+{The \alert{unique} solution is
+$x=5/3$, $y=-4/3$, $z=-2/3$.
+\medskip
+\pause
+
+{\bf Check your answer!} }
+\end{solution}}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 11
+\frame{
+\shiftup{0.5}
+\begin{problem}
+Solve the system
+\vspace{-3em}
+\[ \left\{
+    \begin{array}{rrrrrrr}
+	-3x_1 & - & 9x_2 & + & x_3 & = & -9 \\
+	2x_1  & + & 6x_2 & - & x_3 & = & 6 \\
+	x_1   & + & 3x_2 & - & x_3 & = & 2
+    \end{array}\right.
+\]
+\end{problem}
+\pause
+\vfill
+
+\begin{solution}
+\[
+\left[\begin{array}{rrr|r}
+1 & 3 & -1 & 2 \\
+2 & 6 & -1 & 6 \\
+-3 & -9 & 1 & -9
+\end{array}\right] \rightarrow
+\left[\begin{array}{rrr|r}
+1 & 3 & -1 & 2 \\
+0 & 0 & 1 & 2 \\
+0 & 0 & -2 & -3
+\end{array}\right] \rightarrow
+\left[\begin{array}{rrr|r}
+1 & 3 & 0 & 4 \\
+0 & 0 & 1 & 2 \\
+0 & 0 & 0 & 1
+\end{array}\right]
+\]
+\shiftup{0.5}
+\pause
+
+{The last row of the final matrix corresponds to the equation
+%\shiftup{0.5}
+\[ 0x_1 + 0x_2 + 0x_3= 1\]
+%\shiftup{0.5}
+which is impossible! \\[1em]
+
+Therefore, this system is inconsistent, i.e., it has no solutions.}
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\frame{
+\begin{problem}[ General Patterns for Systems of Linear Equations ]
+    Find all values of $a$, $b$ and $c$
+    (or conditions on $a$, $b$ and $c$) so that the system
+    \[ \begin{array}{rrrrrrr}
+	2x & + & 3y & + & \alert<2->{a}z & = & \alert<2->{b} \\
+	   & - & y  & + & 2z             & = & \alert<2->{c} \\
+	 x & + & 3y & - & 2z             & = & 1
+     \end{array} \]
+    has (i) a unique solution, (ii) no solutions, and (iii) infinitely
+    many solutions. In (i) and (iii), find the solution(s). \\
+\end{problem}
+\vfill
+\pause
+\begin{solution}
+    \[ \left[\begin{array}{rrr|r}
+	2 & 3  & a  & b \\
+	0 & -1 & 2  & c \\
+	1 & 3  & -2 & 1 \\
+    \end{array}\right]
+    \onslide<3->
+    \rightarrow
+    \left[\begin{array}{rrr|r}
+	1 & 3  & -2 & 1 \\
+	0 & -1 & 2  & c \\
+	2 & 3  & a  & b \\
+    \end{array}\right]
+    \]
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 13
+\frame{
+\begin{solution}[continued]
+    \[ \left[\begin{array}{rrr|r}
+	1 & 3  & -2 & 1 \\
+	0 & -1 & 2  & c \\
+	2 & 3  & a  & b \\
+    \end{array}\right]
+    \onslide<2->
+    \rightarrow
+    \left[\begin{array}{rrr|r}
+	1 & 3  & -2  & 1   \\
+	0 & -1 & 2   & c   \\
+	0 & -3 & a+4 & b-2 \\
+    \end{array}\right]
+    \]
+    \onslide<3->
+    \[ \rightarrow \left[\begin{array}{rrr|c}
+	1 & 3  & -2  & 1   \\
+	0 & 1  & -2  & -c  \\
+	0 & -3 & a+4 & b-2 \\
+    \end{array}\right]
+    \onslide<4->\rightarrow
+    \left[\begin{array}{rrr|c}
+	1 & 0 & 4   & 1+3c   \\
+	0 & 1 & -2  & -c     \\
+	0 & 0 & a-2 & b-2-3c \\
+    \end{array}\right]
+    \]
+    \onslide<5->{
+    {\bf Case 1.} $a-2\neq 0$, i.e., $a\neq 2$.}
+    \onslide<6->
+    In this case,
+    \shiftup{0.5}
+    \[ \rightarrow\left[\begin{array}{rrr|c}
+	1 & 0 & 4  & 1+3c               \\
+	0 & 1 & -2 & -c                 \\
+	0 & 0 & 1  & \frac{b-2-3c}{a-2} \\
+    \end{array}\right]
+    \onslide<7->\rightarrow
+    \left[\begin{array}{rrr|c}
+	1 & 0 & 0 & 1+3c-4\left(\frac{b-2-3c}{a-2}\right) \\
+	0 & 1 & 0 & -c + 2\left(\frac{b-2-3c}{a-2}\right) \\
+	0 & 0 & 1 & \frac{b-2-3c}{a-2}                    \\
+    \end{array}\right]
+    \]
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 14
+\frame{
+\begin{solution}[continued]
+\[ \left[\begin{array}{ccc|c}
+    1 & 0 & 0 & 1+3c-4\left(\frac{b-2-3c}{a-2}\right) \\
+    0 & 1 & 0 & -c + 2\left(\frac{b-2-3c}{a-2}\right) \\
+    0 & 0 & 1 & \frac{b-2-3c}{a-2}
+\end{array}\right]
+\]
+\pause
+(i) When $a\neq 2$, the unique solution is
+\begin{align*}
+    x & =1+3c-4\left(\frac{b-2-3c}{a-2}\right) \\
+    y & =-c+2\left(\frac{b-2-3c}{a-2}\right)   \\
+    z & =\frac{b-2-3c}{a-2}
+\end{align*}
+\end{solution}}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 15
+\frame{
+\begin{solution}[continued]
+    {\bf Case 2.} If $a=2$, then the augmented matrix becomes
+    \[
+    \left[\begin{array}{ccc|c}
+	1 & 0 & 4   & 1+3c \\
+	0 & 1 & -2  & -c   \\
+	0 & 0 & a-2 & b-2-3c
+    \end{array}\right]
+    \onslide<2->
+    \rightarrow
+     \left[\begin{array}{ccc|c}
+	1 & 0 & 4  & 1+3c   \\
+	0 & 1 & -2 & -c     \\
+	0 & 0 & 0  & b-2-3c \\
+    \end{array}\right]
+    \]
+    \pause
+
+    From this we see that the system has no solutions when
+    $b-2-3c\neq 0$.
+    \medskip
+
+    \pause
+    (ii) When $a=2$ and $b-3c\neq 2$, the system has no solutions.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 16
+\frame{
+\begin{solution}[continued]
+    Finally when $a=2$ and $b-3c=2$, the augmented matrix becomes
+    \pause{
+    \[
+    \left[\begin{array}{ccc|c}
+    1 & 0 & 4 & 1+3c \\
+    0 & 1 & -2 & -c \\
+    0 & 0 & 0 & b-2-3c
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr|c}
+    1 & 0 & 4 & 1+3c \\
+    0 & 1 & -2 & -c \\
+    0 & 0 & 0 & 0
+    \end{array}\right]
+    \]}
+
+    \pause{
+    and the system has infinitely many solutions.}
+
+    \medskip
+    \pause
+    (iii) When $a=2$ and $b-3c=2$, the system has
+    infinitely many solutions:
+    \[
+	\left.\begin{array}{rrrrr}
+	x & = & 1+3c & - & 4s \\
+	y & = & -c   & + & 2s \\
+	z & = & s
+	\end{array}\quad\right\}\quad \text{for all $s\in\RR$.}\]
+   \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Rank}}
+%-------------- start slide -------------------------------%{{{ 17
+\frame{
+\frametitle{Rank}
+\pause
+\begin{definition}
+The \alert{rank} of a matrix $A$, denoted $\rank A$, is the
+number of leading 1's in any row-echelon matrix
+obtained from $A$ by performing elementary row operations.
+\end{definition}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 18
+\frame{
+\begin{emptytitle}
+    Suppose $A$ is the augmented matrix of a {\bf consistent} system
+    of $m$ linear equations in $n$ variables, and $\rank A=r$.
+\end{emptytitle}
+    \[
+_{m}\left\{
+\left[\begin{array}{cccc|c}
+    * & * & * & * & * \\
+    * & * & * & * & * \\
+    * & * & * & * & * \\
+    * & * & * & * & * \\
+    * & * & * & * & *
+\end{array}\right]\right.
+\rightarrow
+\left[\begin{array}{cccc|c}
+    \textcolor{red}{1 } & * & *                  & *                  & * \\
+    0                   & 0 & \textcolor{red}{1} & *                  & * \\
+    0                   & 0 & 0                  & \textcolor{red}{1} & * \\
+    0                   & 0 & 0                  & 0                  & 0 \\
+    0                   & 0 & 0                  & 0                  & 0
+\end{array}\right]
+\]
+\vspace*{-.1in}
+$\hspace*{1.05in} \underbrace{\hspace*{0.75in}}_n \;\;
+\hspace*{.5in} \underbrace{\hspace*{0.8in}}_{r \; leading\; 1's}$
+\vfill
+
+\pause
+Then the set of solutions to the system has $n-r$ parameters, so
+
+\pause
+\begin{itemize}
+    \item if \textcolor{red}{$r<n$}, there is at least one parameter, and the system has infinitely many solutions; \pause
+    \item if \textcolor{red}{$r=n$}, there are no parameters, and the system has a unique solution.
+\end{itemize}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 19
+\frame{
+\begin{problem}
+    Find the rank of
+    $A= \left[\begin{array}{rrr}
+    a & b & 5 \\
+    1 & -2 & 1 \end{array}\right]$.
+\end{problem}
+\pause
+
+\begin{solution}
+\[ \left[\begin{array}{rrr}
+a & b & 5 \\
+1 & -2 & 1
+\end{array}\right] \rightarrow
+\left[\begin{array}{rrr}
+1 & -2 & 1 \\
+a & b & 5
+\end{array}\right] \rightarrow
+\left[\begin{array}{ccc}
+1 & -2 & 1 \\
+0 & b+2a & 5-a
+\end{array}\right]
+\]
+
+\pause
+If $b+2a=0$ and $5-a=0$, i.e., $a=5$ and $b=-10$, then $\rank A=1$.
+
+Otherwise, $\rank A=2$.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 20
+\frame{
+\begin{block}{For {\bf any} system of linear equations, exactly one of the following holds:}\pause
+    \begin{enumerate}
+	\item the system is \alert{inconsistent}; \pause
+	\item the system has a \alert{unique} solution, i.e., exactly one solution; \pause
+	\item the system has \alert{infinitely many} solutions.
+    \end{enumerate}
+\end{block}
+\vfill
+\pause
+\begin{emptytitle}
+    One can see what case applies by looking at the RREF matrix equivalent to the augmented matrix of the system
+    and distinguishing three cases:
+    \begin{enumerate}
+	\item The last nonzero row is \textcolor{teal}{$[0,\cdots, 0, 1]$}: no solution.
+	\item The last nonzero row is \alert{not} \textcolor{teal}{$[0,\cdots, 0, 1]$} and all variables are leading: unique solution.
+	\item The last nonzero row is \alert{not} \textcolor{teal}{$[0,\cdots, 0, 1]$} and there are non-leading variables:
+	    infinitely many solutions.
+    \end{enumerate}
+\end{emptytitle}
+
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 21
+\frame{
+\shiftup{0.5}
+\begin{problem}
+Solve the system
+\[ \begin{array}{rrrrrrrrrrr}
+    -3x_1 & + & 6x_2 & - & 4x_3 & - & 9x_4 & + & 3x_5 & = & -1 \\
+    -x_1  & + & 2x_2 & - & 2x_3 & - & 4x_4 & - & 3x_5 & = & 3  \\
+    x_1   & - & 2x_2 & + & 2x_3 & + & 2x_4 & - & 5x_5 & = & 1  \\
+    x_1   & - & 2x_2 & + & x_3  & + & 3x_4 & - & x_5  & = & 1
+\end{array}\]
+\end{problem}
+\shiftup{0.5}
+\pause
+
+\begin{solution}
+Begin by putting the augmented matrix in reduced row-echelon form.
+\[
+\left[\begin{array}{rrrrr|r}
+    1  & -2 & 2  & 2  & -5 & 1  \\
+    -3 & 6  & -4 & -9 & 3  & -1 \\
+    -1 & 2  & -2 & -4 & -3 & 3  \\
+    1  & -2 & 1  & 3  & -1 & 1
+\end{array}\right]
+\pause
+\rightarrow
+\left[\begin{array}{rrrrr|r}
+	    \alert<5>{1}   & -2                     & 0                      & 0                      & -13                    & 9 \\
+    0                      & 0                      & \alert<5>{1}           & 0                      & 0                      & -2 \\
+    0                      & 0                      & 0                      & \alert<5>{1}           & 4                      & -2 \\
+    \textcolor<4>{teal}{0} & \textcolor<4>{teal}{0} & \textcolor<4>{teal}{0} & \textcolor<4>{teal}{0} & \textcolor<4>{teal}{0} & \textcolor<4>{teal}{0}
+\end{array}\right]
+\]
+\pause
+The system is \textcolor<4>{teal}{consistent}.
+\pause
+The rank of the augmented matrix is 3.
+\pause
+
+Since the system is consistent, the set of solutions has $5-3=2$ parameters.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 22
+\frame{
+\begin{solution}[continued]
+From the reduced row-echelon matrix
+\[
+\left[\begin{array}{rrrrr|r}
+1 & -2 & 0 & 0 & -13 & 9 \\
+0 & 0 & 1 & 0 & 0 & -2 \\
+0 & 0 & 0 & 1 & 4 & -2 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{array}\right],
+\]
+
+\pause
+we obtain the general solution
+\[ \left.
+\begin{array}{rrl}
+x_1 & = & 9  +  2r  +  13s \\
+x_2 & = & r \\
+x_3 & = & -2 \\
+x_4 & = & -2 - 4s\\
+x_5 & = & s
+\end{array} \right\} ~~\forall r,s\in\RR
+\]
+
+\pause{
+The solution has two parameters ($r$ and $s$) as we expected.
+}
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Uniqueness of the Reduced Row-Echelon Form}}
+%-------------- start slide -------------------------------%{{{ 23
+\frame{
+\frametitle{Uniqueness of the Reduced Row-Echelon Form}
+\pause
+\begin{theorem}
+    Systems of linear equations that correspond to row equivalent
+    augmented matrices have exactly the same solutions.
+\end{theorem}
+\vfill
+\pause
+\begin{theorem}
+    Every matrix $A$ is row equivalent to a \alert{unique}
+    reduced row-echelon matrix.
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 24
+\frame{
+\shiftup{0.5}
+\begin{problem}
+Solve the system
+\[ \begin{array}{ccccccc}
+    2x & + & y & + & 3z & = & 1 \\
+    2y & - & z & + & x  & = & 0 \\
+    9z & + & x & - & 4y & = & 2
+\end{array}\]
+\end{problem}
+\vfill
+\pause
+\begin{solution}
+    \[
+	\left[\begin{array}{rrr|r}
+		2 & 1  & 3  & 1 \\
+		1 & 2  & -1 & 0 \\
+		1 & -4 & 9  & 2
+	\end{array}\right]
+	\rightarrow
+	\left[\begin{array}{rrr|r}
+		1 & 2  & -1 & 0 \\
+		2 & 1  & 3  & 1 \\
+		1 & -4 & 9  & 2
+	\end{array}\right]
+	\rightarrow
+	\left[\begin{array}{rrr|r}
+		1 & 2  & -1 & 0 \\
+		0 & -3 & 5  & 1 \\
+		0 & -6 & 10 & 2
+	\end{array}\right]
+    \]
+    \shiftup{0.5}
+    \[
+	\rightarrow\left[\begin{array}{rrr|r}
+		1 & 2  & -1 & 0 \\
+		0 & -3 & 5  & 1 \\
+		0 & 0  & 0  & 0
+	\end{array}\right]
+	\rightarrow \left[\begin{array}{rrr|r}
+		1 & 2 & -1                          & 0                           \\
+		0 & 1 & -\vspace{0.05in}\frac{5}{3} & -\vspace{0.05in}\frac{1}{3} \\
+		0 & 0 & 0                           & 0
+	\end{array}\right]
+	\rightarrow \left[\begin{array}{rrr|r}
+		1 & 0 & -\vspace{0.05in}\frac{7}{3} & -\vspace{0.05in}\frac{2}{3} \\
+		0 & 1 & -\vspace{0.05in}\frac{5}{3} & -\vspace{0.05in}\frac{1}{3} \\
+		0 & 0 & 0                           & 0
+	\end{array}\right]
+    \]
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 25
+\frame{
+\begin{solution}[continued]
+    This row-echelon matrix corresponds to the system
+    \[
+    \begin{array}{ccccccc}
+	x & + & 0y & + & \vspace{0.05in}\frac{7}{3}z & = & -\vspace{0.05in}\frac{2}{3} \\
+	  &   & y  & - & \vspace{0.05in}\frac{5}{3}z & = & -\vspace{0.05in}\frac{1}{3}
+    \end{array},
+    \]
+    \pause
+    and thus
+    \[
+	\begin{array}{lcl}
+	    x & = & \vspace{0.05in}\frac{2}{3}-\vspace{0.05in}\frac{7}{3}z\\
+	    y & = & -\vspace{0.05in}\frac{1}{3} +\vspace{0.05in}\frac{5}{3}z
+	\end{array}
+    \]
+
+    \pause
+    Setting $z=s$, where $s\in\RR$, gives us (as before):
+    \[
+	\begin{array}{rrrrr}
+	    x & = & \vspace{0.05in}\frac{2}{3} &  - & \vspace{0.05in}\frac{7}{3}s\\
+	    y & = & -\vspace{0.05in}\frac{1}{3}&  + & \vspace{0.05in}\frac{5}{3}s\\
+	    z & = & s & & \\
+	\end{array}
+    \]\pause
+    {\bf Always check your answer!}
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{One Application}}
+%-------------- start slide -------------------------------%{{{ 26
+\begin{frame}[fragile]
+\frametitle{One Application}
+\pause
+\begin{problem}
+    Derive the formula for $1^r+2^r+\cdots + n^r$  for $r=3$.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    We know that $1^3 + 2^3 + \cdots + n^3$ is a polynomial in $n$ of oder $4$, namely,
+    \begin{align*}
+	1^3 + 2^3 + \cdots + n^3 = a_0+a_1 n + a_2 n^2 +a_3 n^3 + a_4 n^4.
+    \end{align*}
+    \pause
+    It is easy to see that when $n=0$, both sides should be equal to zero. Hence, $a_0=0$.
+    \pause
+    Now we have $4$ unknowns, $a_1,\cdots, a_4$. We can let $n=1,\cdots,4$ to form $4$ equations in order to find these unknowns:
+    \begin{align*}
+	\begin{array}{ccccccccccc}
+	    1^1a_1 & + & 1^2a_2 & + & 1^3a_3 & + & 1^4a_4 &  = & 1^3                 &  & \left(n=1\right) \\
+	    2^1a_1 & + & 2^2a_2 & + & 2^3a_3 & + & 2^4a_4 &  = & 1^3+2^3             &  & \left(n=2\right) \\
+	    3^1a_1 & + & 3^2a_2 & + & 3^3a_3 & + & 3^4a_4 &  = & 1^3+2^3+3^3         &  & \left(n=3\right) \\
+	    4^1a_1 & + & 4^2a_2 & + & 4^3a_3 & + & 4^4a_4 &  = & 1^3+2^3+3^3+4^3     &  & \left(n=4\right) \\
+	\end{array}
+    \end{align*}
+\end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 27
+\begin{frame}[fragile]
+    \begin{solution}[continued]
+    Hence, we have the following augmented matrix:
+    \begin{align*}
+	\left(
+	    \begin{array}{ cccc|c }
+	  1  &    1 &     1  &    1 &    1 \\
+	  2  &    4 &     8  &   16 &   9\\
+	  3  &    9 &    27  &   81 &   36 \\
+	  4  &   16 &    64  &  256 &  100\\
+	\end{array}
+	\right)
+    \end{align*}
+    \pause
+    You can use Octave or Matlab to compute the reduced echelon form:
+    \begin{align*}
+	\left(
+	\begin{array}{ cccc|c }
+	   1 & 0  & 0  & 0  &   0\\
+	   0 & 1  & 0  & 0  &  1/4 \\
+	   0 & 0  & 1  & 0  &  1/2 \\
+	   0 & 0  & 0  & 1  &  1/4 \\
+	\end{array}
+	\right)
+    \end{align*}
+    \pause
+    Therefore,  we have that
+    \[
+	1^3 + 2^3 + \cdots + n^3 = \frac{n^2}{4} + \frac{n^3}{2}+\frac{n^4}{4} = \frac{1}{4} n^2(n+1)^2.
+    \]
+    \myQED
+\end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\end{document}

@@ -1,0 +1,1061 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+% \documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 5. Vector Space $\R^n$ \\ \S 5-5. Similarity and Diagonalization}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Similar Matrices}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{Similar Matrices}
+\pause
+\begin{definition}[Similar Matrices]
+    Let $A$ and $B$ be $n\times n$ matrices.
+    \alert{$A$ is similar to $B$}, written $A\sim B$, if there
+    exists an \textcolor{blue}{invertible} matrix $P$ such that $B=P^{-1}AP$.
+\end{definition}
+\pause
+\vfill
+\begin{lemma}
+    Similarity is an equivalence relation, i.e., for $n\times n$ matrices $A$, $B$ and $C$
+    \begin{enumerate}
+        \item $A\sim A$ \textcolor{blue}{(reflexive)};
+        \pause
+        \item if $A\sim B$, then $B\sim A$ \textcolor{blue}{(symmetric)};
+        \pause
+        \item if $A\sim B$ and $B\sim C$, then $A\sim C$ \textcolor{blue}{(transitive)}.
+    \end{enumerate}
+\end{lemma}
+\pause
+\vfill
+\begin{proofnoend}
+\begin{enumerate}
+    \item Since $A=I_nAI_n$ and $I_n^{-1}=I_n$, $A=I_n^{-1}AI_n$.  Therefore, $A\sim A$.
+    \item Suppose $A\sim B$.
+        Then there exists an invertible $n\times n$ matrix $P$
+        such that $B=P^{-1}AP$.
+        Multiplying both sides on the left by $P$, on the right
+        by $P^{-1}$, and simplifying gives us $PBP^{-1}=A$.
+        Therefore, $A=(P^{-1})^{-1}A(P^{-1})$, so $A\sim B$.
+\end{enumerate}
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\frame{
+\begin{proofnoend}[continued]
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item Since $A\sim B$ and $B\sim C$, there exist invertible
+            $n\times n$ matrices $P$ and $Q$ such that
+            \[ B=P^{-1}AP \quad\text{and}\quad C=Q^{-1}BQ.\]
+            Thus
+            \[  C = Q^{-1}BQ            = Q^{-1}(P^{-1}AP)Q
+                  = (Q^{-1}P^{-1})A(PQ) = (PQ)^{-1}A(PQ),\]
+            where $PQ$ is invertible, and hence $A\sim C$.
+    \end{enumerate}
+    \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide  -------------------------------%{{{ 5
+\frame{
+\begin{definition}
+    If $A=[a_{ij}]$ is an $n\times n$ matrix, then the
+    \alert{trace of $A$} is
+    \[ \trace(A) = \sum_{i=1}^n a_{ii}.\]
+\end{definition}
+\pause
+\vfill
+\begin{lemma}[Properties of trace]
+    For $n\times n$ matrices $A$ and $B$, and any $k\in\RR$,
+    \begin{enumerate}
+        \item $\trace(A+B)=\trace(A) + \trace(B)$;
+        \item $\trace(kA)=k\cdot\trace(A)$;
+        \item $\trace(AB)=\trace(BA)$.
+    \end{enumerate}
+\end{lemma}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide  -------------------------------%{{{ 6
+\begin{frame}[t,fragile]
+   \begin{proofnoend}
+    The proofs of (1) and (2) are trivial.
+    As for (3), ...
+   \end{proofnoend}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide  -------------------------------%{{{ 7
+\frame{
+\begin{emptytitle}
+    Recall that for any $n\times n$ matrix $A$, the
+    \alert{characteristic polynomial} of $A$ is
+    \[ c_A(x)=\det(xI-A),\]
+    and is a polynomial of degree $n$.
+\end{emptytitle}
+\pause
+\vfill
+\begin{theorem}[Properties of Similar Matrices]
+    If $A$ and $B$ are $n\times n$ matrices and $A\sim B$, then
+    \begin{enumerate}
+        \item $\det(A) = \det(B)$;
+        \item $\rank(A) = \rank(B)$;
+        \item $\trace(A)= \trace(B)$;
+        \item $c_A(x)=c_B(x)$;
+        \item $A$ and $B$ have the same eigenvalues.
+    \end{enumerate}
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide  -------------------------------%{{{ 8
+\frame{
+\begin{proofnoend}
+    Since $A\sim B$, there exists an $n\times n$ invertible matrix $P$ so that $B=P^{-1}AP$.
+    \pause
+    \bigskip
+    \begin{enumerate}
+        \item $\det(B) = \det(P^{-1}AP)
+                       = \det(P^{-1})\cdot\det(A)\cdot\det(P)$.
+       \item[] Since $P$ is invertible, $\det(P^{-1})=\frac{1}{\det(P)}$, so
+            \[ \det(B) = \frac{1}{\det(P)}\cdot\det(A)\cdot\det(P)
+                       = \frac{1}{\det(P)}\cdot\det(P) \cdot\det(A)
+                       = \det(A).\]
+       \item[] Therefore, $\det(B) =\det(A)$.
+            \pause
+            \bigskip
+        \item $\rank(B) = \rank(P^{-1}AP)$.
+        \item[] Since $P$ is invertible, $\rank(P^{-1}AP)     = \rank(P^{-1}A)$,
+        \item[] since $P^{-1}$ is invertible, $\rank(P^{-1}A) = \rank(A)$.
+        \item[] Therefore, $\rank(B) =\rank(A)$.
+            \pause
+            \bigskip
+        \item $\trace(B) = \trace[(P^{-1}A)P]
+                         = \trace[P(P^{-1}A)]
+                         = \trace[(PP^{-1})A]
+                         = \trace(IA)
+                         = \trace(A)$.
+    \end{enumerate}
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide  -------------------------------%{{{ 9
+\frame{
+\begin{proofnoend}[continued]
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item \begin{eqnarray*}
+        c_B(x)  =  \det(xI-B) & = & \det(xI-P^{-1}AP) \\
+                              & = & \det(xP^{-1}P-P^{-1}AP) \\
+                              & = & \det(P^{-1}xP-P^{-1}AP) \\
+                              & = & \det[P^{-1}(xI-A)P] \\
+                              & = & \det(P^{-1})\cdot\det(xI-A)\cdot\det(P) \\
+                              & = & \det(P^{-1})\cdot\det(P)\cdot \det(xI-A) \\
+    \end{eqnarray*}
+    Since $P$ is invertible, $\det(P^{-1})=\frac{1}{\det(P)}$, so
+    \[ c_B(x) = \frac{1}{\det(P)}\cdot{\det(P)}\cdot \det(xI-A)
+              = \det(xI-A)
+              = c_A(x). \]
+    \pause
+    \item
+    Since the eigenvalues of a matrix are the roots of the
+    characteristic polynomial, $c_B(x) =c_A(x)$ implies
+    that $A$ and $B$ have the same eigenvalues.
+    \myQED
+\end{enumerate}
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Diagonalization Revisited}}
+%-------------- start slide  -------------------------------%{{{ 10
+\frame{
+\frametitle{Diagonalization Revisited}
+\pause
+\begin{emptytitle}
+    Recall that if $\lambda$ is an  \alert{eigenvalue} of $A$,
+    then $A\vec{x}=\lambda\vec{x}$
+    for some {\bf nonzero} vector $\vec{x}$ in $\RR^n$.
+    Such a vector $\vec{x}$ is called a
+    \alert{$\lambda$-eigenvector of $A$}
+    or an eigenvector of $A$ corresponding to $\lambda$.
+\end{emptytitle}
+\vfill
+\pause
+\begin{definition}[Diagonalizable -- rephrased]
+    An $n\times n$ matrix $A$ is \alert{diagonalizable} if $A\sim D$ for some diagonal matrix $D$.
+\end{definition}
+\pause
+\vfill
+\begin{remark}[ Diagonalizability ]
+    Determining whether or not a square matrix $A$ is diagonalizable
+    is done by checking whether
+    \begin{center}
+        the number of linearly independent eigenvectors\\
+        -- \textcolor{magenta}{geometric multiplicity}
+    \end{center}
+    \[||?\]
+    \begin{center}
+        the multiplicity of each eigenvalue\\
+        -- \textcolor{magenta}{algebraic multiplicity}
+    \end{center}
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 11
+\frame{
+\begin{example}
+    Let $A=\left[\begin{array}{rr} -1 & 0 \\ 0 & 1\end{array}\right]$.
+    Then $\lambda=-1$ is an eigenvalue of $A$, and
+    $\vec{x}=\left[\begin{array}{r} 1 \\ 0 \end{array}\right]$
+    is a $(-1)$-eigenvector of $A$ since
+    \[ A\vec{x}
+    =\left[\begin{array}{rr} -1 & 0 \\ 0 & 1\end{array}\right] \left[\begin{array}{r} 1 \\ 0 \end{array}\right]
+    =\left[\begin{array}{r} -1 \\ 0 \end{array}\right]
+    =(-1)\left[\begin{array}{r} 1 \\ 0 \end{array}\right].\]
+\end{example}
+\pause
+\vfill
+\begin{theorem}
+Suppose $A$ is an $n\times n$ matrix.
+\begin{enumerate}
+    \item The eigenvalues of $A$ are the roots of $c_A(x)$.
+    \item The $\lambda$-eigenvectors of $A$ are all the nonzero solutions to
+        $(\lambda I-A)\vec{x}=\vec{0}_n$.
+\end{enumerate}
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\frame{
+\begin{problem}
+    Determine all eigenvalues of
+    $A=\left[\begin{array}{rrrr}
+        -2 & 0 & 0  & 0 \\
+        3  & 6 & 0  & 0 \\
+        -1 & 0 & 6  & 0 \\
+        4  & 2 & -1 & 1 \\
+    \end{array}\right]$.
+\end{problem}
+\pause
+\begin{solution}
+    $\det(xI-A) =\left|\begin{array}{cccc}
+        x+2 & 0   & 0   & 0   \\
+        -3  & x-6 & 0   & 0   \\
+        1   & 0   & x-6 & 0   \\
+        -4  & -2  & 1   & x-1 \\
+    \end{array}\right| =(x+2)(x-6)(x-6)(x-1)$.
+
+    Thus, the eigenvalues of $A$ are $-2,6,6$ and $1$, precisely
+    the elements on the main diagonal of $A$.\myQED
+\end{solution}
+\vfill
+\pause
+\begin{remark}
+    In general, the eigenvalues of any \alert{triangular} matrix
+    are the entries on its main diagonal.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 13
+\frame{
+\begin{theorem}
+    Let $A$ be an $n\times n$ matrix.
+    \begin{enumerate}
+        \item $A$ is diagonalizable if and only if $\RR^n$ has a basis
+            $\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_n\}$ of eigenvectors of
+            $A$.
+        \item If $\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_n\}$ are
+            eigenvectors of $A$ and form a basis of $\RR^n$, then
+            \[ P=\left[\begin{array}{cccc}
+                    \vec{x}_1 & \vec{x}_2 & \cdots & \vec{x}_n
+                    \end{array}\right]\]
+            is an invertible matrix
+            such that
+            \[ P^{-1}AP=\diag(\lambda_1, \lambda_2, \ldots, \lambda_n),\]
+            where $\lambda_i$ is the eigenvalue of $A$ corresponding to $\vec{x}_i$.
+    \end{enumerate}
+\end{theorem}
+\vfill
+\begin{emptytitle}
+    This result was covered earlier, but without the use of
+    term basis.
+\end{emptytitle}{}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 14
+\frame{
+\begin{theorem}
+    Let $A$ be an $n\times n$ matrix, and suppose that $A$
+    has distinct eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_k$.
+    For each $i$, let $\vec{x}_i$ be a $\lambda_i$-eigenvector of $A$.
+    Then $\{ \vec{x}_1, \vec{x}_2, \ldots, \vec{x}_k\}$ is
+    linearly independent.
+\end{theorem}
+\pause
+\vfill
+\begin{proofnoend}
+    We need to show that $t_1 \vec{x}_1+t_2 \vec{x}_2 + \cdots+ t_k \vec{x}_k=\vec{0}$ only has trivial solution $t_1=\cdots=t_k=0$.
+    Notice that
+    \begin{align*}
+	t_1 A \vec{x}_1+t_2 A \vec{x}_2 + \cdots+ t_k A \vec{x}_k       & = t_1 \lambda_1 \vec{x}_1+t_2 \lambda_2 \vec{x}_2 + \cdots+ t_k \lambda_k \vec{x}_k       = \vec{0}\\
+	t_1 A^2 \vec{x}_1+t_2 A^2 \vec{x}_2 + \cdots+ t_k A^2 \vec{x}_k & = t_1 \lambda_1^2 \vec{x}_1+t_2 \lambda_2^2 \vec{x}_2 + \cdots+ t_k \lambda_k^2 \vec{x}_k = \vec{0}\\
+	\vdots\qquad                                                    & \qquad\vdots \cr
+	t_1 A^{k-1} \vec{x}_1+\cdots \cdots+ t_k A^{k-1} \vec{x}_k      & = t_1 \lambda_1^{k-1} \vec{x}_1+\cdots \cdots+ t_k \lambda_k^{k-1} \vec{x}_k              = \vec{0}\\
+    \end{align*}
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 15
+\begin{frame}[fragile]
+    \begin{proofnoend}
+    \begin{align*}
+	\begin{array}{ccccccccc}
+	    t_1 \lambda_1       \vec{x}_1 & + & t_2 \lambda_2   \vec{x}_2     & + & \cdots & + & t_k \lambda_k   \vec{x}_k     & = & \vec{0} \\
+	    t_1 \lambda_1^2     \vec{x}_1 & + & t_2 \lambda_2^2 \vec{x}_2     & + & \cdots & + & t_k \lambda_k^2 \vec{x}_k     & = & \vec{0} \\
+	    \vdots                        &   & \vdots                        &   & \vdots &   & \vdots                        &   & \vdots  \\
+	    t_1 \lambda_1^{k-1} \vec{x}_1 & + & t_2 \lambda_2^{k-1} \vec{x}_2 & + & \cdots & + & t_k \lambda_k^{k-1} \vec{x}_k & = & \vec{0} \\
+	\end{array}
+    \end{align*}
+    \[\Updownarrow\]
+    \begin{align*}
+	\begin{pmatrix} \vec{x}_1 & \vec{x}_2 &\cdots & \vec{x}_k \end{pmatrix}
+    \begin{bmatrix}
+	t_1 & 0   & 0      & 0   \\
+	0   & t_2 & 0      & 0   \\
+	0   & 0   & \ddots & 0   \\
+	0   & 0   & 0      & t_k \\
+    \end{bmatrix}
+    \begin{pmatrix}
+	\lambda_1^0 & \lambda_1^1 & \cdots & \lambda_{1}^{k-1} \\
+	\lambda_2^0 & \lambda_2^1 & \cdots & \lambda_{2}^{k-1} \\
+	\vdots      & \vdots      & \vdots & \vdots            \\
+	\lambda_k^0 & \lambda_k^1 & \cdots & \lambda_{k}^{k-1} \\
+    \end{pmatrix}
+    = O_{k\times k}.
+    \end{align*}
+    \end{proofnoend}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 16
+\begin{frame}[fragile]
+   \begin{proofnoend}
+       Since $\lambda_i$ are distinct, the \textcolor{yellow}{Vandermonde matrix} is invertible, hence,
+	\begin{align*}
+	\begin{pmatrix} \vec{x}_1 & \vec{x}_2 &\cdots & \vec{x}_k \end{pmatrix}
+	    \begin{bmatrix}
+		t_1 & 0   & 0      & 0   \\
+		0   & t_2 & 0      & 0   \\
+		0   & 0   & \ddots & 0   \\
+		0   & 0   & 0      & t_k \\
+	    \end{bmatrix}
+	    = O_{k\times k}.
+	\end{align*}
+	\[\Updownarrow\]
+	\[
+	    t_i \vec{x}_i = 0 \quad \text{for all $i=1,\cdots, k$}
+	\]
+	\[\Downarrow\]
+	\[t_i =0 \quad \text{for all $i=1,\cdots, k$} \]
+	\bigskip
+	Only trivial solution is found. Hence, $\{ \vec{x}_1, \vec{x}_2, \ldots, \vec{x}_k\}$ is independent.
+	\myQED
+   \end{proofnoend}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 17
+\begin{frame}[fragile]
+ \begin{proofnoend}[ Another proof left for you to study ]
+    The proof is by induction on $k$, the number of distinct eigenvalues.
+    \smallskip
+
+    {\bf Basis.} If $k=1$, then $\{\vec{x}_1\}$ is an independent set because
+    $\vec{x}_1\neq \vec{0}_n$.
+
+    Suppose that for some $k\geq 1$,
+    $\{ \vec{x}_1, \vec{x}_2, \ldots, \vec{x}_k \}$
+    is independent, where $\vec{x}_i$ is an
+    eigenvector of $A$ corresponding to $\lambda_i$, $1\leq i\leq k$,
+    and $\lambda_1, \lambda_2, \ldots, \lambda_k$ are distinct.
+    \alert{(This is the {\bf Inductive Hypothesis}.)}
+    \smallskip
+    Now suppose $\lambda_1, \lambda_2, \ldots, \lambda_{k+1}$ are distinct
+    eigenvalues of $A$ that have corresponding eigenvectors
+    $\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_{k+1}$, respectively.
+    Consider
+    \begin{equation}
+        \label{one}
+        t_1\vec{x}_1 + t_2\vec{x}_2 + \cdots + t_{k+1}\vec{x}_{k+1} =\vec{0}_n,
+        \mbox{ for } t_1, t_2, \ldots , t_{k+1}\in\RR.
+    \end{equation}
+    Multiplying equation~(\ref{one}) by $A$ (on the left) gives us
+\end{proofnoend}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 18
+\frame{
+\begin{proofnoend}[continued]
+    \[ t_1A\vec{x}_1 + t_2A\vec{x}_2 + \cdots + t_{k+1}A\vec{x}_{k+1} =  \vec{0}_n, \]
+    \[\Downarrow\]
+    \begin{equation}
+    t_1\lambda_1\vec{x}_1 + t_2\lambda_2\vec{x}_2 + \cdots + t_{k+1}\lambda_{k+1}\vec{x}_{k+1}
+     =  \vec{0}_n. \label{three}
+    \end{equation}
+    %\vspace*{-.15in}
+
+    Also, multiplying~(\ref{one}) by $\lambda_{k+1}$ gives us
+    %\vspace*{-.15in}
+
+    \begin{equation}
+	t_1\lambda_{k+1}\vec{x}_1 + t_2\lambda_{k+1}\vec{x}_2 + \cdots + t_{k+1}\lambda_{k+1}\vec{x}_{k+1} =\vec{0}_n \label{four},
+    \end{equation}
+    %\vspace*{-.10in}
+
+    and subtracting (\ref{four}) from~(\ref{three}) results in
+    %\vspace*{-.15in}
+
+    \[
+	t_1(\lambda_1 -\lambda_{k+1})\vec{x}_1 +
+	t_2(\lambda_2 -\lambda_{k+1})\vec{x}_2 + \cdots +
+	t_k(\lambda_k-\lambda_{k+1})\vec{x}_k  =  \vec{0}_n.\]
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 19
+\begin{frame}[fragile]
+    \begin{proofnoend}[continued]
+    By the inductive hypothesis,
+    $\{ \vec{x}_1, \vec{x}_2, \ldots, \vec{x}_k\}$ is independent,
+    so
+
+    \[ t_i(\lambda_i-\lambda_{k+1})=0 \mbox{ for } i=1, 2, \ldots k.\]
+
+    Since $\lambda_1, \lambda_2, \ldots, \lambda_k$ are distinct,
+    $(\lambda_i-\lambda_{k+1})\neq 0$ for $i=1, 2,\ldots,k$,
+    and thus
+    $t_i=0$ for $i=1, 2, \ldots, k$.
+    Substituting these values into (\ref{one}) yields
+    \[ t_{k+1}\vec{x}_{k+1}=\vec{0}_n,\]
+    implying that $t_{k+1}=0$, since $\vec{x}_{k+1}\neq \vec{0}_n$.
+    \smallskip
+
+    Therefore, $\{ \vec{x}_1, \vec{x}_2, \ldots, \vec{x}_{k+1} \}$ is an independent
+    set, and the result follows by induction.
+\myQED\end{proofnoend}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 20
+\frame{
+\begin{emptytitle}
+    The next result is an easy consequence of the previous {\bf Theorem}.
+\end{emptytitle}
+\pause
+\begin{theorem}[Covered earlier, but now with a proof]
+    If $A$ is an $n\times n$ matrix with $n$ distinct eigenvalues,
+    then $A$ is diagonalizable.
+\end{theorem}
+\pause
+\begin{proofnoend}
+    Let $\{ \lambda_1, \lambda_2, \ldots, \lambda_n\}$ denote the
+    $n$ (distinct) eigenvalues of $A$, and let $\vec{x}_i$ be
+    an eigenvector of $A$ corresponding to $\lambda_i$, $1\leq i\leq n$.
+    By the previous {\bf Theorem}, $\{ \vec{x}_1, \vec{x}_2, \ldots, \vec{x}_n\}$
+    is an independent set.
+    A subset of $n$ linearly independent vectors of $\RR^n$ also
+    spans $\RR^n$, and thus
+    $\{ \vec{x}_1, \vec{x}_2, \ldots, \vec{x}_n\}$
+    is a basis of $\RR^n$.
+    Thus $A$ is diagonalizable.
+    \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 21
+\frame{
+\begin{problem}
+    Is the matrix
+    \[ A=\left[\begin{array}{rrr}
+    0 & -1 & 1 \\ 8 & 6 & -2 \\ 0 & 0 & -3
+    \end{array}\right]\]
+    diagonalizable?
+\end{problem}
+\vfill
+\pause
+\begin{solution}
+    Because $A$ has characteristic polynomial
+    \[ c_A(x) =(x+3)(x-2)(x-4), \]
+    $A$ has distinct eigenvalues $-3, 2$ and $4$.
+    \medskip
+
+    Since $A$ has three distinct eigenvalues, $A$ is diagonalizable.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 22
+\frame{
+\begin{problem}[Covered earlier, but with different wording]
+    Is $A=\left[\begin{array}{rrr}
+    0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{array}\right]$
+ diagonalizable?  Explain.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    First, $c_A(x)=(x-2)(x+1)^2$, so the eigenvalues of $A$ are
+    $\lambda_1=2$,$\lambda_2=-1$, and $\lambda_3=-1$.
+    Since the eigenvalues are not distinct, it isn't immediately
+    obvious that $A$ is diagonalizable.
+    The general solution to $(-I-A)\vec{x}=\vec{0}_3$:
+    %\vspace*{-.09in}
+    \[
+	\left[\begin{array}{rrr|r}
+		-1 & -1 & -1 & 0 \\ -1 & -1 & -1 & 0 \\ -1 & -1 & -1 & 0
+	\end{array}\right]
+	\rightarrow
+	\left[\begin{array}{rrr|r}
+		1 & 1 & 1 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0
+	\end{array}\right]
+    \]
+    is $x_1=-s-t, x_2=s$, and $x_3=t$ for $s,t\in\RR$, leading
+    to {\em basic} solutions
+    \[
+	\left[\begin{array}{r} -1 \\ 1 \\ 0 \end{array}\right] \quad\text{and}\quad
+	\left[\begin{array}{r} -1 \\ 0 \\ 1 \end{array}\right]
+    \]
+    that are linearly independent. Therefore, there is a basis of $\RR^3$ consisting of
+    eigenvectors of $A$, so $A$ is diagonalizable.
+    \myQED
+    \end{solution}
+}
+
+
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Algebraic and Geometric Multiplicities}}
+%-------------- start slide -------------------------------%{{{ 23
+\frame{
+\frametitle{Algebraic and Geometric Multiplicities}
+\pause
+\begin{lemma}[Technical but useful]
+    Let $A$ be an $n\times n$ matrix, with independent
+    eigenvectors $\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_k\}$.
+    Extend $\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_k\}$ to a
+    basis
+    $\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_k, \ldots, \vec{x}_n\}$
+    of $\RR^n$,
+    and let
+    $P=\left[\begin{array}{cccc}
+    \vec{x}_1 & \vec{x}_2 & \cdots & \vec{x}_n \end{array}\right]$.
+    If $\lambda_1, \lambda_2, \ldots, \lambda_k$ are the
+    (not necessarily distinct) eigenvalues corresponding to
+    $\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_k$,
+    then
+    \[
+	P^{-1}AP=
+	\left[\begin{array}{cc}
+	    \diag(\lambda_1,\ldots,\lambda_k) & B \\
+	    0_{(n-k)\times k}                 & A_1
+	\end{array}\right],
+    \]
+    where $B$ is an $k\times(n-k)$ matrix and $A_1$ is an
+    $(n-k)\times (n-k)$ matrix.
+\end{lemma}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 24
+\begin{frame}[fragile]
+   \begin{proofnoend}
+    \footnotesize
+    \begin{eqnarray*}
+	\hspace{-2em}
+	\textcolor{red}{\left[ \begin{array}{c|c|c|c|c|c} A\vec{x}_1 & \cdots& A\vec{x}_k &A\vec{x}_{k+1} & \cdots & A\vec{x}_n \end{array} \right]} & \textcolor{red}{=} &
+	\textcolor{red}{\left[ \begin{array}{c|c|c|c|c|c}
+	\lambda_1\vec{x}_1 &
+	\cdots &
+	\lambda_k\vec{x}_k &
+	A\vec{x}_{k+1} &
+	\cdots &
+	A\vec{x}_n \end{array} \right]} \\
+	||\hspace{ 5em } 		 &&\\
+	\textcolor{red}{A} \: \textcolor{yellow}{\left[ \begin{array}{c|c|c|c} \vec{x}_1 &  \vec{x}_2  & \cdots &  \vec{x}_n \end{array} \right]}
+	&  & \hspace{4em}||
+    \end{eqnarray*}
+    \pause
+    \begin{align*}
+	\textcolor{yellow}{\left[ \begin{array}{c|c|c|c|c|c} \vec{x}_1 &  \cdots  & \vec{x}_k & \vec{x}_{k+1}&\cdots&  \vec{x}_n \end{array} \right]}
+	\textcolor{blue}{\left[ \begin{array}{ccc|ccc}
+	    \lambda_1 &        &           & a_{1,k+1}   & \cdots &  a_{1,k+1}   \\
+                      & \ddots &           & \vdots      & \vdots &  \vdots      \\
+                      &        & \lambda_k & a_{k,k+1}   & \cdots &  a_{k,k+1}   \\ \hline
+                      &        &           & a_{k+1,k+1} & \cdots &  a_{k+1,k+1} \\
+                      & 0      &           & \vdots      & \vdots &  \vdots      \\
+                      &        &           & a_{n,k+1}   & \cdots &  a_{n,k+1}
+    \end{array}
+	  \right]}
+    \end{align*}
+    \pause
+    \[
+	\hspace{23em}\uparrow\hspace{3em}\cdots\hspace{3em}\uparrow
+    \]
+    \[
+	\textcolor{blue}{\hspace{23em} P^{-1}A\vec{x}_{k+1} \hspace{1em}\cdots\hspace{2em} P^{-1}A\vec{x}_{n}}
+    \]
+    \pause
+    \[
+	\Updownarrow
+    \]
+    \[
+    \textcolor{red}{A} \textcolor{yellow}{P} = \textcolor{yellow}{P}
+	\textcolor{blue}{
+	\left[\begin{array}{cc}
+	    \diag(\lambda_1,\ldots,\lambda_k) & B \\
+	    0_{(n-k)\times k}                 & A_1
+	\end{array}\right]
+	}
+    \]
+    \pause
+    \[
+	\Updownarrow
+    \]
+    \[
+	\textcolor{yellow}{P^{-1}} \textcolor{red}{A} \textcolor{yellow}{P} =
+	\textcolor{blue}{
+	\left[\begin{array}{cc}
+	    \diag(\lambda_1,\ldots,\lambda_k) & B \\
+	    0_{(n-k)\times k}                 & A_1
+	\end{array}\right]
+	}
+    \]
+   \myQED\end{proofnoend}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 25
+\frame{
+    \begin{proofnoend}[Another proof]
+Recall that $\{ \vec{e}_1, \vec{e}_2,\ldots,\vec{e}_n\}$ is the standard
+basis of $R_n$.
+Since $I_n=P^{-1}P$,
+\begin{eqnarray*}
+\left[\begin{array}{cccc}
+\vec{e}_1 & \vec{e}_2 & \cdots & \vec{e}_n \end{array}\right] = P^{-1}P
+& = & P^{-1}
+\left[\begin{array}{cccc}
+\vec{x}_1 & \vec{x}_2 & \cdots & \vec{x}_n \end{array}\right] \\
+& = &
+\left[\begin{array}{cccc}
+P^{-1}\vec{x}_1 & P^{-1}\vec{x}_2 & \cdots & P^{-1}\vec{x}_n \end{array}\right]
+\end{eqnarray*}
+Thus for each $j$, $1\leq j\leq n$, $P^{-1}\vec{x}_j=\vec{e}_j$.
+Also,
+\begin{eqnarray*}
+P^{-1}AP & = &
+P^{-1}A
+\left[\begin{array}{cccc}
+\vec{x}_1 & \vec{x}_2 & \cdots & \vec{x}_n \end{array}\right] \\
+& = &
+\left[\begin{array}{cccc}
+P^{-1}A\vec{x}_1 & P^{-1}A\vec{x}_2 & \cdots & P^{-1}A\vec{x}_n
+\end{array}\right],
+\end{eqnarray*}
+so the $j^th$ column of $P^{-1}AP$, $1\leq j\leq k$, is equal to
+\[ P^{-1}(A\vec{x}_j)
+=  P^{-1}(\lambda_j\vec{x}_j)
+=  \lambda_j(P^{-1}\vec{x}_j)
+= \lambda_j\vec{e}_j.\]
+This gives us the first $k$ columns of $P^{-1}AP$, and the
+result follows.
+\myQED\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 26
+\frame{
+\begin{definition}
+  Let $A$ be an $n\times n$ matrix and $\lambda\in\RR$.
+  The \textcolor{red}{eigenspace of $A$ corresponding to $\lambda$}
+  is the set
+  \[ E_{\lambda}(A)
+  = \{\vec{x}\in\RR^n ~|~ A\vec{x}
+  = \lambda\vec{x}\}.\]
+\end{definition}
+\pause
+\vfill
+\begin{remark}
+  \begin{enumerate}
+    \item The eigenspace $E_{\lambda}(A)$ is indeed a subspace of $\R^n$ because
+    \begin{align*}
+      E_{\lambda}(A)
+      = \{\vec{x}\in\RR^n ~ | ~ A\vec{x}=\lambda\vec{x}\}
+      = \{\vec{x}\in\RR^n ~ | ~ (\lambda I-A)\vec{x}=\vec{0}_n\}
+      = \nul(\lambda I-A).
+    \end{align*}
+    \item If $\lambda$ is not an eigenvalue of $A$, then $E_\lambda(A)=\{0\}$.
+  \end{enumerate}
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 27
+\frame{
+\begin{definition}
+  \begin{enumerate}
+    \item If $A$ is an $n\times n$ matrix and $\lambda$ is an eigenvalue of
+      $A$, then the \alert{(algebraic) multiplicity of $\lambda$} is the
+      largest value of $m$ for which \[ c_A(x)=(x-\lambda)^mg(x)\] for some
+      polynomial $g(x)$, i.e., the multiplicity of $\lambda$ is the number of
+      times that $\lambda$ occurs as a root of $c_A(x)$.
+    \item $\dim(E_\lambda(A))$ is called the \textcolor{lgtblue}{geometric
+      multiplicity} of $\lambda$.
+  \end{enumerate}
+\end{definition}
+\pause
+\vfill
+\begin{lemma}
+  If $A$ is an $n\times n$ matrix, and $\lambda$ is an
+  eigenvalue of $A$ of multiplicity $m$, then
+  \[ \textcolor{lgtblue}{\dim(E_{\lambda}(A))} \leq \alert{m} ,\]
+  \pause
+  that is,
+  \begin{align*}
+    \text{\textcolor{lgtblue}{Geometric multiplicity}} \le
+    \text{\textcolor{red}{Algebraic multiplicity}}.
+  \end{align*}
+ \end{lemma}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 28
+\frame{
+\begin{proofnoend}
+  Let $d=\dim(E_{\lambda}(A))$, and let
+  $\{ \vec{x}_1, \vec{x}_2,\ldots,\vec{x}_d\}$ be a basis of
+  $E_{\lambda}(A)$.
+  As a consequence, we know that there exists
+  an invertible $n\times n$ matrix $P$ so that
+  \[ P^{-1}AP=\left[\begin{array}{cc}
+    \diag(\lambda,\ldots,\lambda) & B \\
+    0_{(n-d)\times d}             & A_1
+    \end{array}\right]
+  =\left[\begin{array}{cc}
+    \lambda I_d       & B \\
+    0_{(n-d)\times d} & A_1
+  \end{array}\right] \]
+  where $B$ is $d\times (n-d)$ and $A_1$ is $(n-d)\times(n-d)$.
+  \medskip
+
+  Define $A^{\prime}=P^{-1}AP$.
+  Then $A\sim A^{\prime}$, so $A$ and $A^{\prime}$
+  have the same characteristic polynomial.
+  Thus
+  %\vspace*{-.25in}
+
+  \begin{eqnarray*}
+    c_A(x)=c_{A^{\prime}}(x) =  \det(xI-A^{\prime})
+    & = & \det\left[\begin{array}{cc} (x-\lambda) I_d & -B \\ 0_{(n-d)\times d} & xI_{n-d}-A_1 \end{array}\right] \\
+    & = & \det[(x-\lambda) I_d]\det(xI_{n-d}-A_1) \\
+    & = & (x-\lambda)^d c_{A_1}(x)\\
+    & = & (x-\lambda)^d g(x).
+  \end{eqnarray*}
+  Since $\lambda$ has multiplicity $m$, $d\leq m$, and therefore
+  $\dim(E_{\lambda}(A))\leq m$ as required.
+  \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Characterizing Diagonalizable Matrices}}
+%-------------- start slide -------------------------------%{{{ 29
+\frame{
+\frametitle{Characterizing Diagonalizable Matrices}
+\pause
+\begin{emptytitle}
+  The crucial consequence of this {\bf Lemma} is the
+  characterization of matrices that are diagonalizable.
+\end{emptytitle}
+\pause
+\vfill
+\begin{theorem}[Covered earlier, here with new terminology]
+  For an $n\times n$ matrix $A$, the following two conditions
+  are equivalent.
+  \begin{enumerate}
+    \item $A$ is diagonalizable.
+    \item For each eigenvalue $\lambda$ of $A$, $\dim(E_{\lambda}(A))$ is equal
+      to the multiplicity of $\lambda$, i.e.,
+  \end{enumerate}
+\end{theorem}
+\vfill
+\pause
+\begin{emptytitle}
+  \[\text{Diagonalizable}\]
+  \[\Updownarrow\]
+  \begin{align*}
+    \text{\textcolor{lgtblue}{Geometric multiplicity}} =
+    \text{\textcolor{red}{Algebraic multiplicity}},\quad\text{for all $\lambda$.}
+  \end{align*}
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 30
+\frame{
+\begin{problem}[Covered earlier, here with new terminology]
+  If possible, diagonalize the matrix
+  $A=\left[\begin{array}{rrr}
+    3  & 1 & 6 \\
+    2  & 1 & 0 \\
+    -1 & 0 & -3
+  \end{array}\right]$.
+  Otherwise, explain why $A$ is not diagonalizable.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+  $c_A(x)=(x-3)(x+1)^2$, so $A$ has eigenvalues
+  $\lambda_1 =3$, $\lambda_2=\lambda_3=-1$.
+  Find the dimension of $E_{-1}(A)$ by solving the linear
+  system $(-I-A)\vec{x}=\vec{0}_3$.
+  \[
+    \left[\begin{array}{rrr|c}
+      4  & -1 & -6 & 0 \\
+      -2 & -2 & 0  & 0 \\
+      1  & 0  & 2  & 0
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr|c}
+      1 & 0 & 2  & 0 \\
+      0 & 1 & -2 & 0 \\
+      0 & 0 & 0  & 0
+    \end{array}\right].
+  \]
+  From this, we see that $\textcolor{lgtblue}{\dim(E_{-1}(A))=1}$.
+  Since $-1$ is an eigenvalue of multiplicity \textcolor{red}{two}, $A$ is not
+  diagonalizable.
+  \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 31
+\frame{
+\begin{problem}[Covered earlier, here with new terminology]
+  Let
+  \[A=\left[\begin{array}{rrr}
+    1 & 0 & 1 \\
+    0 & 1 & 0 \\
+    0 & 0 & 2
+  \end{array}\right]
+  \quad\text{and}\quad
+  B=\left[\begin{array}{rrr}
+    1 & 1 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 2
+  \end{array}\right].\]
+  Show that $A$ is diagonalizable, and that $B$ is not
+  diagonalizable.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+  Both $A$ and $B$ are triangular matrices, so we immediately
+  see that $A$ and $B$ have the same eigenvalues:
+  $\lambda_1=\lambda_2=1$ and $\lambda_3=2$.
+  Thus for each
+  matrix, $1$ is an eigenvalue of multiplicity \textcolor{red}{two}.
+  \bigskip
+
+  Solving the system $(I-A)\vec{x}=\vec{0}_3$:
+  \[
+    \left[\begin{array}{rrr}
+        0 & 0 & 1 \\
+        0 & 0 & 0 \\
+        0 & 0 & -1
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr}
+        0 & 0 & 1 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+    \end{array}\right],
+  \]
+  we see that there are two parameters in the general
+  solution, so $\textcolor{lgtblue}{\dim(E_1(A))=2}$.
+  Therefore, $A$ is diagonalizable.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 32
+\frame{
+\begin{solution}[continued]
+  Solving the system $(I-B)\vec{x}=\vec{0}_3$:
+  \[
+    \left[\begin{array}{rrr}
+        0 & -1 & 0 \\
+        0 & 0  & 0 \\
+        0 & 0  & -1
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        0 & 0 & 0
+    \end{array}\right],
+  \]
+  we see that the general solution
+  has only one parameter, so $\textcolor{lgtblue}{\dim(E_1(B))=1}$.
+  However, the algebraic multiplicity of $\lambda=1$ is \alert{2}.
+  Therefore, $B$ is not diagonalizable.
+  \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Complex Eigenvalues}}
+%-------------- start slide -------------------------------%{{{ 33
+\frame{
+\frametitle{Complex Eigenvalues}
+\pause
+\begin{emptytitle}
+    If a matrix has eigenvalues that have imaginary parts
+    (and aren't simply real numbers),
+    we can still find eigenvectors and
+    possibly diagonalize the matrix.
+\end{emptytitle}
+\pause
+\begin{problem}
+    Diagonalize, if possible, the matrix
+    $A=\left[\begin{array}{rr}
+        1  & 1 \\
+        -1 & 1
+    \end{array}\right]$.
+\end{problem}
+\pause
+\begin{solution}
+    \[
+        c_A(x) = \det(xI-A)
+               = \left| \begin{array}{cc}
+                    x-1 & -1 \\
+                    1 & x-1
+                 \end{array}\right|
+               = x^2-2x+2.\]
+    The roots of $c_A(x)$ are
+    \textcolor{blue}{distinct complex numbers}:
+    $\lambda_1=1+i$ and $\lambda_2=1-i$, so $A$ is diagonalizable.
+    Corresponding eigenvectors are
+    \[ \vec{x}_1=\left[\begin{array}{c} -i \\ 1 \end{array}\right]
+    \quad\text{and}\quad
+    \vec{x}_2=\left[\begin{array}{c} i \\ 1 \end{array}\right],\]
+    respectively.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 34
+\frame{
+\begin{solution}[continued]
+    A diagonalizing matrix for $A$ is
+    \[
+    P=\left[\begin{array}{cc}
+	-i & i \\
+	1  & 1
+    \end{array}\right],\]
+    and
+    \[ P^{-1}AP=\left[\begin{array}{cc}
+	1+i & 0 \\
+	0   & 1-i
+    \end{array}\right].\]
+    \myQED
+\end{solution}
+\pause
+\vfill
+\begin{remark}
+    Notice that $A$ is a real matrix, but has complex eigenvalues (and eigenvectors).
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Eigenvalues of Real Symmetric Matrices}}
+%-------------- start slide -------------------------------%{{{ 35
+\frame{
+\frametitle{Eigenvalues of Real Symmetric Matrices}
+\pause
+\begin{theorem}
+    The eigenvalues of any \textcolor{yellow}{real symmetric} matrix are \textcolor{yellow}{real}.
+\end{theorem}
+\pause
+\begin{proofnoend}
+Let $A$ be an $n\times n$ real symmetric matrix, and let
+$\lambda$ be an eigenvalue of $A$.
+To prove that $\lambda$ is real, it is enough to prove
+that $\overline{\lambda}=\lambda$, i.e., $\lambda$ is
+equal to its (complex) conjugate.
+\medskip
+
+We use $\overline{A}$ to denote the matrix obtained from $A$
+by replacing each entry by its conjugate.
+Since $A$ is real, $\overline{A}=A$.
+\medskip
+
+Suppose
+\[\vec{x}= \left[\begin{array}{c} z_1 \\ z_2 \\ \vdots \\ z_n
+\end{array}\right]\]
+is a $\lambda$-eigenvector of $A$.
+Then $A\vec{x}=\lambda\vec{x}$.
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 36
+\frame{
+\begin{proofnoend}[continued]
+    Let
+    $c=\vec{x}^T{\overline{\vec{x}} }
+    =\left[\begin{array}{cccc}
+    z_1 & z_2 & \cdots & z_n \end{array}\right]
+    \left[\begin{array}{c} \overline{z}_1 \\ \overline{z}_2 \\
+    \vdots \\ \overline{z}_n \end{array}\right]$.
+    \smallskip
+
+    Then
+    $c= z_1 \overline{z}_1 + z_2 \overline{z}_2 + \cdots +
+    z_n \overline{z}_n
+    = |z_1|^2 + |z_2|^2 + \cdots + |z_n|^2$;
+    since $\vec{x}\neq \vec{0}$,
+    $c$ is a positive real number.
+    Now
+    \begin{eqnarray*}
+	\lambda c & = & \lambda(\vec{x}^T{\overline{\vec{x}} })
+	=(\lambda\vec{x}^T){\overline{\vec{x}} }
+	=(\lambda\vec{x})^T{\overline{\vec{x}} } \\
+		  & = & (A\vec{x})^T{\overline{\vec{x}} } = \vec{x}^T A^T {\overline{\vec{x}} } \\
+		  & = &\vec{x}^T A {\overline{\vec{x}} }\qquad \mbox{\textcolor{yellow}{ (since $A$ is symmetric)}} \\
+		  & = & \vec{x}^T ~\overline{A}~ {\overline{\vec{x}} }\qquad \mbox{\textcolor{yellow}{ (since $A$ is real)}} \\
+		  & = & \vec{x}^T (\overline{A{\vec{x}} }) = \vec{x}^T (\overline{\lambda{\vec{x}} }) = \vec{x}^T ~\overline{\lambda}~{\overline{\vec{x}} } \\
+		  & = & \overline{\lambda} (\vec{x}^T {\overline{\vec{x}} }) \\
+		  & = & \overline{\lambda} c.
+    \end{eqnarray*}
+    Thus, $\lambda c = \overline{\lambda} c$.
+    Since $c\neq 0$, it follows that
+    $\lambda = \overline{\lambda}$, and therefore $\lambda$ is real.
+    \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+\end{document}

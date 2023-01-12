@@ -1,0 +1,823 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 7. Linear Transformations \\ \S  7-1. Examples and Elementary Properties}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{What is a Linear Transformations}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{What is a Linear Transformation?}
+\pause
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+    \draw (0,0) [dkgreenvect,thick] ellipse (0.75cm and 1.25cm) node[below right=0.5cm,font=\footnotesize,text=white]{$V$};
+    \draw (3.5,0) [dkgreenvect,thick] ellipse (1.25cm and 0.75cm) node[below right=0.5cm,font=\footnotesize,text=white]{$W$};
+    \draw[-latex, dkgreenvect, thick](0,0)..controls (1.25,0.5) and (2,0.5)..(3.5,0) node[above,midway,font=\footnotesize,text=black,text=white]{$T$};
+    \fill[black] (0,0) circle (2pt) node[below,font=\footnotesize,text=white]{$\vec{v}$};
+    \fill[black] (3.5,0) circle (2pt) node[below,font=\footnotesize,text=white]{$T(\vec{v})$};
+\end{tikzpicture}
+\end{center}
+\begin{definition}
+    Let $V$ and $W$ be vector spaces, and $T:V\rightarrow W$ a
+    function.
+    Then $T$ is called a \alert{linear transformation} if it satisfies
+    the following two properties.
+    \begin{enumerate}
+	\item \textcolor{blue}{$T$ preserves addition.}
+
+	    For all $\vec{v}_1,\vec{v}_2\in V$,
+	    $T(\vec{v}_1 + \vec{v}_2)=T(\vec{v}_1) + T(\vec{v}_2)$.
+	\item \textcolor{blue}{$T$ preserves scalar multiplication.}
+
+	    For all $\vec{v}\in V$ and $r\in\RR$,
+	    $T(r\vec{v})=rT(\vec{v})$.
+    \end{enumerate}
+\end{definition}
+\vfill
+\pause
+\begin{remark}
+    Note that the sum $\vec{v}_1 + \vec{v}_2$ is in $V$, while the
+    sum $T(\vec{v}_1) + T(\vec{v}_2)$ is in $W$.
+    Similarly, $r\vec{v}$ is scalar multiplication in $V$, while
+    $rT(\vec{v})$ is scalar multiplication in $W$.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\frame{
+\begin{theorem}[ Linear Transformations from $\RR^n$ to $\RR^m$ ]
+    If $T:\RR^n\rightarrow\RR^m$ is a linear transformation,
+    then $T$ is induced by an $m\times n$ matrix
+    \[ A=\left[\begin{array}{cccc}
+	    T(\vec{e}_1) & T(\vec{e}_2) & \cdots & T(\vec{e}_n)
+    \end{array}\right],\]
+    where $\{ \vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n\}$ is the
+    standard basis of $\RR^n$,
+    and thus for each $\vec{x}\in\RR^n$
+    \[ T(\vec{x})=A\vec{x}.\]
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5
+\begin{frame}[fragile]
+\begin{example}
+    $T:\RR^3\to\RR^2$ is defined by
+    $T\left[\begin{array}{c} x \\ y \\ z \end{array}\right]
+    =
+    \left[\begin{array}{c} x+y \\ x-z \end{array}\right]$
+    for all
+    $\left[\begin{array}{c} x \\ y \\ z \end{array}\right] \in\RR^3$.
+    \medskip
+
+    One can
+    \alert{show that $T$ preserves addition and scalar multiplication},
+    and hence is a linear transformation.
+    Therefore, the matrix that induces $T$ is
+    \[ A=\left[\begin{array}{ccc}
+	    T\left[\begin{array}{c} 1 \\ 0 \\ 0 \end{array}\right] &
+	    T\left[\begin{array}{c} 0 \\ 1 \\ 0 \end{array}\right] &
+	    T\left[\begin{array}{c} 0 \\ 0 \\ 1 \end{array}\right]
+    \end{array}\right]
+    =
+    \left[\begin{array}{rrr}
+	    1 & 1 & 0 \\ 1 & 0 & -1
+    \end{array}\right].  \]
+    \end{example}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\begin{remark}[ Notation and Terminology ]
+    \begin{enumerate}
+	\item If $A$ is an $m\times n$ matrix, then
+	    $T_A:\RR^n\to\RR^m$ defined by
+	    \[ T_A(\vec{x})=A\vec{x}\mbox{ for all } \vec{x}\in\RR^n\]
+	    is the linear (or matrix) transformation induced by $A$.
+	\item
+	    Let $V$ be a vector space.
+	    A linear transformation $T:V\to V$ is called a
+	    \alert{linear operator on $V$.}
+    \end{enumerate}
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Examples and Problems}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+\frametitle{Examples and Problems}
+\begin{example}
+    Let $V$ and $W$ be vector spaces.
+    \begin{enumerate}
+        \item \textcolor{blue}{The zero transformation.}\\[1em]
+
+	    $0:V\to W$ is defined by $0(\vec{x})=\vec{0}$ for all $\vec{x}\in V$.\\[1em]
+	    \pause
+	\item \textcolor{blue}{The identity operator on $V$.}\\[1em]
+
+	    $1_V:V\to V$ is defined by $1_V(\vec{x})=\vec{x}$ for all $\vec{x}\in V$.\\[1em]
+	    \pause
+	\item \textcolor{blue}{The scalar operator on $V$.}\\[1em]
+	    Let $a\in\RR$. $s_a:V\to V$ is defined by $s_a(\vec{x})=a\vec{x}$ for all $\vec{x}\in V$.
+    \end{enumerate}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+\begin{problem}
+    For vector spaces $V$ and $W$,
+    prove that the zero transformation $0$, the identity operator $1_V$,
+    and the scalar operator $s_a$ are linear transformations.
+\end{problem}
+\pause
+\vfill
+\begin{solution}[ the scalar operator ]
+    Let $V$ be a vector space and let $a\in\RR$.
+    \pause
+    \begin{enumerate}
+        \item Let $\vec{u}, \vec{w}\in V$.
+            Then $s_a(\vec{u})=a\vec{u}$ and $s_a(\vec{w})=a\vec{w}$.
+            Now
+            \[ s_a(\vec{u}+\vec{w})=a(\vec{u}+\vec{w}) = a\vec{u} + a\vec{w} =
+            s_a(\vec{u})+s_a(\vec{w}),\]
+            and thus $s_a$ preserves addition.
+            \pause
+        \item Let $\vec{u}\in V$ and $k\in\RR$.
+            Then $s_a(\vec{u})=a\vec{u}$.
+            Now
+            \[ s_a(k\vec{u})=ak\vec{u}=ka\vec{u}=ks_a(\vec{u}),\]
+            and thus $s_a$ preserves scalar multiplication.
+    \end{enumerate}
+    \pause
+    Since $s_a$ preserves addition and scalar multiplication, $s_a$ is a linear
+    transformation.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\frame{
+\begin{problem}[Matrix transposition]
+    Let $R:\bm{M}_{nn}\to \bm{M}_{nn}$ be a transformation defined by
+    \[ R(A)=A^T \mbox{ for all } A\in \bm{M}_{nn}.\]
+    Show that $R$ is a linear transformation.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    \begin{enumerate}
+      \item Let $A, B\in\bm{M}_{nn}$.
+          Then $R(A)=A^T$ and $R(B)=B^T$, so
+          \[ R(A+B) = (A+B)^T =A^T + B^T  =R(A)+R(B).\]
+          \pause
+      \item Let $A\in\bm{M}_{nn}$ and let $k\in\RR$.
+          Then $R(A)=A^T$, and
+          \[ R( kA) = (kA)^T = kA^T =kR(A).\]
+    \end{enumerate}
+    \pause
+    Since $R$ preserves addition and scalar multiplication,
+    $R$ is a linear transformation.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\frame{
+\begin{problem}[Evaluation at a point]
+    For each $a\in \RR$, the transformation
+    $E_a:{\cal P}_n \to \RR$ is defined by
+    \[ E_a(p)=p(a)\mbox{ for all }p\in {\cal P}_n.\]
+    Show that $E_a$ is a linear transformation.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    \begin{enumerate}
+      \item Let $p, q\in{\cal P}_n$.
+          Then $E_a(p)=p(a)$ and $E_a(q)=q(a)$, so
+          \[ E_a(p+q) = (p+q)(a) = p(a) + q(a) = E_a(p) + E_a(q).\]
+          \pause
+      \item Let $p\in{\cal P}_n$ and $k\in\RR$.
+          Then $E_a(p)=p(a)$ and
+          \[ E_a(kp) = (kp)(a) = kp(a) = kE_a(p).\]
+    \end{enumerate}
+    \pause
+    Since $E_a$ preserves addition and scalar multiplication,
+    $E_a$ is a linear transformation.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 11
+\frame{
+\begin{problem}
+    Let $S:\bm{M}_{nn}\to \RR$ be a transformation defined by
+    %\vspace*{-.15in}
+
+    \[ S(A)=\trace(A) \mbox{ for all } A\in \bm{M}_{nn}.\]
+    %\vspace*{-.20in}
+
+    Prove that $S$ is a linear transformation.
+\end{problem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\begin{frame}[fragile]
+\begin{solution}
+	Let $A=[a_{ij}]$ and $B=[b_{ij}]$ be $n\times n$ matrices.
+	Then
+	%\vspace*{-.15in}
+
+	\[ S(A)=\sum_{i=1}^n a_{ii}\quad\text{and}\quad
+	S(B)=\sum_{i=1}^n b_{ii}.\]
+	%\vspace*{-.22in}
+    \pause
+
+    \begin{enumerate}
+	\item Since $A+B=[ a_{ij}+b_{ij} ]$,
+	    \[ S(A+B) = \trace(A+B) = \sum_{i=1}^n (a_{ii}+b_{ii})
+		=\left(\sum_{i=1}^n a_{ii}\right) + \left(\sum_{i=1}^n b_{ii}\right)
+	    =S(A)+S(B).\]
+	\pause
+	\item Let $k\in\RR$. Since $kA=[ ka_{ij} ]$,
+	    \[ S(kA) = \trace(kA) = \sum_{i=1}^n ka_{ii}
+	    =k\sum_{i=1}^n a_{ii} = kS(A).  \]
+    \end{enumerate}
+    \pause
+    Therefore, $S$ preserves addition and scalar multiplication, and thus
+    is a linear transformation.
+    \myQED
+    \end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 13
+\begin{frame}[fragile]
+\begin{problem}
+Show that the differentiation\index{differentiation}\index{linear
+transformations!differentiation} and
+integration\index{integration}\index{linear transformations!integration}
+operations on $\bm{P}_{n}$ are linear transformations. More precisely,
+\begin{align*}
+  D & : \bm{P}_n \to \bm{P}_{n-1} \quad \mbox{where } D\left[p(x)\right] = p^\prime(x) \mbox{ for all } p(x) \mbox{ in } \bm{P}_n \\
+  I & : \bm{P}_n \to \bm{P}_{n+1} \quad \mbox{where } I\left[p(x)\right] = \int_{0}^{x}p(t)dt \mbox{ for all } p(x) \mbox{ in } \bm{P}_n
+\end{align*}
+are linear transformations.
+\end{problem}
+\vfill
+\pause
+\begin{solution}[Sketch]
+\begin{align*}
+  \left[p(x) + q(x)\right]^\prime = p^\prime(x) + q^\prime(x) &,&\left[rp(x)\right]^\prime = (rp)^\prime(x) \\[1em]
+  \int_{0}^{x}\left[p(t) + q(t)\right]dt = \int_{0}^{x}p(t)dt + \int_{0}^{x}q(t)dt &,& \int_{0}^{x}rp(t)dt = r\int_{0}^{x}p(t)dt
+\end{align*}
+\myQED
+\end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Properties of Linear Transformations}}
+%-------------- start slide -------------------------------%{{{ 13
+\frame{
+\frametitle{Properties of Linear Transformations}
+\pause
+\begin{theorem}
+    Let $V$ and $W$ be vector spaces, and $T:V\to W$ a linear
+    transformation.
+    Then
+    \begin{enumerate}
+	\item \textcolor{blue}{$T$ preserves the zero vector.}
+	    $T(\vec{0})=\vec{0}$.\\[1em]
+	\item \textcolor{blue}{$T$ preserves additive inverses.}
+	    For all $\vec{v}\in V$, $T(-\vec{v})= -T(\vec{v})$.\\[1em]
+	\item \textcolor{blue}{$T$ preserves linear combinations.}\\
+	    For all $\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_m \in V$ and
+	    all $k_1, k_2, \ldots, k_m\in\RR$,
+	    \[ T(k_1\vec{v}_1 + k_2\vec{v}_2 + \cdots + k_m\vec{v}_m)
+	    = k_1T(\vec{v}_1) + k_2T(\vec{v}_2) + \cdots + k_mT(\vec{v}_m).\]
+    \end{enumerate}
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 14
+\frame{
+\begin{proofnoend}
+\begin{enumerate}
+% \setcounter{enumi}{1}
+	\item Let $\vec{0}_V$ denote the zero vector of $V$ and let
+      $\vec{0}_W$ denote the zero vector of $W$. We want to prove that
+      $T(\vec{0}_V)=\vec{0}_W$. Let $\vec{x}\in V$. Then $0\vec{x}=\vec{0}_V$
+      and \[ T(\vec{0}_V)=T(0\vec{x})=0T(\vec{x})=\vec{0}_W.\]
+      \pause
+\item Let $\vec{v}\in V$; then $-\vec{v}\in V$ is the additive
+inverse of $\vec{v}$, so $\vec{v} + (-\vec{v})=\vec{0}_V$.
+Thus
+\begin{eqnarray*}
+    T(\vec{v} + (-\vec{v})) & = & T(\vec{0}_V) \\
+    T(\vec{v}) + T(-\vec{v})) & = & \vec{0}_W \\
+    T(-\vec{v}) & = & \vec{0}_W - T(\vec{v}) =  - T(\vec{v}).
+\end{eqnarray*}
+\pause
+\item This result follows from
+preservation of addition and preservation of scalar multiplication.
+A formal proof would be by induction on $m$.
+\end{enumerate}
+\myQED\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 15
+\frame{
+\begin{problem}
+    Let $T:{\cal P}_2 \to \RR$ be a linear transformation such that
+    \[ T(x^2+x)=-1;\quad T(x^2-x)=1;\quad T(x^2+1)=3.\]
+    Find $T(4x^2+5x-3)$.
+\end{problem}
+\pause
+\vfill
+\begin{solution}[ first ]
+    Suppose
+    $a(x^2+x) + b(x^2-x) + c(x^2+1) = 4x^2+5x-3$.
+    Then
+    \[ (a+b+c)x^2 + (a-b)x + c = 4x^2+5x-3.\]
+    \pause
+    Solving for $a$, $b$, and $c$ results in the unique solution
+    $a=6$, $b=1$, $c=-3$.
+    \pause
+    Thus
+    \begin{eqnarray*}
+    T(4x^2+5x-3) & = & T\left( 6(x^2+x) + (x^2-x) -3(x^2+1) \right) \\
+		 & = & 6T(x^2+x) + T(x^2-x) -3T(x^2+1) \\
+		 & = & 6(-1) + 1 -3(3) = -14. \\
+    \end{eqnarray*}
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 16
+\frame{
+\begin{solution}[ second ]
+    Notice that
+    $S=\{ x^2+x, x^2-x, x^2+1\}$ is a basis of ${\cal P}_2$, and
+    thus $x^2$, $x$, and $1$ can each be written as a linear
+    combination of elements of $S$.
+    \pause
+    \begin{eqnarray*}
+    x^2 & = & \textstyle \frac{1}{2}(x^2+x) + \frac{1}{2}(x^2-x) \\
+    x & = & \textstyle \frac{1}{2}(x^2+x) - \frac{1}{2}(x^2-x) \\
+    1 & = & (x^2+1)-\textstyle \frac{1}{2}(x^2+x) - \frac{1}{2}(x^2-x).
+    \end{eqnarray*}
+    \pause
+    \vspace*{-1.5em}
+    \[\Downarrow\]
+    \vspace*{-1.5em}
+    \begin{eqnarray*}
+    T(x^2) & = & \textstyle T\left(\frac{1}{2}(x^2+x) + \frac{1}{2}(x^2-x)\right)
+    =\frac{1}{2}T(x^2+x) + \frac{1}{2}T(x^2-x)\\
+	   & = & \textstyle \frac{1}{2}(-1) + \frac{1}{2}(1) = 0.  \\
+	   \pause
+    T(x) & = & \textstyle T\left(\frac{1}{2}(x^2+x) - \frac{1}{2}(x^2-x)\right)
+    = \frac{1}{2}T(x^2+x) - \frac{1}{2}T(x^2-x) \\
+	 & = & \textstyle \frac{1}{2}(-1) - \frac{1}{2}(1) = -1.\\
+	 \pause
+    T(1) & = & \textstyle T\left((x^2+1)-\frac{1}{2}(x^2+x) -
+    \frac{1}{2}(x^2-x)\right)\\
+	 & = & \textstyle T(x^2+1)-\frac{1}{2}T(x^2+x) - \frac{1}{2}T(x^2-x) \\
+	 & = & \textstyle 3-\frac{1}{2}(-1) - \frac{1}{2}(1) = 3.
+    \end{eqnarray*}
+    \pause
+    \vspace*{-1.5em}
+    \[\Downarrow\]
+    \vspace*{-2em}
+    \begin{align*}
+	T(4x^2+5x-3)  =  4T(x^2) + 5T(x) -3T(1)  = 4(0) + 5(-1) - 3(3)=-14.
+    \end{align*}
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 17
+\frame{
+\begin{remark}
+The advantage of the second solution over the first is that
+if you were now asked to find $T(-6x^2-13x+9)$, it is easy to
+use $T(x^2)=0$, $T(x)=-1$ and $T(1)= 3$:
+\begin{eqnarray*}
+    T(-6x^2-13x+9) & = & -6T(x^2)-13T(x)+9T(1) \\
+		   & = & -6(0)-13(-1)+9(3)=13+27=40.
+\end{eqnarray*}
+\pause
+More generally,
+\begin{eqnarray*}
+    T(ax^2+bx+c) & = & aT(x^2)+bT(x)+cT(1) \\
+		 & = & a(0)+b(-1)+c(3)=-b+3c.
+\end{eqnarray*}
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 18
+\frame{
+\begin{definition}[Equality of linear transformations]
+Let $V$ and $W$ be vector spaces, and let $S$ and $T$ be
+linear transformations from $V$ to $W$.
+Then \alert{$S=T$} if and only if,
+\[ S(\vec{v})= T(\vec{v})\qquad \text{for every $\vec{v}\in V$}.\]
+\end{definition}
+\pause
+\vfill
+\begin{theorem}
+Let $V$ and $W$ be vector spaces, where
+\[ V=\Span\{ \vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\}.\]
+Suppose that $S$ and $T$ are linear transformations from $V$
+to $W$.
+If $S(\vec{v}_i) = T(\vec{v}_i)$ for all $i$, $1\leq i\leq n$,
+then $S=T$.
+\end{theorem}
+\pause
+\vfill
+\begin{remark}
+This theorem tells us that a linear transformation is completely
+determined by its actions on a spanning set.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 19
+\frame{
+\begin{proofnoend}
+We must show that $S(\vec{v})= T(\vec{v})$ for each $\vec{v}\in V$.
+Let $\vec{v}\in V$.
+Then
+(since $V$ is spanned by $\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n$),
+there exist $k_1, k_2, \ldots, k_n\in\RR$ so that
+\[ \vec{v} = k_1\vec{v}_1 + k_2\vec{v}_2 + \cdots + k_n\vec{v}_n.\]
+\pause
+It follows that
+\begin{eqnarray*}
+    S(\vec{v}) & = & S(k_1\vec{v}_1 + k_2\vec{v}_2 + \cdots + k_n\vec{v}_n) \\
+		& = & k_1S(\vec{v}_1) + k_2S(\vec{v}_2) + \cdots + k_nS(\vec{v}_n) \\
+		& = & k_1T(\vec{v}_1) + k_2T(\vec{v}_2) + \cdots + k_nT(\vec{v}_n) \\
+		& = & T(k_1\vec{v}_1 + k_2\vec{v}_2 + \cdots + k_n\vec{v}_n) \\
+		& = & T(\vec{v}).
+\end{eqnarray*}
+Therefore, $S=T$.
+\myQED\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Constructing Linear Transformations}}
+%-------------- start slide -------------------------------%{{{ 20
+\frame{
+\frametitle{Constructing Linear Transformations}
+\pause
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+    \draw (0,0) [dkgreenvect,thick] ellipse (0.75cm and 1.25cm) node[below right=0.9cm,font=\footnotesize,text=white]{$V$};
+    \draw (3.5,0) [dkgreenvect,thick] ellipse (1.25cm and 0.75cm) node[below right=0.9cm,font=\footnotesize,text=white]{$W$};
+    \fill[black] (0,0) circle (2pt) node[below,font=\footnotesize,text=white]{$\vec{b}_i$};
+    \node[text=white, font=\footnotesize] at (0,0.8) {$\vec{b}_1$};
+    \node[text=white, font=\footnotesize] at (0,0.4) {$\vdots$};
+    \node[text=white, font=\footnotesize] at (0,-0.5) {$\vdots$};
+    \node[text=white, font=\footnotesize] at (0,-1) {$\vec{b}_n$};
+    \fill[black] (3.5,0) circle (2pt) node[below,font=\footnotesize,text=white]{$\vec{w}_i$};
+    \node[text=white, font=\footnotesize] at (2.7,-0.2) {$\vec{w}_1$};
+    \node[text=white, font=\footnotesize] at (3.1,-0.2) {$\cdots$};
+    \node[text=white, font=\footnotesize] at (3.9,-0.2) {$\cdots$};
+    \node[text=white, font=\footnotesize] at (4.3,-0.2) {$\vec{w}_n$};
+    \only<3->{
+    \draw[-latex, dkgreenvect, thick](0,0)..controls (1.25,0.5) and (2,0.5)..(3.5,0) node[above,midway,font=\footnotesize,text=black,text=white]{$T$};
+    }
+\end{tikzpicture}
+\end{center}
+\begin{theorem}
+    Let $V$ and $W$ be vector spaces,
+    let $B=\{ \vec{b}_1, \vec{b}_2, \ldots, \vec{b}_n\}$ be a basis
+    of $V$,
+    and let $\vec{w}_1, \vec{w}_2, \ldots, \vec{w}_n$ be
+    (not necessarily distinct) vectors of $W$.
+    \pause
+    Then
+\begin{enumerate}
+    \item There exists a linear transformation $T:V\to W$ such that
+    $T(\vec{b}_i)=\vec{w}_i$ for each $i$, $1\leq i\leq n$;
+    \pause
+    \item This transformation is unique;
+    \pause
+    \item If
+    \[ \vec{v} = k_1\vec{b}_1+k_2\vec{b}_2+ \cdots+ k_n\vec{b}_n\]
+    is a vector of $V$, then
+    \[ T(\vec{v}) = k_1\vec{w}_1+k_2\vec{w}_2+ \cdots+ k_n\vec{w}_n.\]
+\end{enumerate}
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 21
+\frame{
+\begin{proofnoend}
+    Suppose $\vec{v}\in V$.
+    Since $B$ is a basis, there exist unique scalars
+    $k_1, k_2,\ldots, k_n\in\RR$ so that
+    $\vec{v}=k_1\vec{b}_1+k_2\vec{b}_2+ \cdots+ k_n\vec{b}_n$.
+    We now \alert{define} $T:V\to W$ by
+    \[ T(\vec{v}) = k_1\vec{w}_1+k_2\vec{w}_2+ \cdots+ k_n\vec{w}_n\]
+    for each $\vec{v}=k_1\vec{b}_1+k_2\vec{b}_2+ \cdots+ k_n\vec{b}_n$
+    in $V$.
+    From this definition, $T(\vec{b}_i)=\vec{w}_i$ for each $i$,
+    $1\leq i\leq n$.
+
+    \bigskip
+    To prove that $T$ is a linear transformation, prove that $T$
+    preserves addition and scalar multiplication.
+    Let $\vec{v},\vec{u}\in V$.
+    Then
+    \[ \vec{v}=k_1\vec{b}_1+k_2\vec{b}_2+ \cdots+ k_n\vec{b}_n
+	\quad\text{and}\quad
+    \vec{u}=\ell_1\vec{b}_1+\ell_2\vec{b}_2+ \cdots+ \ell_n\vec{b}_n\]
+    for some $k_1, k_2, \ldots, k_n \in\RR$ and
+    $\ell_1, \ell_2, \ldots, \ell_n \in\RR$.
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 22
+\frame{
+\begin{proofnoend}[continued]
+%\vspace*{-.2in}
+
+\begin{eqnarray*}
+    T(\vec{v}+\vec{u}) & = &
+    T[(k_1\vec{b}_1+k_2\vec{b}_2+ \cdots+ k_n\vec{b}_n) +
+    (\ell_1\vec{b}_1+\ell_2\vec{b}_2+ \cdots+ \ell_n\vec{b}_n)] \\
+		  & = &
+		  T[(k_1+\ell_1)\vec{b}_1 + (k_2+\ell_2)\vec{b}_2+ \cdots
+		  + (k_n+\ell_n)\vec{b}_n] \\
+		  & = &
+		  (k_1+\ell_1)\vec{w}_1 + (k_2+\ell_2)\vec{w}_2+ \cdots
+		  + (k_n+\ell_n)\vec{w}_n \\
+		  & = &
+		  (k_1 \vec{w}_1 + k_2\vec{w}_2 + \cdots +k_n\vec{w}_n)
+		  + (\ell_1 \vec{w}_1 + \ell_2\vec{w}_2 + \cdots +\ell_n\vec{w}_n)\\
+		  & = &
+		  T(k_1 \vec{b}_1 + k_2\vec{b}_2 + \cdots +k_n\vec{b}_n)
+		  + T(\ell_1 \vec{b}_1 + \ell_2\vec{b}_2 + \cdots +\ell_n\vec{b}_n) \\
+		  & = &
+		  T(\vec{v}) + T(\vec{u}).
+\end{eqnarray*}
+%\vspace*{-.2in}
+
+Therefore, $T$ preserves addition.
+\pause
+Let $\vec{v}$ be as already defined and let $r\in\RR$.
+Then
+\begin{eqnarray*}
+    T(r\vec{v}) & = &
+    T[r(k_1\vec{b}_1+k_2\vec{b}_2+ \cdots+ k_n\vec{b}_n)] \\
+		 & = &
+		 T[(rk_1)\vec{b}_1+(rk_2)\vec{b}_2+ \cdots+ (rk_n)\vec{b}_n] \\
+		 & = &
+		 (rk_1)\vec{w}_1+(rk_2)\vec{w}_2+ \cdots+ (rk_n)\vec{w}_n \\
+		 & = &
+		 r(k_1\vec{w}_1+k_2\vec{w}_2+ \cdots+ k_n\vec{w}_n) \\
+		 & = &
+		 rT(k_1\vec{b}_1+k_2\vec{b}_2+ \cdots+ k_n\vec{b}_n) \\
+		 & = &
+		 rT(\vec{v}).
+\end{eqnarray*}
+Therefore, $T$ preserves scalar multiplication.
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 23
+\frame{
+\begin{proofnoend}[continued]
+Finally, the previous {\bf Theorem } guarantees that $T$ is unique:
+since $B$ is a basis (and hence a spanning set), the
+action of $T$ is completely determined by the fact that
+$T(\vec{b}_i)=\vec{w}_i$ for each $i$, $1\leq i\leq n$.
+This completes the proof of the theorem.
+\myQED\end{proofnoend}
+\pause
+\vfill
+\begin{remark}
+The significance of this {\bf Theorem} is that it gives us the
+ability to define linear transformations between vector spaces,
+a useful tool in what follows.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 24
+\frame{
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+    \draw (0,0) [dkgreenvect,thick] ellipse (0.75cm and 1.25cm) node[below right=0.9cm,font=\footnotesize,text=white]{${\cal P}_2$};
+    \draw (3.5,0) [dkgreenvect,thick] ellipse (1.25cm and 0.75cm) node[below right=0.9cm,font=\footnotesize,text=white]{$\bm{M}_{22}$};
+    \node[text=white, font=\footnotesize] at (0,0.4) {$1+x$};
+    \fill[black] (0,0) circle (2pt) node[below,font=\footnotesize,text=white]{$x+x^2$};
+    \node[text=white, font=\footnotesize] at (0,-0.8) {$1+x^2$};
+    \node[text=white, font=\footnotesize] at (2.7,-0.2) {$A_1$};
+    \fill[black] (3.5,0) circle (2pt) node[below,font=\footnotesize,text=white]{$A_2$};
+    \node[text=white, font=\footnotesize] at (4.3,-0.2) {$A_3$};
+    \only<2->{
+    \draw[-latex, dkgreenvect, thick](0,0)..controls (1.25,0.5) and (2,0.5)..(3.5,0) node[above,midway,font=\footnotesize,text=black,text=white]{$T$};
+    }
+\end{tikzpicture}
+\end{center}
+\begin{problem}
+$B=\left\{ 1+x, x+x^2, 1+x^2\right\}$
+is a basis of ${\cal P}_2$. Let
+\[
+    A_1=\left[\begin{array}{rr} 1 & 0 \\ 0 & 0 \end{array}\right],\qquad
+    A_2=\left[\begin{array}{rr} 0 & 1 \\ 1 & 0 \end{array}\right],\qquad
+    A_3=\left[\begin{array}{rr} 0 & 0 \\ 0 & 1 \end{array}\right].
+\]
+\pause
+Find a linear transformation $T:{\cal P}_2\to\bm{M}_{22}$ so the
+\[
+    T(1+x)=A_1, \quad T(x+x^2)=A_2,\quad\text{and}\quad T(1+x^2)=A_3,
+\]
+\pause
+by specifying $T(a+bx+cx^2)$ for any $a+bx+cx^2\in{\cal P}_2$.
+\end{problem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 25
+\begin{frame}[fragile]
+    \begin{solution}
+    Notice that $(1+x)+(x+x^2)-(1+x^2)=2x$, and thus
+    \begin{eqnarray*}
+	x & = & \textstyle \frac{1}{2}(1+x) +\frac{1}{2}(x+x^2)-\frac{1}{2}(1+x^2),
+    \end{eqnarray*}
+    \[\Downarrow\]
+    \begin{eqnarray*}
+	T(x)& = & \textstyle \frac{1}{2} T(1+x) +\frac{1}{2}T(x+x^2)
+	-\frac{1}{2}T(1+x^2) \\
+	    & = & \textstyle \frac{1}{2}A_1 +\frac{1}{2}A_2 -\frac{1}{2}A_3\\
+	    & = & \textstyle
+	\frac{1}{2} \left[\begin{array}{rr} 1 & 0 \\ 0 & 0 \end{array}\right]
+	+\frac{1}{2}
+	\left[\begin{array}{rr} 0 & 1 \\ 1 & 0 \end{array}\right]
+	-\frac{1}{2}
+	\left[\begin{array}{rr} 0 & 0 \\ 0 & 1 \end{array}\right]
+	=\textstyle\frac{1}{2}\left[\begin{array}{rr} 1 & 1 \\ 1 & -1 \end{array}\right].
+    \end{eqnarray*}
+\end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 26
+\frame{
+\begin{solution}[continued]
+    Next, $1=(1+x)-x$, so $T(1)=T(1+x)-T(x)$, and thus
+    \[ T(1) = A_1 - \textstyle\frac{1}{2}
+	\left[\begin{array}{rr} 1   & 1 \\ 1 & -1 \end{array}\right]
+	= \left[\begin{array}{rr} 1 & 0 \\ 0 & 0 \end{array}\right]
+	-\frac{1}{2}\left[\begin{array}{rr} 1 & 1  \\ 1  & -1 \end{array}\right]
+	=\frac{1}{2}\left[\begin{array}{rr} 1 & -1 \\ -1 & 1  \end{array}\right]. \]
+    \pause
+    Finally, $x^2= (x+x^2)-x$, so $T(x^2)=T(x+x^2)-T(x)$, and thus
+    \[ T(x^2) = A_2 - \textstyle\frac{1}{2}
+	\left[\begin{array}{rr} 1   & 1 \\ 1 & -1 \end{array}\right]
+	= \left[\begin{array}{rr} 0 & 1 \\ 1 & 0 \end{array}\right]
+	-\frac{1}{2}\left[\begin{array}{rr} 1  & 1 \\ 1 & -1 \end{array}\right]
+	=\frac{1}{2}\left[\begin{array}{rr} -1 & 1 \\ 1 & 1  \end{array}\right]. \]
+    \pause
+    Therefore,
+    \begin{eqnarray*}
+	T(a+bx+cx^2) & = & aT(1)+bT(x)+cT(x^2) \\
+		     & = & \textstyle\frac{a}{2}\left[\begin{array}{rr}  1  & -1 \\ -1 & 1  \end{array}\right]
+				     +\frac{b}{2}\left[\begin{array}{rr} 1  & 1  \\ 1  & -1 \end{array}\right]
+				     +\frac{c}{2}\left[\begin{array}{rr} -1 & 1  \\ 1  & 1  \end{array}\right] \\
+		     & = & \textstyle \frac{1}{2}\left[\begin{array}{rr} a+b-c & -a+b+c \\ -a+b+c & a-b+c \end{array}\right].
+    \end{eqnarray*}
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 27
+\begin{frame}[fragile]
+\begin{solution}[ Two -- sketch ]
+Since the set $\{1 + x, x + x^{2}, 1 + x^{2}\}$ is a basis of ${\cal P}_{2}$, there exits unique representation:
+\begin{align*}
+    a+bx+cx^2 = & \ell_1 (1+x) + \ell_2(x+x^2) + \ell_3(1+x^2) \\ \pause
+              = & (\ell_1+\ell_3) + (\ell_1+\ell_2)x + (\ell_2+\ell_3)x^2
+\end{align*}
+\[\Downarrow\]
+\begin{align*}
+    \begin{cases}
+        \ell_1+\ell_3 = a\\
+        \ell_1+\ell_2=b\\
+        \ell_2+\ell_3=c
+    \end{cases}
+\end{align*}
+\[\Downarrow\]
+\begin{align*}
+\begin{cases}
+    \ell_1=\frac{1}{2}(a+b-c) \\
+    \ell_2=\frac{1}{2}(-a+b+c) \\
+    \ell_3=\frac{1}{2}(a-b-c)
+\end{cases}
+\end{align*}
+\end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 1
+\begin{frame}[fragile]
+\begin{solution}[Two -- continued]
+   Hence,
+   \begin{gather*}
+T\left[a+bx+cx^2\right] \\ || \\
+T\left[\ell_1(1+x)+\ell_2(x+x^2)+\ell_{3}(1+x^2)\right] \\ || \\
+\ell_1T[1+x]+\ell_2T[ x+x^2 ]+\ell_{3}T[1+x^2]\\ || \\
+\ell_1\leftB \begin{array}{rr}
+  1 & 0 \\
+  0 & 0
+\end{array} \rightB + \ell_2\leftB \begin{array}{rr}
+  0 & 1 \\
+  1 & 0
+\end{array} \rightB + \ell_3\leftB \begin{array}{rr}
+  0 & 0 \\
+  0 & 1
+\end{array} \rightB \\||\\
+\frac{1}{2}(a + b - c)\leftB \begin{array}{rr}
+  1 & 0 \\
+  0 & 0
+\end{array} \rightB + \frac{1}{2}(-a + b + c)\leftB \begin{array}{rr}
+  0 & 1 \\
+  1 & 0
+\end{array} \rightB + \frac{1}{2}(a - b + c)\leftB \begin{array}{rr}
+  0 & 0 \\
+  0 & 1
+\end{array} \rightB \\||\\
+= \frac{1}{2} \leftB \begin{array}{rr}
+  a + b - c  & -a + b + c \\
+  -a + b + c & a - b + c
+\end{array} \rightB
+\end{gather*}
+\myQED
+\end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 28
+\frame{
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+    \draw (0,0) [dkgreenvect,thick] ellipse (0.75cm and 1.25cm) node[below right=0.9cm,font=\footnotesize,text=white]{$V$};
+    \draw (3.5,0) [dkgreenvect,thick] ellipse (1.25cm and 0.75cm) node[below right=0.9cm,font=\footnotesize,text=white]{$V$};
+    % \node[text=white, font=\footnotesize] at (0,0.4) {$1+x$};
+    \fill[black] (0,0) circle (2pt) node[below,font=\footnotesize,text=white]{$\bm{v}+\bm{w}$};
+    \node[text=white, font=\footnotesize] at (0,-0.8) {$2\bm{v}-\bm{w}$};
+    % \node[text=white, font=\footnotesize] at (2.7,-0.2) {$A_1$};
+    \fill[black] (3.5,0) circle (2pt) node[below,font=\footnotesize,text=white]{$\bm{v}-2\bm{w}$};
+    \node[text=white, font=\footnotesize] at (4.3,-0.2) {$2\bm{v}$};
+    \draw[-latex, dkgreenvect, thick](0,0)..controls (1.25,0.5) and (2,0.5)..(3.5,0) node[above,midway,font=\footnotesize,text=black,text=white]{$T$};
+\end{tikzpicture}
+\end{center}
+\vfill
+\begin{problem}
+    Let $V$ be a vector space,
+    and $T$ be a linear operator on $V$, and $\bm{v,w}\in V$ such that
+    \[ T(\bm{v}+\bm{w})=\bm{v}-2\bm{w}
+    \quad\text{and}\quad T(2\bm{v}-\bm{w})=2\bm{v}. \]
+    \pause
+    Find $T(\bm{v})$ and $T(\bm{w})$.
+\end{problem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 1
+\begin{frame}[fragile]
+ \begin{solution}
+\begin{align*}
+    T(\bm{v}) & = T\left[\frac{1}{3}\left(\left[\bm{v}+\bm{w}\right] + \left[2\bm{v}-\bm{w}\right]\right)\right]\\
+              & = \frac{1}{3} T\left[\bm{v}+\bm{w}\right] + \frac{1}{3} T\left[2\bm{v}-\bm{w}\right]\\
+              & = \frac{1}{3} \left(\bm{v}-2\bm{w}\right) + \frac{2}{3} \bm{v} \\
+              & = \bm{v}-\frac{2}{3}\bm{w}.
+\end{align*}
+    Similarly, as an exercise, $T(\bm{w})= -\frac{4}{3}\bm{w}$.
+    \myQED
+\end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\end{document}

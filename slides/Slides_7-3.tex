@@ -1,0 +1,808 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 7. Linear Transformations \\ \S  7-3. Isomorphisms and Composition}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{What is isomorphism?}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{What is an isomorphism?}
+\pause
+\begin{example}
+    ${\cal P}_1 = \left\{ax+b ~|~ a,b\in\RR\right\}$, has
+    addition and scalar multiplication defined as follows:
+    \begin{eqnarray*}
+	(a_1x + b_1) + (a_2x+b_2) & = & (a_1 + a_2) x + (b_1 +b_2), \\
+	k(a_1x + b_1)             & = & (ka_1)x + (kb_1),
+    \end{eqnarray*}
+    for all $(a_1x + b_1), (a_2x+b_2)\in{\cal P}_1$ and $k\in\RR$.
+    \bigskip
+
+    The role of the variable $x$ is to distinguish $a_1$ from
+    $b_1$, $a_2$ from $b_2$, $(a_1+a_2)$ from $(b_1+b_2)$, and
+    $(ka_1)$ from $(kb_1)$.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\begin{frame}[fragile]
+\begin{example}[continued]
+    This can be accomplished equally well by using vectors in $\RR^2$.
+    \[ \RR^2=\left\{\left. \left[\begin{array}{c} a \\ b \end{array}\right]
+    ~\right|~ a,b\in\RR \right\}\]
+    where addition and scalar multiplication are defined as follows:
+    \[
+	\left[\begin{array}{c}  a_1     \\ b_1     \end{array}\right]
+	+\left[\begin{array}{c} a_2     \\ b_2     \end{array}\right]
+	=\left[\begin{array}{c} a_1+a_2 \\ b_1+b_2 \end{array}\right],~
+	k\left[\begin{array}{c} a_1     \\ b_1     \end{array}\right]
+	=\left[\begin{array}{c} ka_1    \\ kb_1    \end{array}\right]
+    \]
+    for all $\left[\begin{array}{c} a_1 \\ b_1 \end{array}\right],
+    \left[\begin{array}{c} a_2 \\ b_2 \end{array}\right]
+    \in\RR^2$ and $k\in\RR$.
+ \end{example}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5
+\begin{frame}[fragile]
+\begin{definition}
+  Let $V$ and $W$ be vector spaces, and $T:V\rightarrow W$ a
+  linear transformation.
+  $T$ is an \alert{isomorphism} if and only if $T$ is both
+  one-to-one and onto (i.e., $\ker(T)=\{\bf{0}\}$ and $\im(T)=W$).
+  If $T:V\to W$ is an isomorphism, then the vector spaces
+  $V$ and $W$ are said to be \alert{isomorphic}, and
+  we write \alert{$V\cong W$}.
+\end{definition}
+\vfill
+\only<1>{
+    \begin{center}
+    \begin{tikzpicture}[scale=0.75]
+    %First image
+    \draw (0,0) [dkgreenvect,thick] ellipse (0.95cm and 1.55cm);
+    \draw (3,0) [dkgreenvect,thick] ellipse (1.55cm and 0.95cm);
+    \draw (0,0) [dkgreenvect,thick] ellipse (0.58cm and 0.68cm);
+    \node[font=\footnotesize,text=white](kerT) at (0,0) {$\text{ker}(T)$};
+    \draw[dkgreenvect,->,thick](0.05,0.68)--(2.98,0.04);
+    \draw[dkgreenvect,->,thick](0.05,-0.68)--(2.98,-0.04);
+    \draw[-latex, dkgreenvect, thick](0.7,1.05)..controls (0.9,1.15) and (1.55,1.15)..(2.15,0.8) node[above,midway,font=\footnotesize,text=white]{$T$};
+    \node[font=\footnotesize,text=white] at (0,-1.15) {$V$};
+    \node[font=\footnotesize,text=white] at (3.5,0) {$W$};
+    \draw[dkgreenvect,thick] (3,0) circle (1.5pt) node[below,font=\footnotesize,text=white]{$\vec{0}$};
+    \end{tikzpicture}
+    %Second image
+    \qquad
+    \begin{tikzpicture}[scale=0.75]
+    \draw (0,-4) [dkgreenvect,thick] ellipse (0.95cm and 1.55cm);
+    \draw (3,-4) [dkgreenvect,thick] ellipse (1.55cm and 0.95cm);
+    \draw (2.75,-4) [dkgreenvect,thick] ellipse (0.58cm and 0.68cm);
+    \node[font=\footnotesize,text=white](imT) at (2.75,-4) {$\text{im}(T)$};
+    \node[font=\footnotesize,text=white] at (0,-4) {$V$};
+    \node[font=\footnotesize,text=white] at (3.95,-4) {$W$};
+    \draw[dkgreenvect,-latex,thick](0.95,-4)--(1.48,-4) node[above,midway,font=\footnotesize,text=white]{$T$};
+    \draw[dkgreenvect,->,thick](0.11,-2.46)--(2.85,-3.33);
+    \draw[dkgreenvect,->,thick](0.11,-5.54)--(2.85,-4.67);
+    \end{tikzpicture}
+    \bigskip
+
+    General linear transformation $T$
+    \end{center}
+}
+\only<2>{
+    \begin{center}
+    \begin{tikzpicture}[scale=0.75]
+    %First image
+    \draw (0,0) [dkgreenvect,thick] ellipse (0.95cm and 1.55cm);
+    \draw (3,0) [dkgreenvect,thick] ellipse (1.55cm and 0.95cm);
+    % \draw (0,0) [dkgreenvect,thick] ellipse (0.58cm and 0.68cm);
+    \node[font=\footnotesize,text=white](kerT) at (0,0.3) {$\text{ker}(T)=\{\vec{0}\}$};
+    % \draw[dkgreenvect,->,thick](0.05,0.68)--(2.98,0.04);
+    \draw[dkgreenvect,->,thick](0.,-0)--(2.98,-0);
+    \draw[-latex, dkgreenvect, thick](0.7,1.05)..controls (0.9,1.15) and (1.55,1.15)..(2.15,0.8) node[above,midway,font=\footnotesize,text=white]{$T$};
+    \node[font=\footnotesize,text=white] at (0,-1.15) {$V$};
+    \node[font=\footnotesize,text=white] at (3.5,0) {$W$};
+    \draw[dkgreenvect,thick] (3,0) circle (1.5pt) node[below,font=\footnotesize,text=white]{$\vec{0}$};
+    \draw[dkgreenvect,thick] (0,0) circle (1.5pt);
+    \end{tikzpicture}
+    %Second image
+    \qquad
+    \begin{tikzpicture}[scale=0.75]
+    \draw (0,-4) [dkgreenvect,thick] ellipse (0.95cm and 1.55cm);
+    \draw (3,-4) [dkgreenvect,thick] ellipse (1.55cm and 0.95cm);
+    % \draw (2.75,-4) [dkgreenvect,thick] ellipse (0.58cm and 0.68cm);
+    \node[font=\footnotesize,text=white](imT) at (3,-4) {$\text{im}(T)=W$};
+    \node[font=\footnotesize,text=white] at (0,-4) {$V$};
+    % \node[font=\footnotesize,text=white] at (3.9,-4) {$W$};
+    \draw[dkgreenvect,-latex,thick](0.95,-4)--(1.48,-4) node[above,midway,font=\footnotesize,text=white]{$T$};
+    \draw[dkgreenvect,->,thick](0.11,-2.46)--(2.05,-3.33);
+    \draw[dkgreenvect,->,thick](0.11,-5.54)--(2.05,-4.67);
+    \end{tikzpicture}
+    \bigskip
+
+    Isomorphism $T$
+    \end{center}
+}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\begin{example}
+    The identity operator on any vector space is an isomorphism.
+\end{example}
+\pause
+\vfill
+\begin{example}
+    $T:{\cal P}_n\to\RR^{n+1}$ defined by
+    % \vspace*{-.3in}
+
+    \[ T(a_0 + a_1x + a_2x^2 +\cdots + a_nx^n)
+    =\left[\begin{array}{c} a_0 \\ a_1 \\ a_2 \\ \vdots \\ a_n\end{array}\right] \]
+    for all $a_0 + a_1x + a_2x^2 +\cdots + a_nx^n\in {\cal P}_n$
+    is an isomorphism.
+    To verify this, prove that \alert{$T$ is a linear transformation}
+    that is \alert{one-to-one} and \alert{onto}.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Proving vector spaces are isomorphic}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+\frametitle{Proving isomorphism of vector spaces}
+\pause
+\begin{problem}
+    Prove that $\bm{M}_{22}$ and $\RR^4$ are isomorphic.
+\end{problem}
+\pause
+\vfill
+\begin{proofnoend}
+    Let $T:\bm{M}_{22}\to\RR^4$ be defined by
+    \[
+    T\left[\begin{array}{cc} a &  b \\ c &  d \end{array}\right]
+    =\left[\begin{array}{c}  a \\ b \\ c \\ d \end{array}\right]\mbox{ for all }
+    \left[\begin{array}{cc}  a &  b \\ c &  d \end{array}\right]
+    \in\bm{M}_{22}. \]
+    \pause
+    It remains to prove that
+    \begin{enumerate}
+	\item $T$ is a linear transformation;
+	\item $T$ is one-to-one;
+	\item $T$ is onto.
+    \end{enumerate}
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+  \begin{solution}[continued -- 1. linear transformation]
+    Let $A=\left[\begin{array}{cc} a_1 & a_2 \\ a_3 & a_4 \end{array}\right],
+ 	 B=\left[\begin{array}{cc} b_1 & b_2 \\ b_3 & b_4 \end{array}\right]\in
+    \bm{M}_{22}$ and let $k\in\RR$.
+    Then
+    \[
+	T(A)= \left[\begin{array}{c} a_1\\a_2\\a_3\\a_4 \end{array}\right] \quad\text{and}\quad
+	T(B)= \left[\begin{array}{c} b_1\\b_2\\b_3\\b_4 \end{array}\right].\]
+      \pause
+      \[\Downarrow\]
+      \[ \hspace{-2em}
+        T(A+B) = T\left[\begin{array}{cc} a_1+b_1 & a_2+b_2 \\ a_3+b_3 & a_4+b_4 \end{array}\right]
+               = \left[\begin{array}{c} a_1+b_1\\a_2+b_2\\a_3+b_3\\a_4+b_4 \end{array}\right]
+               = \left[\begin{array}{c} a_1\\a_2\\a_3\\a_4 \end{array}\right] + \left[\begin{array}{c} b_1\\b_2\\b_3\\b_4 \end{array}\right]
+               = T(A) + T(B)
+      \]
+    \pause
+     \[\Downarrow\]
+    \begin{center}
+      $T$ preserves addition.
+    \end{center}
+    \end{solution}
+  }
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\begin{frame}[fragile]
+  \begin{solution}[continued -- 1. linear transformation]
+    Also
+    \[ T(kA) =
+	T\left[\begin{array}{cc} ka_1 &  ka_2 \\ ka_3 &  ka_4 \end{array}\right]
+	=\left[\begin{array}{c}  ka_1 \\ ka_2 \\ ka_3 \\ ka_4 \end{array}\right]
+	=k\left[\begin{array}{c} a_1  \\ a_2  \\ a_3  \\ a_4  \end{array}\right]
+	=kT(A) \]
+    \pause
+     \[\Downarrow\]
+     \begin{center}
+      $T$ preserves scalar multiplication.
+     \end{center}
+     \bigskip
+
+    Since $T$ preserves addition and scalar multiplication, $T$ is a linear
+    transformation.
+ \end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\frame{
+\begin{solution}[continued -- 2. One-to-one]
+  By definition,
+  \begin{eqnarray*}
+      \ker(T) & = & \left\{ A\in\bm{M}_{22} ~|~ T(A)=\bm{0} \right\} \\
+      & = & \left\{
+      \left[\begin{array}{cc} a & b \\ c & d \end{array}\right] ~\left|~ a,b,c,d\in\RR \quad\text{and}\quad \left[\begin{array}{c} a\\b\\c\\d \end{array}\right]
+      =\left[\begin{array}{c} 0\\0\\0\\0 \end{array}\right] \right.
+      \right\}.
+  \end{eqnarray*}
+  \pause
+  If
+  $A=\left[\begin{array}{cc} a & b \\ c & d \end{array}\right]\in\ker T$,
+  then $a=b=c=d=0$, and thus $\ker(T) = \{ \bm{0}_{22} \}$.
+  \pause
+  \[\Downarrow\]
+  \begin{center}
+  $T$ is one-to-one.
+  \end{center}
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 11
+\frame{
+\begin{solution}[continued -- 3. Onto]
+    Let
+    \[ X=\left[\begin{array}{c} x_1\\x_2\\x_3\\x_4 \end{array}\right]\in\RR^4,\]
+    and
+    define matrix $A\in\bm{M}_{22}$ as follows:
+    \[ A=\left[\begin{array}{cc} x_1 & x_2 \\ x_3 & x_4 \end{array}\right].\]
+    \pause
+    Then $T(A)=X$, and therefore $T$ is onto.
+    \bigskip
+
+    Finally, since $T$ is a linear transformation that is one-to-one and onto, $T$ is
+    an isomorphism.
+    \pause
+    Therefore, $\bm{M}_{22}$ and $\RR^4$ are isomorphic vector spaces.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\frame{
+\begin{example}[ Other isomorphic vector spaces ]
+    \begin{enumerate}
+	\item For all integers $n\geq 0$, ${\cal P}_n\cong \RR^{n+1}$.\\
+	\item For all integers $m$ and $n$, $m,n\geq 1$, ${\bm M}_{mn} \cong \RR^{m\times n}$.\\
+	\item For all integers $m$ and $n$, $m,n\geq 1$, ${\bm M}_{mn} \cong {\cal P}_{mn-1}$.
+    \end{enumerate}
+    You should be able to define appropriate linear transformations
+    and prove each of these statements.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Characterizing isomorphisms}}
+%-------------- start slide -------------------------------%{{{ 13
+\frame{
+\frametitle{Characterizing isomorphisms}
+\pause
+\begin{theorem}
+    Let $V$ and $W$ be finite dimensional vector spaces
+    and $T:V\to W$ a linear transformation.
+    The following are equivalent.
+    \begin{enumerate}
+	\item $T$ is an isomorphism.
+	\item If $\{ \vec{b}_1, \vec{b}_2, \ldots, \vec{b}_n\}$ is
+	    any basis of $V$, then
+	    $\{ T(\vec{b}_1), T(\vec{b}_2), \ldots, T(\vec{b}_n)\}$ is
+	    a basis of $W$.
+	\item There exists a basis $\{ \vec{b}_1, \vec{b}_2, \ldots, \vec{b}_n\}$
+	    of $V$ such that $\{ T(\vec{b}_1), T(\vec{b}_2), \ldots, T(\vec{b}_n)\}$
+	    is a basis of $W$.
+    \end{enumerate}
+\end{theorem}
+\pause
+\vfill
+\begin{proofnoend}
+    (1) $\Rightarrow$ (2): This is because
+    \begin{itemize}
+        \item[-] One-to-one linear transformations preserve independent sets.
+        \item[-] Onto linear transformations preserve spanning sets.
+    \end{itemize}
+    (2)  $\Rightarrow$ (3) is trivial.\\
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 1
+\begin{frame}[fragile]
+    \begin{proofnoend}[Continued]
+    (3) $\Rightarrow$ (1). We need to prove that $T$ is both onto and one-to-one.
+    \bigskip
+
+    If $T(\vec{v}) = \vec{0}$, write $\vec{v} =
+    v_{1}\vec{b}_{1} + \cdots + v_{n}\vec{b}_{n}$ where each $v_{i}$ is in $\RR$.
+    Then
+    \begin{equation*}
+        \vec{0} = T(\vec{v}) = v_{1}T(\vec{b}_{1}) + \cdots + v_{n}T(\vec{b}_{n})
+    \end{equation*}
+    so $v_{1} = \cdots = v_{n} = 0$ by (3). Hence $\vec{v} = \vec{0}$, so $\func{ker }T = \{\vec{0}\}$ and $T$ is one-to-one.
+
+    \bigskip
+    To show that $T$ is onto, let $\vec{w}$ be any vecor in $W$. By (3) there exist $w_{1}, \dots, w_{n}$ in $\RR$ such that
+    \begin{equation*}
+        \vec{w} = w_{1}T(\vec{b}_1) + \cdots + w_{n}T(\vec{b}_n) = T(w_{1}\vec{b}_1 + \cdots + w_n\vec{b}_n)
+    \end{equation*}
+    Thus $T$ is onto.
+    \myQED
+   \end{proofnoend}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 14
+\frame{
+\begin{emptytitle}
+Suppose $V$ and $W$ are finite dimensional
+vector spaces with $\dim(V)=\dim(W)$, and let
+\[
+\{ \vec{b}_1, \vec{b}_2, \ldots, \vec{b}_n \} \quad\text{and}\quad
+\{ \vec{f}_1, \vec{f}_2, \ldots, \vec{f}_n \} \]
+be bases of $V$ and $W$ respectively.
+\pause
+Then $T:V\to W$ defined by
+\[ T(\vec{b}_i) = \vec{f}_i \mbox{ for } 1\leq k\leq n\]
+is a \alert{linear transformation}
+that maps a basis of $V$ to a basis of $W$.
+By the previous {\bf Theorem}, $T$ is an isomorphism.
+\bigskip
+\pause
+
+Conversely, if $V$ and $W$ are isomorphic and
+$T:V\to W$ is an isomorphism,
+then (by the previous {\bf Theorem})
+for any basis $\{ \vec{b}_1, \vec{b}_2, \ldots, \vec{b}_n \}$
+of $V$,
+$\{ T(\vec{b}_1), T(\vec{b}_2), \ldots, T(\vec{b}_n)\}$ is
+a basis of $W$,
+implying that $\dim(V)=\dim(W)$.
+\medskip
+
+This proves the next theorem.
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 15
+\frame{
+\begin{theorem}
+Finite dimensional vector spaces $V$ and $W$ are isomorphic
+if and only if $\dim(V) =\dim(W)$.
+\end{theorem}
+\pause
+\vfill
+\begin{corollary}
+If $V$ is a vector space with $\dim(V)=n$, then $V$ is
+isomorphic to $\RR^n$.
+\end{corollary}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 16
+\frame{
+\begin{problem}
+Let $V$ denote the set of $2\times 2$ real symmetric
+matrices.
+Then $V$ is a vector space with dimension three.
+Find an isomorphism $T:{\cal P}_2\to V$ with the property
+that $T(1)=I_2$ (the $2\times 2$ identity matrix).
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+\[ V = \left\{ \left.
+\left[\begin{array}{rr} a & b \\ b & c\end{array}\right]
+~\right|~ a,b,c\in\RR\right\}
+= \Span\left\{
+\left[\begin{array}{rr} 1 & 0 \\ 0 & 0\end{array}\right],
+\left[\begin{array}{rr} 0 & 1 \\ 1 & 0\end{array}\right],
+\left[\begin{array}{rr} 0 & 0 \\ 0 & 1\end{array}\right] \right\}.\]
+\pause
+Let
+\[ B=\left\{
+\left[\begin{array}{rr} 1 & 0 \\ 0 & 0\end{array}\right],
+\left[\begin{array}{rr} 0 & 1 \\ 1 & 0\end{array}\right],
+\left[\begin{array}{rr} 0 & 0 \\ 0 & 1\end{array}\right] \right\}.\]
+Then $B$ is independent, and $\Span(B)=V$, so $B$ is a basis of $V$.
+Also, $\dim(V)=3=\dim({\cal P}_2)$.
+\pause
+However, we want a basis of $V$ that contains $I_2$.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 17
+\frame{
+\begin{solution}[continued]
+Let
+\[ B^{\prime} =\left\{
+\left[\begin{array}{rr} 1 & 0 \\ 0 & 1\end{array}\right],
+\left[\begin{array}{rr} 0 & 1 \\ 1 & 0\end{array}\right],
+\left[\begin{array}{rr} 0 & 0 \\ 0 & 1\end{array}\right] \right\}.\]
+Since $B^{\prime}$ consists of $\dim(V)$ symmetric independent
+matrices, $B^{\prime}$ is a basis of $V$.
+Note that $I_2\in B^{\prime}$.
+\pause
+Define
+\[ T(1)=\left[\begin{array}{rr} 1 & 0 \\ 0 & 1\end{array}\right],
+T(x)=\left[\begin{array}{rr} 0 & 1 \\ 1 & 0\end{array}\right],
+T(x^2)=\left[\begin{array}{rr} 0 & 0 \\ 0 & 1\end{array}\right].\]
+Then for all $ax^2 + bx +c\in{\cal P}_2$,
+\[ T(ax^2 + bx +c)
+=\left[\begin{array}{cc} c & b \\ b & a+c\end{array}\right],\]
+and $T(1)=I_2$.
+\bigskip
+
+By the previous {\bf Theorem}, $T:{\cal P}_2\to V$ is an isomorphism. \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 18
+\frame{
+\begin{theorem}
+Let $V$ and $W$ be vector spaces, and $T:V\rightarrow W$ a linear
+transformation.
+If $\dim(V)=\dim(W)=n$, then $T$ is an isomorphism if and only if
+$T$ is either one-to-one or onto.
+\end{theorem}
+\pause
+\vfill
+\begin{proofnoend}
+\noindent $({\Rightarrow})$
+By definition, an isomorphism is both one-to-one and onto.
+\medskip
+\pause
+
+\noindent $({\Leftarrow})$
+Suppose that $T$ is one-to-one.
+Then $\ker(T)=\{\vec{0}\}$, so $\dim(\ker(T))=0$.
+By the Dimension Theorem,
+\begin{eqnarray*}
+\dim(V) & = & \dim(\im(T)) + \dim(\ker(T)) \\
+n & = & \dim(\im(T)) + 0
+\end{eqnarray*}
+so $\dim(\im(T))=n=\dim(W)$.
+Furthermore $\im(T)\subseteq W$, so it follows that $\im(T) = W$.
+Therefore, $T$ is onto, and hence is an isomorphism.
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 19
+\frame{
+\begin{proofnoend}[continued]
+    $({\Leftarrow})$
+    Suppose that $T$ is onto.
+    Then $\im(T) = W$, so $\dim(\im(T))=\dim(W) = n$.
+    By the Dimension Theorem,
+    \begin{eqnarray*}
+	\dim(V) & = & \dim(\im(T)) + \dim(\ker(T)) \\
+	n       & = & n + \dim(\ker(T))
+    \end{eqnarray*}
+    so $\dim(\ker(T))=0$.
+    The only vector space with dimension zero is the zero vector
+    space, and thus $\ker(T) =\{ \vec{0}\}$.
+    Therefore, $T$ is one-to-one, and hence is an isomorphism.
+    \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Composition of transformations}}
+%-------------- start slide -------------------------------%{{{ 20
+\frame{
+\frametitle{Composition of transformations}
+\pause
+\begin{definition}
+    Let $V, W$ and $U$ be vector spaces, and let
+    \[ T:V\to W \quad\text{and}\quad S:W\to U\]
+    be linear transformations.
+    The \alert{composite} of $T$ and $S$ is
+    \[ ST:V\to U \]
+    where $(ST)(\vec{v})=S(T(\vec{v}))$ for all $\vec{v}\in V$.
+    The process of obtaining $ST$ from $S$ and $T$ is called
+    \alert{composition}.
+\end{definition}
+\vfill
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+\draw (0,0) [dkgreenvect,thick] ellipse (0.65cm and 0.65cm);
+\draw (2,0) [dkgreenvect,thick] ellipse (0.65cm and 0.65cm);
+\draw (4,0) [dkgreenvect,thick] ellipse (0.65cm and 0.65cm);
+\draw[-latex, dkgreenvect, thick](0,0.2)..controls (0.55,0.5) and (1.3,0.5)..(1.9,0.2) node[above,midway,text=white]{$T$};
+\draw[-latex, dkgreenvect, thick](2.1,0.2)..controls (2.55,0.5) and (3.3,0.5)..(4,0.2) node[above,midway,text=white]{$S$};
+\node[text=white] at (0.6,-0.85) {$V$};
+\node[text=white] at (2.6,-0.85) {$W$};
+\node[text=white] at (4.6,-0.85) {$U$};
+\end{tikzpicture}
+\end{center}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 21
+\frame{
+\begin{example}
+    Let $S:\bm{M}_{22}\to \bm{M}_{22}$ and $T:\bm{M}_{22}\to \bm{M}_{22}$
+    be linear transformations such that
+    \[ S(A)=-A^T \quad\text{and}\quad
+	T\left[\begin{array}{cc}  a & b \\ c & d \end{array}\right]
+	=\left[\begin{array}{cc}  b & a \\ d & c \end{array}\right] \mbox{ for all }
+	A=\left[\begin{array}{cc} a & b \\ c & d \end{array}\right]
+    \in \bm{M}_{22}.\]
+    Then
+    \[
+	(ST)\left[\begin{array}{cc} a  & b  \\ c  & d  \end{array}\right]
+	=S\left[\begin{array}{cc}   b  & a  \\ d  & c  \end{array}\right]
+	=\left[\begin{array}{cc}    -b & -d \\ -a & -c \end{array}\right],
+    \]
+    and
+    \[
+	(TS)\left[\begin{array}{cc} a  & b  \\ c  & d  \end{array}\right]
+	=T\left[\begin{array}{cc}   -a & -c \\ -b & -d \end{array}\right]
+	=\left[\begin{array}{cc}    -c & -a \\ -d & -b \end{array}\right].\]
+    If $a, b, c$ and $d$ are distinct, then $(ST)(A)\neq (TS)(A)$.
+    \medskip
+
+    \alert{This illustrates that, in general, $ST\neq TS$.}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 22
+\frame{
+\begin{theorem}
+    Let $V,W,U$ and $Z$ be vector spaces and
+    \[
+	V\stackrel{T}{\rightarrow}
+	W\stackrel{S}{\rightarrow}
+	U\stackrel{R}{\rightarrow} Z\]
+    be linear transformations.
+    Then
+    \begin{enumerate}
+	\item $ST$ is a linear transformation.
+	\item $T1_V= T$ and $1_W T = T$.
+	\item $(RS)T=R(ST)$.
+    \end{enumerate}
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 23
+\frame{
+\begin{problem}[ The composition of onto transformations is onto ]
+  Let $V, W$ and $U$ be vector spaces, and let
+  \[ V\stackrel{T}{\rightarrow}
+  W\stackrel{S}{\rightarrow} U\]
+  be linear transformations.
+  Prove that if $T$ and $S$ are onto, then $ST$
+  is onto.
+\end{problem}
+\vfill
+\pause
+\begin{proofnoend}
+  Let ${\bm z}\in U$.
+  Since $S$ is onto, there exists a vector ${\bm y}\in W$
+  such that $S({\bm y})={\bm z}$.
+  Furthermore, since $T$ is onto, there exists a vector ${\bm x}\in V$
+  such that $T({\bm x})={\bm y}$.
+  Thus
+  \[ {\bm z} = S({\bm y}) = S(T({\bm x})) = (ST)({\bm x}),\]
+  showing that for each ${\bm z}\in U$ there exists and ${\bm x}\in V$
+  such that $(ST)({\bm x})={\bm z}$.
+  Therefore, $ST$ is onto.
+  \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 24
+\frame{
+\begin{problem}[ The composition of one-to-one transformations is one-to-one ]
+    Let $V, W$ and $U$ be vector spaces, and let
+    \[ V\stackrel{T}{\rightarrow}
+    W\stackrel{S}{\rightarrow} U\]
+    be linear transformations.
+    Prove that if $T$ and $S$ are one-to-one, then $ST$
+    is one-to-one.
+\end{problem}
+\vfill
+\pause
+\begin{emptytitle}
+    The proof of this is left as an exercise.
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Inverses}}
+%-------------- start slide -------------------------------%{{{ 25
+\frame{
+\frametitle{Inverses}
+\pause
+\begin{theorem}
+    Let $V$ and $W$ be finite dimensional vector spaces,
+    and $T:V\to W$ a linear transformation.
+    Then the following statements are equivalent.
+    \begin{enumerate}
+	\item $T$ is an isomorphism.
+	\item There exists a linear transformation $S:W\to V$ so that
+	    \[ ST=1_V \quad\text{and}\quad TS=1_W.\]
+	    In this case, the isomorphism $S$ is uniquely
+	    determined by $T$:
+	    \[ \mbox{if } \vec{w}\in W \quad\text{and}\quad \vec{w}=T(\vec{v}),
+	    \mbox{ then } S(\vec{w})=\vec{v}.\]
+    \end {enumerate}
+\end{theorem}
+\pause
+\vfill
+\begin{emptytitle}
+    Given an isomorphism $T:V\to W$, the unique isomorphism
+    satisfying the second condition of the theorem is
+    the \alert{inverse} of $T$, and is written \alert{$T^{-1}$}.
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 26
+\frame{
+\begin{remark}[ Fundamental Identities (relating $T$ and $T^{-1}$) ]
+  If $V$ and $W$ are vector spaces and $T:V\to W$ is an
+  isomorphism,
+  then $T^{-1}:W\to V$ is a linear transformation
+  such that
+  \[ (T^{-1}T)(\vec{v})=\vec{v}\quad\text{and}\quad
+  (TT^{-1})(\vec{w})=\vec{w}\]
+  for each $\vec{v}\in V$, $\vec{w}\in W$.
+  Equivalently,
+  \[ T^{-1}T=1_V\quad\text{and}\quad TT^{-1}=1_W.\]
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 27
+\frame{
+\begin{problem}
+  The function $T:{\cal P}_2\to\RR^3$ defined by
+  \[ T(a+bx+cx^2)=
+  \left[\begin{array}{c} a-c \\ 2b \\ a+c \end{array}\right]
+  \mbox{ for all } a+bx+cx^2\in{\cal P}_2\]
+  is a linear transformation \alert{(this is left for you to verify)}.
+  Does $T$ have an inverse?  If so, find $T^{-1}$.
+\end{problem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 28
+\frame{
+\begin{solution}
+  Since $\dim({\cal P}_2)=3=\dim(\RR^3)$, it suffices to prove
+  that $T$ is either one-to-one or onto.
+  \medskip
+  \pause
+
+  Suppose $a +bx + cx^2\in\ker(T)$. Then
+  \begin{align*}
+     \begin{cases}
+      a-c=0\\ 2b=0\\ a+c=0
+     \end{cases}
+     \quad\Longrightarrow\quad
+    \begin{cases}
+        a=0\\ b=0\\ c=0
+    \end{cases}
+  \end{align*}
+  \pause
+
+  Therefore, $\ker(T)=\{ {\bm 0} \}$, and hence $T$ is one-to-one.
+  By our earlier observation, it follows that $T$ is onto, and thus
+  is an isomorphism.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 29
+\frame{
+\begin{solution}[continued]
+  To find $T^{-1}$, we need to specify
+  $T^{-1}\left[\begin{array}{c} p\\ q\\ r \end{array}\right]$
+  for any $\left[\begin{array}{c} p\\ q\\ r \end{array}\right]\in\RR^3$.
+  \medskip
+
+  Let $a+bx+cx^2\in{\cal P}_2$, and suppose
+
+  \[ T(a+bx+cx^2)=
+    \left[\begin{array}{c} p \\ q \\ r \end{array}\right].\]
+
+  By the definition of $T$, $p=a-c$, $q=2b$ and $r=a+c$.
+  We now solve for $a, b$ and $c$ in terms of $p, q$ and $r$.
+  \[
+    \left[\begin{array}{rrr|r}
+        1 & 0 & -1 & p \\ 0 & 2 & 0 & q \\ 1 & 0 & 1 & r
+    \end{array}\right]
+    \rightarrow\cdots\rightarrow
+    \left[\begin{array}{rrr|c}
+        1 & 0 & 0 & (r+p)/2 \\ 0 & 1 & 0 & q/2 \\ 0 & 0 & 1 & (r-p)/2
+    \end{array}\right].
+  \]
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 30
+\frame{
+\begin{solution}[continued]
+    We now have
+    $a=\frac{r+p}{2}$, $b=\frac{q}{2}$ and $c=\frac{r-p}{2}$,
+    and thus
+    \[ T(a+bx+cx^2)
+      =\left[\begin{array}{c} p \\ q \\ r \end{array}\right]
+      =T\left(\frac{r+p}{2}+\frac{q}{2}x+\frac{r-p}{2}x^2\right)
+    \]
+    \pause
+    Therefore,
+    \begin{eqnarray*}
+	T^{-1} \left[\begin{array}{c} p\\ q\\ r \end{array}\right]
+	& = & T^{-1}\left(T\left(\frac{r+p}{2}+\frac{q}{2}x+\frac{r-p}{2}x^2\right) \right)  \\
+	& = & (T^{-1}T)\left(\frac{r+p}{2} + \frac{q}{2}x + \frac{r-p}{2}x^2\right) \\
+	& = & \frac{r+p}{2} + \frac{q}{2}x + \frac{r-p}{2}x^2.
+    \end{eqnarray*}
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 31
+\frame{
+\begin{definition}
+    Let $V$ be a vector space with $\dim(V)=n$,
+    let $B=\{ \vec{b}_1, \vec{b}_2, \ldots, \vec{b}_n \}$
+    be a fixed basis of $V$,
+    and let
+    $\{ \vec{e}_1, \vec{e}_2, \ldots, \vec{e}_n \}$
+    denote the standard basis of $\RR^n$.
+    \pause
+    We define a transformation $C_B:V\to\RR^n$ by
+    \[ C_B(a_1\vec{b}_1 + a_2\vec{b}_2 + \cdots + a_n\vec{b}_n) =
+	a_1\vec{e}_1 + a_2\vec{e}_2 + \cdots + a_n\vec{e}_n =
+	\left[\begin{array}{c} a_1 \\ a_2 \\ \vdots \\ a_n \end{array}\right].\]
+
+    \pause
+    Then $C_B$ is a linear transformation
+    such that
+    $C_B(\vec{b}_i)=\vec{e}_i$, $1\leq i\leq n$,
+    and thus $C_B$ is an isomorphism, called
+    \alert{the coordinate isomorphism corresponding to $B$}.
+\end{definition}
+
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 32
+\begin{frame}[fragile]
+\begin{example}
+    Let $V$ be a vector space and
+    let $B=\{\vec{b}_1, \vec{b}_2, \ldots,\vec{b}_n\}$
+    be a fixed basis of $V$.
+    Then $C_B:V\to \RR^n$ is invertible,
+    and it is clear that $C_B^{-1}:\RR^n\to V$ is defined by
+    % \vspace*{-.1in}
+
+    \[ C_B^{-1}\left[\begin{array}{c} a_1 \\ a_2 \\ \vdots \\ a_n \end{array}\right] =
+    a_1\vec{b}_1 + a_2\vec{b}_2 + \cdots + a_n\vec{b}_n \mbox{ for each }
+    \left[\begin{array}{c} a_1 \\ a_2 \\ \vdots \\ a_n \end{array}\right] \in\RR^n.  \]
+\end{example}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\end{document}

@@ -1,0 +1,312 @@
+
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+%-------------- start slide -------------------------------%
+<space><space>	commands.vim	/^noremap <space><space> \/start slide<cr>$/;"	m
+A-Invariance	Slides_3-3.tex	/^}$/;"	s
+Adjugates	Slides_3-2.tex	/^}$/;"	s
+An Interesting Example	Slides_6-1.tex	/^}$/;"	s
+Angle Between Vectors	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2.tex	/^\\end{frame}$/;"	s
+Angle Between Vectors	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2a.tex	/^\\end{frame}$/;"	s
+Angle Between Vectors	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2b.tex	/^\\begin{comment}$/;"	s
+Bases and Dimension	Slides_5-2.tex	/^}$/;"	s
+Bases and Dimension	Slides_6-3.tex	/^			}$/;"	s
+Basic Properties	Jim/Chapter3/Section2/LatexStuff/Chap3Sec2.tex	/^\\end{frame}$/;"	s
+Block Matrix Multiplication	Jim/Chapter2/Section3/LatexStuff/Chap2Sec3.tex	/^\\end{frame}$/;"	s
+Chapter 3 Review  Similarity  eigenvalues and diagonalization	Jim/Chapter5/Section5/LatexStuff/Chap5Sec5.tex	/^\\end{frame}$/;"	s
+Characterizing isomorphisms	Slides_7-3.tex	/^	    }$/;"	s
+Chemical Reactions	Slides_1-6.tex	/^{\\small$/;"	s
+Cholesky factorization	Slides_8-3.tex	/^	    }$/;"	s
+Cofactor Expansion	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1.tex	/^\\end{frame}$/;"	s
+Cofactor Expansion	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1a.tex	/^\\end{frame}$/;"	s
+Cofactor Expansion	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1b.tex	/^\\end{frame}$/;"	s
+Column  or Image  Space	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1.tex	/^\\end{frame}$/;"	s
+Column  or Image  Space	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1a.tex	/^\\end{frame}$/;"	s
+Column  or Image  Space	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1b.tex	/^\\begin{comment}$/;"	s
+Column  or Image  Space	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1c.tex	/^\\end{comment}$/;"	s
+Column  or Image  Space	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1d.tex	/^\\end{frame}$/;"	s
+Column Space Basis	Jim/Chapter5/Section4/LatexStuff/Chap5Sec4.tex	/^\\end{frame}$/;"	s
+Complex Numbers	Slides_AppendixA.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Composition of Linear Transformations	Slides_2-6.tex	/^}$/;"	s
+Composition of transformations	Slides_7-3.tex	/^				}$/;"	s
+Constructing Linear Transformations	Slides_7-1.tex	/^    }$/;"	s
+Constructing basis from independent sets	Slides_6-4.tex	/^\\end{frame}$/;"	s
+Constructing basis from spanning sets	Slides_6-4.tex	/^}$/;"	s
+Copyright	frontmatter/copyright_backup.tex	/^%%Copyright page common to all slides$/;"	s
+Cramer s Rule}
+Cross Product	Slides_4-2.tex	/^\\end{frame}$/;"	s
+Definition of Inverse	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4.tex	/^\\end{frame}$/;"	s
+Definition of Inverse	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4a.tex	/^\\end{frame}$/;"	s
+Definition of Inverse	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4b.tex	/^\\begin{comment}$/;"	s
+Determinant and Scalar Multiple	Slides_3-1.tex	/^}$/;"	s
+Determinant of Block Matrices	Slides_3-1.tex	/^\\end{frame}$/;"	s
+Determinants Row Operations	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1.tex	/^\\end{frame}$/;"	s
+Determinants Row Operations	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1a.tex	/^\\end{frame}$/;"	s
+Determinants Row Operations	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1b.tex	/^\\end{frame}$/;"	s
+Determinants and Matrix Inverses	Slides_3-2.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Determinants of $2 times 2$ Matrices	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1.tex	/^\\end{frame}$/;"	s
+Determinants of $2 times 2$ Matrices	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1a.tex	/^\\end{frame}$/;"	s
+Determinants of $2 times 2$ Matrices	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1b.tex	/^\\begin{comment}$/;"	s
+Determinants of $n times n$ Matrices	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1.tex	/^\\end{frame}$/;"	s
+Determinants of $n times n$ Matrices	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1a.tex	/^\\end{frame}$/;"	s
+Determinants of $n times n$ Matrices	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1b.tex	/^\\end{frame}$/;"	s
+Determinants of Triangular Matrices	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1.tex	/^\\end{frame}$/;"	s
+Determinants of Triangular Matrices	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1a.tex	/^\\end{document}$/;"	s
+Determinants of Triangular Matrices	Jim/Chapter3/Section1/LatexStuff/Chap3Sec1b.tex	/^\\end{comment}$/;"	s
+Diagonalization	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3.tex	/^\\end{frame}$/;"	s
+Diagonalization	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3a.tex	/^\\end{frame}$/;"	s
+Diagonalization	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3b.tex	/^\\end{frame}$/;"	s
+Diagonalization	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3c.tex	/^\\end{frame}$/;"	s
+Diagonalization	Slides_3-3.tex	/^}$/;"	s
+Diagonalization  Basic Idea	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3.tex	/^\\end{frame}$/;"	s
+Diagonalization  Basic Idea	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3a.tex	/^\\end{frame}$/;"	s
+Diagonalization  Basic Idea	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3b.tex	/^\\end{document}$/;"	s
+Diagonalization  Basic Idea	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3c.tex	/^\\end{comment}$/;"	s
+Diagonalization Revisited	Slides_5-5.tex	/^}$/;"	s
+Diagonalization and Eigenvalues	Slides_3-3.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Dimensions of im  A  and null  A 	Slides_5-4.tex	/^}$/;"	s
+Distance Between Vectors	Jim/Chapter4/Section1/LatexStuff/Chap4Sec1.tex	/^\\end{frame}$/;"	s
+Distance Between Vectors	Slides_4-1.tex	/^\\end{frame}$/;"	s
+Distance Between Vectors	Slides_5-3.tex	/^}$/;"	s
+Distinct Eigenvalues	Jim/Chapter5/Section5/LatexStuff/Chap5Sec5.tex	/^\\end{frame}$/;"	s
+Dominant Eigenvalues	Slides_3-3.tex	/^}$/;"	s
+Dot  or Inner  Product of Vectors	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2.tex	/^\\end{frame}$/;"	s
+Dot  or Inner  Product of Vectors	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2a.tex	/^\\end{frame}$/;"	s
+Dot  or Inner  Product of Vectors	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2b.tex	/^\\end{frame}$/;"	s
+Dot  or Inner  Product of Vectors	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2c.tex	/^\\end{frame}$/;"	s
+Eigenvalues and Eigenvectors	Slides_3-3.tex	/^}$/;"	s
+Electrical Networks	Slides_1-5.tex	/^{\\small$/;"	s
+Elementary Matrices	Jim/Chapter2/Section5/LatexStuff/Chap2Sec5.tex	/^\\end{frame}$/;"	s
+Elementary Matrices	Slides_2-5.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Elementary Row Operations and Determinants	Slides_3-1.tex	/^}$/;"	s
+Examples and Basic Properties	Slides_6-1.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Examples and Problems	Slides_7-1.tex	/^}$/;"	s
+Finding bases of the kernel and the image	Slides_7-2.tex	/^}$/;"	s
+Finding the Inverse of a Matrix	Slides_2-4.tex	/^}$/;"	s
+Finding the Matrix	Slides_2-6.tex	/^}$/;"	s
+Finding the QR	Slides_8-4.tex	/^}$/;"	s
+Four Fundamental Subspaces	Jim/Chapter5/Section4/LatexStuff/Chap5Sec4.tex	/^\\end{frame}$/;"	s
+Fourier Expansion	Slides_5-3.tex	/^}$/;"	s
+General Approach to Find Inverse	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4.tex	/^\\end{frame}$/;"	s
+General Approach to Find Inverse	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4a.tex	/^\\end{document}$/;"	s
+General Approach to Find Inverse	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4b.tex	/^\\end{comment}$/;"	s
+Generalization of Principal Axis Theorem	Slides_8-2.tex	/^	    }$/;"	s
+Generalizing from $ RR  n$	Slides_6-4.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Geometric Examples	Slides_5-2.tex	/^}$/;"	s
+Geometric Vectors	Slides_4-1.tex	/^}$/;"	s
+HANDOUTFILE	Makefile	/^HANDOUTFILE:=Handout.pdf$/;"	m
+HANDOUTTAG	Makefile	/^HANDOUTTAG:=\\[pdf,handout\\]$/;"	m
+Homogeneous Equations	Slides_1-3.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Homogeneous Systems of Equations	Jim/Chapter1/Section3/LatexStuff/Chap1Sec3.tex	/^\\end{frame}$/;"	s
+Homogeneous Systems of Equations	Jim/Chapter1/Section3/LatexStuff/Chap1Sec3a.tex	/^\\end{document}$/;"	s
+How do we find Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3.tex	/^\\end{frame}$/;"	s
+How do we find Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3a.tex	/^\\end{frame}$/;"	s
+How do we find Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3b.tex	/^\\end{frame}$/;"	s
+How do we find Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3c.tex	/^\\end{frame}$/;"	s
+Identity Matrix	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2.tex	/^\\end{frame}$/;"	s
+Identity Matrix	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2a.tex	/^\\end{document}$/;"	s
+Identity Matrix	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2b.tex	/^\\end{comment}$/;"	s
+Identity Matrix	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2c.tex	/^\\end{frame}$/;"	s
+Independence  spanning  and matrices	Slides_5-2.tex	/^}$/;"	s
+Inverse of 2-by-2 Matrices	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4.tex	/^\\end{frame}$/;"	s
+Inverse of 2-by-2 Matrices	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4a.tex	/^\\end{frame}$/;"	s
+Inverse of 2-by-2 Matrices	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4b.tex	/^\\end{frame}$/;"	s
+Inverse of Elementary Matrices	Jim/Chapter2/Section5/LatexStuff/Chap2Sec5.tex	/^\\end{frame}$/;"	s
+Inverses	Slides_7-3.tex	/^				}$/;"	s
+Inverses of elementary matrices	Slides_2-5.tex	/^}}$/;"	s
+Invertible Matrix Theorem	Jim/Chapter5/Section2/LatexStuff/Chap5Sec2.tex	/^\\end{frame}$/;"	s
+Kernel and Image	Slides_7-2.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+LU Factorization	Slides_2-7.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Length and Direction	Slides_4-1.tex	/^}$/;"	s
+Linear Combination	Slides_1-3.tex	/^}$/;"	s
+Linear Combinations and Spanning Sets	Slides_6-2.tex	/^}$/;"	s
+Linear Combinations of Vectors	Jim/Chapter1/Section3/LatexStuff/Chap1Sec3.tex	/^\\end{frame}$/;"	s
+Linear Combinations of Vectors	Jim/Chapter1/Section3/LatexStuff/Chap1Sec3a.tex	/^\\end{frame}$/;"	s
+Linear Combinations of Vectors	Jim/Chapter1/Section3/LatexStuff/Chap1Sec3b.tex	/^\\end{frame}$/;"	s
+Linear Dynamical Systems	Slides_3-3.tex	/^}$/;"	s
+Linear Independence	Slides_5-2.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Linear Independence	Slides_6-3.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Linear Operators on $ RR  3$	Slides_4-4.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Linear Recurrences	Slides_3-4.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Linear Transformations	Jim/Chapter2/Section6/LatexStuff/Chap2Sec6.tex	/^\\end{frame}$/;"	s
+Linear Transformations	Jim/Chapter2/Section6/LatexStuff/Chap2Sec6a.tex	/^\\end{frame}$/;"	s
+Linear Transformations	Jim/Chapter2/Section6/LatexStuff/Chap2Sec6b.tex	/^\\begin{comment}$/;"	s
+Linear Transformations	Slides_2-6.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Linear Transformations	Slides_7-1.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Linearly Independent Vectors	Jim/Chapter5/Section2/LatexStuff/Chap5Sec2.tex	/^\\end{frame}$/;"	s
+Lyryx with Open Texts	frontmatter/lyryxopentexts_backup.tex	/^%%Copyright page common to all slides$/;"	s
+Markov Chains	Slides_2-9.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Matrices	Slides_2-1.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Matrices	Slides_6-1.tex	/^}$/;"	s
+Matrix Addition	Slides_2-1.tex	/^}$/;"	s
+Matrix Multiplication	Slides_2-3.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Matrix Notation	Jim/Chapter2/Section1/LatexStuff/Chap2Sec1.tex	/^\\end{frame}$/;"	s
+Matrix Vector Multiplication	Slides_2-2.tex	/^}$/;"	s
+Matrix of a Linear Transformation	Jim/Chapter2/Section6/LatexStuff/Chap2Sec6.tex	/^\\end{frame}$/;"	s
+Matrix of a Linear Transformation	Jim/Chapter2/Section6/LatexStuff/Chap2Sec6a.tex	/^\\end{document}$/;"	s
+Matrix of a Linear Transformation  In general	Jim/Chapter2/Section6/LatexStuff/Chap2Sec6b.tex	/^\\end{frame}$/;"	s
+Matrix of a Linear Transformation  Rotation Example	Jim/Chapter2/Section6/LatexStuff/Chap2Sec6b.tex	/^\\end{comment}$/;"	s
+Matrix-Matrix Multiplication Properties	Jim/Chapter2/Section3/LatexStuff/Chap2Sec3.tex	/^\\end{frame}$/;"	s
+Matrix-Matrix Multiplication Warnings	Jim/Chapter2/Section3/LatexStuff/Chap2Sec3.tex	/^\\end{frame}$/;"	s
+Matrix-Matrix Product	Jim/Chapter2/Section3/LatexStuff/Chap2Sec3.tex	/^\\end{frame}$/;"	s
+Matrix-Vector Product	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2.tex	/^\\end{frame}$/;"	s
+Matrix-Vector Product	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2a.tex	/^\\end{frame}$/;"	s
+Matrix-Vector Product	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2b.tex	/^\\begin{comment}$/;"	s
+Matrix-Vector Product	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2c.tex	/^\\begin{comment}$/;"	s
+More on the Cross Product	Slides_4-3.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Motivating Example	Jim/Chapter5/Section6/LatexStuff/Chap5Sec5.tex	/^\\end{frame}$/;"	s
+Multiplier Method	Slides_2-7.tex	/^\\end{frame}$/;"	s
+Null Space	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1.tex	/^\\end{frame}$/;"	s
+Null Space	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1a.tex	/^\\end{frame}$/;"	s
+Null Space	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1b.tex	/^\\end{frame}$/;"	s
+Null Space	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1c.tex	/^\\begin{comment}$/;"	s
+Null Space	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1d.tex	/^\\end{comment}$/;"	s
+Null Space Basis	Jim/Chapter5/Section4/LatexStuff/Chap5Sec4.tex	/^\\end{frame}$/;"	s
+Orthogonal  Perpendicular  Vectors	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2.tex	/^\\end{frame}$/;"	s
+Orthogonal  Perpendicular  Vectors	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2a.tex	/^\\end{document}$/;"	s
+Orthogonal  Perpendicular  Vectors	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2b.tex	/^\\end{comment}$/;"	s
+Orthogonal Bases	Slides_8-1.tex	/^}$/;"	s
+Orthogonal Diagonalization	Slides_8-2.tex	/^}$/;"	s
+Orthogonal Matrices	Slides_8-2.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Orthogonal Projection	Slides_8-1.tex	/^		}$/;"	s
+Orthogonal Vectors and Projections	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2.tex	/^\\end{frame}$/;"	s
+Orthogonal Vectors and Projections	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2a.tex	/^\\end{frame}$/;"	s
+Orthogonal Vectors and Projections	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2b.tex	/^\\end{frame}$/;"	s
+Orthogonal and Orthonormal Sets of Vectors	Jim/Chapter5/Section3/LatexStuff/Chap5Sec3.tex	/^\\end{frame}$/;"	s
+Orthogonality	Slides_5-3.tex	/^}$/;"	s
+Orthogonality	Slides_8-1.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Orthogonality and Independence	Slides_5-3.tex	/^}$/;"	s
+PATH	Makefile	/^export PATH := \/usr\/local\/texlive\/2015\/bin\/x86_64-linux:$(PATH)$/;"	m
+PDF	Makefile	/^PDF=pdflatex$/;"	m
+PRESENTATIONFILE	Makefile	/^PRESENTATIONFILE:=Presentation.pdf$/;"	m
+PRESENTTAIONTAG	Makefile	/^PRESENTTAIONTAG:=\\[pdf\\]$/;"	m
+Parallel Vectors	Jim/Chapter4/Section1/LatexStuff/Chap4Sec1.tex	/^\\end{frame}$/;"	s
+Parallel Vectors	Slides_4-1.tex	/^\\end{frame}$/;"	s
+Parallel Vectors Revisited	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2.tex	/^\\end{frame}$/;"	s
+Parallel Vectors Revisited	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2a.tex	/^\\end{frame}$/;"	s
+Parallel Vectors Revisited	Jim/Chapter4/Section2/LatexStuff/Chap4Sec2b.tex	/^\\end{frame}$/;"	s
+Planes	Slides_4-2.tex	/^}$/;"	s
+Polar Form	Slides_AppendixA.tex	/^}$/;"	s
+Polynomials	Slides_6-1.tex	/^}$/;"	s
+Positive Definite Matrices	Slides_8-3.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Preliminary notation and definitions	Slides_5-1.tex	/^\\section{Subspaces and Spanning}$/;"	s
+Projections	Slides_4-2.tex	/^}$/;"	s
+Properties of General Vector Spaces	Slides_6-1.tex	/^}$/;"	s
+Properties of Inverses	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4.tex	/^\\end{frame}$/;"	s
+Properties of Inverses	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4a.tex	/^\\end{frame}$/;"	s
+Properties of Inverses	Jim/Chapter2/Section4/LatexStuff/Chap2Sec4b.tex	/^\\end{frame}$/;"	s
+Properties of Linear Transformations	Slides_7-1.tex	/^}$/;"	s
+Properties of Matrix Multiplication	Slides_2-3.tex	/^\\end{frame}$/;"	s
+Properties of the Inverse	Slides_2-4.tex	/^}}$/;"	s
+Proving vector spaces are isomorphic	Slides_7-3.tex	/^    }$/;"	s
+Pythagoras  Theorem}
+QR Factorization	Slides_8-4.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Quadratic Forms	Slides_8-2.tex	/^	}$/;"	s
+Rank Revisited	Jim/Chapter5/Section4/LatexStuff/Chap5Sec4.tex	/^\\end{frame}$/;"	s
+Real Matrices and Complex Eigenvalues	Jim/Chapter5/Section5/LatexStuff/Chap5Sec5.tex	/^\\end{frame}$/;"	s
+Real Symmetric Matrices	Jim/Chapter5/Section5/LatexStuff/Chap5Sec5.tex	/^\\end{frame}$/;"	s
+Reflection in the line	Slides_2-6.tex	/^}$/;"	s
+Reflection in the line	Slides_4-4.tex	/^}}$/;"	s
+Reflections	Slides_2-6.tex	/^}$/;"	s
+Reflections	Slides_4-4.tex	/^}}$/;"	s
+Review of Sections 4.1  4.2	Jim/Chapter5/Section3/LatexStuff/Chap5Sec3.tex	/^\\end{frame}$/;"	s
+Rotations	Slides_2-6.tex	/^}$/;"	s
+Rotations	Slides_4-4.tex	/^\\Chapter4Note$/;"	s
+Row Space Basis	Jim/Chapter5/Section4/LatexStuff/Chap5Sec4.tex	/^\\end{frame}$/;"	s
+Row Space and Column Space	Slides_5-4.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Row-Echelon Form	Slides_1-2.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Row-Echelon and Reduced Row-Echelon Matrices	Jim/Chapter1/Section2/LatexStuff/Chap1Sec2.tex	/^\\end{frame}$/;"	s
+Scalar Multiplication	Slides_2-1.tex	/^}$/;"	s
+Similar Matrices	Slides_5-5.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Singular Value Decomposition	Slides_8-6.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Solutions of Linear Equations	Slides_1-1.tex	/^\\input frontmatter\/titlepage.tex$/;"	s
+Some Examples	Jim/Chapter2/Section6/LatexStuff/Chap2Sec6.tex	/^\\end{frame}$/;"	s
+Some Examples	Jim/Chapter2/Section6/LatexStuff/Chap2Sec6a.tex	/^\\end{frame}$/;"	s
+Some Examples	Jim/Chapter2/Section6/LatexStuff/Chap2Sec6b.tex	/^\\end{frame}$/;"	s
+Some Properties via Examples	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3.tex	/^\\end{frame}$/;"	s
+Some Properties via Examples	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3a.tex	/^\\end{document}$/;"	s
+Some Properties via Examples	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3b.tex	/^\\end{comment}$/;"	s
+Some Properties via Examples	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3c.tex	/^\\end{frame}$/;"	s
+Spanning Sets	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1.tex	/^\\end{frame}$/;"	s
+Spanning Sets	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1a.tex	/^\\begin{comment}$/;"	s
+Spanning Sets	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1b.tex	/^\\end{comment}$/;"	s
+Spanning Sets	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1c.tex	/^\\end{frame}$/;"	s
+Spanning Sets	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1d.tex	/^\\end{frame}$/;"	s
+Spanning Sets	Slides_5-1.tex	/^\\end{frame}$/;"	s
+Subspace Basis and Dimension	Jim/Chapter5/Section2/LatexStuff/Chap5Sec2.tex	/^\\end{frame}$/;"	s
+Subspace of $ Re  n$	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1.tex	/^\\end{frame}$/;"	s
+Subspace of $ Re  n$	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1a.tex	/^\\end{frame}$/;"	s
+Subspace of $ Re  n$	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1b.tex	/^\\begin{comment}$/;"	s
+Subspace of $ Re  n$	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1c.tex	/^\\begin{comment}$/;"	s
+Subspace of $ Re  n$	Jim/Chapter5/Section1/LatexStuff/Chap5Sec1d.tex	/^\\begin{comment}$/;"	s
+Subspaces and Spanning	Slides_5-1.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Subspaces and Spanning Sets	Slides_6-2.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Subspaces of $ RR  n$	Slides_5-1.tex	/^}$/;"	s
+Subspaces of finite dimensional vector spaces	Slides_6-4.tex	/^}$/;"	s
+Summary and Notation	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3.tex	/^\\end{frame}$/;"	s
+Summary and Notation	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3a.tex	/^\\end{frame}$/;"	s
+Summary and Notation	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3b.tex	/^\\end{frame}$/;"	s
+Summary and Notation	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3c.tex	/^\\end{frame}$/;"	s
+Sums and Intersections	Slides_6-4.tex	/^}$/;"	s
+Surjections and Injections	Slides_7-2.tex	/^			    }$/;"	s
+Symmetric Matrices	Slides_5-5.tex	/^}$/;"	s
+Symmetric Matrices	Slides_8-2.tex	/^	}$/;"	s
+The $  i  j  $-Entry of a Product	Slides_2-3.tex	/^}$/;"	s
+The Augmented Matrix	Slides_1-1.tex	/^} %------------------ end slide ------------------------%$/;"	s
+The Cauchy Inequality	Slides_5-3.tex	/^}$/;"	s
+The Cofactor Expansion	Slides_3-1.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+The Dimension Theorem	Slides_7-2.tex	/^			    }$/;"	s
+The Dot Product	Slides_2-2.tex	/^}$/;"	s
+The Dot Product	Slides_5-3.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+The Dot Product and Angles	Slides_4-2.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+The Eigenspace	Slides_5-1.tex	/^}$/;"	s
+The Fundamental Theorem	Slides_6-3.tex	/^	    }$/;"	s
+The Identity and Inverse	Slides_2-4.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+The Orthogonal Complement	Slides_8-1.tex	/^}$/;"	s
+The Projection Theorem and its Implications	Slides_8-1.tex	/^		}$/;"	s
+The Quadratic Formula	Slides_AppendixA.tex	/^}$/;"	s
+The Rank Theorem	Slides_5-4.tex	/^}$/;"	s
+The Transpose	Slides_2-1.tex	/^}$/;"	s
+The null space and the image space	Slides_5-1.tex	/^}$/;"	s
+Triangular Matrices	Slides_3-1.tex	/^}$/;"	s
+Trivial and Nontrivial Solutions	Jim/Chapter1/Section3/LatexStuff/Chap1Sec3b.tex	/^\\end{comment}$/;"	s
+Two Preliminary Examples	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3.tex	/^\\end{frame}$/;"	s
+Two Preliminary Examples	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3a.tex	/^\\end{frame}$/;"	s
+Two Preliminary Examples	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3b.tex	/^\\end{frame}$/;"	s
+Two Preliminary Examples	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3c.tex	/^\\end{frame}$/;"	s
+Unit Vectors	Jim/Chapter4/Section1/LatexStuff/Chap4Sec1.tex	/^\\end{frame}$/;"	s
+Unit Vectors	Slides_4-1.tex	/^\\end{frame}$/;"	s
+Using Elementary Matrices for Row Operations	Jim/Chapter2/Section5/LatexStuff/Chap2Sec5.tex	/^\\end{frame}$/;"	s
+Using Elementary Matrices to Row Reduce	Jim/Chapter2/Section7/LatexStuff/Chap2Sec7.tex	/^\\end{frame}$/;"	s
+Vector Norms  i.e.  lengths 	Jim/Chapter4/Section1/LatexStuff/Chap4Sec1.tex	/^\\end{frame}$/;"	s
+Vector Norms  i.e.  lengths 	Slides_4-1.tex	/^\\end{frame}$/;"	s
+Vectors	Slides_2-2.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Vectors and Lines	Slides_4-1.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+Vectors and Vector Algebra	Jim/Chapter1/Section3/LatexStuff/Chap1Sec3.tex	/^\\end{frame}$/;"	s
+Vectors and Vector Algebra	Jim/Chapter1/Section3/LatexStuff/Chap1Sec3a.tex	/^\\end{frame}$/;"	s
+Vectors and Vector Algebra	Jim/Chapter1/Section3/LatexStuff/Chap1Sec3b.tex	/^\\begin{comment}$/;"	s
+Warning About Cancelation	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2a.tex	/^\\end{frame}$/;"	s
+Warning About Cancelation	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2b.tex	/^\\end{frame}$/;"	s
+Warning About Cancelation	Jim/Chapter2/Section2/LatexStuff/Chap2Sec2c.tex	/^\\end{frame}$/;"	s
+What are Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3.tex	/^\\end{frame}$/;"	s
+What are Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3a.tex	/^\\end{frame}$/;"	s
+What are Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3b.tex	/^\\end{frame}$/;"	s
+What are Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3c.tex	/^\\end{frame}$/;"	s
+What is Linear Algebra 	Jim/Chapter1/Section1/LatexStuff/Chap1Sec1.tex	/^\\end{frame}$/;"	s
+What is Linear Algebra 	Jim/Chapter1/Section1/LatexStuff/Chap1Sec1a.tex	/^\\end{frame}$/;"	s
+What is Linear Algebra 	Jim/Chapter1/Section1/LatexStuff/Chap1Sec1b.tex	/^\\begin{comment}$/;"	s
+What is isomorphism 	Slides_7-3.tex	/^\\input frontmatter\/copyright.tex$/;"	s
+What rank tells us about a matrix	Slides_5-4.tex	/^}$/;"	s
+Why learn about Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3.tex	/^\\end{frame}$/;"	s
+Why learn about Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3a.tex	/^\\end{frame}$/;"	s
+Why learn about Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3b.tex	/^\\begin{comment}$/;"	s
+Why learn about Eigenvalues and Eigenvectors 	Jim/Chapter3/Section3/LatexStuff/Chap3Sec3c.tex	/^\\begin{comment}$/;"	s
+begin{frame}
+begin{theorem}[Pythagoras Theorem  em If $   vect  x	Slides_5-3.tex	/^}$/;"	s
+frametitle{Cramer s Rule	Jim/Chapter3/Section2/LatexStuff/Chap3Sec2.tex	/^\\end{frame}$/;"	s
+frame{
+suffixes	Makefile	/^suffixes := .dvi .out .log .toc .aux .snm .nav$/;"	m

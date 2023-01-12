@@ -1,0 +1,505 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 6. Vector Spaces \\ \S  6-2. Subspaces and Spanning Sets}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Subspaces and Spanning Sets}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{Subspaces and spanning Sets}
+\pause
+\begin{definition}[Subspaces of a Vector Space]
+  Let $V$ be a vector space and let $U$ be a subset of $V$.
+  Then $U$ is a \alert{subspace of $V$} if $U$ is a vector
+  space using the addition and scalar multiplication of $V$.
+\end{definition}
+\pause
+\vfill
+\begin{theorem}[Subspace Test]
+  Let $V$ be a vector space and $U\subseteq V$.
+  Then $U$ is a subspace of $V$ if and only if it satisfies
+  the following three properties:
+  \begin{enumerate}
+    \item $U$ contains the zero vector of $V$, i.e., $\bm{0}\in U$ where $\bm{0}$ is the zero vector of $V$.
+    \item $U$ is closed under addition, i.e., if $\bm{u},\bm{v}\in U$, then $\bm{u+v}\in U$.
+    \item $U$ is closed under scalar multiplication, i.e., if $\bm{u}\in U$ and $k\in\RR$, then $k\bm{u}\in U$.
+  \end{enumerate}
+\end{theorem}
+\pause
+\vfill
+\begin{remark}
+  The proof of this theorem requires one to show that if the
+  three properties listed above hold, then all the vector
+  space axioms hold.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\frame{
+\begin{remark}[ Important Note ]
+    As a consequence of the proof, any
+    subspace $U$ of a vector space $V$ has the same zero vector as $V$,
+    and each ${\bm u}\in U$ has the same
+    additive inverse in $U$ as in $V$.
+\end{remark}
+\pause
+\vfill
+\begin{examples}[Two extreme examples]
+    Let $V$ be a vector space.
+    \begin{enumerate}
+	\item $V$ is a subspace of $V$.
+	\item $\{ \bm{0}\}$ is a subspace of $V$, where
+	    $\bm{0}$ denotes the zero vector of $V$.
+	    % \alert{The proof uses the fact that in any vector space, $a\bm{0}=\bm{0}$ for
+	    % any $a\in\RR$.}
+	%     \pause
+	% \item For any $\bm{u}\in V$, $\RR\bm{u}=\{ k\bm{u} ~|~ k\in\RR\}$ is a subspace of $V$.
+        %
+	%     \alert{The proof uses the fact that in any vector space, if
+	%     $\bm{u}\in V$, then $0\bm{u}=\bm{0}$.}
+    \end{enumerate}
+\end{examples}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5
+\frame{
+\begin{problem}
+    Let $A$ be a fixed (arbitrary) $n\times n$ real matrix, and
+    define
+    \[ U=\{ X\in\bm{M}_{nn}~|~ AX=XA\},\]
+    i.e., $U$ is the subset of matrices of $\bm{M}_{nn}$ that
+    commute with $A$.
+    Prove that $U$ is a subspace of $\bm{M}_{nn}$.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+  \begin{itemize}
+      \item Let $\bm{0}_{nn}$ denote the $n\times n$ matrix of all zeros.
+	  Then $A\bm{0}_{nn}=\bm{0}_{nn}$ and $\bm{0}_{nn}A=\bm{0}_{nn}$,
+	  so $A\bm{0}_{nn}=\bm{0}_{nn}A$.
+	  Thus $\bm{0}_{nn}\in U$.
+	  \pause
+      \item Suppose $X,Y\in U$.
+	  Then $AX=XA$ and $AY=YA$, implying that
+	  \[ A(X+Y)=AX+AY=XA+YA=(X+Y)A,\]
+	  and thus $X+Y\in U$, so $U$ is closed under addition.
+	  \pause
+      \item Suppose $X\in U$ and $k\in\RR$.
+	  Then $AX=XA$, implying that
+	  \[ A(kX)=k(AX)=k(XA)=(kX)A;\]
+	  thus $kX\in U$, so $U$ is closed under scalar multiplication.
+  \end{itemize}
+  By the subspace test, $U$ is a subspace of ${\bm M}_{nn}$.
+  \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\begin{problem}
+  Let $t\in\RR$, and let
+  \[ U=\{ p\in{\cal P} ~|~ p(t)=0\},\]
+  i.e., $U$ is the subset of polynomials that have $t$ as a root.
+  Prove that $U$ is a vector space.
+\end{problem}
+\pause
+\vfill
+\begin{proofnoend}
+  \begin{itemize}
+    \item Let $\bm{0}$ denote the zero polynomial.
+	Then $\bm{0}(t)=0$, and thus $\bm{0}\in U$.
+	\pause
+    \item Let $q,r\in U$.
+	Then $q(t)=0$, $r(t)=0$, and
+	\[ (q+r)(t)=q(t)+r(t)=0+0=0.\]
+	Therefore, $q+r\in U$, so $U$ is closed under addition.
+	\pause
+    \item Let $q\in U$ and $k\in\RR$.
+	Then $q(t)=0$ and
+	\[ (kq)(t)=k(q(t))=k\cdot 0=0.\]
+	Therefore, $kq\in U$, so $U$ is closed under scalar multiplication.
+  \end{itemize}
+  By the subspace test, $U$ is a subspace of ${\cal P}$, and thus is
+  a vector space.
+  \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+    \begin{examples}[more...]
+    \begin{enumerate}
+	\item It is routine to verify that ${\cal P}_n$ is a subspace of ${\cal P}$ for all $n\geq 0$.
+	    \pause
+	    \bigskip
+
+	\item $U=\left\{ A\in \bm{M}_{22} ~|~ A^2 = A \right\}$ is NOT a subspace of $\bm{M}_{22}$.
+	    \bigskip
+
+	    To prove this, notice that $I_2$, the two by two identity
+	    matrix, is in $U$, but $2I_2\not\in U$ since $(2I_2)^2=4I_2\neq 2I_2$, so
+	    $U$ is not closed under scalar multiplication.
+	    \pause
+	    \bigskip
+
+	\item $U=\{ p\in{\cal P}_2 ~|~ p(1)=1\}$ is NOT a subspace of ${\cal P}_2$.
+	    \bigskip
+
+	    Because the zero polynomial is not in $U$: $\bm{0}(1)=0$.
+	    \bigskip
+
+	\item $C^n([0,1])$, $n\ge 1$, is a subspace of $C([0,1])$.
+    \end{enumerate}
+\end{examples}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Linear Combinations and Spanning Sets}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+\frametitle{Linear Combinations and Spanning Sets}
+\pause
+\begin{definitions}[Linear Combinations and Spanning]
+  Let $V$ be a vector space and let
+  $\{ \bm{u}_1, \bm{u}_2, \ldots, \bm{u}_n\}$ be a subset
+  of $V$.
+  \begin{enumerate}
+      \item A vector $\bm{u}\in V$ is called a
+	  \alert{linear combination} of
+	  $\bm{u}_1,\bm{u}_2,\ldots,\bm{u}_n$
+	  if there
+	  exist scalars $a_1, a_2, \ldots, a_n\in\RR$ such that
+	  \[ \bm{u} = a_1 \bm{u}_1 + a_2 \bm{u}_2 + \cdots +a_n \bm{u}_n.\]
+      \item The set of all linear combinations of
+	  $\bm{u}_1,\bm{u}_2,\ldots,\bm{u}_n$ is called
+	  the \alert{span} of $\bm{u}_1,\bm{u}_2,\ldots,\bm{u}_n$,
+	  and is defined as
+	  \[ \Span\{\bm{u}_1, \bm{u}_2, \ldots, \bm{u}_n\}
+	  =\{ a_1 \bm{u}_1 + a_2 \bm{u}_2 + \cdots +a_n \bm{u}_n ~|~
+	  a_1, a_2, \ldots, a_n\in\RR\}.\]
+	  \pause
+      \item If $U=\Span\{\bm{u}_1, \bm{u}_2, \ldots, \bm{u}_n\}$,
+	  then $\{\bm{u}_1, \bm{u}_2, \ldots, \bm{u}_n\}$ is called
+	  a \alert{spanning set} of $U$.
+  \end{enumerate}
+\end{definitions}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\frame{
+\begin{problem}
+  Is it possible to express $x^2+1$ as a linear combination of
+  \[ x+1,\quad x^2+x, \quad\text{and}\quad x^2+2~?\]
+  Equivalently, is $x^2+1\in\Span\{  x+1, x^2+x, x^2+2\}$?
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+  Suppose that there exist $a,b,c\in\RR$ such that
+  \[ x^2+1=a(x+1) + b(x^2+x)+c(x^2+2).\] Then
+  \[ x^2+1=(b+c)x^2 + (a+b)x + (a+2c),\]
+  implying that $b+c = 1$, $a+b = 0$, and $a+2c = 1$.
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\begin{frame}[fragile]
+\begin{solution}[continued]
+  Hence,
+  \begin{enumerate}
+    \item If this system is consistent, then we have found a way to express
+      $x^2+1$ as a linear combination of the other vectors; otherwise,
+    \item if the system is inconsistent and it is impossible to express $x^2+1$
+      as a linear combination of the other vectors.
+  \end{enumerate}
+  \bigskip
+  Because
+  \begin{align*}
+    \det \left(
+      \begin{bmatrix}
+        0 & 1 & 1\\
+        1 & 1 & 0\\
+        1 & 0 & 2\\
+      \end{bmatrix}
+    \right)
+    =
+    \det \left(
+      \begin{bmatrix}
+        0 & 1 & 1\\
+        0 & 1 & -2\\
+        1 & 0 & 2\\
+      \end{bmatrix}
+    \right)
+    =
+    \det \left(
+      \begin{bmatrix}
+        1 & 1\\
+        1 & -2\\
+      \end{bmatrix}
+    \right)
+    =
+    -3
+    \ne 0,
+  \end{align*}
+  \bigskip
+  Answer: Yes, i.e., $x^2+1\in\Span\{  x+1, x^2+x, x^2+2\}$.
+  \myQED
+\end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 11
+\begin{frame}[fragile]
+\begin{remark}
+    By solving the linear equation 
+    \begin{align*}
+    \begin{array}{ccccccc}
+          &   & b & + & c  & = & 1 \\
+	a & + & b & + &    & = & 0 \\
+	a & + &   &   & 2c & = & 1 \\
+    \end{array}
+    \end{align*}
+    we find that 
+    \begin{align*}
+        a=-\frac{1}{3},\quad b= \frac{1}{3},\quad c=\frac{2}{3}.
+    \end{align*}
+    Hence,
+    \begin{align*}
+	x^2+1 = -\frac{1}{3}(x+1) +\frac{1}{3}(x^2+x)+\frac{2}{3}(x^2+2)
+    \end{align*}
+\end{remark}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\frame{
+\begin{problem}
+    Let
+    \[
+    \bm{u}=\left[\begin{array}{rr} 1 & -1 \\ 2  & 1\end{array}\right],\quad
+    \bm{v}=\left[\begin{array}{rr} 2 & 1  \\ 1  & 0\end{array}\right]\quad\text{and}\quad
+    \bm{w}=\left[\begin{array}{rr} 1 & 3  \\ -1 & 1\end{array}\right]. \]
+    Is $\bm{w}\in\Span\{ \bm{u,v}\}$?
+    Prove your answer.
+\end{problem}
+\pause
+\vfill
+\begin{solution}[partial]
+    Suppose there exist $a,b\in\RR$ such that
+    \[
+	\left[\begin{array}{rr}   1 & 3  \\ -1 & 1\end{array}\right]
+	=a\left[\begin{array}{rr} 1 & -1 \\ 2  & 1\end{array}\right]
+	+b\left[\begin{array}{rr} 2 & 1  \\ 1  & 0\end{array}\right].\]
+    Then
+    \begin{eqnarray*}
+	a + 2b & = & 1 \\
+	-a + b & = & 3 \\
+	2a + b & = & -1 \\
+	a + 0b & = & 1.
+    \end{eqnarray*}
+    What remains is to determine whether or not this system is consistent.\\
+    Answer: No.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 13
+\frame{
+\begin{example}
+    The set of $3\times 2$ real matrices,
+    \[
+	\hspace{-1em}
+	\bm{M}_{32}
+	\hspace*{-.02in}=\hspace*{-.02in}
+	\Span\left\{
+	    \left[\begin{array}{cc} 1 & 0 \\ 0 & 0 \\ 0 & 0 \end{array}\right],
+	    \left[\begin{array}{cc} 0 & 1 \\ 0 & 0 \\ 0 & 0 \end{array}\right],
+	    \left[\begin{array}{cc} 0 & 0 \\ 1 & 0 \\ 0 & 0 \end{array}\right],
+	    \left[\begin{array}{cc} 0 & 0 \\ 0 & 1 \\ 0 & 0 \end{array}\right],
+	    \left[\begin{array}{cc} 0 & 0 \\ 0 & 0 \\ 1 & 0 \end{array}\right],
+	    \left[\begin{array}{cc} 0 & 0 \\ 0 & 0 \\ 0 & 1 \end{array}\right]
+	\right\}.
+    \]
+\end{example}
+\pause
+\vfill
+\begin{remark}[ A Spanning Set of $\bm{M}_{mn}$ ]
+    In general, the set of $mn$ $m\times n$ matrices that have a
+    `1' in position $(i,j)$ and zeros elsewhere, $1\leq i\leq m$,
+    $1\leq j\leq n$, constitutes a spanning set of $\bm{M}_{mn}$.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 14
+\frame{
+\begin{example}
+    Let $p(x)\in {\cal P}_3$.
+    Then $p(x)=a_0 + a_1x + a_2x^2 +a_3x^3$ for some
+    $a_0, a_1, a_2, a_3\in\RR$.
+    Therefore,
+    \[ {\cal P}_3 =\Span\{ 1, x, x^2, x^3 \}.\]
+\end{example}
+\pause
+\vfill
+\begin{remark}[ A Spanning Set of ${\cal P}_n$ ]
+    For all $n\geq 0$,
+    \[ {\cal P}_n = \Span\{ x^0, x^1, x^2, \ldots, x^n\}
+    = \Span\{ 1, x, x^2, \ldots, x^n\}.\]
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 15
+\frame{
+\begin{emptytitle}
+    \begin{center}
+       $\Span \{\cdots\} $ is a subspace and the smallest one.
+    \end{center}
+\end{emptytitle}
+\vfill
+\begin{theorem}
+    Let $V$ be a vector space,
+    let $\bm{u}_1, \bm{u}_2, \ldots, \bm{u}_n \in V$,
+    and let
+    \[ U=\Span\{\bm{u}_1, \bm{u}_2, \ldots, \bm{u}_n\}.\]
+    Then
+    \begin{enumerate}
+	\item $U$ is a subspace of $V$ containing $\bm{u}_1, \bm{u}_2, \ldots, \bm{u}_n$.
+	\item If $W$ is a subspace of $V$ and
+	    $\bm{u}_1, \bm{u}_2, \ldots, \bm{u}_n\in W$,
+	    then $U\subseteq W$.
+	    In other words, $U$ is the ``smallest'' subspace of $V$ that contains
+	    $\bm{u}_1, \bm{u}_2, \ldots, \bm{u}_n$.
+    \end{enumerate}
+\end{theorem}
+\pause
+\vfill
+\begin{remark}
+    This theorem should be familiar as it was covered in the particular case $V=\RR^n$.
+    The proof of the result in $\RR^n$ immediately generalizes to an
+    arbitrary vector space $V$.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 16
+\frame{
+\begin{problem}
+    Let
+    \[
+	A_1 =\left[\begin{array}{rr} 1 & -1 \\ -1 & 1  \end{array}\right],
+	A_2 =\left[\begin{array}{rr} 0 & 1  \\ 1  & -1 \end{array}\right],
+	A_3 =\left[\begin{array}{rr} 1 & -1 \\ -1 & 0  \end{array}\right],
+	A_4 =\left[\begin{array}{rr} 1 & 0  \\ 1  & 1  \end{array}\right].\]
+    Show that $\bm{M}_{22}= \Span\{A_1,A_2,A_3,A_4\}$.
+\end{problem}
+\pause
+\vfill
+\begin{remark}
+  We need to prove two inclusions
+  \[ \bm{M}_{22} \subseteq \Span\{A_1,A_2,A_3,A_4\} \]
+  \[ \text{and} \]
+  \[ \Span\{A_1,A_2,A_3,A_4\} \subseteq \bm{M}_{22}  \]
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 17
+\begin{frame}[fragile]
+\begin{proofnoend}[ First proof ]
+    Let
+    \[
+	E_1 =\left[\begin{array}{rr} 1 & 0 \\ 0 & 0 \end{array}\right],
+	E_2 =\left[\begin{array}{rr} 0 & 1 \\ 0 & 0 \end{array}\right],
+	E_3 =\left[\begin{array}{rr} 0 & 0 \\ 1 & 0 \end{array}\right],
+	E_4 =\left[\begin{array}{rr} 0 & 0 \\ 0 & 1 \end{array}\right].\]
+    Since ${\bm M}_{22}=\Span\{ E_1, E_2, E_3, E_4\}$ and
+    $A_1, A_2, A_3, A_4\in {\bm M}_{22}$, it follows
+    from the previous {\bf Theorem} that
+    \[ \Span\{A_1,A_2,A_3,A_4\}\subseteq {\bm M}_{22}.\]
+    \pause\medskip
+
+    Now show that $E_i$, $1\leq i\leq 4$,
+    can be written as a linear combination of $A_1, A_2, A_3, A_4$,
+    i.e., $E_i\in\Span\{A_1,A_2,A_3,A_4\}$ (lots of work to be done here!), and apply the previous {\bf Theorem} again to show that
+    \[ {\bm M}_{22}  \subseteq \Span\{A_1,A_2,A_3,A_4\}.\]
+    \myQED
+\end{proofnoend}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 18
+\frame{
+\begin{proofnoend}[ Second proof ]
+    (1) Since $A_1, A_2, A_3, A_4\in {\bm M}_{22}$ and ${\bm M}_{22}$ is a vector
+    space, \[ \Span\{A_1,A_2,A_3,A_4\}\subseteq {\bm M}_{22}.\]
+    \pause
+
+    (2) For any $\begin{bmatrix} a&b\\c&d \end{bmatrix}\in {\bm M}_{22} $,  we need to find $x_1,\cdots,x_4$, such that 
+    \begin{align*}
+      x_1A_1 + x_2A_2 +x_3A_3 +x_4A_4 = \left[\begin{array}{rr} a & b \\ c & d \end{array}\right]
+    \end{align*}
+    \[\Updownarrow\]
+    \[ \begin{array}{cccccccccc}
+	x_1  &   &     & + & x_3 & + & x_4 & = & a \\
+	-x_1 & + & x_2 & - & x_3 &   &     & = & b \\
+	-x_1 & + & x_2 & - & x_3 & + & x_4 & = & c \\
+	x_1  & - & x_2 &   &     & + & x_4 & = & d
+    \end{array}\]
+    Since the coefficient matrix is invertible  one can find unique solution and so
+    \[
+	\begin{bmatrix} a&b\\c&d \end{bmatrix}\in \Span\{A_1,A_2,A_3,A_4\}.
+    \]
+    Therefore, ${\bm M}_{22}  \subseteq \Span\{A_1,A_2,A_3,A_4\}$. \myQED
+\end{proofnoend}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 19
+\frame{
+\begin{problem}
+  Let $p(x)=x^2+1$, $q(x)=x^2+x$, and $r(x)=x+1$.
+  Prove that ${\cal P}_2=\Span\{p(x), q(x), r(x)\}$.
+\end{problem}
+\pause
+\vfill
+\begin{solution}[sketch]
+    (1) Since $p(x), q(x), r(x)\in{\cal P}_2$ and ${\cal P}_2$ is
+    a vector space,
+    \[ \Span\{p(x), q(x), r(x)\}\subseteq {\cal P}_2.\]
+    \pause
+
+    (2) As we've already observed, ${\cal P}_2=\Span\{1, x, x^2\}$.
+    To complete the proof, show that each of $1$, $x$ and $x^2$
+    can be written as a linear combination of $p(x), q(x)$ and
+    $r(x)$, i.e., show that
+    \[ 1,x,x^2\in \Span\{p(x), q(x), r(x)\}.\]
+    Then apply the previous {\bf Theorem}.
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\end{document}

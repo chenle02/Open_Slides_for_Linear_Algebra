@@ -1,0 +1,1156 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+% \documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 2. Matrix Algebra \\ \S 2-5. Elementary Matrices}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Elementary Matrices}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{Elementary Matrices}
+\pause
+\begin{definition}
+    An \alert{elementary matrix} is a matrix obtained from an
+    identity matrix by performing \alert{a single} elementary
+    row operation.
+    % \pause
+    % The \alert{type} of an elementary matrix is given by the type of row operation
+    % used to obtain the elementary matrix.
+\end{definition}
+\pause
+\vfill
+\begin{remark}[ Three Types of Elementary Row Operations ]
+    ($\sim$ bases for genomic sequences)
+\begin{itemize}
+    \item {\bf Type I:} Interchange two rows.
+    \item {\bf Type II:} Multiply a row by a nonzero number.
+    \item {\bf Type III:}
+    Add a (nonzero) multiple of one row to a different row.
+\end{itemize}
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\frame{
+\begin{example}
+    \begin{minipage}{0.3\textwidth}
+    \begin{center}
+       Switch the 2nd row and the 4th row
+    \end{center}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+    \begin{center}
+       Multiply $-2$ to the 3rd row
+    \end{center}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+    \begin{center}
+       Add $-3$ multiple of 1st row to the 3rd row
+    \end{center}
+    \end{minipage}
+    \bigskip
+    \[ E =
+    \left[ \begin{array}{cccc}
+	1 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 1 \\
+	0 & 0 & 1 & 0 \\
+	0 & 1 & 0 & 0
+    \end{array}\right],
+    F=
+    \left[ \begin{array}{rrrr}
+	1 & 0 & 0  & 0 \\
+	0 & 1 & 0  & 0 \\
+	0 & 0 & -2 & 0 \\
+	0 & 0 & 0  & 1
+    \end{array}\right],
+    G=
+    \left[ \begin{array}{rrrr}
+	1  & 0 & 0 & 0 \\
+	0  & 1 & 0 & 0 \\
+	-3 & 0 & 1 & 0 \\
+	0  & 0 & 0 & 1
+    \end{array}\right],
+    \]
+    \bigskip
+    are examples of elementary matrices of types I, II and III, respectively.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\frame{
+    \begin{example}[continued]
+    Let
+    \[A= \left[ \begin{array}{rr}
+    1 & 1 \\ 2 & 2 \\ 3 & 3 \\ 4 & 4
+    \end{array}\right] \]
+    \pause
+    We are interested in the effect that (left) multiplication of
+    $A$ by $E$, $F$ and $G$ has on the matrix $A$.
+    \pause
+    Computing $EA$, $FA$, and $GA$ \ldots
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5
+\frame{
+\begin{example}[continued]
+
+
+    \begin{minipage}{0.65\textwidth}
+    \[
+	EA=
+	\left[ \begin{array}{cccc}
+		1 & 0                  & 0 & 0                   \\
+		0 & 0                  & 0 & \textcolor{blue}{1} \\
+		0 & 0                  & 1 & 0                   \\
+		0 & \textcolor{red}{1} & 0 & 0
+	\end{array}\right]
+	\left[ \begin{array}{rr}
+		1 & 1 \\ \alert{2} & \alert{2} \\ 3 & 3 \\ \textcolor{blue}{4} &\textcolor{blue}{4}
+	\end{array}\right]=
+	\left[ \begin{array}{rr}
+		1 & 1 \\
+		\textcolor{blue}{4} & \textcolor{blue}{4} \\
+		3 & 3 \\
+		\alert{2} &\alert{2}
+	\end{array}\right]
+    \]
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+    \begin{center}
+       Switch the 2nd row and the 4th row
+    \end{center}
+    \end{minipage}
+
+    \pause
+    \begin{minipage}{0.65\textwidth}
+    \[
+	FA=
+	\left[ \begin{array}{rrrr}
+		1 & 0 & 0                   & 0 \\
+		0 & 1 & 0                   & 0 \\
+		0 & 0 & \textcolor{red}{-2} & 0 \\
+		0 & 0 & 0                   & 1
+	\end{array}\right]
+	\left[ \begin{array}{rr}
+		1 & 1 \\ 2 & 2 \\ \textcolor{red}{3} & \textcolor{red}{3} \\ 4 & 4
+	\end{array}\right]=
+	\left[ \begin{array}{rr}
+		1 & 1 \\
+		2 & 2 \\
+		\textcolor{red}{-6} & \textcolor{red}{-6} \\
+		4 & 4 \\
+	\end{array}\right]
+    \]
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+    \begin{center}
+       Multiply $-2$ to the 3rd row
+    \end{center}
+    \end{minipage}
+    \pause
+
+    \begin{minipage}{0.65\textwidth}
+    \[
+	GA=
+	\left[ \begin{array}{rrrr}
+		\textcolor{yellow}{1} & 0 & 0         & 0 \\
+		0                     & 1 & 0         & 0 \\
+		\alert{-3}            & 0 & \alert{1} & 0 \\
+		0                     & 0 & 0         & 1
+	\end{array}\right]
+	\left[ \begin{array}{rr}
+		\textcolor{yellow}{1} & \textcolor{yellow}{1} \\ 2 & 2 \\ \alert{3} & \alert{3} \\ 4 & 4
+	\end{array}\right]=
+	\left[ \begin{array}{rr}
+		\textcolor{yellow}{1} & \textcolor{yellow}{1} \\
+		2                     & 2                     \\
+		\alert{0}             & \alert{0}             \\
+		4                     & 4                     \\
+	\end{array}\right]
+    \]
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+    \begin{center}
+       Add $-3$ multiple of 1st row to the 3rd row
+    \end{center}
+    \end{minipage}
+
+    \myQED
+\end{example}
+\vfill
+\begin{remark}
+    The elementary matrices are the programmed receipts for your cooking!
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\begin{theorem}[Multiplication by an Elementary Matrix]
+    Let $A$ be an $m\times n$ matrix.
+    \begin{itemize}
+	\item[If]  $B$ is obtained from $A$ by performing \alert{one single
+	    elementary} row operation,
+	\item[then] $B=EA$
+	\item[] where $E$ is the elementary matrix obtained from $I_m$ by performing the same elementary operation on $I_m$ as was performed on $A$.
+    \end{itemize}
+\end{theorem}
+\vfill
+\begin{center}
+    \def\x{0.5}
+    \begin{tikzpicture}[scale=1, transform shape]
+    \tikzset{>=latex}
+    \node (A) at (0,\x) {$A$};
+    \node (B) at (1,\x) {$B$};
+    \node (I) at (0,-\x) {$I$};
+    \node (E) at (1,-\x) {$E$};
+    \draw[->] (A) -- (B);
+    \draw[->] (I) -- (E);
+    \node (O) at (\x,0) {\footnotesize El. Op.};
+    \node (=) at (4.5*\x,0) {$\Longrightarrow$};
+
+    \node (AEB) at (8*\x,0) {$A=EB$};
+
+    % \coordinate (P) at (0.2,1.5);
+    % \coordinate (Q) at (3,0.3);
+    % \coordinate (0) at (0,0);
+    % \draw (P) -- coordinate[pos={1/3}] (A) coordinate[pos={2/3}] (B) (Q) node [right] {$Q$};
+    % \draw [->,dashed] (0) node [below] {$} -- (P) node [above] {$P$};
+    % \draw [->,dashed] (0) -- (A) node [above] {$A$};
+    % \draw [->,dashed] (0) -- (B) node [above] {$B$};
+    % \filldraw (P) circle (0.05);
+    % \filldraw (Q) circle (0.05);
+    % \filldraw (0) circle (0.05);
+    % \filldraw (A) circle (0.05);
+    % \filldraw (B) circle (0.05);
+    \end{tikzpicture}
+\end{center}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+\begin{problem}
+    Let
+    % \vspace*{-.3in}
+
+    \[ A=\left[\begin{array}{rr}
+    4 & 1 \\ 1 & 3 \end{array}\right]
+    \quad\text{and}\quad
+    C=\left[\begin{array}{rr}
+    1 & 3 \\ 2 & -5 \end{array}\right] \]
+    Find elementary matrices $E$ and $F$ so that
+    $C=FEA$.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    {\bf Note.}
+    The statement of the problem implies that \alert{$C$ can be
+	obtained from $A$ by a sequence of two elementary row
+    operations}, represented by elementary matrices $E$ and $F$.
+    \pause
+    \[
+	A = \left[\begin{array}{rr}
+		4 & 1 \\ 1 & 3
+	\end{array}\right]
+	\pause
+	\stackrel{\rightarrow}{_E}
+	\left[\begin{array}{rr}
+		1 & 3 \\
+		4 & 1
+	\end{array}\right]
+	\pause
+	\stackrel{\rightarrow}{_F}
+	\left[\begin{array}{rr}
+		1 & 3 \\
+		2 & -5
+	\end{array}\right] = C
+    \]
+    \pause
+    where $E=\left[\begin{array}{rr} 0 & 1 \\ 1  & 0 \end{array}\right]$ \pause
+    and   $F=\left[\begin{array}{rr} 1 & 0 \\ -2 & 1 \end{array}\right]$.\pause
+    Thus we have the sequence
+    $A\rightarrow EA \rightarrow F(EA)=C$, \pause
+    so $C=FEA$, i.e.,
+    \[
+	\left[\begin{array}{rr} 1 & 3 \\ 2  & -5 \end{array}\right] =
+	\left[\begin{array}{rr} 1 & 0 \\ -2 & 1 \end{array}\right]
+	\left[\begin{array}{rr} 0 & 1 \\ 1  & 0 \end{array}\right]
+	\left[\begin{array}{rr} 4 & 1 \\ 1  & 3 \end{array}\right].
+    \]
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Inverses of elementary matrices}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+\frametitle{Inverses of Elementary Matrices}
+\pause
+\begin{lemma}
+    Every elementary matrix $E$ is invertible, and $E^{-1}$ is also an elementary matrix (of the same type).
+    Moreover, $E^{-1}$ corresponds to the inverse of the row operation that produces $E$.
+\end{lemma}
+\vfill
+\pause
+\begin{emptytitle}
+    The following table gives the inverse of each type of elementary row operation:
+    \begin{table}[H]
+	\centering
+	\begin{tabu}{|c|c|c|}
+	\hline
+	\textbf{Type} & \textbf{Operation} & \textbf{Inverse Operation} \\ \hline
+	I & Interchange rows $p$ and $q$ & Interchange rows $p$ and $q$ \\
+	II & Multiply row $p$ by $k \neq 0$ & Multiply row $p$ by $1/k$ \\
+	III & Add $k$ times row $p$ to row $q \neq p$ & Subtract $k$ times row $p$ from row $q$ \\ \hline
+	\end{tabu}
+    \end{table}
+    \noindent Note that elementary matrices of type I are self-inverse.
+\end{emptytitle}
+
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\frame{\frametitle{Inverses of Elementary Matrices}
+\begin{example}
+    Without using the matrix inversion algorithm, find the
+    inverse of the elementary matrix
+    \[ G=
+    \left[ \begin{array}{rrrr}
+	1  & 0 & 0 & 0 \\
+	0  & 1 & 0 & 0 \\
+	-3 & 0 & 1 & 0 \\
+	0  & 0 & 0 & 1
+    \end{array}\right]
+    \]
+    \pause
+    {\bf Hint.}
+    What row operation can be applied to $G$ to transform it
+    to $I_4$?
+    \pause
+    The row operation $G\rightarrow I_4$ is to \alert{add} three times
+    row one to row three,
+    \pause
+    and thus
+    \[ G^{-1} =
+    \left[ \begin{array}{cccc}
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	3 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1
+    \end{array}\right] \]
+    \pause
+    \alert{Check by computing $G^{-1}G$.}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\frame{
+\begin{example}[continued]
+    Similarly,
+    \[ E^{-1} =
+    \left[ \begin{array}{cccc}
+	1 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 1 \\
+	0 & 0 & 1 & 0 \\
+	0 & 1 & 0 & 0
+    \end{array}\right]^{-1} =
+    \left[ \begin{array}{cccc}
+	1 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 1 \\
+	0 & 0 & 1 & 0 \\
+	0 & 1 & 0 & 0
+    \end{array}\right]
+    \]
+    \pause
+    and
+    \[ F^{-1} =
+    \left[ \begin{array}{rrrr}
+	1 & 0 & 0  & 0 \\
+	0 & 1 & 0  & 0 \\
+	0 & 0 & -2 & 0 \\
+	0 & 0 & 0  & 1
+    \end{array}\right]^{-1}
+    = \left[ \begin{array}{rrrr}
+	1 & 0 & 0            & 0 \\
+	0 & 1 & 0            & 0 \\
+	0 & 0 & -\frac{1}{2} & 0 \\
+	0 & 0 & 0            & 1
+    \end{array}\right]
+    \]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 11
+\frame{
+\begin{emptytitle}
+    Suppose $A$ is an $m\times n$ matrix and that $B$ can be
+    obtained from $A$ by a sequence of $k$ elementary row operations.
+    \pause
+    Then there exist elementary matrices $E_1, E_2,\ldots E_k$
+    such that
+    \[ B=E_k(E_{k-1}(\cdots(E_2(E_1A))\cdots)) \]
+    \pause
+    Since matrix multiplication is associative, we have
+    \[ B=(E_k E_{k-1} \cdots E_2 E_1)A\]
+    \pause
+    or, more concisely, $B=UA$ where
+    $U=E_k E_{k-1} \cdots E_2 E_1$.
+    \pause
+    \bigskip
+
+    To find $U$ so that $B=UA$, we \alert{could} find
+    $E_1, E_2, \ldots, E_k$ and multiply these together
+    (in the correct order), but there is an easier method for
+    finding $U$.
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\frame{
+\begin{definition}
+    Let $A$ be an $m\times n$ matrix.  We write
+    \[ A\rightarrow B \]
+    if $B$ can be obtained from $A$ by a sequence of elementary
+    row operations.
+    \pause
+    In this case, we call $A$ and $B$ are \alert{row-equivalent}.
+\end{definition}
+\pause
+\begin{theorem}
+    Suppose $A$ is an $m\times n$ matrix and that $A\rightarrow B$.
+    Then
+    \pause
+    \begin{enumerate}
+	\item there exists an  \alert{invertible} $m\times m$ matrix $U$ such that
+	    $B=UA$;
+	    \pause
+	\item $U$ can be computed by performing elementary row operations on
+	    $\left[\begin{array}{c|c} A & I_m \end{array}\right]$
+	    to transform it into
+	    $\left[\begin{array}{c|c} B & U \end{array}\right]$;
+	    \pause
+	\item $U=E_k E_{k-1} \cdots E_2 E_1$, where
+	    $E_1, E_2, \ldots, E_k$ are elementary matrices
+	    corresponding, in order,
+	    to the elementary row operations
+	    used to obtain $B$ from $A$.
+    \end{enumerate}
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 13
+\frame{
+\begin{problem}
+    Let $A=\left[\begin{array}{rrr}
+    3 & 0 & 1 \\ 2 & -1 & 0 \end{array}\right]$,
+    and let $R$ be the reduced row-echelon form of $A$.
+
+    Find a matrix $U$ so that $R=UA$.
+\end{problem}
+%%Also, find a matrix $Q$ so that $A=QR$.
+\pause
+\vfill
+\begin{solution}
+    \[
+    \left[\begin{array}{rrr|rr}
+	3 & 0  & 1 & 1 & 0 \\
+	2 & -1 & 0 & 0 & 1
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr|rr}
+	1 & 1  & 1 & 1 & -1 \\
+	2 & -1 & 0 & 0 & 1
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr|rr}
+	1 & 1  & 1  & 1  & -1 \\
+	0 & -3 & -2 & -2 & 3
+    \end{array}\right]
+    \]
+    \[
+    \rightarrow
+    \left[\begin{array}{rrr|rr}
+	1 & 1 & 1   & 1   & -1 \\
+	0 & 1 & 2/3 & 2/3 & -1
+    \end{array}\right]
+    \rightarrow
+    \left[\begin{array}{rrr|rr}\vspace*{.02in}
+	1 & 0 & 1/3 & 1/3 & 0 \\
+	0 & 1 & 2/3 & 2/3 & -1
+    \end{array}\right]
+    \]
+    \pause
+    \bigskip
+
+    Starting with
+    $\left[\begin{array}{c|c}
+    A & I \end{array}\right]$, we've obtained
+    $\left[\begin{array}{c|c}
+    R & U \end{array}\right]$.
+    \pause
+    \bigskip
+
+    Therefore $R=UA$, where
+    \[ U=\left[\begin{array}{rr}\vspace*{.02in}
+	1/3 & 0 \\
+	2/3 & -1
+    \end{array}\right].
+    \]
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ --
+%%ADD THIS SLIDE FOR QR-FACTORIZATION
+%%\frame{
+%%\begin{example}[continued]
+%%\begin{eqnarray*}
+%%R & = & UA \\
+%%U^{-1} R & = & U^{-1}(UA) \\
+%%& = & (U^{-1}U)A \\
+%%& = & IA \\
+%%& = & A.
+%%\end{eqnarray*}
+%%\uncover<2->{
+%%Thus $A=U^{-1} R$, and
+%%\[ Q=U^{-1}=
+%%\left[\begin{array}{rr}\vspace*{.02in}
+%%\frac{1}{3} & 0 \\
+%%\frac{2}{3} & -1
+%%\end{array}\right]^{-1}
+%%=\left[\begin{array}{rr}
+%%3 & 0 \\
+%%2 & -1
+%%\end{array}\right].
+%%\]}
+%%\end{example}
+%%}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 14
+\frame{
+\begin{example}[ A Matrix as a product of elementary matrices ]
+    Let
+    \[ A= \left[\begin{array}{rrr}
+	    1 & 2 & -4 \\
+	    -3 & -6 & 13 \\
+    0 & -1 & 2 \end{array}\right].\]
+    \pause
+    Suppose we do row operations to put $A$ in reduced row-echelon form,
+    and write down the corresponding elementary matrices.
+    \pause
+    \[
+	\left[\begin{array}{rrr}
+		1 & 2 & -4 \\
+		-3 & -6 & 13 \\
+		0 & -1 & 2
+	\end{array}\right]
+	\pause
+	\stackrel{\longrightarrow}{_{E_1}}
+	\left[\begin{array}{rrr}
+		1 & 2 & -4 \\
+		0 & 0 & 1 \\
+		0 & -1 & 2
+	\end{array}\right]
+	\pause
+	\stackrel{\longrightarrow}{_{E_2}}
+	\left[\begin{array}{rrr}
+		1 & 2 & -4 \\
+		0 & -1 & 2\\
+		0 & 0 & 1
+	\end{array}\right]
+	\pause
+	\stackrel{\longrightarrow}{_{E_3}}
+    \]
+    \[
+	\left[\begin{array}{rrr}
+		1 & 2 & -4 \\
+		0 & 1 & -2\\
+		0 & 0 & 1
+	\end{array}\right]
+	\pause
+	\stackrel{\longrightarrow}{_{E_4}}
+	\left[\begin{array}{rrr}
+		1 & 0 & 0 \\
+		0 & 1 & -2\\
+		0 & 0 & 1
+	\end{array}\right]
+	\pause
+	\stackrel{\longrightarrow}{_{E_5}}
+	\left[\begin{array}{rrr}
+		1 & 0 & 0 \\
+		0 & 1 & 0\\
+		0 & 0 & 1
+	\end{array}\right]
+    \]
+    \pause
+    Notice that the reduced row-echelon form of $A$ equals $I_3$.
+    Now find the matrices $E_1, E_2, E_3, E_4$ and $E_5$.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 15
+\frame{
+\begin{example}[continued]
+    \[ E_1 =\left[\begin{array}{rrr}
+    1 & 0 & 0 \\
+    3 & 1 & 0\\
+    0 & 0 & 1
+    \end{array}\right],
+    \pause
+    E_2 =\left[\begin{array}{rrr}
+    1 & 0 & 0 \\
+    0 & 0 & 1\\
+    0 & 1 & 0\\
+    \end{array}\right],
+    \pause
+    E_3 =\left[\begin{array}{rrr}
+    1 & 0 & 0 \\
+    0 & -1 & 0\\
+    0 & 0 & 1
+    \end{array}\right]
+    \]
+    \pause
+    \[
+    E_4 =\left[\begin{array}{rrr}
+    1 & -2 & 0 \\
+    0 & 1 & 0\\
+    0 & 0 & 1
+    \end{array}\right],
+    \pause
+    E_5 =\left[\begin{array}{rrr}
+    1 & 0 & 0 \\
+    0 & 1 & 2\\
+    0 & 0 & 1
+    \end{array}\right]
+    \]
+    \pause
+    It follows that
+    \begin{eqnarray*}
+    (E_5(E_4(E_3(E_2(E_1A))))) & = & I\\
+    (E_5E_4E_3E_2E_1)A & = & I
+    \end{eqnarray*}
+    and therefore
+    \[ A^{-1}=E_5E_4E_3E_2E_1 \]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 16
+\frame{
+\begin{example}[continued]
+    Since $A^{-1}=E_5E_4E_3E_2E_1$,
+    \begin{eqnarray*}
+    A^{-1}        & = & E_5E_4E_3E_2E_1        \\
+    (A^{-1})^{-1} & = & (E_5E_4E_3E_2E_1)^{-1} \\
+    A             & = & E_1^{-1}E_2^{-1}E_3^{-1}E_4^{-1}E_5^{-1}
+    \end{eqnarray*}
+\end{example}
+\vfill
+\pause
+\begin{emptytitle}
+    This example illustrates the following result.
+\end{emptytitle}
+\vfill
+\pause
+\begin{theorem}
+    Let $A$ be an $n \times n$ matrix. Then, $A^{-1}$ exists if and only if $A$ can be written as the product of elementary matrices.
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 17
+\begin{frame}[fragile]
+    \begin{example}[ revisited  -- Matrix inversion algorithm]
+	\begin{align*}
+	    \left[\begin{array}{r|r}
+		    A & I
+	    \end{array}\right]
+	    & =
+	    \left[
+		\begin{array}{rrr}
+		    1 & 2 & -4 \\
+		    -3 & -6 & 13 \\
+		    0 & -1 & 2
+		\end{array}\middle|\quad I \quad\right]\\[1em]
+	    E_1 \left[\begin{array}{r|r}
+		    A & I
+	    \end{array}\right]
+	    &=
+	    \left[
+		\begin{array}{rrr}
+		    1 & 2 & -4 \\
+		    0 & 0 & 1 \\
+		    0 & -1 & 2
+		\end{array}\middle| \quad E_1\quad \right]
+	    &&=
+	    \left[
+		\begin{array}{rrr}
+		    1 & 2 & -4 \\
+		    0 & 0 & 1 \\
+		    0 & -1 & 2
+		\end{array}
+		\middle|
+		\begin{array}{rrr}
+		    1 & 0 & 0 \\
+		    3 & 1 & 0\\
+		    0 & 0 & 1
+		\end{array}
+	    \right]
+	    \\[1em]
+	    E_2E_1 \left[\begin{array}{r|r}
+		    A & I
+	    \end{array}\right]
+	    &=
+	    \left[
+		\begin{array}{rrr}
+		    1 & 2 & -4 \\
+		    0 & -1 & 2\\
+		    0 & 0 & 1
+		\end{array}\middle| \quad E_2E_1\quad\right]
+	    &&=
+	    \left[
+		\begin{array}{rrr}
+		    1 & 2 & -4 \\
+		    0 & -1 & 2\\
+		    0 & 0 & 1
+		\end{array}
+		\middle|
+		\begin{array}{rrr}
+		    1 & 0 & 0 \\
+		    0 & 0 & 1\\
+		    3 & 1 & 0
+		\end{array}
+	    \right]
+	\end{align*}
+
+    \end{example}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 18
+\begin{frame}[fragile]
+    \begin{example}[ continued ]
+     \begin{align*}
+	    E_3E_2E_1
+	    [~A~|~I~]
+	    &=
+	    \left[
+		\begin{array}{rrr}
+		    1 & 2 & -4 \\
+		    0 & 1 & -2\\
+		    0 & 0 & 1
+		\end{array}\middle| E_3E_2E_1\right]
+	    &&=
+	    \left[
+		\begin{array}{rrr}
+		    1 & 2 & -4 \\
+		    0 & 1 & -2\\
+		    0 & 0 & 1
+		\end{array}
+		\middle|
+		\begin{array}{rrr}
+		    1 & 0 & 0 \\
+		    0 & 0 & -1\\
+		    3 & 1 & 0
+		\end{array}
+	    \right]
+	    \\[1em]
+	    E_4E_3E_2E_1
+	    [~A~|~I~]
+	    &=
+	    \left[
+		\begin{array}{rrr}
+		    1 & 0 & 0 \\
+		    0 & 1 & -2\\
+		    0 & 0 & 1
+		\end{array}\middle|E_4E_3E_2E_1\right]
+	    &&=
+	    \left[
+		\begin{array}{rrr}
+		    1 & 0 & 0 \\
+		    0 & 1 & -2\\
+		    0 & 0 & 1
+		\end{array}
+	    \middle|
+		\begin{array}{rrr}
+		    1 & 0 & 2 \\
+		    0 & 0 & -1\\
+		    3 & 1 & 0
+		\end{array}
+	    \right]
+	    \\[1em]
+	\hspace{-8em}
+	    E_5E_4E_3E_2E_1
+	    [~A~|~I~]
+	    &=
+	    \left[
+		\begin{array}{rrr}
+		    1 & 0 & 0 \\
+		    0 & 1 & 0\\
+		    0 & 0 & 1
+		\end{array}
+		\middle|
+		    E_5E_4E_3E_2E_1
+	    \right]
+	    &&=
+	    \left[
+		\begin{array}{rrr}
+		    1 & 0 & 0 \\
+		    0 & 1 & 0\\
+		    0 & 0 & 1
+		\end{array}
+		\middle|
+		\begin{array}{rrr}
+		    1 & 0 & 2 \\
+		    6 & 2 & -1\\
+		    3 & 1 & 0
+		\end{array}
+	    \right]
+	\end{align*}
+	\bigskip
+	\begin{align*}
+	    A^{-1} = E_5E_4E_3E_2E_1 =
+	    \left[
+		\begin{array}{rrr}
+		    1 & 0 & 2 \\
+		    6 & 2 & -1\\
+		    3 & 1 & 0
+		\end{array}
+	    \right]
+	\end{align*}
+    \end{example}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 19
+\frame{
+\begin{problem}
+    Express $A=
+    \left[\begin{array}{rr}
+    4 & 1 \\
+    -3 & 2
+    \end{array}\right]$ as a product of elementary matrices.
+\end{problem}
+\vfill
+\pause
+\begin{solution}
+    \[
+    \left[\begin{array}{rr}
+    4 & 1 \\ -3 & 2
+    \end{array}\right]
+    \pause
+    \stackrel{\longrightarrow}{_{E_1}}
+    \left[\begin{array}{rr}
+    1 & 3 \\ -3 & 2
+    \end{array}\right]
+    \pause
+    \stackrel{\longrightarrow}{_{E_2}}
+    \left[\begin{array}{rr}
+    1 & 3 \\ 0 & 11
+    \end{array}\right]
+    \pause
+    \stackrel{\longrightarrow}{_{E_3}}
+    \left[\begin{array}{rr}
+    1 & 3 \\ 0 & 1
+    \end{array}\right]
+    \pause
+    \stackrel{\longrightarrow}{_{E_4}}
+    \left[\begin{array}{rr}
+    1 & 0 \\ 0 & 1
+    \end{array}\right]
+    \]
+    \pause
+    with
+    \[
+    E_1 =\left[\begin{array}{rr}
+    1 & 1 \\ 0 & 1
+    \end{array}\right],
+    \pause
+    E_2 =\left[\begin{array}{rr}
+    1 & 0 \\ 3 & 1
+    \end{array}\right],
+    \pause
+    E_3 =\left[\begin{array}{rr}
+    1 & 0 \\ 0 & \frac{1}{11}
+    \end{array}\right],
+    \pause
+    E_4 =\left[\begin{array}{rr}
+    1 & -3 \\ 0 & 1
+    \end{array}\right]
+    \]
+    \pause
+    Since $E_4E_3E_2E_1A=I$, $A^{-1}=E_4E_3E_2E_1$, and hence
+    \[ A= E_1^{-1} E_2^{-1} E_3^{-1} E_4^{-1} \]
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 20
+\frame{
+\begin{solution}[continued]
+    Therefore,
+    \[ A =
+    \left[\begin{array}{rr}
+	1 & 1 \\
+	0 & 1
+    \end{array}\right]^{-1}
+    \left[\begin{array}{rr}
+	1 & 0 \\
+	3 & 1
+    \end{array}\right]^{-1}
+    \left[\begin{array}{rr}
+	1 & 0 \\
+	0 & 1/11
+    \end{array}\right]^{-1}
+    \left[\begin{array}{rr}
+	1 & -3 \\
+	0 & 1
+    \end{array}\right]^{-1}
+    \]
+    \pause
+    i.e.,
+    \[ A =
+    \left[\begin{array}{rr}
+	1 & -1 \\
+	0 & 1
+    \end{array}\right]
+    \left[\begin{array}{rr}
+	1 & 0 \\
+	-3 & 1
+    \end{array}\right]
+    \left[\begin{array}{rr}
+	1 & 0 \\
+	0 & 11
+    \end{array}\right]
+    \left[\begin{array}{rr}
+	1 & 3 \\
+	0 & 1
+    \end{array}\right]
+    \]
+    \myQED
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 21
+\frame{
+\begin{emptytitle}
+    One result that we have assumed in all our work involving
+    reduced row-echelon matrices is the following.
+\end{emptytitle}
+\pause
+\vfill
+\begin{theorem}[ Uniqueness of the Reduced Echelon Form ]
+    If $A$ is an $m\times n$ matrix and $R$ and $S$ are reduced row-echelon forms of $A$, then $R=S$.
+\end{theorem}
+\pause
+\vfill
+\begin{remark}
+    \alert{This theorem ensures that the reduced row-echelon form of
+    a matrix is unique,}
+    \pause
+    and its proof follows from the results about elementary matrices.
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Smith Normal Form}}
+%-------------- start slide -------------------------------%{{{ 22
+\begin{frame}[fragile]
+\frametitle{Smith Normal Form}
+\pause
+\begin{definition}
+    If $A$ is an $m\times n$ matrix of rank $r$, then the matrix
+    $\begin{pmatrix} I_r & 0 \cr 0 & 0 \end{pmatrix}_{m \times n}$
+    is called the \alert{Smith normal form} of $A$.
+\end{definition}
+\vfill
+\begin{theorem}
+    If $A$ is an $m\times n$ matrix of rank $r$, then there exist invertible
+    matrices $U$ and $V$ of size $m \times m$ and $n \times n$, respectively,
+    such that
+    \begin{align*}
+        UAV = \begin{pmatrix} I_r & 0 \cr 0 & 0 \end{pmatrix}_{m \times n}
+    \end{align*}
+\end{theorem}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 23
+\begin{frame}[fragile]
+\begin{proofnoend}
+    \begin{enumerate}
+	\item Apply the elementary row operations:
+	     \begin{align*}
+		 [A | I_m]
+		\stackrel{e.r.o.}{\longrightarrow}
+		 [\RRef\left(A\right)| U]
+	     \end{align*}
+	\item Apply the elementary column operations:
+	    \begin{align*}
+		\begin{pmatrix} \RRef(A) \cr I_n \end{pmatrix}
+		\stackrel{e.c.o.}{\longrightarrow}
+	    \begin{pmatrix} \begin{pmatrix} I_r & 0 \cr 0 & 0 \end{pmatrix}_{m \times n} \cr V \end{pmatrix}_{2m \times n}
+	    \end{align*}
+    \end{enumerate}
+    \myQED
+\end{proofnoend}
+   \vfill
+   \begin{remark}
+       The elementary column operations above are equivalent to the elementary row operations on the transpose:
+	    \begin{align*}
+		\left[\RRef(A)^T \middle| I_n \right]
+		\stackrel{e.r.o.}{\longrightarrow}
+	    \left[\begin{pmatrix} I_r & 0 \cr 0 & 0 \end{pmatrix}_{n \times m} \middle| V^T\right]_{n \times 2m}
+	    \end{align*}
+   \end{remark}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 24
+\begin{frame}[fragile]
+\begin{problem}
+Find the decomposition of $A=\left[
+    \begin{array}{rrr}
+	3 & 0  & 1 \\
+	2 & -1 & 0
+    \end{array}\right]$
+    into the Smith normal form: $A= \widetilde{U}N \widetilde{V}$, where $N$ is the Smith normal form of $A$
+    and $\widetilde{U}, \widetilde{V}$ are some invertible matrices.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    We have seen that
+    \[
+	[A|I_2]= \left[\begin{array}{rrr|rr}
+	    3 & 0  & 1 & 1 & 0 \\
+	    2 & -1 & 0 & 0 & 1
+	\end{array}\right]
+	\rightarrow
+	\left[\begin{array}{rrr|rr}
+	    1 & 0 & 1/3 & 1/3 & 0 \\
+	    0 & 1 & 2/3 & 2/3 & -1
+	\end{array}\right]
+	=
+	[\RRef(A) | U]
+    \]
+    Now,
+    \begin{align*}
+	\begin{pmatrix} \RRef(A)^T~\bigg|~ I_3 \end{pmatrix}
+	=
+	\left[
+	\begin{array}{cc|ccc}
+	    1           & 0           & 1 & 0 & 0\\
+	    0           & 1           & 0 & 1 & 0\\
+	    \frac{1}{3} & \frac{2}{3} & 0 & 0 & 1\\
+	\end{array}\right]
+	\rightarrow
+	\left[
+	\begin{array}{cc|ccc}
+	    1 & 0 & 1            & 0            & 0\\
+	    0 & 1 & 0            & 1            & 0\\
+	    0 & 0 & -\frac{1}{3} & -\frac{2}{3} & 1\\
+	\end{array}\right]
+    =
+    \left[N^T \middle| V^T\right]
+    \end{align*}
+\end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 25
+\begin{frame}[fragile]
+\begin{solution}[Continued]
+    Hence, we find $N = UAV$, namely,
+    \begin{align*}
+	\begin{pmatrix}
+	    1 & 0 & 0\\
+	    0 & 1 & 0\\
+	\end{pmatrix}
+	 =
+	\begin{pmatrix}
+	    1/3 & 0 \\
+	    2/3 & -1
+	\end{pmatrix}
+	\begin{bmatrix}
+	    3 & 0 & 1 \\
+	    2 & -1 & 0
+	\end{bmatrix}
+	\begin{pmatrix}
+	    1 & 0 & -1/3\\
+	    0 & 1 & -2/3\\
+	    0 & 0 & 1\\
+	\end{pmatrix}
+    \end{align*}
+    Finally, since $U$ and $V$ are invertible, we see that
+    \begin{align*}
+	A = U^{-1} N V^{-1},
+    \end{align*}
+    namely,
+    \begin{align*}
+	A=
+	\begin{bmatrix}
+	    3 & 0 & 1 \\
+	    2 & -1 & 0
+	\end{bmatrix}
+	 &=
+	\begin{pmatrix}
+	    1/3 & 0 \\
+	    2/3 & -1
+	\end{pmatrix}^{-1}
+	\begin{pmatrix}
+	    1 & 0 & 0\\
+	    0 & 1 & 0\\
+	\end{pmatrix}
+	\begin{pmatrix}
+	    1 & 0 & -1/3\\
+	    0 & 1 & -2/3\\
+	    0 & 0 & 1\\
+	\end{pmatrix}^{-1}\\
+	 &=\begin{pmatrix}
+	    3 & 0 \\
+	    2 & -1
+	\end{pmatrix}
+	\begin{pmatrix}
+	    1 & 0 & 0\\
+	    0 & 1 & 0\\
+	\end{pmatrix}
+	\begin{pmatrix}
+	    1 & 0 & 1/3\\
+	    0 & 1 & 2/3\\
+	    0 & 0 & 1\\
+	\end{pmatrix}\\
+	 &=
+	 \widetilde{U} N \widetilde{V}.
+    \end{align*}
+    \myQED
+\end{solution}
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\end{document}

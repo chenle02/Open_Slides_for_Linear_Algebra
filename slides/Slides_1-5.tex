@@ -1,0 +1,145 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 1. Systems of Linear Equations \\ \S  1-5. Application to Electrical Networks}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Electrical Networks}}
+
+%--------------start slide ---------------------% {{{ 1
+\frame{\frametitle{Resistor Networks}
+Important Symbols:
+\begin{center}
+Resistor: \begin{circuitikz} \draw (0,0) to [R] (2,0); \end {circuitikz}
+\end{center}
+\begin{center}
+Voltage Source: \begin{circuitikz} \draw (0,0) to [/tikz/circuitikz/bipoles/length=0.75cm, battery1] (1,0); \end {circuitikz}
+\end{center}
+\begin{center}
+Current:
+
+\begin{circuitikz} \draw (0,0) node[scale=4]{$\circlearrowleft$}
+(0,0) node{$I_1$}; \end{circuitikz}
+\end{center}
+
+\pause
+
+\begin{emptytitle}
+Resitance is measured in \em{ohms}, $\Omega$.
+Voltage is measured in \em{volts}, $V$.
+Current is measured in \em{amps}, $A$.
+\end{emptytitle}
+}
+%------------end slide----------------------%}}}
+
+%---------------start slide-------------------% {{{ 2
+\frame{
+\begin{problem}
+Write an equation for each circuit and solve for each current in the following diagram.
+\begin{center}
+    \begin{circuitikz} \draw[scale=0.70]
+	(0,4) to [battery1, v_= $17\; volts$] (0,0)
+	to [R = $ 1 \Omega $] (4,0)
+	to [R = $ 4 \Omega $] (4,4)
+	(0,4) to [R =$ 2 \Omega $] (4,4)
+	(4,4) to [battery1 = $14\; volts$] (8,4)
+	(8,4) to [R = $2 \Omega$] (8,0)
+	to [R = $2 \Omega$] (4,0)
+	to [R = $3 \Omega$] (4,-4)
+	(4,-4)to [R = $5 \Omega$] (0,-4)
+	to [battery1 = $24\; volts$] (0,0)
+	(2,2) node[scale=4]{$\circlearrowleft$}
+	(2,2) node{$I_2$}
+	(6,2) node[scale=4]{$\circlearrowleft$}
+	(6,2) node{$I_3$}
+	(2,-2) node[scale=4]{$\circlearrowleft$}
+	(2,-2) node{$I_1$}
+	;
+    \end{circuitikz}
+\end{center}
+
+\end{problem}
+}
+%--------------end slide----------------------%}}}
+
+%--------------start slide-------------------% {{{ 3
+\frame{
+\begin{solution}
+The equation for the bottom circuit, with current $I_1$ is given by
+\[
+    5I_1 + 3I_1 + I_1 - I_2 = -24
+\]
+\pause
+The top left circuit, with current $I_2$ is
+\[
+    I_2 - I_1 + 4I_2 - 4I_3 + 2I_2 = 17
+\]
+\pause
+The top right circuit is
+\[
+    4I_3 - 4I_2 + 2I_3 + 2I_3 = -14
+\]
+\pause
+After simplifying, this system is represented by
+\[
+    \left[
+	\begin{array}{rrr|r}
+	    9 & -1 & 0 & -24 \\
+	    -1 & 7 & -4 & 17 \\
+	    0 & -4 & 8 & -14
+	\end{array}
+    \right]
+\]
+
+\end{solution}
+}
+%---------------end slide-------------------%}}}
+
+%--------------start slide-----------------% {{{ 4
+\frame{
+\begin{solution}[continued]
+The reduced row-echelon form of this matrix is
+\[
+    \left[
+	\begin{array}{rrr|r}
+	    1 & 0 & 0 & -\frac{5}{2} \\
+	    0 & 1 & 0 & \frac{3}{2} \\
+	    0 & 0 & 1 & -1
+    \end{array} \right]
+\]
+\pause
+This gives values of the currents of
+\begin{eqnarray*}
+    I_1 &=& -\frac{5}{2} \\
+    I_2 &=& \frac{3}{2} \\
+    I_3 &=& -1
+\end{eqnarray*}
+\end{solution}
+}
+%----------------end slide-----------------%}}}
+
+\end{document}

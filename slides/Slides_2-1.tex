@@ -1,0 +1,413 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+% \documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 2. Matrix Algebra \\ \S 2-1. Matrix Addition, Scalar Multiplication and Transposition}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+%-------------- start slide -------------------------------%{{{ 2
+\begin{frame}[fragile]
+   \tableofcontents
+\end{frame}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Matrices -- Definitions and Basic Properties}}
+%-------------- start slide -------------------------------%{{{ 1
+\frame{
+\frametitle{Matrices -- Definitions and Basic Properties}
+\pause
+\begin{definition}
+    Let $m$ and $n$ be positive integers.
+    \begin{itemize}
+	\item \alert{An $m\times n$ matrix} is a rectangular array
+	    of numbers having $m$ rows and $n$ columns.
+	    Such a matrix is said to have \alert{size $m\times n$}.
+	    \pause
+	\item \alert{A row matrix} (or row) is a $1\times n$ matrix, and
+	    \alert{a column matrix} (or column)
+	    is an $m\times 1$ matrix.
+	    \pause
+	\item \alert{A square matrix} is an $n \times n$ matrix.
+	    \pause
+	\item \alert{The $(i,j)$-entry of a matrix} is the
+	    entry in row $i$ and column $j$. For a matrix $A$, the
+	    $(i,j)$-entry of $A$ is often written as $a_{ij}$.
+    \end{itemize}
+\end{definition}
+\pause
+\vfill
+\begin{emptytitle}
+    General notation for an $m\times n$ matrix, $A$:
+    \vfill
+    \[ A=\left[\begin{array}{ccccc}
+	    a_{11} & a_{12} & a_{13} & \ldots & a_{1n} \\
+	    a_{21} & a_{22} & a_{23} & \ldots & a_{2n} \\
+	    a_{31} & a_{32} & a_{33} & \ldots & a_{3n} \\
+	    \vdots & \vdots & \vdots &        & \vdots \\
+	    a_{m1} & a_{m2} & a_{m3} & \ldots & a_{mn} \\
+    \end{array}\right] = \left[ a_{ij} \right] \]
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 2
+\frame{
+\begin{remark}[Basic Properties]
+\begin{enumerate}
+    \item {\bf Equality:} two matrices are equal if and only if they have the same size and the corresponding entries are equal.
+	\pause
+    \item {\bf Zero Matrix:} an $m\times n$ matrix with all entries equal to zero.
+	\pause
+    \item {\bf Addition:} matrices must have the same size; add corresponding entries.
+	\pause
+    \item {\bf Scalar Multiplication:} multiply each entry of the matrix by the scalar.
+	\pause
+    \item {\bf Negative of a Matrix:} for an $m\times n$ matrix $A$, its negative is denoted $-A$ and $-A=(-1)A$.
+	\pause
+    \item {\bf Subtraction:} for $m\times n$ matrices $A$ and $B$, $A-B= A+(-1)B$.
+\end{enumerate}
+\end{remark}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Matrix Addition}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\frametitle{Matrix Addition}
+\pause
+
+\begin{definition}
+Let $A = \leftB a_{ij} \rightB$ and $B = \leftB b_{ij} \rightB$ be two $m \times n$ matrices. Then $A+B = C$ where $C$ is the $m \times n$ matrix $C = \leftB c_{ij} \rightB$ defined by
+\[
+c_{ij} = a_{ij} + b_{ij}
+\]
+\end{definition}
+
+\pause
+
+\begin{example}
+Let $A = \leftB
+\begin{array}{rr}
+1 & 3 \\
+2 & 5
+\end{array}\rightB, B = \leftB
+\begin{array}{rr}
+0 & -2 \\
+6 & 1
+\end{array}
+\rightB$. Then,
+\begin{eqnarray*}
+A + B &=&
+\leftB
+\begin{array}{rr}
+1 + 0 & 3 + -2 \\
+2 + 6 & 5 + 1
+\end{array}
+\rightB \\
+&=&
+\leftB
+\begin{array}{rr}
+1 & 1 \\
+8 & 6
+\end{array}
+\rightB
+\end{eqnarray*}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\frame{
+\begin{theorem}[Properties of Matrix Addition]
+Let $A,B$ and $C$ be $m\times n$ matrices.
+Then the following properties hold.
+\pause
+\begin{enumerate}
+\item
+$A+B=B+A$
+\textcolor{blue}{(matrix addition is commutative)}.
+\medskip
+\pause
+\item
+$( A+B) +C=A+( B+C)$
+\textcolor{blue}{(matrix addition is associative)}.
+\medskip
+\pause
+\item
+There exists an $m\times n$ zero matrix, \alert{$0$}, such that
+\alert{$A+0=A$}.\\
+\textcolor{blue}{(existence of an additive identity)}.
+\medskip
+\pause
+\item
+There exists an $m\times n$ matrix \alert{$-A$} such that
+\alert{$A+(-A) =0$}.\\
+\textcolor{blue}{(existence of an additive inverse)}.
+\end{enumerate}
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Scalar Multiplication}}
+%-------------- start slide -------------------------------%{{{ 5
+\frame{
+\frametitle{Scalar Multiplication}
+\pause
+\begin{definition}
+    Let $A = \leftB a_{ij} \rightB$ be an $m\times n$ matrix
+    and let $k$ be a scalar. Then $kA = \leftB ka_{ij} \rightB$.
+\end{definition}
+\pause
+\vfill
+\begin{example}
+    Let $A = \leftB
+    \begin{array}{rrr}
+	2 & 0 & -1 \\
+	3 & 1 & -2 \\
+	0 & 4 & 5
+    \end{array}
+    \rightB$.
+
+    \pause
+    Then
+    \begin{eqnarray*}
+    3A &=&
+    \leftB
+    \begin{array}{rrr}
+	3(2) & 3(0) & 3(-1) \\
+	3(3) & 3(1) & 3(-2) \\
+	3(0) & 3(4) & 3(5)
+    \end{array}
+    \rightB \\
+    &=&
+    \leftB
+    \begin{array}{rrr}
+	6 & 0 & -3 \\
+	9 & 3 & -6 \\
+	0 & 12 & 15
+    \end{array}
+    \rightB
+    \end{eqnarray*}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\begin{theorem}[Properties of Scalar Multiplication]
+    Let $A, B$ be $m\times n$ matrices and let $k, p\in\RR$ (scalars).
+    Then the following properties hold.
+    \pause
+    \begin{enumerate}
+	\item $k \left( A+B\right) =k A+ kB$. \\ \textcolor{blue}{(scalar multiplication distributes over matrix addition)}.
+	    \medskip
+	    \pause
+	\item $\left( k +p \right) A= k A+p A$. \\ \textcolor{blue}{(addition distributes over scalar multiplication)}.
+	    \medskip
+	    \pause
+	\item $k \left( p A\right) = \left( k p \right) A$.  \textcolor{blue}{(scalar multiplication is associative)}.
+	    \medskip
+	    \pause
+	\item $1A=A$.  \textcolor{blue}{(existence of a multiplicative identity)}.
+    \end{enumerate}
+\end{theorem}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+\begin{example}
+    \[
+    2\left[\begin{array}{rr} -1  & 0  \\ 1  & 1  \end{array} \right] +
+    4\left[\begin{array}{rr} -2  & 1  \\ 3  & 0  \end{array} \right] -
+    \left[\begin{array}{rr}  6   & 8  \\ 1  & -1 \end{array} \right] = \pause
+    \left[\begin{array}{rr}  -16 & -4 \\ 13 & 3  \end{array} \right]
+    \]
+\end{example}
+\pause
+\vfill
+\begin{problem}
+    Let $A$ and $B$ be $m\times n$ matrices.
+    Simplify the expression
+    \[ 2[9(A-B)+7(2B-A)] - 2[3(2B+A) - 2(A+3B) - 5(A+B)] \]
+\end{problem}
+\pause
+\begin{solution}
+    \begin{eqnarray*}
+        &   & 2[9(A-B)+7(2B-A)] - 2[3(2B+A) - 2(A+3B) - 5(A+B)] \\
+        & = & 2(9A-9B+14B-7A) -2(6B+3A-2A-6B-5A-5B)             \\
+        & = & 2(2A + 5B) -2(-4A-5B)                             \\
+        & = & 12A + 20B
+    \end{eqnarray*}
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{The Transpose}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+\frametitle{Matrix Transpose}
+\pause
+\begin{definition}
+    If $A$ is an $m\times n$ matrix, then its \alert{transpose},
+    denoted \alert{$A^T$}, is the $n\times m$
+    whose $i^{th}$ row is the $i^{th}$ column of $A$, $1\leq i\leq n$;
+    i.e., if $A=[a_{ij}]$, then
+    \[ A^T= [a_{ij}]^T = [a_{ji}] \]
+    i.e., the $(i,j)$-entry of $A^T$ is the $(j,i)$-entry of $A$.
+\end{definition}
+\pause
+\vfill
+\begin{theorem}[Properties of the Transpose of a Matrix]
+    Let $A$ and $B$ be $m\times n$ matrices,
+    $C$ be a $n\times p$ matrix, and $r\in\RR$ a scalar.
+    Then
+    \pause
+    \begin{multicols}{2}
+    \begin{enumerate}
+	\item $(A^T)^T=A$
+	\pause
+	\item $(rA)^T = rA^T$
+	\pause
+	\item $(A+B)^T = A^T + B^T$
+	\pause
+	\item $(AC)^T=C^T A^T$
+    \end{enumerate}
+    \end{multicols}
+\end{theorem}
+\pause
+\vfill
+\begin{emptytitle}
+    To prove each these properties, you only need to compute the $(i,j)$-entries of the
+    matrices on the left-hand side and the right-hand side.\pause \alert{ And you can do it!}
+\end{emptytitle}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\frame{
+\begin{problem}
+    Find the matrix $A$ if
+    $\left( A +
+    3\left[ \begin{array}{rrr} 1 & -1 & 0 \\ 1 & 2 & 4 \end{array}
+    \right] \right)^T =
+    \left[ \begin{array}{rr} 2 & 1 \\ 0 & 5 \\ 3 & 8  \end{array}
+    \right]$.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+\begin{eqnarray*}
+    \left[\left( A +
+    3\left[ \begin{array}{rrr} 1 & -1 & 0 \\ 1 & 2 & 4 \end{array} \right] \right)^T\right]^T
+    & = & \left[ \begin{array}{rr} 2 & 1 \\ 0 & 5 \\ 3 & 8  \end{array} \right]^T \\
+    \pause
+    A + 3\left[ \begin{array}{rrr} 1 & -1 & 0 \\ 1 & 2 & 4 \end{array}
+    \right]
+    & = &
+    \left[ \begin{array}{rrr} 2 & 0 & 3 \\ 1 & 5 & 8 \end{array}
+    \right] \\
+    \pause
+    A & = &
+    \left[ \begin{array}{rrr} 2 & 0 & 3 \\ 1 & 5 & 8 \end{array}
+    \right] -
+    3\left[ \begin{array}{rrr} 1 & -1 & 0 \\ 1 & 2 & 4 \end{array}
+    \right] \\
+    \pause
+    A & = &
+    \left[ \begin{array}{rrr} -1 & 3 & 3 \\ -2 & -1 & -4 \end{array}
+    \right]
+\end{eqnarray*}
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\frame{
+\begin{definition}
+    Let $A=\left[ a_{ij} \right]$ be an $m\times n$ matrix.
+    The entries $a_{11}, a_{22}, a_{33},\ldots $ are called the
+    \alert{main diagonal} of $A$.
+\end{definition}
+\pause
+\vfill
+\begin{definition}[Symmetric Matrices]
+    The matrix $A$ is called \alert{symmetric} if and only if
+    $A^T=A$.  Note that this immediately implies that $A$ is
+    a {\bf square} matrix.
+\end{definition}
+\vfill
+\pause
+\begin{examples}
+    \[
+    \left[ \begin{array}{rr}
+    \textcolor{blue}{2} & -3 \\
+    -3 & \textcolor{blue}{17}
+    \end{array} \right],
+    \left[ \begin{array}{rrr}
+    \textcolor{blue}{-1} & 0 & 5 \\
+    0 & \textcolor{blue}{2} & 11 \\
+    5 & 11 & \textcolor{blue}{-3}
+    \end{array} \right],
+    \left[ \begin{array}{rrrr}
+    \textcolor{blue}{0} & 2 & 5 & -1 \\
+    2 & \textcolor{blue}{1} & -3 & 0 \\
+    5 & -3 & \textcolor{blue}{2} & -7 \\
+    -1 & 0 & -7 & \textcolor{blue}{4}
+    \end{array} \right]
+    \]
+    are symmetric matrices, and each
+    \textcolor{blue}{is symmetric about its main diagonal}.
+\end{examples}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 12
+\frame{
+\begin{definition}
+    An $n \times n$ matrix $A$ is said to be \alert{skew symmetric} if
+    $A^{T} = -A$.
+\end{definition}
+\vfill
+\pause
+\begin{example}[Skew Symmetric Matrices]
+    \[
+	\left[ \begin{array}{rr}
+		\textcolor{blue}{0} & 2 \\
+		\textcolor{yellow}{-2} & \textcolor{blue}{0}
+	\end{array} \right],
+	\left[ \begin{array}{rrr}
+		\textcolor{blue}{0} & 9 & 4 \\
+		\textcolor{yellow}{-9}& \textcolor{blue}{0} & -3 \\
+	\textcolor{yellow}{-4} & \textcolor{yellow}{3} & \textcolor{blue}{0} \end{array} \right]
+    \]
+\end{example}
+\pause
+\vfill
+\begin{problem}
+    Show that if $A$ is a square matrix, then $A-A^T$ is skew-symmetric.
+\end{problem}
+\pause
+\vfill
+\begin{solution}
+    We must show that $(A-A^T)^T=-(A-A^T)$.
+    \pause
+    Using the properties of matrix addition, scalar multiplication,
+    and transposition
+    \[ (A-A^T)^T = A^T - (A^T)^T = A^T - A=-(A-A^T).\]
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+\end{document}

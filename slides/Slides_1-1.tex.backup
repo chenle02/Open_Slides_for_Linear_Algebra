@@ -1,0 +1,649 @@
+%%%%%%%%%%%%%%%%%%%%%
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,handout,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 1. Systems of Linear Equations \\ \S  1.1 Solutions and Elementary Operations}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+% \input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+% \input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------- start slide -------------------------------%{{{
+
+\section{Solutions of Linear Equations}
+
+%-------------- start slide -------------------------------%{{{
+\frame{\frametitle{Motivation}
+
+\begin{example}
+Find all solutions of the (linear) equation in one variable:
+\[
+ax=b
+\]
+\pause
+{\bf Solution}
+\begin{itemize}
+\item If $a \neq 0$, there is  a unique solution $x=b/a$.
+\pause
+\item Else if $a = 0$ and
+  \begin{itemize}
+  \item $b\neq 0$, there is  no solution.
+ \pause
+  \item $b =  0$, there are infinitely many solutions, in fact any $x \in \RR$ is a solution.
+  \end{itemize}
+\end{itemize}
+
+This a complete description of all possible solutions of $ax=b$. \\
+\end{example}
+
+\pause
+\begin{alertblock}{Objective:}
+Can we do the same for linear equations in more variables?
+\end{alertblock}
+}
+%-------------- end slide -------------------------------%}}}
+
+%------------------start slide ---------------------------%
+\frame{\frametitle{Definitions}
+
+\begin{definition}
+A \alert{linear equation} is an expression
+\[ a_1 x_1+a_2 x_2+\dots + a_n x_n = b \]
+where $n\geq 1$, $a_1,\dots, a_n$ are real numbers, \emph{not all of them equal to zero},
+and $b$ is a real number.
+\pause
+\medskip
+
+A \alert{system of linear equations} is a set of $m\geq 1$ linear equations.
+It is not required that $m=n$.
+\pause
+\medskip
+
+A \alert{solution} to a system  of $m$ equations in  $n$ variables
+ is an $n$-tuple of numbers that satisfy each of the equations.
+\pause
+\medskip
+
+\alert{Solve a system} means `find \emph{all} solutions to the system.'
+\end{definition}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+\frame{\frametitle{Systems of Linear Equations}
+\begin{example}
+A {\bf system} of {\bf linear equations}:
+\[ \begin{array}{ccccccc}
+x_1 & - & 2x_2 & - & 7x_3 & = & -1 \\
+-x_1 & + & 3x_2 & + & 6x_3 & = & 0
+\end{array}\]
+\pause
+\begin{itemize}
+\item variables: $x_1$, $x_2$, $x_3$.
+\pause
+\item coefficients:
+\[ \begin{array}{ccccccc}
+\alert{1}x_1 & - & \alert{2}x_2 & - & \alert{7}x_3 & = & -1 \\
+\alert{-1}x_1 & + & \alert{3}x_2 & + & \alert{6}x_3 & = & 0
+\end{array}\]
+\pause
+\item constant terms:
+\[ \begin{array}{ccccccc}
+x_1 & - & 2x_2 & - & 7x_3 & = & \alert{-1} \\
+-x_1 & + & 3x_2 & + & 6x_3 & = & \alert{0}
+\end{array}\]
+\end{itemize}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+\frame{
+\begin{example}[continued]
+$x_1= -3$, $x_2 = -1$, $x_3=0$ is a \alert{solution} to the system
+\[ \begin{array}{ccccccc}
+x_1 & - & 2x_2 & - & 7x_3 & = & -1 \\
+-x_1 & + & 3x_2 & + & 6x_3 & = & 0
+\end{array}\]
+\pause
+because
+\[ \begin{array}{ccccccc}
+(-3) & - & 2(-1) & - & 7 \cdot 0 & = & -1 \\
+-(-3) & + & 3(-1) & + & 6\cdot 0 & = & 0.
+\end{array}\]
+\pause
+Another solution to the system is
+$x_1= 6$, $x_2 = 0$, $x_3=1$ (check!).
+\pause
+\bigskip
+
+However,
+$x_1= -1$, $x_2 = 0$, $x_3=0$ \alert{is not} a solution to the
+system, because
+\[ \begin{array}{cccccccc}
+(-1) & - & 2\cdot 0 & - & 7\cdot 0 & = & -1 \\
+-(-1) & + & 3\cdot 0 & + & 6\cdot 0 & = & 1 & \neq 0
+\end{array}\]
+\bigskip
+\pause
+
+A {\bf solution to the system} must be a solution to {\bf every
+equation} in the system.
+\vfill
+\bigskip
+
+\pause
+The system above is \alert{\bf consistent}, meaning that the system
+has {\bf at least one} solution.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+\frame{
+\begin{example}[continued]
+\[ \begin{array}{ccccccc}
+x_1 & + & x_2 & + & x_3 & = & 0 \\
+x_1 & + & x_2 & + & x_3 & = & -8
+\end{array}\]
+is an example of an \alert{\bf inconsistent} system,
+meaning that it has no solutions.
+
+\bigskip
+\pause
+
+\begin{center}
+{\large Why are there no solutions?}
+\end{center}
+\bigskip
+
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+
+%------------------start slide ---------------------------%
+\frame{\frametitle{Graphical Solutions}
+\begin{example}
+Consider the system of linear equations in two variables
+\vspace*{-.15in}
+
+\[ \begin{array}{c}
+x+y=3 \\ y-x=5 \end{array}\]
+\vspace*{-.15in}
+
+\pause
+A solution to this system is a pair $(x,y)$ satisfying both
+equations.
+\pause
+
+Since each equation corresponds to a line, a solution to the
+system corresponds to a point that lies on both lines, so the
+solutions to the system can be found by graphing the two lines and
+determining where they intersect.
+
+\pause
+\begin{picture}(3,1.35)
+\put(1.25,0.1){\includegraphics[scale=0.5]{figures/graph-soln.pdf}}
+\textcolor{red}{
+\put(1.2,1.1){\footnotesize{$x+y=3$}}}
+\textcolor{blue}{
+\put(2.5,1.1){\footnotesize{$y-x=5$}}}
+\put(1.65,0.83){\scriptsize{$(-1,4)$}}
+\end{picture}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+\frame{
+Given a system of two equations in two variables,
+graphed on the $xy$-coordinate plane, there
+are three possibilities, as illustrated below.
+\pause
+
+\begin{picture}(4,2.0)
+% \put(0,0.5){\includegraphics[decodearray={0.2 0.5},scale=0.4]{figures/lines.pdf}}
+\put(0,0.5){\includegraphics[scale=0.4]{figures/lines.pdf}}
+\pause
+\put(0.1,0.2){\footnotesize{intersect in one point}}
+\pause
+\put(0.1,0.0){\textcolor{red}{\footnotesize{consistent}}}
+\put(0.1,-0.2){\footnotesize{(unique solution)}}
+\pause
+\put(1.8,0.2){\footnotesize{parallel but different}}
+\pause
+\put(1.8,0.0){\textcolor{red}{\footnotesize{inconsistent}}}
+\put(1.8,-0.2){\footnotesize{(no solutions)}}
+\pause
+\put(3.4,0.2){\footnotesize{line are the same}}
+\pause
+\put(3.4,0.0){\textcolor{red}{\footnotesize{consistent}}}
+\put(3.4,-0.2){\footnotesize{(infinitely many solutions)}}
+\end{picture}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+\frame{
+\begin{alertblock}{Number of Solutions}
+We can see that for a system of linear equations in {\bf two variables},
+exactly one of the following holds:
+\pause
+\begin{enumerate}
+\item the system is {\bf inconsistent};
+\pause
+\item the system has a {\bf unique} solution, i.e., exactly
+one solution;
+\pause
+\item the system has {\bf infinitely many} solutions.
+\end{enumerate}
+\pause
+\end{alertblock}
+
+(We will see in what follows that this generalizes to systems of
+linear equations in more than two variables.)
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+\frame{
+\begin{example}
+The system of linear equations in three variables that we saw
+earlier
+\[ \begin{array}{ccccccc}
+x_1 & - & 2x_2 & - & 7x_3 & = & -1 \\
+-x_1 & + & 3x_2 & + & 6x_3 & = & 0,
+\end{array}\]
+has solutions $x_1=-3+9s$, $x_2=-1+s$, $x_3=s$
+where $s$ is any real number \alert{(written $s\in\RR$)}.
+\pause
+
+Verify this by substituting the expressions for $x_1$, $x_2$,
+and $x_3$ into the two equations.
+
+\pause
+
+$s$ is called a \alert{parameter}, and the expression
+\[
+x_1=-3+9s, x_2=-1+s, x_3=s,~\mbox{where } s\in\RR\]
+
+is called the
+\alert{general solution} in parametric form.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+\frame{
+\begin{problem}
+Find all solutions to a system of $m$ linear equations in $n$
+variables, i.e., \alert{solve a system of linear equations}.
+\end{problem}
+
+\pause
+\begin{definition}
+Two systems of linear equations are \alert{equivalent} if they
+have {\bf exactly the same} solutions.
+\end{definition}
+
+\pause
+\begin{example}
+The two systems of linear equations
+\[ \begin{array}{ccccc}
+2x & + & y & = & 2 \\
+3x &  &  & = & 3
+\end{array}
+\hspace*{.25in}\mbox{ and } \hspace*{.25in}
+\begin{array}{ccccc}
+x & + & y & = & 1 \\
+&  & y & = & 0
+\end{array}\]
+are {\bf equivalent} because both systems have the
+unique solution $x=1$, $y=0$.
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+
+\section{Elementary Operations}
+
+%-------------- start slide -------------------------------%{{{
+\frame{\frametitle{Elementary Operations}
+
+\begin{alertblock}{}
+We solve a system of linear equations by using {\em Elementary Operations}
+to transform the system into an equivalent but simpler system from which
+the solution can be easily obtained.
+\end{alertblock}
+\pause
+\vfill
+
+noindent Three types of Elementary Operations}
+\begin{itemize}
+\item {\bf Type I:} Interchange two equations,  \alert{$r_1\leftrightarrow r_2$}.
+\pause
+\item {\bf Type II:} Multiply an equation by a nonzero number, \alert{$13 r_1$}.
+\pause
+\item {\bf Type III:}
+Add a multiple of one equation to a different equation, \alert{$3r_3+r_2$}.
+\end{itemize}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -----------------------------%
+\frame{\frametitle{Elementary Operations}
+
+{
+\begin{example}
+Consider the system of linear equations
+$\begin{array}{ccccccc}
+3x_1 & - & 2x_2 & - & 7x_3 & = & -1 \\
+-x_1 & + & 3x_2 & + & 6x_3 & = & 1\\
+2x_1 &  &  & - & x_3 & = & 3
+\end{array}$
+\pause
+\begin{itemize}
+\item Interchange first two equations
+(Type I elementary operation):
+\[
+\alert{r_1\leftrightarrow r_2}\qquad
+\begin{array}{ccccccc}
+-x_1 & + & 3x_2 & + & 6x_3 & = & 1\\
+3x_1 & - & 2x_2 & - & 7x_3 & = & -1 \\
+2x_1 &  &  & - & x_3 & = & 3
+\end{array}\]
+\vspace*{-.15in}
+
+\pause
+\item Multiply first equation by $-2$
+(Type II elementary operation):
+\[ \alert{-2r_1}\qquad
+\begin{array}{ccccccc}
+-6x_1 & + & 4x_2 & + & 14x_3 & = & 2 \\
+-x_1 & + & 3x_2 & + & 6x_3 & = & 1\\
+2x_1 &  &  & - & x_3 & = & 3
+\end{array}\]
+\vspace*{-.15in}
+
+\pause
+\item Add 3 time the second equation to the first equation
+(Type III elementary operation):
+
+\vspace*{-.2in}
+\[ \alert{3r_2+r_1}
+\qquad
+\begin{array}{ccccccc}
+&  & 7x_2 & + & 11x_3 & = & 2 \\
+-x_1 & + & 3x_2 & + & 6x_3 & = & 1\\
+2x_1 &  &  & - & x_3 & = & 3
+\end{array}\]
+\end{itemize}
+\end{example}
+}}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -----------------------------%
+\frame{
+\begin{theorem}[Elementary Operations and Solutions]
+Suppose that a sequence of elementary operations is performed on a system of linear equations.
+Then the resulting system has the same set of solutions as the original, so the two systems are
+equivalent.
+
+\medskip
+
+\alert{As a consequence, performing a sequence of elementary
+  operations on a system of linear equations results in an equivalent
+  system of linear equations, with the exact same solutions.}
+\end{theorem}
+}
+%------------------ end slide ------------------------%
+
+
+\section{The Augmented Matrix}
+
+%-------------- start slide -------------------------------%{{{
+\frame{\frametitle{The Augmented Matrix}
+Represent a system of linear equations with its
+augmented matrix.
+\begin{example}
+The system of linear equations
+\shiftup{0.5}
+\[ \begin{array}{ccccccc}
+x_1 & - & 2x_2 & - & 7x_3 & = & -1 \\
+-x_1 & + & 3x_2 & + & 6x_3 & = & 0
+\end{array}\]
+
+\vspace*{-.1in}
+is represented by the \alert{augmented matrix}
+\shiftup{0.5}
+\[ \left[\begin{array}{rrr|r}
+1 & -2 & -7 & -1 \\
+-1 & 3 & 6 & 0
+\end{array}\right] \]
+
+\vspace*{-.1in}
+(A \alert{matrix} is a rectangular array of numbers.)
+
+\medskip
+\pause
+
+{\bf Note.}
+Two other \alert{matrices} associated with a system of
+linear equations are the \textcolor{orange}{coefficient matrix}
+and the \textcolor{blue}{constant matrix}.
+\[ \textcolor{orange}{\left[\begin{array}{rrr}
+1 & -2 & -7\\ -1 & 3 & 6 \\
+\end{array}\right]},~
+\textcolor{blue}{\left[\begin{array}{r}
+-1 \\ 0 \end{array}\right]}
+\]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+\frame{\frametitle{Elementary Row Operations}
+For convenience, instead of performing {\bf elementary operations} on a system
+of linear equations, perform corresponding
+\alert{elementary row operations} on the
+corresponding {\bf augmented matrix}.
+\bigskip\bigskip
+
+\pause{
+{\bf Type I:} Interchange two rows.
+\begin{example}
+Interchange rows 1 and 3.
+\[
+\left[\begin{array}{rrrr|r}
+\textcolor{blue}{2} & \textcolor{blue}{-1} & \textcolor{blue}{0} & \textcolor{blue}{5} & \textcolor{blue}{-3 }\\
+-2 & 0 & 3 & 3 & -1 \\
+\textcolor{red}{0} & \textcolor{red}{5} & \textcolor{red}{-6} & \textcolor{red}{1} & \textcolor{red}{0} \\
+1 & -4 & 2 & 2 & 2
+\end{array}\right]
+\onslide<+->
+\rightarrow^{r_1\leftrightarrow r_3}
+\left[\begin{array}{rrrr|r}
+\textcolor{red}{0} & \textcolor{red}{5} & \textcolor{red}{-6} & \textcolor{red}{1} & \textcolor{red}{0} \\
+-2 & 0 & 3 & 3 & -1 \\
+\textcolor{blue}{2} & \textcolor{blue}{-1} & \textcolor{blue}{0} & \textcolor{blue}{5} & \textcolor{blue}{-3} \\
+1 & -4 & 2 & 2 & 2
+\end{array}\right]
+\]
+\end{example}}
+}
+
+%-------------- end slide -------------------------------%}}}
+
+
+%-------------- start slide -------------------------------%{{{
+\frame{\frametitle{Elementary Row Operations}
+{\bf Type II:} Multiply a row by a nonzero number.
+\begin{example}
+Multiply row 4 by 2.
+\[
+\left[\begin{array}{rrrr|r}
+2 & -1 & 0 & 5 & -3 \\
+-2 & 0 & 3 & 3 & -1 \\
+0 & 5 & -6 & 1 & 0 \\
+\textcolor{blue}{1} & \textcolor{blue}{-4} & \textcolor{blue}{2} & \textcolor{blue}{2} & \textcolor{blue}{2}
+\end{array}\right]
+\onslide<+->
+\rightarrow^{2r_4}
+\left[\begin{array}{rrrr|r}
+2 & -1 & 0 & 5 & -3 \\
+-2 & 0 & 3 & 3 & -1 \\
+0 & 5 & -6 & 1 & 0 \\
+\textcolor{blue}{2} & \textcolor{blue}{-8} & \textcolor{blue}{4} & \textcolor{blue}{4} & \textcolor{blue}{4}
+\end{array}\right]
+\]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{
+\frame{\frametitle{Elementary Row Operations}
+{\bf Type III:}
+Add a multiple of one row to a different row.
+\begin{example}
+Add 2 times row 4 to row 2.
+\[
+\left[\begin{array}{rrrr|r}
+2 & -1 & 0 & 5 & -3 \\
+\textcolor{blue}{-2} & \textcolor{blue}{0} & \textcolor{blue}{3} & \textcolor{blue}{3} & \textcolor{blue}{-1} \\
+0 & 5 & -6 & 1 & 0 \\
+1 & -4 & 2 & 2 & 2
+\end{array}\right]
+\onslide<+->
+\rightarrow^{2r_4+r_2}
+\left[\begin{array}{rrrr|r}
+2 & -1 & 0 & 5 & -3 \\
+\textcolor{blue}{0} & \textcolor{blue}{-8} & \textcolor{blue}{7} & \textcolor{blue}{7} & \textcolor{blue}{3 }\\
+0 & 5 & -6 & 1 & 0 \\
+1 & -4 & 2 & 2 & 2
+\end{array}\right]
+\]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+
+
+%-------------- start slide -------------------------------%{{{
+\frame{
+\begin{definition}
+Two matrices $A$ and $B$ are \alert{row equivalent} (or simply
+equivalent) if one can be obtained from the other by a
+sequence of \alert{elementary row operations}.
+\end{definition}
+
+\pause
+
+\begin{problem}
+ Prove that  $A$  can be obtained from $B$  by a
+sequence of elementary row operations if and only if $B$ can be
+obtained from $A$ by a sequence of elementary row operations.
+
+Prove that row equivalence is an equivalence relation.
+\end{problem}
+}
+
+%-------------- end slide -------------------------------%}}}
+
+
+
+\end{document}
+
+%--------------------start slide ---------------------%
+\frame{\frametitle{Solving a System using Back Substitution}
+\begin{problem}
+Solve the system using back substitution
+\[
+\begin{array}{c}
+2x+y = 4 \\
+x - 3y = 1
+\end{array}
+\]
+\end{problem}
+\pause
+
+\begin{solution}
+Add $(-2)$ times the second equation to the first equation.
+\[
+\begin{array}{c}
+2x+y \alert{+ (-2)x - (-2)(3)y}= 4 \alert{+ (-2)1}\\
+x - 3y = 1
+\end{array}
+\]
+\pause
+The result is an equivalent system
+\[
+\begin{array}{c}
+7 y = 2 \\
+x - 3y = 1
+\end{array}
+\]
+\end{solution}
+}
+%------------------ end slide -----------------------%
+
+%------------------start slide------------------%
+\frame{
+\begin{solution}[continued]
+The first equation of the system,
+\vspace*{-.15in}
+
+\[
+\alert{7y=2}
+\]
+\vspace*{-.25in}
+
+can be rearranged to give us
+\vspace*{-.15in}
+\[
+\alert{y= \frac{2}{7}}.
+\]
+
+\pause
+Substituting $y=\frac{2}{7}$ into second equation:
+\vspace*{-.15in}
+
+\[
+x - 3y = x - 3 \left(\alert{\frac{2}{7}}\right)= 1,
+\]
+\pause
+and simplifying, gives us
+\vspace*{-.15in}
+
+\[
+x = 1 + \frac{6}{7} = \frac{13}{7}.
+\]
+\pause
+Therefore, the solution is $x={13}/{7}, y = {2}/{7}$.
+\pause
+\bigskip
+
+The method illustrated in this example is called \alert{back substitution.}
+\end{solution}
+We shall describe an \emph{algorithm} for solving any given system of linear equations.
+}
+
+%-------------------end slide --------------------%
+
+\end{document}

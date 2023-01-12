@@ -1,0 +1,101 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 1. Systems of Linear Equations \\ \S  1-6. Application to Chemical Reactions}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Chemical Reactions}}
+
+%-------------- start slide -------------------------------%{{{ 1
+\frame{\frametitle{Balancing Chemical Reactions}
+
+    \begin{problem}
+	Balance the chemical reaction given below involving tin ($Sn$), hydrogen ($H$), and oxygen ($0$).
+	\[
+	    xSnO_2 + yH_2 \rightarrow zSn + wH_2O
+	\]
+    \end{problem}
+
+    \pause
+
+    \begin{solution}
+	Setting up a system of equations in $x,y,z,w$ gives
+	\begin{eqnarray*}
+	    Sn&:& x = z \; \text{or} \; x -z     = 0 \\
+	    O&:& 2x = w \; \text{or} \; 2x -w    = 0 \\
+	    H&:& 2y = 2w \; \text{or} \; 2y - 2w = 0
+	\end{eqnarray*}
+
+	\pause
+
+	The augmented matrix is $\left[
+	    \begin{array}{rrrr|r}
+		1 & 0 & -1 & 0  & 0 \\
+		2 & 0 & 0  & -1 & 0 \\
+		0 & 2 & 0  & -2 & 0
+	    \end{array}
+	\right]$
+    \end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+
+%-------------- start slide -------------------------------%{{{ 2
+\frame{
+\begin{solution}[continued]
+The reduced row-echelon matrix is
+\[
+\left[
+\begin{array}{rrrr|r}
+1 & 0 & 0 & -\frac{1}{2} & 0 \\
+0 & 1 & 0 & -1 & 0 \\
+0 & 0 & 1 & -\frac{1}{2} & 0
+\end{array}
+\right]
+\]
+
+\pause
+
+Letting $w = t$, the solution is
+\begin{eqnarray*}
+x &=& \frac{1}{2}t \\
+y &=& t \\
+z &=& \frac{1}{2}t  \\
+w &=& t
+\end{eqnarray*}
+
+\pause
+
+We can choose any values for $w = t$. Suppose we choose $w = 4$, then $x = 2, y = 4, z = 2$ and the balanced reaction is
+\[
+2Sn0_2 + 4H_2 \rightarrow 2Sn + 4H_2O
+\]
+
+\end{solution}
+}
+%-------------- end slide -------------------------------%}}}
+
+\end{document}

@@ -1,0 +1,329 @@
+%%%%%%%%%%%%%%%%%%%%% {{{
+%%Options for presentations (in-class) and handouts (e.g. print).
+\documentclass[pdf,9pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%Change this for different slides so it appears in bar
+\usepackage{authoraftertitle}
+\date{Chapter 3. Determinants and Diagonalization \\ \S 3-4. Application to Linear Recurrences}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Upload common style file
+\usepackage{LyryxLAWASlidesStyle}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page and Copyright Common to All Slides
+
+%Title Page
+\input frontmatter/titlepage.tex
+
+%LOTS Page
+\input frontmatter/lyryxopentexts.tex
+
+%Copyright Page
+\input frontmatter/copyright.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%% }}}
+\section[\textcolor{yellow}{}]{\textcolor{yellow}{Linear Recurrences}}
+%-------------- start slide -------------------------------%{{{ 1
+\frame{\frametitle{Linear Recurrences}
+\begin{example}
+The {\bf Fibonacci Numbers} are the numbers in the sequence
+\[ 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, \ldots \]
+and can be defined by the \alert{linear recurrence relation}
+\[ f_{n+2} = f_{n+1} + f_{n}\mbox{ for all } n\geq 0,\]
+with the initial conditions $f_0=1$ and $f_1=1$.
+\end{example}
+
+\uncover<2->{
+\begin{problem}
+Find $f_{100}$.
+\end{problem}}
+
+\uncover<3->{
+Instead of using the recurrence to compute $f_{100}$, we'd
+like to find a formula for $f_n$ that holds for all $n\geq 0$.}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 2
+\frame{
+\begin{definitions}
+A sequence of numbers $x_0, x_1, x_2, x_3, \ldots $ is defined
+\alert{recursively} if each number in the sequence is determined
+by the numbers that occur before it in the sequence.
+
+\uncover<2->{
+A \alert{linear recurrence} of \alert{length $k$} has the
+form
+\[ x_{n+k} = a_1 x_{n+k-1} + a_2 x_{n+k-2} + \cdots + a_k x_{n},
+n\geq 0, \]
+for some real numbers $a_1, a_2, \ldots, a_k$.}
+\end{definitions}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 3
+\frame{
+\begin{example}
+The simplest linear recurrence has length one, so
+has the form
+\[ x_{n+1} = ax_{n}\mbox{ for } n\geq 0, \]
+with $a\in\RR$ and some initial value $x_0$.
+
+\uncover<2->{
+In this case,
+\begin{eqnarray*}
+x_1 & = & ax_0 \\
+x_2 & = & ax_1 = a^2 x_0 \\
+x_3 & = & ax_2 = a^3 x_0 \\
+\vdots & \vdots & \vdots \\
+x_n & = & ax_{n-1} = a^n x_0
+\end{eqnarray*}
+Therefore, $x_n=a^nx_0$.
+}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 4
+\frame{
+\begin{example}
+Find a formula for $x_n$ if
+\[ x_{n+2} = 2x_{n+1} +3x_{n}\mbox{ for } n\geq 0,\]
+with $x_0=0$ and $x_1=1$.
+
+\uncover<2->{
+{\bf Solution.}
+Define $V_n=\left[\begin{array}{c}
+x_n \\ x_{n+1} \end{array}\right]$ for each $n\geq 0$.
+Then
+\[ V_0=\left[\begin{array}{c}
+x_0 \\ x_{1} \end{array}\right]
+=
+\left[\begin{array}{cc}
+0 \\ 1 \end{array}\right],\]
+and for $n\geq 0$,
+\[ V_{n+1}=\left[\begin{array}{c}
+x_{n+1} \\ x_{n+2} \end{array}\right]
+=
+\left[\begin{array}{c}
+x_{n+1} \\ 2x_{n+1}+3x_n \end{array}\right]
+\]
+}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 5
+\frame{
+\begin{example}[continued]
+Now express $V_{n+1}=\left[\begin{array}{c}
+x_{n+1} \\ 2x_{n+1}+3x_n \end{array}\right]$ as a matrix product:
+
+\uncover<2->{
+\[ V_{n+1}=\left[\begin{array}{c}
+x_{n+1} \\ 2x_{n+1}+3x_n \end{array}\right]
+=
+\left[\begin{array}{cc}
+0 & 1 \\
+3 & 2
+\end{array}\right]
+\left[\begin{array}{c}
+x_n \\ x_{n+1}
+\end{array}\right]
+=AV_n \]
+}
+
+\uncover<3->{
+This is a linear dynamical system, so we can apply the
+techniques from \S3.3, provided that $A$ is diagonalizable.}
+
+\uncover<4->{
+\[ c_A(x)=\det(xI-A)=
+\left|\begin{array}{cc}
+x & -1 \\
+-3 & x-2
+\end{array}\right|
+= x^2-2x-3 = (x-3)(x+1)
+\]
+Therefore $A$ has eigenvalues $\lambda_1=3$ and $\lambda_2=-1$,
+and \alert{is diagonalizable}.}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 6
+\frame{
+\begin{example}[continued]
+$\vec{x}_1=\left[\begin{array}{c}
+1 \\ 3 \end{array}\right]$
+is a basic eigenvector corresponding to $\lambda_1=3$,
+and
+$\vec{x}_2=\left[\begin{array}{c}
+-1 \\ 1 \end{array}\right]$
+is a basic eigenvector corresponding to $\lambda_2=-1$.
+\medskip
+
+\uncover<2->{
+Furthermore $P= \left[\begin{array}{cc}
+\vec{x}_1 & \vec{x}_2 \end{array}\right]
+=
+\left[\begin{array}{cc}
+1 & -1 \\
+3 & 1
+\end{array}\right]$
+is invertible and is the diagonalizing matrix for $A$,
+and
+$P^{-1}AP=D=\left[\begin{array}{cc}
+3 & 0 \\
+0 & -1
+\end{array}\right]$
+}
+
+\uncover<3->{
+Writing $P^{-1}V_0 = \left[\begin{array}{c}
+b_1 \\ b_2 \end{array}\right]$, we get
+\[
+\left[\begin{array}{c}
+b_1 \\ b_2 \end{array}\right] =
+\frac{1}{4}
+\left[\begin{array}{cc}
+1 & 1 \\
+-3 & 1
+\end{array}\right]
+\left[\begin{array}{c}
+0 \\
+1
+\end{array}\right]
+=\left[\begin{array}{c}\vspace*{.02in}
+\frac{1}{4} \\
+\frac{1}{4}
+\end{array}\right]
+\]
+}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 7
+\frame{
+\begin{example}[continued]
+Therefore,
+\begin{eqnarray*}
+V_n =
+\left[\begin{array}{c}
+x_n \\ x_{n+1} \end{array}\right]
+& = & b_1 \lambda_1^n \vec{x}_1 + b_2\lambda_2^n \vec{x}_2 \\
+& = & \frac{1}{4}3^n
+\left[\begin{array}{c}
+1 \\ 3 \end{array}\right]
++ \frac{1}{4}(-1)^n
+\left[\begin{array}{c}
+-1 \\ 1 \end{array}\right],
+\end{eqnarray*}
+and so
+\[ x_n = \frac{1}{4}3^n -\frac{1}{4}(-1)^n.\]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 8
+\frame{
+\begin{example}
+Solve the recurrence relation
+\[ x_{k+2}=5x_{k+1}-6x_k, k\geq 0\]
+with $x_0=0$ and $x_1=1$.
+\medskip
+
+\uncover<2->{
+{\bf Solution.}
+Write
+\[ V_{k+1}=\left[\begin{array}{c}
+x_{k+1} \\ x_{k+2} \end{array}\right]
+=
+\left[\begin{array}{c}
+x_{k+1} \\ 5x_{k+1}-6x_k \end{array}\right]
+=
+\left[\begin{array}{cc}
+0 & 1 \\
+-6 & 5
+\end{array}\right]
+\left[\begin{array}{c}
+x_{k} \\ x_{k+1} \end{array}\right]
+\]}
+
+\uncover<3->{
+Find the eigenvalues and corresponding eigenvectors for
+\[ A = \left[\begin{array}{cc}
+0 & 1 \\
+-6 & 5
+\end{array}\right] \]}
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 9
+\frame{
+\begin{example}[continued]
+$A$ has eigenvalues $\lambda_1=2$ with corresponding eigenvector
+$\vec{x}_1=\left[\begin{array}{c}
+1 \\ 2 \end{array}\right]$,
+and
+$\lambda_2=3$ with corresponding eigenvector
+$\vec{x}_2=\left[\begin{array}{c}
+1 \\ 3 \end{array}\right]$.
+
+\uncover<2->{
+\[ P = \left[\begin{array}{cc}
+1 & 1 \\
+2 & 3
+\end{array}\right],
+P^{-1} = \left[\begin{array}{cc}
+3 & -1 \\
+-2 & 1
+\end{array}\right], \]
+and
+\[
+\left[\begin{array}{c}
+b_1 \\ b_2 \end{array}\right]
+= P^{-1}V_0 =
+\left[\begin{array}{cc}
+3 & -1 \\
+-2 & 1
+\end{array}\right]
+\left[\begin{array}{c}
+0 \\ 1 \end{array}\right]
+=
+\left[\begin{array}{c}
+-1 \\ 1 \end{array}\right] \] }
+
+\uncover<3->{
+Finally,
+\[ V_k = \left[\begin{array}{c}
+x_k \\ x_{k+1} \end{array}\right]
+=
+b_1\lambda_1^k\vec{x}_1 + b_2\lambda_2^k\vec{x}_2
+= (-1)2^k
+\left[\begin{array}{c}
+1 \\ 2 \end{array}\right]
++ 3^k
+\left[\begin{array}{c}
+1 \\ 3 \end{array}\right]
+\] }
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+%-------------- start slide -------------------------------%{{{ 10
+\frame{
+\begin{example}
+\[ \left[\begin{array}{c}
+x_k \\ x_{k+1} \end{array}\right]
+= (-1)2^k
+\left[\begin{array}{c}
+1 \\ 2 \end{array}\right]
++ 3^k
+\left[\begin{array}{c}
+1 \\ 3 \end{array}\right]
+\]
+and therefore
+\[ x_k = 3^k - 2^k.\]
+\end{example}
+}
+%-------------- end slide -------------------------------%}}}
+\end{document}
