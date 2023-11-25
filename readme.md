@@ -14,7 +14,7 @@
    Should you wish to mention this work, please feel free to use the following
    BibTeX entry[^1]:
 
-  * Le Chen (2023) “Open slides for linear algebra”. GitHub & Zenodo. https://doi.org/10.5281/zenodo.10206020
+   * Le Chen (2023) “Open slides for linear algebra”. GitHub & Zenodo. https://doi.org/10.5281/zenodo.10206020
  
 ```
 @misc{chen:23:open,
@@ -29,8 +29,8 @@
 }
 ```
 
-  Your support in recognizing the effort put into compiling and maintaining this
-  repository is much appreciated.
+   Your support in recognizing the effort put into compiling and maintaining
+   this repository is much appreciated.
 
 [^1]: To properly show the entry, one may replace `misc` by `book`.
 
