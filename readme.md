@@ -33,7 +33,7 @@
 }
 ```
 
-# Acknowledgment
+# Acknowledgments
 * The original author Professor [Karen Seyffarth](https://contacts.ucalgary.ca/info/math/profiles/101-152971) for sharing the slides.
 * The editorial team at [Lyryx Learning](https://lyryx.com/) for their edits, additions, and revisions
     made to accompany their text book "Linear Algebra with Applications" based on
