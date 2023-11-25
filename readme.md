@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10206020.svg)](https://doi.org/10.5281/zenodo.10206020)
+
 # Open slides (with Latex source codes) for Linear Algebra
 1. In this repo, we share the slides for the course "Math 221 -- Linear Algebra"
    in the Department of Mathematics, Emory University, taught by me in 2021
@@ -16,6 +18,33 @@
 * Professor [Ilijas Farah](https://ifarah.mathstats.yorku.ca/) from York University for contributing suggestions for
     improvements, new content, or errata.
 * Professor and department chair [Jim Nagy](http://www.math.emory.edu/~nagy/) for his encouragement and support.
+
+# Cite this work
+
+We hope that the resources have been supportive in your teaching or studying. We
+are sincerely grateful for any form of acknowledgment you might extend. Should
+you wish to mention this work, please feel free to use the following BibTeX
+entry[^1]:
+
+  * Le Chen (2023) “Open slides for linear algebra”. GitHub & Zenodo. https://doi.org/10.5281/zenodo.10206020
+ 
+```
+@misc{chen:23:open,
+  author        = {Le Chen},
+  title         = {Open slides for linear algebra},
+  month         = {nov},
+  year          = {2023},
+  publisher     = {GitHub \& Zenodo},
+  journal       = {GitHub repository},
+  doi           = {10.5281/zenodo.10206020},
+  url           = {https://doi.org/10.5281/zenodo.10206020}
+}
+```
+
+[^1]: To properly show the entry, one may replace `misc` by `book`.
+
+Your support in recognizing the effort put into compiling and maintaining this
+repository is much appreciated.
 
 # License
 * Creative Commons License (CC BY-NC-SA) 
