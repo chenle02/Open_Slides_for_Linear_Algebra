@@ -1,5 +1,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10206020.svg)](https://doi.org/10.5281/zenodo.10206020)
 
+![Open Slides for Linear Algebra](./media/Slides_8-6.png)
+
 # Open slides for Linear Algebra
 1. In this repo, we share the slides for the course "Math 221 -- Linear Algebra"
    in the Department of Mathematics, Emory University, taught by me in 2021
