@@ -10,7 +10,7 @@
    University of Calgary under the Creative Commons License (CC BY-NC-SA).
 3. The course page can be found here:
    * [Math 221, 2021 Spring at Emory](http://math.emory.edu/~lchen41/teaching/2021_Spring_Math221/)
-   * [Math 221, 2021 Spring mirror at Auburn](http://webhome.auburn.edu/~lzc0090/teaching/2021_Spring_Math221/)
+   * [Math 221, 2021 Spring (mirror at Auburn)](http://webhome.auburn.edu/~lzc0090/teaching/2021_Spring_Math221/)
 
 4. We hope that the resources have been supportive in your teaching or studying.
    We are sincerely grateful for any form of acknowledgment you might extend.
